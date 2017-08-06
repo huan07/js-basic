@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
 
 <script>
     /*
@@ -32,8 +31,8 @@
 </script>
 
 <script>
-    document.write("<h1>typeof</h1>");
-    console.log('typeof====>');
+    document.write('<h1 class="h1">typeof</h1>');
+    console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
     console.log('Null', typeof null);
     console.log('Boolean', typeof true);
@@ -45,12 +44,11 @@
 
     var xx = 'xx';
     console.log(typeof xx, typeof(xx), typeof 'xx');
-    console.log('typeof<====');
 </script>
 
 <script>
-    document.write("<h1>Undefined</h1>");
-    console.log('Undefined====>');
+    document.write('<h1 class="h1">Undefined</h1>');
+    console.log('Undefined===============================>');
     // 可以显式的设置为nudefined；或者不初始化变量的值就是undefined；
     var message3;
     //var age; 未声明的变量，之后用会报个错
@@ -60,20 +58,30 @@
 
     console.log('没有初始化的变量typeof=', typeof message3);
     console.log('没有声明的变量typeof=', typeof age);
-
-    console.log('Undefined<====');
 </script>
 
 <script>
-    document.write("<h1>Null</h1>");
-    console.log('Null====>');
+    document.write('<h1 class="h1">Null</h1>');
+    console.log('Null===========================>');
     // 定义的变量准备用于保存对象，初始化为null
 
     console.log('Null typeof=', typeof null);
     console.log('undefined == null', undefined == null);
     console.log('undefined === null', undefined === null);
+</script>
 
-    console.log('Null<====');
+<script>
+    document.write('<h1 class="h1">Boolean</h1>');
+    console.log('所有类型的值都可以调用转型函数Boolean()====================>');
+    console.log('流控制语句（if语句）会  自动执行  Boolean()转换 ');
+    console.log('String类型数据', Boolean('str'), Boolean(''));
+    console.log('Number', Boolean(1), Boolean(0), Boolean(NaN)); // NaN
+    console.log('Object', Boolean({ 1: 2, }), Boolean({}), Boolean(null)); // {}
+    console.log('Undefined', Boolean(undefined));
+</script>
+
+<script>
+    document.write('<h1 class="h1">Number</h1>');
 </script>
 
 </body>
