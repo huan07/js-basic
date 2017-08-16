@@ -2,12 +2,15 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>5.2</title><!--
-    <link rel="stylesheet" type="text/css" href="styles.css">-->
+    <title>5.2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
 <script>
+    document.write('<div class="h4">在确保是数组的条件下， 调用api</div>');
+
+
     var colors1 = new Array(); // 1
     console.log('colors1', colors1.length, colors1);
 
@@ -164,10 +167,10 @@
 </script>
 
 <script>
-    console.log('every some ==============返回 boolean =======================');
+    console.log('every some ===返回 boolean ===不会对空数组进行检测===不会改变原始数组=====');
 
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
-    var everyResult = numbers.every(function(item, index, array) {
+    var everyResult = numbers.every(function(item, index, array) { // 1.
         return item > 3;
     });
     var someResult = numbers.some(function(item, index, array) {
@@ -177,23 +180,20 @@
     console.log('someResult', someResult);
 
 
-    var everyOrSomeFun = function(item, index, array) {
+    var everyFun = function(item, index, array) { // 2.
         return index > 3;
     };
-    var everyResult_ = numbers.every(everyOrSomeFun);
-    var someResult_ = numbers.some(everyOrSomeFun);
-    console.log('everyResult_Fun', everyResult_);
-    console.log('someResult_Fun', someResult_);
+    var everyResult_Fun = numbers.every(everyFun);
+
+    console.log('everyResult_Fun', everyResult_Fun);
 </script>
 
 <script>
-    console.log('filter map ====================返回 array ==========================');
+    console.log('filter map ===返回 array ===不会对空数组进行检测===不会改变原始数组=======');
     var filterResult = numbers.filter(function(item, index, array) {
         return item > 3;
     });
-    var filterResult_Fun = numbers.filter(everyOrSomeFun);
     console.log('filterResult', filterResult);
-    console.log('filterResult_Fun', filterResult_Fun);
 
     var mapResult = numbers.map(function(item, index, array) {
         return item * 2;
@@ -202,13 +202,17 @@
 </script>
 
 <script>
-    console.log('forEach =================执行某些操作，没有返回值 和 for 循环类型功能====================');
+    console.log('forEach ====forEach() 对于空数组是不会执行回调函数的====执行某些操作，没有返回值 和 for 循环类型功能=====');
 
 </script>
 
 <script>
     console.log('reduce reduceRight =====缩小数组===============');
-
+    var values = [1, 2, 3, 4, 5];
+    var sum = values.reduce(function(prev, cur, index, array) {
+        return prev + cur;
+    });
+    console.log('reduce', sum);
 </script>
 
 </body>
