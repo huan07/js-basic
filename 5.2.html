@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>5.2</title><!--
+    <link rel="stylesheet" type="text/css" href="styles.css">-->
+</head>
+<body>
+
+<script>
+    var colors1 = new Array(); // 1
+    console.log('colors1', colors1.length, colors1);
+
+    var colors2 = new Array(20); // 2
+    console.log('colors2', colors2.length, colors2);
+
+    var colors3 = new Array('yh', 30, 'baidu'); // 3
+    console.log('colors3', colors3.length, colors3);
+
+    var colors4 = []; // 4
+    console.log('colors4', colors4.length, colors4);
+
+    var colors5 = ['yh', 30, 'baidu']; // 5
+    console.log('colors5', colors5.length, colors5);
+
+
+    // 数组实例的valueOf(),  toString(), JSON.stringify(),
+    console.log('数组实例的valueOf(),  toString(), JSON.stringify() =================');
+    console.log('arr.valueOf()== 还是数组本身', colors3.valueOf());
+    console.log('arr.toString()== 逗号分隔的字符串', colors3.toString());
+    console.log('JSON.stringify(arr)', JSON.stringify(colors3));
+
+
+    // 数组的length属性可读，可写；增删改；
+</script>
+
+<script>
+    console.log('// 检测数组==========================');
+    // 1.一个网页／一个全局作用域
+    console.log('colors5 instanceof Array', colors5 instanceof Array);
+
+    // 2.全局执行环境 但是有浏览器兼容性
+    console.log('Array.isArray(colors5)', Array.isArray(colors5));
+
+    // 3. to add？？？？？？？
+
+    console.log('["yh",30,"baidu"].join(",")', ["yh", 30, "baidu"].join(","));
+    console.log('["yh",30,"baidu"].join("||")', ["yh", 30, "baidu"].join("||"));
+
+    console.log('["yh",30,"baidu"].join()', ["yh", 30, "baidu"].join());
+    console.log('["yh",30,"baidu"].join(undefined)', ["yh", 30, "baidu"].join(undefined));
+
+    console.log('[null,undefined,"baidu"].join(",")', [null, undefined, "baidu"].join(","));
+</script>
+
+<script>
+    console.log('// 数组 栈 方法========================== to add');
+
+</script>
+
+<script>
+    console.log('// 数组 队列 方法========================== to add');
+
+</script>
+
+<script>
+    console.log('// 数组 重排序 方法=============================');
+    var values = [1, 10, 2, 20, 3, 30];
+    values.reverse();
+    console.log('values.reverse() =', values);
+
+    var values2 = [0, 1, 5, 10, 15];
+    values2.sort();
+    console.log('values2.sort() = > 将数组的每一项调用toString,比较的是字符串', values2);
+
+
+    console.log('sort()接受比较函数=============================');
+    function compare11(value1, value2) {  // 升序
+        if (value1 < value2) {
+            return -1;
+        } else if (value1 > value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    var values11 = [0, 1, 5, 10, 15];
+    values11.sort(compare11);
+    console.log('values11.sort(compare11) =', values11);
+
+
+    function compare22(value1, value2) {  // 降序
+        if (value1 < value2) {
+            return 1;
+        } else if (value1 > value2) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    var values22 = [0, 1, 5, 10, 15];
+    values22.sort(compare22);
+    console.log('values22.sort(compare22) =', values22);
+
+
+    function compare33(value1, value2) { // 升序 简易版
+        return value1 - value2;
+    }
+    var values33 = [0, 1, 5, 10, 15];
+    values33.sort(compare33);
+    console.log('values33.sort(compare33) =', values33);
+
+
+    function compare44(value1, value2) { // 降序 简易版
+        return value2 - value1;
+    }
+    var values44 = [0, 1, 5, 10, 15];
+    values44.sort(compare44);
+    console.log('values44.sort(compare44) =', values44);
+</script>
+
+<script>
+    console.log('不影响原始数组，concat, slice=========================================');
+
+
+    console.log('concat 创建当前数组副本，并且向尾部追加元素，数组========================');
+    var colors11 = ['red', 'blue'];
+    var colors12 = colors11.concat();
+    var colors13 = colors11.concat('yellow', ['1', '2']);
+    console.log(colors11);
+    console.log(colors12);
+    console.log(colors13);
+
+    console.log('slice 截取数组的一部分 ==============================================');
+    var colors14 = ['red1', 'blue1', 'yellow1', '11', '21'];
+    var colors15 = colors14.slice(0);
+    var colors16 = colors14.slice(0, 2);
+    console.log(colors15);
+    console.log(colors16);
+
+    console.log('splice 执行数组的 增 删 改====================从 第1个参数 位置开始执行');
+    var colors17 = ['red', 'blue1', 'blue2', 'blue3'];
+    colors17.splice(1, 0, 'blue4', 'blue5');
+    console.log('增', colors17);
+
+    var colors18 = ['red', 'blue1', 'blue2', 'blue3'];
+    colors18.splice(1, 2); // 删除两个
+    console.log('删', colors18);
+
+    var colors19 = ['red', 'blue1', 'blue2', 'blue3'];
+    colors19.splice(1, 2, 'blue4', 'blue5');
+    console.log('改', colors19);
+</script>
+
+<script>
+    console.log('indexOf(),  lastIndexOf(),==========================================');
+    var numbers = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4];
+    console.log('numbers.indexOf(1)', numbers.indexOf(1));
+    console.log('numbers.indexOf(1,4)', numbers.indexOf(1, 4));
+    console.log('numbers.lastIndexOf(3)', numbers.lastIndexOf(3));
+    console.log('numbers.lastIndexOf(3,4)', numbers.lastIndexOf(3, 4));
+
+    console.log('numbers.indexOf(11)', numbers.indexOf(11));
+</script>
+
+<script>
+    console.log('every some ==============返回 boolean =======================');
+
+    var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
+    var everyResult = numbers.every(function(item, index, array) {
+        return item > 3;
+    });
+    var someResult = numbers.some(function(item, index, array) {
+        return item > 3;
+    });
+    console.log('everyResult', everyResult);
+    console.log('someResult', someResult);
+
+
+    var everyOrSomeFun = function(item, index, array) {
+        return index > 3;
+    };
+    var everyResult_ = numbers.every(everyOrSomeFun);
+    var someResult_ = numbers.some(everyOrSomeFun);
+    console.log('everyResult_Fun', everyResult_);
+    console.log('someResult_Fun', someResult_);
+</script>
+
+<script>
+    console.log('filter map ====================返回 array ==========================');
+    var filterResult = numbers.filter(function(item, index, array) {
+        return item > 3;
+    });
+    var filterResult_Fun = numbers.filter(everyOrSomeFun);
+    console.log('filterResult', filterResult);
+    console.log('filterResult_Fun', filterResult_Fun);
+
+    var mapResult = numbers.map(function(item, index, array) {
+        return item * 2;
+    });
+    console.log('mapResult', mapResult);
+</script>
+
+<script>
+    console.log('forEach =================执行某些操作，没有返回值 和 for 循环类型功能====================');
+
+</script>
+
+<script>
+    console.log('reduce reduceRight =====缩小数组===============');
+
+</script>
+
+</body>
+</html>
