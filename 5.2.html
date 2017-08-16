@@ -167,7 +167,7 @@
 </script>
 
 <script>
-    console.log('every some ===返回 boolean ===不会对空数组进行检测===不会改变原始数组=====');
+    console.log('every some ===返回 boolean ===//对空数组不会执行===不会改变原始数组');
 
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
     var everyResult = numbers.every(function(item, index, array) { // 1.
@@ -189,7 +189,7 @@
 </script>
 
 <script>
-    console.log('filter map ===返回 array ===不会对空数组进行检测===不会改变原始数组=======');
+    console.log('filter map ===返回 array ===//对空数组不会执行===不会改变原始数组');
     var filterResult = numbers.filter(function(item, index, array) {
         return item > 3;
     });
@@ -202,7 +202,22 @@
 </script>
 
 <script>
-    console.log('forEach ====forEach() 对于空数组是不会执行回调函数的====执行某些操作，没有返回值 和 for 循环类型功能=====');
+    console.log('find,    == 返回item/undefined     ===//对空数组不会执行===不会改变原始数组');
+    console.log('findIndex  == 返回index/-1      ===//对空数组不会执行===不会改变原始数组');
+    var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
+    var findResult = numbers.find(function(item, index, array) {
+        return item > 3;
+    });
+    console.log('findResult', findResult);
+
+    var findIndexResult = numbers.findIndex(function(item, index, array) {
+        return item > 3;
+    });
+    console.log('findIndexResult', findIndexResult);
+</script>
+
+<script>
+    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能====//对空数组不会执行==');
 
 </script>
 
