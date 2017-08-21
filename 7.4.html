@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7.4</title>
+</head>
+<body>
+<script>
+    console.log('私有变量=>  函数的参数，局部变量，函数内部定义的其他函数========');
+    // 在函数内创建一个闭包
+    // 特权方法：可以访问私有变量，私有函数的方法
+    // 1.在构造函数定义特权方法
+    // 2. to add
+
+    function MyObject() {
+
+        // 私有变量，方法
+        var privateVar = 10;
+
+        function privateFun() {
+            return false;
+        }
+
+        // 特权方法
+        this.publicMethod = function() {
+            privateVar++;
+            /*return privateFun();*/
+
+            console.log(privateVar, privateFun())
+        };
+    }
+
+    var myObject = new MyObject();
+    myObject.publicMethod();
+
+
+    function Person(name) {
+
+        this.getName = function() {
+            return name;
+        };
+
+        this.setName = function(value) {
+            name = value;
+        };
+    }
+
+    var person = new Person('yh');
+    console.log(person.getName());
+    person.setName('yh changed');
+    console.log(person.getName());
+
+    console.log('构造函数模式的缺点：对每个实例都会创建新方法=====================,可以用静态私有变量解决');
+</script>
+
+<script>
+    console.log('静态私有变量=====================================');
+    // 模式
+    (function() {
+
+        // 私有变量，函数
+        var privateVar = 100;
+
+        function privateFun() {
+            return false;
+        }
+
+        // 构造函数 使用函数表达式方式，(全局变量MyObject，但是严格模式下会报错？？？)
+        MyObject = function() {
+
+        };
+
+        // 特权方法
+        MyObject.prototype.publicMethod = function() {
+            privateVar++;
+            /*return privateFun();*/
+
+            console.log(privateVar, privateFun())
+        };
+    })();
+
+    // example
+    (function() {
+        var name = '';
+
+        Person = function(value) {
+            name = value;
+        };
+
+        Person.prototype.getName = function() {
+            return name;
+        };
+
+        Person.prototype.setName = function(value) {
+            name = value;
+        };
+    })();
+
+    var person1 = new Person("Nicholas");
+    console.log(person1.getName());
+    person1.setName("Greg");
+    console.log(person1.getName());
+
+    var person2 = new Person("Michael");
+    console.log(person1.getName());
+    console.log(person2.getName()); // 每个实例都没有自己的私有变量
+</script>
+
+<script>
+    console.log('模块模式============================================');
+    // 模式 用处？？？？？？？？
+    var singleton = function() {
+
+        // 私有变量，函数
+        var privateVar = 10;
+
+        function privateFun() {
+            return false;
+        }
+
+        // 特权属性，方法
+        return {
+            publicProperty: true,
+            publicMethod: function() {
+                privateVar++;
+                return privateFun();
+            }
+        }
+    };
+
+    // example
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>5.4</title>
+</head>
+<body>
+
+<script>
+    console.log('元字符：() [] {} \ ')
+
+    console.log('元字符被转义：\(\)')
+
+    var pattern1 = /[bc]at/i;  // 字面量形式定义 始终会共享同一个RegExp实例
+    var pattern1 = new RegExp("[bc]at", "i"); // 构造函数定义 生成一个新实例
+
+    console.log('构造函数的模式参数是字符串，在某些情况下要对字符进行双重转义 ?? 所有元字符都必须双重转义？？？？？？？？？？');
+</script>
+
+<script>
+    console.log('exec =================================');
+    var str = 'Hello world';
+    var patt = /Hello/g;
+    console.log('找到结果   返回 array', patt.exec(str));
+    console.log('找不到结果 返回 null', (/Hello4/g).exec(str));
+
+
+    console.log('exec ==不设置全局g==多次调用 将始终返回 第一个匹配项=====================');
+
+    console.log('exec ==设置全局g==多次调用在字符串中  继续查找 新匹配现=====================');
+    var text = "cat, bat, sat, fat";
+    var pattern1 = /.at/;   // . 任意的一个字符
+    var matches = pattern1.exec(text);
+    console.log('不设置全局g，第一次调用返回', matches);
+    matches = pattern1.exec(text);
+    console.log('不设置全局g，第二次调用返回', matches);
+
+
+    var text = "ccat, bbat, ssat, ffat";
+    var pattern1 = /.at/g;
+    var matches = pattern1.exec(text);
+    console.log('设置全局g，第一次调用返回', matches);
+    matches = pattern1.exec(text);
+    console.log('设置全局g，第二次调用返回', matches);
+</script>
+
+<script>
+    console.log('test ==========经常被用在if语句=====================');
+    var str = 'Hello world';
+    var patt = /Hello/g;
+    console.log('找到结果   返回 true', patt.test(str));
+    console.log('找不到结果 返回 false', (/Hello4/g).test(str));
+
+    var text = "000-00-0000";
+    var pattern = /\d{3}-\d{2}-\d{4}/;
+    console.log('校验是数字字符串', pattern.test(text));
+</script>
+
+<script>
+    console.log('支持正则表达式的String对象的方法========================');
+    console.log('search');
+    console.log('match');
+    console.log('replace');
+    console.log('split');
+</script>
+
+</body>
+</html>

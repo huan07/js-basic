@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>6.2</title>
+</head>
+<body>
+<script>
+    document.writeln('函数在另一个对象的作用域中调用  apply call ');
+</script>
+
+<script>
+    // 工厂模式
+    // 解决了创建多个相似对象的问题
+    // 没有解决对象识别的问题（对象的类型）
+    function createPerson(name, age, job) {
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function() {
+            console.log(this.name + '-' + this.age);
+        };
+        return o;
+    }
+    var person1 = createPerson("yh", 30, "engineer");
+    var person2 = createPerson("yh2", 302, "engineer2");
+    console.log(person1, person2);
+</script>
+
+
+<script>
+    console.log('函数实例属性constructor========标识对象类型====================');
+    console.log('instanceof操作符==============检测对象类型====================');
+    // 构造函数模式
+    // 实例可以被标识为一种特定的类型
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function() {
+            console.log(this.name + '-' + this.age);
+        }
+    }
+    var person1 = new Person("yh", 30, "engineer");
+    var person2 = new Person("yh2", 302, "engineer2");
+    console.log(person1, person2);
+
+    // new 操作符执行的步骤
+    // 1.创建一个新对象
+    // 2.将构造函数的作用域赋给新对象（this指向这个新对象）
+    // 3.执行构造函数的代码
+    // 4.返回新对象
+    console.log(Person, person1.constructor, person2.constructor);
+    console.log('Person===person1.constructor', Person === person1.constructor);
+    console.log('Person===person2.constructor', Person === person2.constructor);
+    console.log('person1 instanceof Person', person1 instanceof Person);
+    console.log('person1 instanceof Object', person1 instanceof Object);
+
+    console.log('构造函数当作 函数============================');
+    console.log('构造函数当作 普通函数============================');
+    console.log('构造函数 在另一个对象的作用域调用 ============================');
+
+    var person3 = new Person("yh3", 303, "engineer3");
+    person3.sayName();
+
+    Person("yh4", 304, "engineer4");
+    window.sayName();
+
+    var o2 = new Object();
+    Person.call(o2, "yh5", 305, "engineer4");
+    o2.sayName();
+
+    console.log('构造函数的问题  每个方法都要在 每个实例上  重新创建一遍 每个实例的方法是不一样的');
+    console.log('person2.sayName==person3.sayName', person2.sayName == person3.sayName)
+
+
+    console.log('每个实例的方法一样的一种实现方式：');
+    function PersonAnother(name) {
+        this.name = name;
+        this.sayPersonAnother = sayPersonAnother;
+    }
+    function sayPersonAnother() {
+        console.log(this.name + '-------------------------');
+    }
+    var personAnother1 = new PersonAnother('yc');
+    var personAnother2 = new PersonAnother('yc2');
+
+    console.log(personAnother1.sayPersonAnother, personAnother2.sayPersonAnother())
+    console.log('personAnother1.sayPersonAnother==personAnother2.sayPersonAnother', personAnother1.sayPersonAnother == personAnother2.sayPersonAnother);
+</script>
+
+<script>
+    console.log('prototype======原型属性是一个对象======================================');
+    console.log('prototype==包含由特定类型的  所有对象实例  共享的属性和方法=====================');
+
+    function Person2() {
+
+    }
+    Person2.prototype.name = "prototypeName";
+    Person2.prototype.age = 30;
+    Person2.prototype.sayName = function() {
+        console.log(this.name);
+    }
+
+    var person21 = new Person2();
+    person21.sayName();
+    var person22 = new Person2();
+    person22.sayName();
+    console.log('person21.sayName ==person22.sayName', person21.sayName == person22.sayName)
+
+
+    console.log('原型对象==== 默认属性 constructor=======================================');
+    console.log('Person2.prototype.constructor===Person2', Person2.prototype.constructor === Person2)
+
+    console.log('isPrototypeOf===================== getPrototypeOf=>取对象的原型=============================');
+    console.log('Person2.prototype.isPrototypeOf(person21)', Person2.prototype.isPrototypeOf(person21));
+    console.log('Person2.prototype.isPrototypeOf(person22)', Person2.prototype.isPrototypeOf(person22));
+    console.log('Object.getPrototypeOf(person21)', Object.getPrototypeOf(person21));
+    console.log('Object.getPrototypeOf(person21).name', Object.getPrototypeOf(person21).name);
+
+    console.log('先搜索实例属性，找到就返回；找不到会继续搜索原型属性；=============================================');
+    console.log('对象实例可以访问原型属性，但是不会修改同名的原型属性；==删除实例属性==可以重新访问原型属性=============');
+
+    console.log('hasOwnProperty=====属性存在实例中，才会返回true========执行delete后 返回false======================================');
+    console.log('person22.hasOwnProperty("name")', person22.hasOwnProperty("name"));
+    person22.name = "重命名后变为实例属性";
+    console.log('person22.hasOwnProperty("name")', person22.hasOwnProperty("name"));
+    delete person22.name;
+    console.log('person22.hasOwnProperty("name")', person22.hasOwnProperty("name"));
+
+
+</script>
+</body>
