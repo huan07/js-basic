@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8.1</title>
+</head>
+<body>
+<script>
+    console.log('全局变量，window对象属性的区别============');
+    // 1. 全局变量不能通过delete操作符删除，window对象可以；
+    // 2. 访问未声明的变量会报错，可以通过window对象查询未声明的变量是否存在
+    var xx = 'xx';
+    window.yy = 'yy';
+
+    delete window.xx;
+    delete window.yy;
+
+    console.log(window.xx, '删不掉');
+    console.log(window.yy, '可以删window属性');
+
+    // var newValue = oldValue;  // 会报错
+    var _newValue = window.oldValue;  // 只是查询对象的属性
+</script>
+
+<script>
+    console.log('页面有多个框架，每个框架会有自己的window对象==========');
+    console.log('to add to addto addto add');
+</script>
+
+<script>
+    console.log('window.screenLeft  window.screenX================');
+    var leftPos = typeof window.screenLeft === 'number' ? window.screenLeft : window.screenX;
+    var topPos = typeof window.screenTop === 'number' ? window.screenTop : window.screenY;
+
+    console.log(leftPos, topPos);  // 涉及到多个框架，会有特殊性；在跨浏览器情况下无法拿到精确值
+
+    console.log('跨浏览器获取窗口大小===??==================================');
+
+    console.log('跨浏览器获取页面视口大小===============================');
+
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+    if (typeof pageWidth !== 'number') {
+        if (document.compatMode === 'CSS1Compat') { // 标准模式
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        } else { // 混杂模式
+            pageWidth = document.body.clientWidth;
+            pageHeight = document.body.clientHeight;
+        }
+    }
+    console.log(pageWidth, pageHeight);
+</script>
+
+<script>
+    console.log('try{...} catch(ex){...}==================================================');
+    console.log('浏览器内置的屏蔽程序阻止弹出窗口，会阻止原生的confirm????=======================');
+
+    var blocked = false;
+    try {
+        var wroxWin = window.open('http://www.baidu.com', '_blank');
+        if (wroxWin === null) {
+            blocked = true;
+        }
+    } catch (ex) {
+        blocked = true;
+    }
+
+    if (blocked) {
+        console.log('the popup was blocked!');
+    }
+</script>
+
+<script>
+    console.log('setTimeout setInterval====================================');
+    setTimeout(function() {
+        console.log('第一个参数可以传字符串，可能会导致性能损失');
+        console.log('第二个参数表示经过的时间后将 当前执行 添加到v任务队列');
+    }, 2000);
+
+    var timeoutId = setTimeout(function() {
+    }, 2000);
+    clearTimeout(timeoutId); // 立马调用clearTimeout()，结果就是什么也没有发生
+
+
+    setInterval(function() {
+        //console.log('按间隔重复执行，直至调用被取消或者页面被卸载');
+    }, 2000);
+
+    // example
+    // 开发环境，避免使用间歇调用，可以用超时调用来模拟的
+    var num = 0;
+    var max = 10;
+    var intervalId = null;
+    function incrementNum() {
+        num++;
+        if (num === max) {
+            clearInterval(intervalId);
+            console.log('num === max  clearInterval');
+        }
+    }
+    intervalId = setInterval(incrementNum, 2000);
+
+    //
+    var num2 = 0;
+    var max2 = 10;
+    function incre() {
+        num2++;
+        if (num2 < max2) {
+            setTimeout(incre, 500); // 再设置一次超时调用
+        } else {
+            console.log('Done');
+        }
+    }
+    setTimeout(incre, 500);
+</script>
+
+</body>
+</html>
