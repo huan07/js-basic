@@ -14,14 +14,14 @@
 
 <script>
     var getLastSevenDays = function() {
-        return [moment().subtract(7, 'day').format(DEFAULT_DATE_FORMAT), moment().subtract(1, 'day').format(DEFAULT_DATE_FORMAT)];
+        return [moment().subtract(7, 'day').format(DEFAULT_DATE_FORMAT), moment().subtract(1, 'day').format(DEFAULT_DATE_FORMAT)]
     };
     console.log('getLastSevenDays=>', getLastSevenDays());
 
     var getDiffDay = function(date, diff) {
-        return moment(date).add(diff, 'day').format(DEFAULT_DATE_FORMAT);
+        return moment(date).add(diff, 'day').format(DEFAULT_DATE_FORMAT)
     };
-    console.log('getDiffDay=>', getDiffDay('2017-09-20', -1), getDiffDay('2017-09-20', 0), getDiffDay('2017-09-20', 1))
+    console.log('getDiffDay=>', getDiffDay('2017-09-20', -1), getDiffDay('2017-09-20', 0), getDiffDay('2017-09-20', 1));
 
     var getDurationDays = function(begin, end) {
         begin = begin || TODAY;
@@ -32,9 +32,9 @@
             //durationDays.push(getDiffDay(begin, i));
             durationDays[i] = getDiffDay(begin, i);
         }
-        return durationDays;
+        return durationDays
     };
-    console.log(getDurationDays(), getDurationDays('2017-09-10', '2017-09-16'));
+    console.log(getDurationDays(), getDurationDays('2017-09-10', '2017-09-10'));
 </script>
 </body>
 </html>
