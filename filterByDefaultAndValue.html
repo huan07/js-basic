@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var defaultArray = [
+        { date: '2017-09-19', click: 0 },
+        { date: '2017-09-20', click: 0 },
+        { date: '2017-09-21', click: 0 },
+        { date: '2017-09-22', click: 0 }
+    ];
+    var resultArray = [
+        { date: '2017-09-20', click: 20 },
+        { date: '2017-09-22', click: 22 }
+    ];
+
+    var mergedArray = defaultArray.map(function(defaultItem, index) {
+        var resultItem = resultArray.find(function(item) {
+            return item.date === defaultItem.date;
+        });
+        return resultItem ? resultItem : defaultItem;
+    });
+    console.log('mergedArray1', mergedArray);
+
+    console.log('mergedArray2', defaultArray.concat(resultArray));// 然而并没有按照date去重啊
+
+</script>
+
+</body>
+</html>
