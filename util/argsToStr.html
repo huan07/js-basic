@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function argsToStr(args) {
+        args = args || {};
+        return Object.keys(args)
+            .map(key => `${key}=${encodeURIComponent(args[key])}`)
+            .join(`&`);
+    }
+    console.log('argsToStr', argsToStr(), argsToStr({}), argsToStr({ a: 1, b: 2 }));
+</script>
+</body>
+</html>
