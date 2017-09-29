@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function createPerson(name, age, job) { // 解决了多个相似对象的问题，存在对象识别的问题
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function () {
+            console.log(this.name + '-' + this.age);
+        };
+        return o;
+    }
+
+    var person = createPerson('person', 30, 'software engineer');
+    var person2 = createPerson('person2', 29, 'a woman');
+    person.sayName();
+    person2.sayName();
+    console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);
+</script>
+
+<script>
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function () { // 不同实例上的同名函数是不相等的
+            console.log(this.name + '-' + this.age);
+        };
+    }
+
+    var person3 = new Person('person3', 30, 'software engineer');
+    var person4 = new Person('person4', 29, 'a beautifull woman');
+    person3.sayName();
+    person4.sayName();
+    console.log(person3.sayName, person4.sayName, person3.sayName === person4.sayName);
+
+    // new 操作法 经历的4个步骤
+    //（1）创建一个新对象
+    //（2）将构造函数的作用域赋给新对象（this指向这个新对象）
+    //（3）执行构造函数的代码（为新对象添加属性）
+    //（4）返回新对象
+
+    console.log('constructor========', person3.constructor, person4.constructor, Person, person3.constructor === person4.constructor === Person);
+
+    console.log(person3 instanceof Object, person3 instanceof Person, person4 instanceof Object, person4 instanceof Person);
+
+    // 构造函数与普通函数的区别：调用方式不一样
+
+    // Person的调用方式
+    // 1.
+    var person5 = new Person('person5', 29, 'a beautifull woman');
+    person5.sayName();
+
+    // 2.
+    Person('person6', 29, 'a beautifull woman too'); // 添加到Window
+    window.sayName();
+
+    // 3.
+    var o = new Object();
+    Person.call(o, 'person7', 29, 'a beautifull woman too');
+    o.sayName();
+</script>
+
+<script>
+    var sayName_x = function () { // 自定义的引用类型没有封装性
+        console.log(this.name + '-' + this.job)
+    };
+    function Person_x(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = sayName_x;
+    }
+
+    var person8 = new Person_x('person8', 30, 'software engineer');
+    var person9 = new Person_x('person9', 29, 'a beautifull woman');
+    console.log(person8.sayName, person9.sayName, person8.sayName === person9.sayName);
+</script>
+
+<script>
+    function Person() {
+    }
+    Person.prototype.name = 'person11_person12'; // 可以创建所有 实例共享 的属性，方法
+    Person.prototype.age = 30;
+    Person.prototype.job = 'job';
+    Person.prototype.sayName = function () {
+        console.log(this.name + '-' + this.age + '-' + this.job);
+    };
+
+    var person11 = new Person();
+    var person12 = new Person();
+    console.log(person11.sayName, person12.sayName, person11.sayName === person12.sayName);
+    console.log('Person.prototype.constructor===============', Person.prototype.constructor, Person, Person.prototype.constructor === Person); //   构造函数的原型对象的constructor属性 构造函数    !!!!!!!!!!!!!!!!!!!!!!
+
+    // 实例的内部属性 [[Prototype]] __proto__  构造函数的原型对象 !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    // isPrototypeof  原型对象是否是实例的原型
+    console.log('isPrototypeOf', Person.prototype.isPrototypeOf(person11), Person.prototype.isPrototypeOf(person12));
+
+    // getPrototypeOf  返回实例的原型对象
+    console.log('getPrototypeOf', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
+    console.log('getPrototypeOf', Object.getPrototypeOf(person11).name, Object.getPrototypeOf(person11).age);
+
+    // 先搜索对象实例，再搜索原型  属性
+    // 不能通过对象实例重写原型的值
+    // delete删除对象实例属性
+    // hasOwnProperty 属性存在对象实例
+    person11.name = 'person11';
+    console.log(person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
+    delete person11.name;
+    console.log(person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
+
+    // in  for in实例，原型
+    console.log(person11.hasOwnProperty('name'), 'name' in person11);
+    person11.name = 'person11';
+    console.log(person11.hasOwnProperty('name'), 'name' in person11);
+
+    function hasPrototypeProperty(object, name) {
+        return ! object.hasOwnProperty(name) && (name in object);
+    }
+    console.log(hasPrototypeProperty(person11, 'name'), hasPrototypeProperty(person12, 'name'));
+    // 浏览器兼容性 to add
+
+    // Object.keys() 可枚举的实例属性
+    // Object.getOwnPropertyNames() 所有实例属性
+    var person13 = new Person();
+    person13['name_age'] = 'name_age';
+    console.log(Object.keys(person13), Object.keys(Person.prototype)); // constructor不可枚举
+    console.log(Object.getOwnPropertyNames(person13), Object.getOwnPropertyNames(Person.prototype));
+
+
+    function People() {
+
+    }
+    console.log(JSON.stringify(People.prototype), People.prototype.constructor);
+    People.prototype = { // 重写整个原型对象
+        name: 'people_name',
+        age: 'people_age',
+        job: 'people_job',
+        sayName: function () {
+            console.log(this.name + '-' + this.age);
+        }
+    };
+    console.log(JSON.stringify(People.prototype), People.prototype.constructor);
+    People.prototype.constructor = People; // constructor变为可枚举
+    console.log(People.prototype.constructor);
+
+    var people = new People();
+    people['name_job'] = 'name_job';
+    console.log(Object.keys(people), Object.keys(People.prototype));
+    console.log(Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(People.prototype));
+
+    people.sayName();
+
+    People.prototype.sayName = function () {
+        console.log(this.name + '//' + this.age + '//' + this.job);
+    };
+    people.sayName();
+
+    // 重写整个原型对象，error to add
+
+
+    // 所有实例在默认情况下都将取得相同的属性值 对于包含引用类型值的属性，问题突出
+    function PeopleF() {
+
+    }
+    PeopleF.prototype = {
+        constructor: PeopleF,
+        name: 'name',
+        friends: ['friend1', 'friend2', 'friend3'],
+        sayName: function () {
+            console.log(this.name + '-' + this.friends.length);
+        }
+    };
+    var peopleF = new PeopleF();
+    var peopleF2 = new PeopleF();
+    peopleF.friends.push('friend3');
+    console.log(peopleF.friends, peopleF2.friends, peopleF.friends === peopleF2.friends);
+</script>
+
+<script>
+    function PersonF(name, age, job) { // 实例属性
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.friends = ['friend1', 'friend2'];
+    }
+
+    PersonF.prototype = { // 实例共享的属性
+        constructor: PersonF,
+        sayName: function () {
+            console.log(this.name + '-' + this.friends);
+        }
+    };
+
+    var personF = new PersonF('yh', 30, 'a beautifull woman');
+    var personF2 = new PersonF('yh2', 30, 'a beautifull woman');
+    personF.friends.push('friend3');
+    console.log(personF.friends, personF2.friends);
+</script>
+
+<script>
+    function PersonFD(name, age, job) { // 动态原型模式
+        this.name = name;
+        this.age = age;
+        this.job = job;
+
+        if (typeof this.sayName !== 'function') {
+            PersonFD.prototype.sayName = function () {
+                console.log(this.name + '-' + this.age + '-' + this.job);
+            };
+        }
+    }
+
+    var personFD = new PersonFD('YH', 30, 'LADY');
+    personFD.sayName();
+</script>
+
+
+</body>
+</html>
