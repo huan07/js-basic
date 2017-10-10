@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    (function() {
+        var a = b = 9;
+    })()
+    //console.log(a,typeof a); // 报错，因为a是局部变量
+    console.log(b, typeof b); // b没有用var 是全局变量
+</script>
+</body>
+</html>
