@@ -44,5 +44,21 @@
         console.log(2);
     })()
 </script>
+
+<script>
+    for(var i = 0; i < 5; i++) {
+        setTimeout(function() {
+            console.log(i + '??');
+        }, i * 1000);
+    }
+
+    for(var i = 0; i < 5; i++) {
+        (function(t) {
+            setTimeout(function() {
+                console.log(t + '匿名函数用来模仿 块级作用域');
+            }, t * 1000)
+        })(i);
+    }
+</script>
 </body>
 </html>
