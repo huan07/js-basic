@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function sayHi(name, message) {
+        console.log(name + '-' + message);  // 执行语句，没有返回值
+    }
+
+    function sayHi2(name, message) {
+        return name + '-' + message;
+        // 1)return xx;表示有返回值 退出函数；
+        // 2)return ; 返回undefined;退出函数；
+        // 3)return之后的语句不再执行;
+    }
+
+    var sayHi3 = function(name, message) {
+        return name + '-' + message;
+    };
+
+    // 调用函数
+    sayHi('yh', 'hello baidu');
+    console.log(sayHi2('yh2', 'hello baidu'), sayHi3('yh3', 'hello baidu'))
+</script>
+
+</body>
+</html>
