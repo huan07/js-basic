@@ -22,7 +22,7 @@
         }
 
         // 特权方法
-        this.publicMethod = function() {
+        this.publicMethod = function() { // 闭包
             privateVar++;
             /*return privateFun();*/
 
@@ -34,7 +34,7 @@
     myObject.publicMethod();
 
 
-    function Person(name) {
+    function Person(name) {// 隐藏了不应该被直接修改的数据，（在这里，要么传值，要么setName修改name）
 
         this.getName = function() {
             return name;
