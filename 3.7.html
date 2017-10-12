@@ -12,6 +12,9 @@
     }
 
     function sayHi2(name, message) {
+        console.log(arguments, arguments.length);
+        console.log(Object.prototype.toString.call(arguments));
+        // arguments对象可以访问命名参数  它的值和命名参数的一一对应起来，并且互相同步的
         return name + '-' + message;
         // 1)return xx;表示有返回值 退出函数；
         // 2)return ; 返回undefined;退出函数；
