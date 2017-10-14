@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+<button onclick="myFunction()">点我</button>
+<p>数组元素总和: <span id="demo"></span></p>
+<p>数组元素总和: 可以带有初始值100；<span id="demo_"></span></p>
+
+
+<button onclick="myFunction2()">点我</button>
+<p>数组元素总乘积: <span id="demo2"></span></p>
+<p>数组元素总乘积: 可以带有初始值2；<span id="demo2_"></span></p>
+<script>
+    var numbers = [5, 6, 7, 8]; // 不会执行空数组 非数组会报错
+
+    function getSum(total, num) {
+        return total + num;
+    }
+    function myFunction(item) {
+        document.getElementById("demo").innerHTML = numbers.reduce(getSum);
+
+        document.getElementById("demo_").innerHTML = numbers.reduce(getSum, 100);
+    }
+
+
+    function myFunction2(item) {
+        document.getElementById("demo2").innerHTML = numbers.reduce(function(total, num) {
+            return total * num;
+        });
+
+        document.getElementById("demo2_").innerHTML = numbers.reduce(function(total, num) {
+            return total * num;
+        }, 2);
+    }
+</script>
+
+</body>
+</html>
