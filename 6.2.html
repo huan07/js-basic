@@ -56,16 +56,16 @@
 
     // Person的调用方式
     // 1.
-    var person5 = new Person('person5', 29, 'a beautifull woman');
+    var person5 = new Person('person5', 50, 'a beautifull woman');
     person5.sayName();
 
     // 2.
-    Person('person6', 29, 'a beautifull woman too'); // 添加到Window
+    Person('person6', 60, 'a beautifull woman too'); // 添加到Window
     window.sayName();
 
     // 3.
     var o = new Object();
-    Person.call(o, 'person7', 29, 'a beautifull woman too');
+    Person.call(o, 'person7', 70, 'a beautifull woman too');
     o.sayName();
 </script>
 
