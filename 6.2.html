@@ -80,13 +80,14 @@
         this.sayName = sayName_x;
     }
 
-    var person8 = new Person_x('person8', 30, 'software engineer');
-    var person9 = new Person_x('person9', 29, 'a beautifull woman');
+    var person8 = new Person_x('person8', 80, 'software engineer');
+    var person9 = new Person_x('person9', 90, 'a beautifull woman');
+    console.log(person8.sayName(), person9.sayName());
     console.log(person8.sayName, person9.sayName, person8.sayName === person9.sayName);
 </script>
 
 <script>
-    function Person() {
+    function Person() { // prototype 调用构造函数创建的那个对象实例的原型对象
     }
     Person.prototype.name = 'person11_person12'; // 可以创建所有 实例共享 的属性，方法
     Person.prototype.age = 30;
