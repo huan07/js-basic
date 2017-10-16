@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+    // 工厂模式
     function createPerson(name, age, job) { // 解决了多个相似对象的问题，存在对象识别的问题
         var o = new Object();
         o.name = name;
@@ -25,6 +26,7 @@
 </script>
 
 <script>
+    // 构造函数模式
     function Person(name, age, job) {
         this.name = name;
         this.age = age;
@@ -35,12 +37,12 @@
     }
 
     var person3 = new Person('person3', 30, 'software engineer');
-    var person4 = new Person('person4', 29, 'a beautifull woman');
+    var person4 = new Person('person4', 40, 'a beautifull woman');
     person3.sayName();
     person4.sayName();
     console.log(person3.sayName, person4.sayName, person3.sayName === person4.sayName);
 
-    // new 操作法 经历的4个步骤
+    // new 操作法 经历的4个步骤！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     //（1）创建一个新对象
     //（2）将构造函数的作用域赋给新对象（this指向这个新对象）
     //（3）执行构造函数的代码（为新对象添加属性）
