@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 在一个代码块的中变量并不会覆盖掉 代码块外面的变量
+    var x = 1;
+    console.log(x); // 1
+    if (true) { // 花括号不是一个作用域，花括号里面的变量x影响到了全局变量
+        // js有函数式作用域 !!!!!!!!!!!!!!!!
+        var x = 2;
+        console.log(x); // 2
+    }
+    console.log(x); // 2    x is changed
+
+    // 可以用闭包来实现类似块级作用域
+    function foo() {
+        var x = 10;
+        if (true) {
+            (function() {
+                var x = 20;
+            })();
+        }
+        console.log(x); // x is still 10
+    }
+    foo();
+
+
+</script>
+
+</body>
+</html>
