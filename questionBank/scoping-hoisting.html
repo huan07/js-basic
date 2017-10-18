@@ -27,9 +27,34 @@
         console.log(x); // x is still 10
     }
     foo();
+</script>
+
+<script>
+    /*
+     * 变量进入一个作用域可以通过下面四种方式：
+
+     语言自定义变量：所有的作用域中都存在this和arguments这两个默认变量
+     函数形参：函数的形参存在函数作用域中
+     函数声明：function foo() {}
+     变量定义：var foo
+     * */
+
+    /*
+     * 在代码运行前，函数声明和变量定义通常会被解释器移动到其所在作用域的最顶部！！！！！！！！！！！！！！！！！！！
+     * */
+
+    function bar() {
+        console.log('bar bar');
+    }
+    function foo() {
+        bar();
+        var x = 1;
+    }
+    foo();
 
 
 </script>
+
 
 </body>
 </html>
