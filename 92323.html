@@ -60,5 +60,19 @@
         })(i);
     }
 </script>
+
+<script>
+    // 对象的key会被自动转换为String类型
+    // 21
+    var a = {},
+        b = { key: 'b' },
+        c = { key: 'c' };
+    a[b] = 123;
+    a[c] = 456;
+    console.log('a[b]= ', a[b], a[c]); // 456  相同的key 后面的覆盖前面的
+
+</script>
+
+
 </body>
 </html>
