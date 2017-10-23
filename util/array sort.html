@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var fruits = ['banana', 'orange', 'apple'];
+    fruits.sort(); // 默认按字母升序；
+    // fruits.reverse();
+    console.log(fruits);
+</script>
+
+<script>
+    // 按数字升序，降序 传递函数
+    var numbers = [1, 4, 14, 6];
+    var numbers2 = [1, 4, 14, 6];
+    numbers.sort(function(a, b) {
+        return a - b;
+    });
+
+    var sortFun = function(a, b) {
+        return a - b;
+    };
+    numbers2.sort(sortFun);
+
+    console.log(numbers, numbers2);
+</script>
+
+</body>
+</html>

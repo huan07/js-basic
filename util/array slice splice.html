@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function sliceFun() {
+        var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        var citrus = fruits.slice(0); // 返回新的数组，没有第二个参数截取数组到末尾
+        console.log(citrus);
+    }
+    sliceFun();
+
+
+    function sliceFun2() {
+        var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        var citrus = fruits.slice(0, 2);
+        console.log(citrus);
+    }
+    sliceFun2();
+</script>
+
+<script>
+    function spliceFun() {
+        var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        fruits.splice(0, 1, 'pink');
+        console.log(fruits, '替换');
+
+
+        var fruits2 = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        fruits2.splice(0, 0, 'pink');
+        console.log(fruits2, '新增');
+
+
+        var fruits3 = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+        fruits3.splice(0, 2);
+        console.log(fruits3, '删除');
+    }
+    spliceFun();
+</script>
+
+
+</body>
+</html>

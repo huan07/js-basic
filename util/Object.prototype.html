@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(input) {
+        console.log(input + '数据类型', Object.prototype.toString.call(input), '');
+    }
+
+    foo('');
+    foo(2);
+    foo(true);
+    foo([]);
+    foo({});
+    foo(null);
+    foo(undefined);
+
+
+</script>
+
+</body>
+</html>

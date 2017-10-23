@@ -17,10 +17,9 @@
             //return;
         }
 
-        var last = arr[arr.length - 1];
-        var rest = arr.slice(0, -1);
+        var last = arr[arr.length - 1]; // 最后一个元素 确保数组的长度至少是1
+        var rest = arr.slice(0, -1); // 最后一个元素之外的数组
         console.log(rest, last);
-
     }
 
     getLastAndRest([]);
