@@ -7,41 +7,43 @@
 <body>
 
 <script>
-    console.log('每个函数都是Function类型的实例，函数名是一个指向函数对象的指针（变量）  没有重载');
+    console.log('每个 函数 都是Function类型的 实例，函数名 是一个指向函数对象的 指针（变量）');
+    console.log('函数是对象，函数名是指针');
 
     function sum(num1, num2) {
         return num1 + num2;
     }
     console.log(sum(10, 20));
+    console.log(sum.length, sum, sum.prototype, sum.prototype.constructor === sum);
 
-    var anotherSum = sum;
+    var anotherSum = sum;// 访问函数指针，非调用！！！！！！！！！！！！！！！！！！！！！！
     console.log(anotherSum(10, 20));
 
     sum = null;
     //console.log(sum(10,20)); // error
-    console.log(anotherSum(10, 20));
+    console.log(anotherSum(100, 200));
 </script>
+
 
 <script>
     console.log('函数声明 函数表达式区别');
-    console.log('1:解析器');
-
+    console.log('1:解析器', '对函数定义，函数声明提升，提升到块级作用域的顶部');
+    // 唯一区别
     console.log('在执行任何代码前解析器先读取函数声明；执行到函数表达式，才执行');
-
-    console.log('2:');
-    console.log('函数声明 函数表达式区别');
-
 </script>
 
+
 <script>
+    // 1.函数作为参数==============
+    // 2.函数作为返回值=====匿名函数===========
+
     function callSomeFunction(someFunction, someArgument) {
         return someFunction(someArgument);
     }
     function getGreeting(name) {
         return "Hello," + name;
     }
-    console.log('1.函数作为参数==============', callSomeFunction(getGreeting, 'yh'));
-
+    console.log('callSomeFunction(getGreeting=   ', callSomeFunction(getGreeting, 'yh'));
 
     function createComparisonFunction(propertyName) {
         return function(obj1, obj2) {
@@ -53,28 +55,24 @@
     var personArray = [
         {
             name: 11,
-            age: 13
+            age: 23
         },
         {
             name: 12,
-            age: 12
+            age: 22
         },
         {
             name: 13,
-            age: 11
+            age: 21
         }
     ];
-    personArray.sort(createComparisonFunction('name'));
-    // 比较顺序
-    // 1>2
-    // 2>3
-    console.log('2.函数作为返回值================', personArray);
+    personArray.sort(createComparisonFunction('age'));
+    console.log('personArray=   ', personArray);
 </script>
 
 <script>
-    console.log('函数内部属性 arguments,this======================');
-    console.log('arguments.callee 指向当前执行的函数===============')
-
+    // 函数内部属性 arguments,this======================
+    // arguments.callee 指向拥有arguments对象的函数===============
     function factorial(num) {
         if (num <= 1) {
             return 1;
@@ -82,7 +80,7 @@
             return num * arguments.callee(num - 1);
         }
     }
-    console.log(factorial(5))
+    console.log(factorial(5));
 
     var trueFactorial = factorial;
     factorial = function() {
@@ -92,7 +90,7 @@
 </script>
 
 <script>
-    console.log('this 函数据以执行的环境对象========================');
+    // this 函数据以执行的环境对象========================
     window.color = "red";
     var o = { color: "blue" };
 
@@ -107,8 +105,17 @@
 </script>
 
 <script>
-    console.log('prototype================= 非继承方法  call apply ================');
-    console.log('1.传递参数；  2.扩充函数赖以运行的作用域,优点：对象不需要和方法有任何耦合')
+    // caller to add
+    // callee to add
+
+</script>
+
+<script>
+    // sum.prototype.constructor===sum
+    // 非继承方法  call apply (接受参数不一样) 没有参数传递的情况，用法一样
+    // 1.用来传递参数
+    // 2.扩充函数赖以运行的作用域, 优点：对象不需要和方法有任何耦合
+    // bind this值会被绑定到bind的第一个参数，
 
     // 1.
     function sum(num1, num2) {
@@ -125,52 +132,29 @@
 
     function callSum(num1, num2) {
         return sum.call(this, num1, num2);
-
     }
-
-    console.log('apply两种传参数＝＝＝＝＝', applySum1(11, 22), applySum2(22, 33));
-    console.log('call将传参数一一罗列出来＝＝＝＝＝', callSum(33, 44))
+    console.log(applySum1(11, 22), applySum2(22, 33), callSum(33, 44))
 
     // 2.
-    window.color = "red1";
-    var o = { color: "blue1" };
+    window.color = "windowColor";
+    var o = { color: "oColor" };
 
     function sayColor() {
         console.log(this, this.color);
     }
 
     sayColor.apply(window);
-    sayColor.apply(this);
+    sayColor.apply(this);  // 严格模式下  this是undefined
     sayColor.apply(o);
 
     sayColor.call(window);
     sayColor.call(this);
     sayColor.call(o);
-</script>
 
-<script>
-    console.log('bind==================================================');
-    window.color = "red2";
-    var o = {
-        color: "blue2"
-    };
-
-    function sayColor() {
-        console.log(this.color);
-    }
     var windowSayColor = sayColor.bind(window);
     var oSayColor = sayColor.bind(o);
     windowSayColor();
     oSayColor();
-
-
-    function sayColorxxx(xxx) {
-        console.log(this.color + xxx);
-    }
-    var windowSayColorxxx = sayColorxxx.bind(window);
-    var oSayColorxxx = sayColorxxx.bind(o);
-    windowSayColorxxx('window');
-    oSayColorxxx('o');
 </script>
 
 </body>

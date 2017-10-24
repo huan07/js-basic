@@ -6,28 +6,65 @@
 </head>
 <body>
 <script>
-
     function sayHi(name, message) {
-        console.log(name + '-' + message);  // 执行语句，没有返回值
+        console.log(name + '-' + message);
     }
+    sayHi('yh', 'software engineer');
+</script>
+
+<script>
+    function sum(num1, num2) {
+        return num1 + num2; // 遇到return语句，返回值； 后面的语句不会执行
+    }
+    var result = sum(8, 9);
+    console.log(result, sum(88, 99));
+
+    function diff(num1, num2) {
+        if (num1 > num2) {
+            return num1 - num2;
+        } else {
+            return num2 - num1;
+        }
+    }
+    console.log(diff(13, 7));
 
     function sayHi2(name, message) {
-        console.log(arguments, arguments.length);
-        console.log(Object.prototype.toString.call(arguments));
-        // arguments对象可以访问命名参数  它的值和命名参数的一一对应起来，并且互相同步的
-        return name + '-' + message;
-        // 1)return xx;表示有返回值 退出函数；
-        // 2)return ; 返回undefined;退出函数；
-        // 3)return之后的语句不再执行;
+        return; // return语句，返回的是undefined；后面的语句不会执行 退出函数体
+        console.log(name + '-' + message);
     }
+    sayHi2('yh', 'software engineer');
+    // return语句 推荐做法：要么返回值；要么退出程序；
+</script>
 
-    var sayHi3 = function(name, message) {
-        return name + '-' + message;
-    };
+<script>
+    // 参数在内部是用一个数组来表示的 在函数体内通过arguments对象（并不是Array的实例）来访问参数数组，
+    function sayHi3() {
+        console.log('hello' + JSON.stringify(arguments), arguments, arguments.length);
+    }
+    sayHi3('sunday');
+    sayHi3('sunday', 'sunday2');
+    sayHi3('sunday', 'sunday2', 'sunday3');
 
-    // 调用函数
-    sayHi('yh', 'hello baidu');
-    console.log(sayHi2('yh2', 'hello baidu'), sayHi3('yh3', 'hello baidu'))
+    function doAdd() {
+        if (arguments.length === 1) {
+            console.log(arguments[0] + 100);
+        } else if (arguments.length === 3) {
+            console.log(arguments[0] + arguments[1] + arguments[2]);
+        }
+    }
+    doAdd(1);
+    doAdd(1, 2, 3);
+
+    // arguments的值永远与对应的命名参数的值同步（但是它们的内存空间是独立的）
+    function doAdd2(num1, num2) {
+        arguments[1] = 100; // 不传第二个参数（此时 num2=undefined） 这个地方会不执行的；
+        console.log(arguments[0] + num2);
+    }
+    doAdd2(22, 2);
+    doAdd2(33, 2);
+    doAdd2(33);
+
+    // 参数传递的都是值，不可能通过引用传递参数！！！！！！！！！！！！！！！！！！！！！！！！！！
 </script>
 
 </body>
