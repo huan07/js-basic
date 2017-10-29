@@ -7,7 +7,7 @@
 <body>
 <script>
     // 函数声明 函数声明提升
-    // 函数表达式 常规的变量赋值语句 在使用前必须先赋值
+    // 函数表达式 同常规的变量赋值语句一样 在使用前必须先赋值
     // 匿名函数的用途：1. 把 函数 当成值来返回
     console.log('arguments.callee是一个指向 正在执行的函数的 指针======但是严格模式会报错==========');
     console.log('换用 命名函数表达式 ==========================================================');
@@ -15,7 +15,7 @@
         if (num <= 1) {
             return 1;
         } else {
-            return num * arguments.callee(num - 1); //严格模式会报错
+            return num * arguments.callee(num - 1); // 严格模式会报错
         }
     }
     var anotherFactorial = factorial;

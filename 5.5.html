@@ -77,7 +77,7 @@
         if (num <= 1) {
             return 1;
         } else {
-            return num * arguments.callee(num - 1);
+            return num * arguments.callee(num - 1); // 严格模式会报错
         }
     }
     console.log(factorial(5));

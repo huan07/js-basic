@@ -38,5 +38,37 @@
     })();
 </script>
 
+<script>
+    var x = 1;
+    var obj = {
+        x: 2,
+        foo: function() {
+            console.log(this.x); // 2
+            var f = function() {
+                console.log(this.x); // 1 to_learn to_learn
+            };
+            f();
+        }
+    };
+    obj.foo();
+
+
+    var xx = 1;
+    var obj = {
+        xx: 2,
+        foo: function() {
+            console.log(this.xx); // 1
+            var f = function() {
+                console.log(this.xx); // 1
+            };
+            f();
+        }
+    };
+    var g = obj.foo;
+    g();
+
+
+</script>
+
 </body>
 </html>

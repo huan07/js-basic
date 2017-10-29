@@ -15,6 +15,23 @@
 </script>
 
 <script>
+    // 3.闭包 to_learn
+    var myObject = {
+        foo: "bar",
+        func: function() {
+            var self = this;
+            console.log("outer func:  this.foo = " + this.foo); // bar
+            console.log("outer func:  self.foo = " + self.foo); // bar  this指向myObject对象
+            (function() {
+                console.log("inner func:  this.foo = " + this.foo); // undefined  this 不再 指向myObject对象
+                console.log("inner func:  self.foo = " + self.foo); // bar   self指向myObject对象
+            }());
+        }
+    };
+    myObject.func();
+</script>
+
+<script>
     // 6.
     function foo1() {
         return {
@@ -46,6 +63,21 @@
 </script>
 
 <script>
+    // 12.
+    function sum(x) {
+        if (arguments.length == 2) {
+            return arguments[0] + arguments[1];
+        } else {
+            return function(y) {
+                return x + y;
+            }; //  ???????????????????????????????????????????????????????
+        }
+    }
+    console.log('12,  ', sum(2, 3));
+    console.log(sum(2)(3));
+</script>
+
+<script>
     for(var i = 0; i < 5; i++) {
         setTimeout(function() {
             console.log(i + '??');
@@ -62,6 +94,30 @@
 </script>
 
 <script>
+    // 匿名函数的立即调用
+    // 17
+    var globalVar = "xyz";
+
+    (function outerFunc(outerArg) {
+        var outerVar = 'a';
+
+        (function innerFunc(innerArg) {
+            var innerVar = 'b';
+
+            console.log(
+                "outerArg = " + outerArg + "n" +
+                "innerArg = " + innerArg + "n" +
+                "outerVar = " + outerVar + "n" +
+                "innerVar = " + innerVar + "n" +
+                "globalVar = " + globalVar);
+
+        })(456);
+    })(123);
+    //  打印两次  123 a xyz 其他的undefined;??????????????????????????????
+    //  123 456 a b xyz ;
+</script>
+
+<script>
     // 对象的key会被自动转换为String类型
     // 21
     var a = {},
@@ -70,7 +126,36 @@
     a[b] = 123;
     a[c] = 456;
     console.log('a[b]= ', a[b], a[c]); // 456  相同的key 后面的覆盖前面的
+</script>
 
+<script>
+    // 匿名函数的立即调用
+    // 23
+    (function(x) {
+        return (function(y) {
+            console.log('23,=', x);
+        })(2)
+    })(1);
+</script>
+
+<script>
+    // this的指向问题
+    // 24
+    var hero = {
+        _name: 'John Doe',
+        getSecretIdentity: function() {
+            return this._name;
+        }
+    };
+
+    var stoleSecretIdentity = hero.getSecretIdentity;
+
+    console.log('this的指向问题, ', stoleSecretIdentity()); // undefined  this指向window  从hero对象提取方法
+    console.log(hero.getSecretIdentity()); // John Doe  this指向hero
+
+    // 可以修正为：
+    var xx = hero.getSecretIdentity.bind(hero);
+    console.log(xx());
 </script>
 
 
