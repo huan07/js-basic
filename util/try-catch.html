@@ -5,7 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<!-- 在浏览器有机会处理错误之前，错误就被捕获-->
+<!-- 用户不会看到JavaScript错误 在浏览器有机会处理错误之前，错误就被捕获-->
 
+<input type="button" value="Click" onclick="try{showMessage()}catch(ex){console.log(ex)}" /><br><br><br>
+
+
+<input type="button" value="Click" onclick="try{showMessage2()}catch(ex){console.log(ex)}" />
+
+<script>
+    function showMessage() {
+        alert('baidu');
+    }
+</script>
 </body>
 </html>

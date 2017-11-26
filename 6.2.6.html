@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 寄生构造函数模式
+    function Person(name, age, job) {
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayJob = function() {
+            console.log(this.job);
+        };
+        return o;
+    }
+    var friend = new Person('yh', 30, 'a engineer');
+    friend.sayJob();
+
+    // 不能直接修改原生对象的构造函数，可以用这个模式
+    // 返回的对象与 构造函数，构造函数的原型属性没有关联 不能依赖instanceof来确定对象类型 to add 识别对象类型
+    // 不要使用这种模式
+    function SpecialArray() {
+        var values = new Array();
+
+        values.push.apply(values, arguments);
+
+        values.toPipedString = function() {
+            return this.join('|');
+        };
+
+        return values;
+    }
+    var colors = new SpecialArray('red', 'blue', 'green');
+    colors.push('xx');
+    var colorsJoin = colors.toPipedString();
+    console.log(colorsJoin);
+    console.log(Object.getPrototypeOf(colors), colors.isPrototypeOf(SpecialArray.prototype));
+    console.log(SpecialArray.prototype, SpecialArray.prototype.constructor === SpecialArray);
+</script>
+
+</body>
+</html>
