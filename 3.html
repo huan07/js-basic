@@ -15,7 +15,7 @@
         var message = "hi";
     }
     test();
-    // console.log(message); // 此处报错
+    // console.log(message); // 此处报错 message没有定义
 
 
     /*
@@ -28,13 +28,21 @@
     test2();
     console.log(message2); // 此处不会报错
 
+
+    // 遍历赋值从右往左读取  ！！！！！！！！！！！！！考题
+    function fn() {
+        var x = y = 1;
+    }
+    fn();
+    // console.log(x,y); // 报错, 1;
+
 </script>
 
 <script>
-    document.write('<h1 class="h1">typeof</h1>');
+    // typeof
     console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
-    console.log('Null', typeof null);
+    console.log('Null  !!!!!!!! ', typeof null);
     console.log('Boolean', typeof true);
     console.log('Number', typeof 9);
     console.log('String', typeof 'baidu');
@@ -44,10 +52,21 @@
 
     var xx = 'xx';
     console.log(typeof xx, typeof(xx), typeof 'xx');
+
+
+    // instanceof  实例是否是某个对象的实例
+    console.log('instanceof===============================>');
+    console.log([] instanceof Array);
+    console.log([] instanceof Object);
+    console.log({} instanceof Object);
+    console.log(null instanceof Object, 'Null  !!!!!!!! ');
+
+    console.log(false instanceof Boolean);
+    console.log(1 instanceof Number);
 </script>
 
 <script>
-    document.write('<h1 class="h1">Undefined</h1>');
+    // Undefined
     console.log('Undefined===============================>');
     // 可以显式的设置为nudefined；或者不初始化变量的值就是undefined；
     var message3;
@@ -61,7 +80,7 @@
 </script>
 
 <script>
-    document.write('<h1 class="h1">Null</h1>');
+    // Null
     console.log('Null===========================>');
     // 定义的变量准备用于保存对象，初始化为null
 
@@ -71,7 +90,7 @@
 </script>
 
 <script>
-    document.write('<h1 class="h1">Boolean</h1>');
+    // Boolean
     console.log('所有类型的值都可以调用转型函数Boolean()====================>');
     console.log('流控制语句（if语句）会  自动执行  Boolean()转换 ');
     console.log('String类型数据', Boolean('str'), Boolean(''));
@@ -112,6 +131,25 @@
 
 
 </script>
+
+<script>
+    console.log('mk ！！！！！！！！！！！！！！！！');
+    // variable declaration
+    var score;
+    score = 4;
+
+    var score2 = undefined;
+    score2 = 4;
+
+    var score3 = 4;
+
+    function fn() {
+
+    }
+    fn.person = 'xm';
+    console.log(fn, fn.person);
+</script>
+
 
 </body>
 </html>

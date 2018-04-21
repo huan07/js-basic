@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4.1</title>
+</head>
+<body>
+<script>
+
+
+    // mk
+    var peopleInfo = {
+        name: 'yh',
+        job: 'engineer'
+    };
+
+    var peopleInfo2 = {
+        name: 'yh',
+        job: 'engineer'
+    };
+
+    var peopleInfo3 = {
+        name: 'yh3',
+        job: 'engineer'
+    };
+
+    function equalObjs(objA, objB) {
+        for(var attr in objA) {
+            if (objA[attr] !== objB[attr]) {
+                return false;
+            }
+            return true;
+        }
+    }
+
+    console.log(equalObjs(peopleInfo, peopleInfo2), equalObjs(peopleInfo2, peopleInfo3));
+
+    var colorArray = ['red', 'blue'];
+    var colorArray2 = ['red', 'blue'];
+
+    function equalArrays(arrayA, arrayB) {
+        var arrayALen = arrayA.length;
+        if (arrayALen !== arrayB.length) {
+            return false;
+        }
+        for(var i = 0; i < arrayALen; i++) {
+            if (arrayA[i] !== arrayB[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    console.log(equalArrays(colorArray, colorArray2));
+
+
+    // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；
+    var personInfo = {
+        name: 'yh',
+        job: 'engineer'
+    };
+
+    function copyObj(obj) {
+        var newObj = {};
+        for(var attr in obj) {
+            newObj[attr] = obj[attr];
+        }
+        return newObj;
+    }
+
+    var personXInfo = copyObj(peopleInfo);
+    console.log(personXInfo === peopleInfo);
+
+    // 传递参数 引用类型传递的是地址，也是按值传递
+    function add(a, b) {
+        return a + b;
+    }
+    function fn(fn) {
+        fn.person = 'xm';
+        fn = function() {
+
+        };
+        fn.person = 'xh';
+    }
+    fn(add);
+    console.log(add.person);
+
+
+</script>
+
+</body>
+</html>

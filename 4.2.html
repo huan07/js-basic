@@ -5,28 +5,58 @@
     <title>Title</title>
 </head>
 <body>
+
 <script>
-    for(var i = 0; i < 10; i++) {
-        console.log(i);
-    }
-    console.log(i);
+    // 变量对象
+    // 作用域链  通过作用域链查找对象会越来越慢，查找局部变量速度快于全局变量
+    // 延长作用域链，with语句 不常用 会影响查找速度，
+
 </script>
 
-<script>
-    // 没有声明的变量会被添加到全局环境
-    function add(num1, num2) {
-        var sum = num1 + num2;
-        return sum;
-    }
-    var result = add(1, 2);
-    //  console.log(sum); 没有定义 报错
 
-    function add2(num1, num2) {
-        sum2 = num1 + num2;
-        return sum2;
+<script>
+    // 作用域
+    // 全局作用域
+    // 局部作用域：函数作用域
+    // 没有块级作用域  {}扩起来的算是块级作用域
+
+</script>
+
+
+<script>
+    // js解析机制
+    // 预解析
+    // 逐行读代码  顺着作用域链查找变量
+    var name = 'xm';
+    var age = 18;
+    function fun() {
+        var name = 'xh';
+        var age = 10;
+        console.log(name);  // 'xh'
     }
-    var result2 = add2(11, 22);
-    console.log(sum2);
+    fun();
+
+
+    var name = 'xml';
+    var age = 181;
+    function fun2() {
+        console.log(name);  // undefined
+        var name = 'xh';
+        var age = 10;
+    }
+    fun2();
+
+
+    // 练习题
+    console.log(fn);   // f fn(){}     ！！！！！！！！！！！！！
+    function fn() {
+
+    }
+
+    console.log(fn2);  // undefined     ！！！！！！！！！！！！！
+    var fn2 = function() {
+
+    };
 </script>
 
 
