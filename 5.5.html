@@ -27,9 +27,21 @@
 
 <script>
     console.log('函数声明 函数表达式区别');
-    console.log('1:解析器', '对函数定义，函数声明提升，提升到块级作用域的顶部');
+    console.log('1:解析器', 'js引擎会将  函数声明  提升到作用域的顶部'); // 将var function关键字提升到作用域最前面
     // 唯一区别
-    console.log('在执行任何代码前解析器先读取函数声明；执行到函数表达式，才执行');
+    console.log('函数表达式 按一般var变量的方式执行');
+
+    // 练习题
+    console.log(fn);   // f fn(){}     ！！！！！！！！！！！！！
+    function fn() {
+
+    }
+
+    console.log(fn2);  // undefined     ！！！！！！！！！！！！！
+    // console.log(fn2()); // error
+    var fn2 = function() {
+
+    };
 </script>
 
 

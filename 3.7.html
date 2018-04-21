@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>3.7</title>
 </head>
 <body>
 <script>
     function sayHi(name, message) {
         console.log(name + '-' + message);
     }
-    sayHi('yh', 'software engineer');
+    sayHi('yh', 'software engineer'); // 调用函数
+    console.log(sayHi); // 访问函数指针
 </script>
 
 <script>
     function sum(num1, num2) {
-        return num1 + num2; // 遇到return语句，返回值； 后面的语句不会执行
+        return num1 + num2; // 遇到return语句，返回   ；后面的语句不会执行
     }
     var result = sum(8, 9);
     console.log(result, sum(88, 99));
 
-    function diff(num1, num2) {
+    function diff(num1, num2) { // 可以有多个return语句
         if (num1 > num2) {
             return num1 - num2;
         } else {
@@ -29,11 +30,11 @@
     console.log(diff(13, 7));
 
     function sayHi2(name, message) {
-        return; // return语句，返回的是undefined；后面的语句不会执行 退出函数体
+        return; // return语句，返回的是undefined；后面的语句不会执行
         console.log(name + '-' + message);
     }
     sayHi2('yh', 'software engineer');
-    // return语句 推荐做法：要么返回值；要么退出程序；
+    // return语句 推荐做法：要么需要返回值；要么不需要返回值；
 </script>
 
 <script>
