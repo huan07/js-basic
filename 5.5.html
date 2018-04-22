@@ -42,6 +42,25 @@
     var fn2 = function() {
 
     };
+
+    var name = 'xm';
+    var age = 18;
+    function fun() {
+        var name = 'xh';
+        var age = 10;
+        console.log(name);  // 'xh'
+    }
+    fun();
+
+
+    var name = 'xml';
+    var age = 181;
+    function fun2() {
+        console.log(name);  // undefined
+        var name = 'xh';
+        var age = 10;
+    }
+    fun2();
 </script>
 
 

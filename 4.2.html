@@ -22,31 +22,5 @@
 
 </script>
 
-
-<script>
-    // js解析机制
-    // 预解析
-    // 逐行读代码  顺着作用域链查找变量
-    var name = 'xm';
-    var age = 18;
-    function fun() {
-        var name = 'xh';
-        var age = 10;
-        console.log(name);  // 'xh'
-    }
-    fun();
-
-
-    var name = 'xml';
-    var age = 181;
-    function fun2() {
-        console.log(name);  // undefined
-        var name = 'xh';
-        var age = 10;
-    }
-    fun2();
-</script>
-
-
 </body>
 </html>
