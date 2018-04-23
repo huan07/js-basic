@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>6.2.4组合使用</title>
 </head>
 <body>
 <script>
     // 组合使用构造函数模式和原型模式
-    function PersonF(name, age, job) { // 实例属性
+    function PersonF(name, age, job){ // 实例属性
         this.name = name;
         this.age = age;
         this.job = job;
         this.friends = ['friend1', 'friend2'];
     }
 
-    PersonF.prototype = { // 实例共享的属性
+    PersonF.prototype = { // 实例共享的原型属性 最大限度地节省了内存
         constructor: PersonF,
-        sayName: function() {
+        sayName: function(){
             console.log(this.name + '-' + this.friends);
         }
     };
@@ -24,7 +24,7 @@
     var personF = new PersonF('yh', 30, 'a beautifull woman');
     var personF2 = new PersonF('yh2', 30, 'a beautifull woman');
     personF.friends.push('friend3');
-    console.log('组合使用构造函数模式和原型模式, ', personF.friends, personF2.friends);
+    console.log(personF.friends, personF2.friends);
     console.log(personF.sayName, personF2.sayName, personF.sayName === personF2.sayName)
 </script>
 
