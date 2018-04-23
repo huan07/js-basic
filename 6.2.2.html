@@ -6,11 +6,11 @@
 </head>
 <body>
 <script>
-    function Person(name, age, job) {
+    function Person(name, age, job){ // 能够将它的实例标识为一种特定的类型，解决了对象识别的问题
         this.name = name;
         this.age = age;
         this.job = job;
-        this.sayName = function() { // 每个方法都要在每个实例上重新创建一遍，（完成的是相同的任务，没有必要待改进）
+        this.sayName = function(){ // 每个方法都要在每个实例上重新创建一遍，（完成的是相同的任务，没有必要 待改进）
             console.log(this.name + '-' + this.age);
         };
     }
@@ -49,10 +49,10 @@
 </script>
 
 <script>
-    var sayName = function() { // 指向函数的指针 被person1、person2对象共享   但是作为全局函数不合适
+    var sayName = function(){ // 指向函数的指针 被person1、person2对象共享   但是作为全局函数不合适
         console.log(this.name + '-' + this.job)
     };
-    function Person(name, age, job) {
+    function Person(name, age, job){
         this.name = name;
         this.age = age;
         this.job = job;
