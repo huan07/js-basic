@@ -7,12 +7,12 @@
 <body>
 <script>
     // prototype  每个函数都有，是一个指针，指向对象（其用途：包含特定类型的所有实例共享的属性和方法）
-    function Person() {
+    function Person(){
     }
     Person.prototype.name = 'person11_person12'; // 可以创建 所有实例 共享的属性，方法
     Person.prototype.age = 30;
     Person.prototype.job = 'job';
-    Person.prototype.sayName = function() {
+    Person.prototype.sayName = function(){
         return this.name + '-' + this.age + '-' + this.job;
     };
 
@@ -46,8 +46,8 @@
     person11.name = 'person11';
     console.log(person11.hasOwnProperty('name'), 'name' in person11);
 
-    function hasPrototypeProperty(object, name) { // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        return !object.hasOwnProperty(name) && (name in object);
+    function hasPrototypeProperty(object, name){ // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        return !object.hasOwnProperty(name)&&(name in object);
     }
     console.log('hasPrototypeProperty, ', hasPrototypeProperty(person11, 'name'), hasPrototypeProperty(person12, 'name'));
     // 浏览器兼容性 to add
@@ -60,7 +60,7 @@
     console.log('person13 ', Object.getOwnPropertyNames(person13), Object.getOwnPropertyNames(Person.prototype));  // constructor不可枚举
 
 
-    function People() {
+    function People(){
 
     }
     console.log('重写整个原型对象之前，', JSON.stringify(People.prototype), People.prototype.constructor); // People
@@ -69,7 +69,7 @@
         name: 'people_name',
         age: 'people_age',
         job: 'people_job',
-        sayName: function() {
+        sayName: function(){
             console.log(this.name + '-' + this.age);
         }
     };
@@ -84,7 +84,7 @@
     // 原型的动态性 ！！！！！！！！！！！！！！！！
     var friend = new People();
 
-    People.prototype.sayHi = function() {
+    People.prototype.sayHi = function(){
         console.log('sayHi //' + this.name + '//' + this.age + '//' + this.job);
     };
     friend.sayHi();
@@ -92,7 +92,7 @@
     // 原型的动态性 ！！！！！！！！！！！！！！！！
     // 重写默认的prototype对象， 1.constructor属性变成了新对象的constructor属性（指向Object构造函数）
     // 2.切断了构造函数与最初原型的联系
-    function Person() {
+    function Person(){
 
     }
     var friend2 = new Person();
@@ -102,7 +102,7 @@
         name: 'nicholas',
         age: 30,
         friend: 'yc',
-        sayHi: function() {
+        sayHi: function(){
             return 'sayHi //' + this.friend;
         }
     };
@@ -114,7 +114,7 @@
 
     // 原型对象的问题
     // 所有实例在默认情况下都将取得相同的属性值   对于包含引用类型值的属性，问题突出！！！！！！！！！！！！！
-    function PeopleF() {
+    function PeopleF(){
 
     }
 
@@ -122,7 +122,7 @@
         constructor: PeopleF,
         name: 'name',
         friends: ['friend1', 'friend2', 'friend3'],
-        sayName: function() {
+        sayName: function(){
             console.log(this.name + '-' + this.friends.length);
         }
     };
