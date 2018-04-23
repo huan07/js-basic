@@ -12,9 +12,9 @@
     // 函数执行完毕后，局部活动对象被销毁，内存中仅保存全局作用域（全局执行环境的变量对象）
     // 闭包情况：在另一个函数内部定义的函数 会将包含函数（外部函数）的活动对象添加到它的作用域链中
     // 闭包的问题：闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存
-    function createComparisonFunction(propertyName) {
+    function createComparisonFunction(propertyName){
 
-        return function(object1, object2) {  // 匿名函数当作值返回
+        return function(object1, object2){  // 匿名函数当作值返回
             var value1 = object1[propertyName];  //
             var value2 = object2[propertyName]; // 访问了createComparisonFunction的变量propertyName
 
@@ -33,11 +33,11 @@
 <script>
     // 作用域链的副作用：闭包只能取得包含函数中任何变量的最后一个值（用途2，但会带来副作用）
 
-    function createFunction() {
+    function createFunction(){
         var result = new Array();
 
         for(var i = 0; i < 10; i++) {
-            result[i] = function() { // ....
+            result[i] = function(){ // ....
                 return i;
             }; // .....
         }
@@ -49,12 +49,12 @@
     console.log(createFunction()[0]());
     console.log(createFunction()[9]());
 
-    function createFunction2() {
+    function createFunction2(){
         var result = new Array();
 
         for(var i = 0; i < 10; i++) {
-            result[i] = function(num) { // 创建另一个匿名函数  高级了!!!!!!!!!!!!!!!!!!!!!!!!!!
-                return function() { // 闭包
+            result[i] = function(num){ // 创建另一个匿名函数  高级了!!!!!!!!!!!!!!!!!!!!!!!!!!
+                return function(){ // 闭包
                     return num;
                 };
             }(i); // .....................
@@ -72,8 +72,8 @@
     var object = {
         name: "The Object",
 
-        getNameFunc: function() {
-            return function() {
+        getNameFunc: function(){
+            return function(){
                 return this.name;
             }
         }
@@ -84,9 +84,9 @@
     var name = "The Window";
     var object2 = {
         name: "The Object2",
-        getNameFunc: function() {
+        getNameFunc: function(){
             var that = this;
-            return function() {
+            return function(){
                 return that.name;
             }
         }
@@ -96,7 +96,7 @@
 
     var object3 = {
         name: "The Object3",
-        getName: function() {
+        getName: function(){
             return this.name;
         }
     }
@@ -108,6 +108,51 @@
     // 内存泄露 ?  ?  ?   ?  ?   ?  ?    ?   ?    ?   ?    ?
 
 
+</script>
+<script>
+    // 练习题
+    function a(){
+        var i = 0;
+
+        function b(){
+            console.log(++i);
+        }
+
+        return b;
+    }
+    var c = a();
+    c();  // 1
+
+    // 练习题2
+    function f1(){
+        var n = 999;
+        nAdd = function(){
+            n = n + 1;
+        };
+        function f2(){
+            console.log(n);
+        }
+
+        return f2;
+    }
+    var rs = f1();
+    rs();   // 999;
+    nAdd();
+    rs(); // 1000  n 一直保存在内存中
+
+    // 练习题3
+    var a = 111;
+    function test(){
+        console.log(a); // undefined
+        var a = 11;
+
+        function subTest(){
+            console.log(a); // 11
+        }
+
+        return subTest;
+    }
+    test()();
 </script>
 
 </body>
