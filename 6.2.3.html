@@ -41,15 +41,18 @@
     delete person11.name;
     console.log(person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
 
-    // in  for in 可枚举的对象实例 + 原型 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+
+    // in,  for in 可枚举的对象实例 + 原型 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     console.log('in for in, ', person11.hasOwnProperty('name'), 'name' in person11);
     person11.name = 'person11';
     console.log(person11.hasOwnProperty('name'), 'name' in person11);
 
     function hasPrototypeProperty(object, name){ // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        return !object.hasOwnProperty(name)&&(name in object);
+        return !object.hasOwnProperty(name)&&(name in object);   // 不属于实例属性  属于对象属性
     }
     console.log('hasPrototypeProperty, ', hasPrototypeProperty(person11, 'name'), hasPrototypeProperty(person12, 'name'));
+
+
     // 浏览器兼容性 to add
 
     // Object.keys() 可枚举的实例属性 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
@@ -131,6 +134,20 @@
     peopleF.friends.push('friend4');
     console.log('原型对象的问题, ', peopleF.friends, peopleF2.friends, peopleF.friends === peopleF2.friends);
     peopleF.sayName();  // 原型对象的重写放在实例化后面就会报错
+
+    // 练习题
+    function CreatObj(){
+        this.name = 'aaa';
+        this.price = 'bbb';
+    }
+    CreatObj.prototype.action = function(){
+        console.log('ccc');
+    };
+    var obj = new CreatObj();
+    var str = ' ';
+    for(var i in obj) {
+        console.log(str += obj[i]);
+    }
 </script>
 
 </body>
