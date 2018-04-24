@@ -132,6 +132,88 @@
     /*
      Number
      */
+    var intNum = 55;
+
+    var octalNum = 070;
+    var octalNum2 = 079;
+    var octalNum3 = 09; //
+    console.log('字面值不符合八进制，前导零将被忽略', intNum, octalNum, octalNum2, octalNum3);
+
+    var hexNum = 0x3e;
+    var hexNum2 = 0x3f;
+    // var hexNum3 = 0x3g;  报错
+    console.log(hexNum, hexNum2);
+
+    var floatNum = 11.99;
+    var floatNum2 = .99; // 不推荐
+    console.log(floatNum, floatNum2);
+
+    var floatNum3 = 88.;
+    var floatNum4 = 99.0;
+    console.log('被转换为整数值的情形', floatNum3, floatNum4);
+
+    var floatNum5 = 3.3e6;
+    var floatNum6 = 3.3e-6;
+    var floatNum7 = 0.00000033;
+    console.log('会将小数点后有6个零以上的浮点数值转换为以e表示法', floatNum5, floatNum6, floatNum7);
+
+    console.log('0.1+0.2===0.3', 0.1 + 0.2 === 0.3, '0.2+0.3===0.5', 0.2 + 0.3 === 0.5);
+    console.log('0.15+0.25===0.4', 0.15 + 0.25 === 0.4);
+
+
+    /*
+     Number数值范围
+     */
+    console.log(Number.MIN_VALUE, Number.MAX_VALUE);
+    console.log(isFinite(Number.MIN_VALUE), isFinite(Number.MIN_VALUE + Number.MIN_VALUE));
+    console.log(isFinite(Number.MAX_VALUE), isFinite(Number.MAX_VALUE + Number.MAX_VALUE));
+
+
+    /*
+     NaN: Not a Number
+     */
+    console.log('返回NaN 不会导致代码停止执行', 2/0, 0/0, -2/0);
+    console.log('取余', 5%3);
+    console.log('除以，取商', 5/3);
+
+    console.log(isNaN(NaN), isNaN('BLUE'));
+    console.log(isNaN(true), isNaN(10), isNaN('10')); // 会直接转换为数值，再判断
+
+
+    /*
+     数值转换
+     Number()
+     parseInt()
+     parseFloat()
+     */
+    console.log('Number()==========================>', Number(true), Number(false), Number(null), Number(undefined));
+
+    console.log(Number('1'), Number('-1'));
+    console.log(Number('1.9'), Number('.9'));
+    console.log(Number('066'), Number('079'), Number('0079')); // 忽略前导零
+    console.log(Number('0xF'), Number('0x12')); // 转换为十进制
+    console.log(Number('')); // 0
+    console.log(Number('2DD')); // 除了以上字符串类型，转换为NaN
+
+    console.log('对象转换为数字    ！！！！！！！！to add');
+
+    console.log('parseInt()从左往右逐个解析字符，直到遇上非数字字符停止解析', parseInt('9'), parseInt('-9'), parseInt('S'), parseInt(''));
+    console.log(parseInt('123blue'));
+    console.log(parseInt('07'), parseInt('071'), parseInt('072')); // es3, es5有区别（es5忽略前导零，当作十进制）
+    console.log(parseInt('0xF'), parseInt('0x12'));
+
+    console.log('parseInt()第二个参数区别 进制！！！！！！！！！！');
+    console.log(parseInt('7', 8), parseInt('71', 8), parseInt('72', 8));
+    console.log(parseInt('F', 16), parseInt('F'), parseInt('12', 16));
+
+    console.log('parseFloat() 逐个解析，遇到非字符、第二个无效的小数点为止  但是会忽略前导零，只解析十进制数');
+    console.log(parseFloat('123blue'));
+    console.log(parseFloat('22.5'));
+    console.log(parseFloat('22.56.8'));
+    console.log(parseFloat('0022.5'));
+    console.log(parseFloat('07'));
+    console.log(parseFloat('0xF'));
+    console.log(parseFloat('999'));
 </script>
 
 <script>
