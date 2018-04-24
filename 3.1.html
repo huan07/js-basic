@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>3</title>
+    <title>3.1 ~ 3.4</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -122,9 +122,7 @@
      */
     console.log('Boolean()====================> 所有类型的值都可以调用 转型函数');
     console.log('流控制语句（if语句）会  自动执行  Boolean()转换 ');
-    console.log('String类型数据', Boolean('str'));
-    console.log('Number', Boolean(1));
-    console.log('Object', Boolean({ 1: 2, }), Boolean({}));
+    console.log(Boolean('str'), Boolean(1), Boolean({ 1: 2, }), Boolean({}));
     console.log(Boolean(''), Boolean(0), Boolean(NaN), Boolean(null), Boolean(undefined));
 </script>
 
@@ -241,26 +239,16 @@
 </script>
 
 <script>
-    document.write('<h1 class="h1">Object</h1>');
-    document.write('<h4 class="h4">实例属性和方法：</h4>');
-    document.write('<h4 class="h4">constructor</h4>');
-    document.write('<h4 class="h4">hasOwnProperty(propertyName)属性在当前对象实例中</h4>');
-    document.write('<h4 class="h4">isPrototypeOf(object)传入的对象是否是传入对象的原型</h4>');
-    document.write('<h4 class="h4">propertyIsEnumerable(propertyName)给定的属性是否能够使用for-in语句枚举</h4>');
-    document.write('<h4 class="h4">toLocalString()</h4>');
-    document.write('<h4 class="h4">toString()</h4>');
-    document.write('<h4 class="h4">valueOf()</h4>');
-</script>
-
-<script>
-    document.write('<h1 class="h1">3.5操作符</h1>');
-    console.log('js操作符能够适用于String, Number,Boolean,Object等数据类型==================>');
-    var age = 20;
-    var beforeAppend = ++age;
-    console.log(beforeAppend, age);
-    var age = 30;
-    var afterAppend = age++;
-    console.log(afterAppend, age);
+    /*
+     Object类型的实例属性和方法：
+     constructor,
+     hasOwnProperty(propertyName)属性在当前对象实例中,
+     isPrototypeOf(object)传入的对象是否是传入对象的原型,
+     propertyIsEnumerable(propertyName)给定的属性是否能够使用for-in语句枚举,
+     toLocalString(),
+     toString(),
+     valueOf(),
+     */
 </script>
 
 </body>

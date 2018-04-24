@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.5</title>
+</head>
+<body>
+
+<script>
+    /*
+     js操作符能够适用于String, Number,Boolean,Object(调用对象的valueOf() 或 toString()类型 )
+     */
+
+    /*
+     ++ --
+     */
+    var age = 20;
+    var beforeAppend = ++age;
+    console.log('++ ', beforeAppend, age);
+
+    var age = 30;
+    var afterAppend = age++;
+    console.log(afterAppend, age);
+
+    console.log('++ 与 + 操作符的优先级相等');
+    console.log('规则 to add');
+
+
+    /*
+     + - 非数值运算，自动调用Number()转型函数，
+     */
+
+
+    /**
+     * 位操作符 to add
+     */
+
+
+    /**
+     * !
+     * && 短路操作符
+     * || 短路操作符 可以用来避免为变量赋值null, undefined
+     */
+    console.log(' || 可以模拟 Boolean()');
+
+    var found = true;
+    // var result = found && someUndefinedVariable;  // 左边操作数是true, 会执行 && 操作
+    // console.log(result); // error
+
+    var found2 = false;
+    var result2 = found2&&someUndefinedVariable;  // 左边操作数是false, 不会执行 && 操作
+    console.log(result2);
+
+    console.log([2, 3]||[], null||[], { name: 'yh' }||{}, null||{});
+</script>
+
+<script>
+    /**
+     *  *  /  %  非数值操作数会执行自动类型转换
+     */
+
+
+    /**
+     * + -  非数值操作数会执行自动类型转换
+     */
+    console.log('加法操作符       有一个操作数是字符串的规则        ！！！！！！');
+    console.log('ab' + 'cd');
+    console.log('ab' + 99, '99' + 99);
+
+</script>
+
+
+</body>
+</html>
