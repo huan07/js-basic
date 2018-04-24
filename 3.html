@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>3</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -11,10 +11,10 @@
     /*
      * 使用 var 操作符 定义的变量将成为 定义该变量的作用域中的 局部变量
      */
-    function test() {
+    function test(){
         var message = "hi";
     }
-    test();
+    test(); // 执行完函数，函数内的变量会被立即销毁
     // console.log(message); // 此处报错 message没有定义
 
 
@@ -22,24 +22,43 @@
      * 省略 var 操作符 创建一个 全局变量
      * 在局部作用域定义的 全局变量 不方便维护 不要这样使用
      */
-    function test2() {
+    function test2(){
         message2 = "hi";
     }
     test2();
     console.log(message2); // 此处不会报错
 
 
-    // 遍历赋值从右往左读取  ！！！！！！！！！！！！！考题
-    function fn() {
+    /*
+     * variable declaration
+     */
+    var score;
+    score = 4;
+
+    var score2 = undefined;
+    score2 = 4;
+
+    var score3 = 4;
+
+    function fn(){
+
+    }
+    fn.person = 'xm';
+    console.log(fn, fn.person);
+
+
+    // 考题   遍历赋值从右往左读取  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    function fn(){
         var x = y = 1;
     }
     fn();
     // console.log(x,y); // 报错, 1;
-
 </script>
 
 <script>
-    // typeof
+    /*
+     * typeof
+     */
     console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
     console.log('Null  !!!!!!!! ', typeof null);
@@ -47,14 +66,16 @@
     console.log('Number', typeof 9);
     console.log('String', typeof 'baidu');
     console.log('Object', typeof {});
-    console.log(typeof function() {
+    console.log(typeof function(){
     });
 
     var xx = 'xx';
     console.log(typeof xx, typeof(xx), typeof 'xx');
 
 
-    // instanceof  实例是否是某个对象的实例
+    /*
+     instanceof  对象是否是某个引用类型的实例
+     */
     console.log('instanceof===============================>');
     console.log([] instanceof Array);
     console.log([] instanceof Object);
@@ -131,25 +152,6 @@
 
 
 </script>
-
-<script>
-    console.log('mk ！！！！！！！！！！！！！！！！');
-    // variable declaration
-    var score;
-    score = 4;
-
-    var score2 = undefined;
-    score2 = 4;
-
-    var score3 = 4;
-
-    function fn() {
-
-    }
-    fn.person = 'xm';
-    console.log(fn, fn.person);
-</script>
-
 
 </body>
 </html>
