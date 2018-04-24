@@ -221,8 +221,23 @@
 
 <script>
     /*
-     String
+     String 是不可变的
      */
+    var str = 'string';
+    console.log('String类型          ', str, str.length);
+
+    console.log('toString()针对数值、布尔值、对象、字符串转换为字符串 第二个参数可以为进制数,');
+    console.log('String()针对任何数据类型的值转换为字符串');
+    console.log('加号操作符也可以实现  + ""  ');
+    var age = 11;
+    var flag = true;
+    var obj = {};
+    console.log(age.toString(), flag.toString(), obj.toString());
+    console.log(age.toString(10), age.toString(2), age.toString(8), age.toString(16));
+
+    console.log(String(undefined), String(null));
+
+    console.log(7888 + '', '8999' + '');
 </script>
 
 <script>
