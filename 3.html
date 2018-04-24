@@ -61,12 +61,13 @@
      */
     console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
-    console.log('Null  !!!!!!!! ', typeof null);
     console.log('Boolean', typeof true);
     console.log('Number', typeof 9);
     console.log('String', typeof 'baidu');
+    console.log('Null  !!!!!!!! ', typeof null);
     console.log('Object', typeof {});
-    console.log(typeof function(){
+
+    console.log('typeof 引用类型', typeof [], typeof {}, typeof function(){
     });
 
     var xx = 'xx';
@@ -80,38 +81,45 @@
     console.log([] instanceof Array);
     console.log([] instanceof Object);
     console.log({} instanceof Object);
-    console.log(null instanceof Object, 'Null  !!!!!!!! ');
 
+    console.log(null instanceof Object, 'Null  !!!!!!!! ');
     console.log(false instanceof Boolean);
     console.log(1 instanceof Number);
 </script>
 
 <script>
-    // Undefined
+    /*
+     Undefined
+     */
     console.log('Undefined===============================>');
     // 可以显式的设置为nudefined；或者不初始化变量的值就是undefined；
+    var message = undefined;
+    var message2;
+    console.log(message === undefined, message2 === undefined);
+
     var message3;
     //var age; 未声明的变量，之后用会报个错
 
     console.log(message3);
     //console.log(age);
-
-    console.log('没有初始化的变量typeof=', typeof message3);
-    console.log('没有声明的变量typeof=', typeof age);
+    console.log('未初始化的、未声明的变量typeof=', typeof message3, typeof age);
 </script>
 
 <script>
-    // Null
+    /*
+     Null
+     */
     console.log('Null===========================>');
     // 定义的变量准备用于保存对象，初始化为null
 
-    console.log('Null typeof=', typeof null);
     console.log('undefined == null', undefined == null);
     console.log('undefined === null', undefined === null);
 </script>
 
 <script>
-    // Boolean
+    /*
+     Boolean
+     */
     console.log('所有类型的值都可以调用转型函数Boolean()====================>');
     console.log('流控制语句（if语句）会  自动执行  Boolean()转换 ');
     console.log('String类型数据', Boolean('str'), Boolean(''));
@@ -121,11 +129,15 @@
 </script>
 
 <script>
-    document.write('<h1 class="h1">Number to add？？？？？？？？</h1>');
+    /*
+     Number
+     */
 </script>
 
 <script>
-    document.write('<h1 class="h1">String to add？？？？？？？</h1>');
+    /*
+     String
+     */
 </script>
 
 <script>
@@ -149,8 +161,6 @@
     var age = 30;
     var afterAppend = age++;
     console.log(afterAppend, age);
-
-
 </script>
 
 </body>
