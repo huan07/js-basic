@@ -137,6 +137,25 @@
     }
     console.log('continue 用于嵌套循环，退出内层本次循环 继续内层下一次循环！！！！！！！！！！！', num);
 
+
+    // 练习题 ！！！！！！！！！！！！！！！！！！！！！！！！！！练习题？？？？？？？？？
+    for (var m = 0; m < 2; m++) {
+        for (var n = 0; n < 5; n++) {
+            if (n === 3) {
+                break;
+            }
+            console.log('break', n);
+        }
+    }
+
+    for (var m = 0; m < 2; m++) {
+        for (var n = 0; n < 5; n++) {
+            if (n === 3) {
+                continue;
+            }
+            console.log('continue', n);
+        }
+    }
 </script>
 
 </body>
