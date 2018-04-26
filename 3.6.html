@@ -6,15 +6,136 @@
 </head>
 <body>
 <script>
-    for(var propName in window){ // 确保propName是局部变量
+    // {}
+
+
+    // if(){}
+    // if(){}else{}
+    // if(){}else if(){}else{}
+    // switch  全等
+    var age = 31;
+    if (age > 30) {
+        console.log(age);
+    }
+
+    if (age > 30) {
+        console.log('age>30')
+    } else {
+        console.log('age<=30')
+    }
+
+    if (age === 1) {
+        console.log('襁褓');
+    } else if (age === 13) {
+        console.log('豆蔻年华');
+    } else if (age === 32) {
+        console.log('半老徐娘');
+    } else {
+        console.log('other她妈');
+    }
+
+    switch(age) {
+        case 1:
+            console.log('襁褓');
+            break;
+        case 13:
+            console.log('豆蔻年华');
+            break;
+        case 32:
+            console.log('半老徐娘');
+            break;
+        default:
+            console.log('other她妈');
+    }
+
+
+    // do-while 至少执行一次循环体
+    // while
+    // for
+    var i = 11;
+    do {
+        // ...
+        i += 1;
+    } while(i < 10);
+    console.log(i);
+
+    var j = 11;
+    while(j < 10) {
+        // ...
+        j += 1;
+    }
+    console.log(j);
+
+    for (var k = 11; k < 13; k += 1) {
+        // ...
+    }
+    console.log(k);
+
+    var l;
+    for (l = 11; l < 13; l += 1) {
+
+    }
+    console.log(l);
+
+
+    // for-in
+    for (var propName in window) { // 确保propName是局部变量
         // console.log(propName);
     }
 
-    var obj = {};
-    for(var attr in obj){ // 兼容性，确保obj是Object类型
+    function People(){
+        this.friends = ['yc'];
+    }
+    People.prototype.name = 'yh';
+    var people = new People();
+    for (var attr in people) { // 兼容性，确保obj是Object类型
         console.log(attr);
     }
 
+
+    // break 退出循环后  执行循环体之外的语句；
+    // continue 退出本次循环 继续下一次的循环；
+    var num = 0;
+    for (var i = 1; i < 10; i++) {
+        if (i % 5 === 0) {
+            break;
+        }
+        num++;
+    }
+    console.log('break          ', num);
+
+    var num = 0;
+    for (var i = 1; i < 10; i++) {
+        if (i % 5 === 0) {
+            continue;
+        }
+        num++;
+    }
+    console.log('continue       ', num);
+
+    var num = 0;
+    for (var i = 1; i < 4; i++) {
+        for (var j = 1; j < 4; j++) {
+            if (i === 2 && j === 2) {
+                break;
+            }
+            console.log('j', 'j', i, j);
+            num++;
+        }
+    }
+    console.log('break 用于嵌套循环，退出内层循环循环 ！！！！！！！！！！！', num);
+
+    var num = 0;
+    for (var i = 1; i < 4; i++) {
+        for (var j = 1; j < 4; j++) {
+            if (i === 2 && j === 2) {
+                continue;
+            }
+            console.log('j', 'j', i, j);
+            num++;
+        }
+    }
+    console.log('continue 用于嵌套循环，退出内层本次循环 继续内层下一次循环！！！！！！！！！！！', num);
 
 </script>
 
