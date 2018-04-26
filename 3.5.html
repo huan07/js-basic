@@ -35,7 +35,7 @@
 
 
     // !
-    // && 短路操作符
+    // && 短路操作符 第一个操作数是true, 才回去执行第二个操作符
     // || 短路操作符 可以用来避免为变量赋值null, undefined
     console.log(' || 可以模拟 Boolean()');
 
@@ -45,9 +45,9 @@
 
     var found2 = false;
     var result2 = found2 && someUndefinedVariable;  // 左边操作数是false, 不会执行 && 操作
-    console.log(result2);
+    console.log('&& 短路操作符', result2);
 
-    console.log([2, 3] || [], null || [], { name: 'yh' } || {}, null || {});
+    console.log('|| 短路操作符', [2, 3] || [], null || [], { name: 'yh' } || {}, null || {});
 </script>
 
 <script>
@@ -61,12 +61,18 @@
 
 
     // <  >  <=  >=  非数值操作数会执行自动类型转换
-    console.log('操作数都是字符串，逐个比较字符编码值 其中大写字母的编码 小于 小写 B:66, a:97,  ！！！ ！！！！！！！！！！！！');
+    console.log('操作数都是字符串，逐个比较字符的字符编码值 其中大写字母的编码 小于 小写 '); //   B:66, a:97, '2':50, '3':51,
     console.log(" '23' < '3' ", '23' < '3');
     console.log(" 'a' < 3, NaN > 3 ", 'a' < 3, NaN > 3); // 'a'被转换成了NaN
 
+    console.log('一个操作数是数值，则将另一个操作数转换为数值，数值比较');
+    console.log(" '23' < 3 ", '23' < 3);
 
-    // ==  !=  先转换操作数再比较
+    console.log('一个操作数是布尔值，将其转换为数值，比较');
+    console.log(false < 0, false > 0, false == 0, false != 0, false === 0);
+
+
+    // ==  !=  先转换操作数再比较，操作规则
     // ===   !==  仅比较
     console.log('全等操作符 数据类型相同并且值相同');
 
