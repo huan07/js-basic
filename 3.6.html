@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.6</title>
+</head>
+<body>
+<script>
+    for(var propName in window){ // 确保propName是局部变量
+        // console.log(propName);
+    }
+
+    var obj = {};
+    for(var attr in obj){ // 兼容性，确保obj是Object类型
+        console.log(attr);
+    }
+
+
+</script>
+
+</body>
+</html>
