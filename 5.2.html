@@ -8,23 +8,19 @@
 <body>
 
 <script>
-    document.write('<div class="h4">在确保是数组的条件下， 调用api</div>');
+    // 在确保是数组的条件下， 调用api
 
 
-    var colors1 = new Array(); // 1
-    console.log('colors1', colors1.length, colors1);
+    var colors = new Array();  // 1
 
     var colors2 = new Array(20); // 2
-    console.log('colors2', colors2.length, colors2);
 
     var colors3 = new Array('yh', 30, 'baidu'); // 3
-    console.log('colors3', colors3.length, colors3);
 
     var colors4 = []; // 4
-    console.log('colors4', colors4.length, colors4);
 
     var colors5 = ['yh', 30, 'baidu']; // 5
-    console.log('colors5', colors5.length, colors5);
+    console.log(colors, colors2, colors3, colors4, colors5);
 
 
     // 数组实例的valueOf(),  toString(), JSON.stringify(),
@@ -78,7 +74,7 @@
 
 
     console.log('sort()接受比较函数=============================');
-    function compare11(value1, value2) {  // 升序
+    function compare11(value1, value2){  // 升序
         if (value1 < value2) {
             return -1;
         } else if (value1 > value2) {
@@ -92,7 +88,7 @@
     console.log('values11.sort(compare11) =', values11);
 
 
-    function compare22(value1, value2) {  // 降序
+    function compare22(value1, value2){  // 降序
         if (value1 < value2) {
             return 1;
         } else if (value1 > value2) {
@@ -106,7 +102,7 @@
     console.log('values22.sort(compare22) =', values22);
 
 
-    function compare33(value1, value2) { // 升序 简易版
+    function compare33(value1, value2){ // 升序 简易版
         return value1 - value2;
     }
     var values33 = [0, 1, 5, 10, 15];
@@ -114,7 +110,7 @@
     console.log('values33.sort(compare33) =', values33);
 
 
-    function compare44(value1, value2) { // 降序 简易版
+    function compare44(value1, value2){ // 降序 简易版
         return value2 - value1;
     }
     var values44 = [0, 1, 5, 10, 15];
@@ -170,17 +166,17 @@
     console.log('every some ===返回 boolean ===//对空数组不会执行===不会改变原始数组');
 
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
-    var everyResult = numbers.every(function(item, index, array) { // 1.
+    var everyResult = numbers.every(function(item, index, array){ // 1.
         return item > 3;
     });
-    var someResult = numbers.some(function(item, index, array) {
+    var someResult = numbers.some(function(item, index, array){
         return item > 3;
     });
     console.log('everyResult', everyResult);
     console.log('someResult', someResult);
 
 
-    var everyFun = function(item, index, array) { // 2.
+    var everyFun = function(item, index, array){ // 2.
         return index > 3;
     };
     var everyResult_Fun = numbers.every(everyFun);
@@ -190,12 +186,12 @@
 
 <script>
     console.log('filter map ===返回 array ===//对空数组不会执行===不会改变原始数组');
-    var filterResult = numbers.filter(function(item, index, array) {
+    var filterResult = numbers.filter(function(item, index, array){
         return item > 3;
     });
     console.log('filterResult', filterResult);
 
-    var mapResult = numbers.map(function(item, index, array) {
+    var mapResult = numbers.map(function(item, index, array){
         return item * 2;
     });
     console.log('mapResult', mapResult);
@@ -205,12 +201,12 @@
     console.log('find,    == 返回item/undefined     ===//对空数组不会执行===不会改变原始数组');
     console.log('findIndex  == 返回index/-1      ===//对空数组不会执行===不会改变原始数组');
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
-    var findResult = numbers.find(function(item, index, array) {
+    var findResult = numbers.find(function(item, index, array){
         return item > 3;
     });
     console.log('findResult', findResult);
 
-    var findIndexResult = numbers.findIndex(function(item, index, array) {
+    var findIndexResult = numbers.findIndex(function(item, index, array){
         return item > 3;
     });
     console.log('findIndexResult', findIndexResult);
@@ -224,7 +220,7 @@
 <script>
     console.log('reduce reduceRight =====缩小数组===============');
     var values = [1, 2, 3, 4, 5];
-    var sum = values.reduce(function(prev, cur, index, array) {
+    var sum = values.reduce(function(prev, cur, index, array){
         return prev + cur;
     });
     console.log('reduce', sum);
