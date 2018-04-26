@@ -31,16 +31,12 @@
      */
 
 
-    /**
-     * 位操作符 to add
-     */
+    // 位操作符 to add
 
 
-    /**
-     * !
-     * && 短路操作符
-     * || 短路操作符 可以用来避免为变量赋值null, undefined
-     */
+    // !
+    // && 短路操作符
+    // || 短路操作符 可以用来避免为变量赋值null, undefined
     console.log(' || 可以模拟 Boolean()');
 
     var found = true;
@@ -48,38 +44,30 @@
     // console.log(result); // error
 
     var found2 = false;
-    var result2 = found2&&someUndefinedVariable;  // 左边操作数是false, 不会执行 && 操作
+    var result2 = found2 && someUndefinedVariable;  // 左边操作数是false, 不会执行 && 操作
     console.log(result2);
 
-    console.log([2, 3]||[], null||[], { name: 'yh' }||{}, null||{});
+    console.log([2, 3] || [], null || [], { name: 'yh' } || {}, null || {});
 </script>
 
 <script>
-    /**
-     *  *  /  %  非数值操作数会执行自动类型转换
-     */
+    // *  /  %  非数值操作数会执行自动类型转换
 
 
-    /**
-     *  + -  非数值操作数会执行自动类型转换
-     */
-    console.log('加法操作符       有一个操作数是字符串的规则        ！！！！！！');
+    // + -  非数值操作数会执行自动类型转换
+    console.log('加法操作符  有一个操作数是字符串的规则 ！！！ ！！！！！！！！！！！！');
     console.log('ab' + 'cd');
     console.log('ab' + 99, '99' + 99);
 
 
-    /**
-     *  <  >  <=  >=  非数值操作数会执行自动类型转换
-     *  操作数都是字符串，逐个比较字符编码值 其中大写字母的编码 小于 小写 B:66, a:97,
-     */
-    console.log('23' < '3');
-    console.log('a' < 3, NaN > 3); // 'a'被转换成了NaN
+    // <  >  <=  >=  非数值操作数会执行自动类型转换
+    console.log('操作数都是字符串，逐个比较字符编码值 其中大写字母的编码 小于 小写 B:66, a:97,  ！！！ ！！！！！！！！！！！！');
+    console.log(" '23' < '3' ", '23' < '3');
+    console.log(" 'a' < 3, NaN > 3 ", 'a' < 3, NaN > 3); // 'a'被转换成了NaN
 
 
-    /**
-     * ==  !=  先转换操作数再比较
-     * ===   !==  仅比较
-     */
+    // ==  !=  先转换操作数再比较
+    // ===   !==  仅比较
     console.log('全等操作符 数据类型相同并且值相同');
 
 </script>
