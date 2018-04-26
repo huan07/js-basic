@@ -10,23 +10,22 @@
 </script>
 
 <script>
-    var person1 = new Object();  // 1
-    person1.name = 'person1';
-    console.log(person1);
+    var person = new Object();  // 1
+    person.name = 'person1';
 
     var person2 = {};  // 2
     person2.name = 'person2';
-    console.log(person2,);
 
-    var person3 = {  // 3 best
+    var person3 = {  // 3 best   属性名会被自动转换为字符串
         name: 'person3',
+        5: 99
     };
-    console.log(person3,);
 
     var person4 = {  // 4
         "name": 'person4',
+        '55': 99
     };
-    console.log(person4);
+    console.log(person, person2, person3, person4);
 
     // 对象实例的valueOf(),  toString(), JSON.stringify(),
     console.log('对象实例的valueOf(),  toString(), JSON.stringify() ===========================');
@@ -34,38 +33,13 @@
     console.log('obj.toString()==', person4.toString());
     console.log('JSON.stringify(obj)', JSON.stringify(person4));
 
-    // example
-    function displayInfo(obj) {
-        var outPut = '';
-
-        if (typeof obj.name === 'string') {
-            outPut += '/obj.name = ' + obj.name + '\n';
-        }
-
-        if (typeof obj.age === 'number') {
-            outPut += '/obj.age' + obj.age + '\n';
-        }
-
-        console.log('outPut=>', outPut);
-    }
-
-    displayInfo({
-        name: 'exampleName1',
-        age: 99
-    });
-
-    displayInfo({
-        name: 'exampleName2'
-    });
-
     // 访问对象属性：点表示法，[字符串]，[变量名]
     var person5 = {
         age: 99
     };
-    console.log('person5.age', person5.age);
-    console.log('person5.age', person5['age']);
+    console.log(person5.age, person5['age']);
     var agePropertyName = 'age';
-    console.log('person5.age', person5[agePropertyName]);
+    console.log(person5[agePropertyName]);
 </script>
 
 </body>
