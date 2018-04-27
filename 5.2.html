@@ -30,6 +30,24 @@
 
 
     // 数组的length属性可读，可写；增删改；
+    var colors = ['red', 'blue', 'green'];
+    console.log('读', colors[0]);
+
+    colors[5] = 'white';
+    console.log('增', colors);
+
+    colors.length = 3;
+    console.log('删', colors);
+
+    colors[1] = 'blue yellow';
+    console.log('改', colors);
+
+    colors[colors.length] = 'colorX';
+    console.log('增', colors);
+
+    colors[colors.length] = 'colorY';
+    console.log('增', colors);
+
 </script>
 
 <script>
