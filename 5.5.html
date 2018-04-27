@@ -74,7 +74,7 @@
     function getGreeting(name){
         return "Hello," + name;
     }
-    console.log('callSomeFunction(getGreeting=   ', callSomeFunction(getGreeting, 'yh'));
+    console.log('函数作为参数  ', callSomeFunction(getGreeting, 'yh'));
 
     function createComparisonFunction(propertyName){
         return function(obj1, obj2){
@@ -98,7 +98,7 @@
         }
     ];
     personArray.sort(createComparisonFunction('age'));
-    console.log('personArray=   ', personArray);
+    console.log('函数作为返回值   ', personArray);
 </script>
 
 <script>
