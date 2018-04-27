@@ -6,6 +6,28 @@
 </head>
 <body>
 <script>
+    // 基本类型值：简单的数据段，操作保存在变量的  实际值  ，按值访问
+    // 引用类型值：多个值构成的对象，js不能直接操作对象的内存空间，操作的是  对象的引用 ，按引用访问
+
+    // 复制变量值：基本类型值，值的副本是独立的，
+    // 引用类型值，值的副本是指针，两个变量引用同一个对象，
+
+    // 传递参数：按值传递，
+    /*function setName(obj){
+     obj.name='yh';
+     }
+     var person=new Object();
+     setName(person);
+     console.log(person);*/
+
+    function setName(obj){ // 可能是考题
+        obj.name = 'yc';
+        obj = new Object();  // 函数执行后，函数内部的变量立即被销毁
+        obj.name = 'ycXL';
+    }
+    var person = new Object();
+    setName(person);
+    console.log(person);
 
 
     // mk
@@ -32,8 +54,7 @@
             return true;
         }
     }
-
-    console.log(equalObjs(peopleInfo, peopleInfo2), equalObjs(peopleInfo2, peopleInfo3));
+    console.log('判断两个{}是否相等', equalObjs(peopleInfo, peopleInfo2), equalObjs(peopleInfo2, peopleInfo3));
 
     var colorArray = ['red', 'blue'];
     var colorArray2 = ['red', 'blue'];
@@ -50,11 +71,10 @@
         }
         return true;
     }
+    console.log('判断两个数组是否相等', equalArrays(colorArray, colorArray2));
 
-    console.log(equalArrays(colorArray, colorArray2));
 
-
-    // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；
+    // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；！！！！！！！！！！！！！！！！！！！
     var personInfo = {
         name: 'yh',
         job: 'engineer'
@@ -67,25 +87,8 @@
         }
         return newObj;
     }
-
     var personXInfo = copyObj(peopleInfo);
     console.log(personXInfo === peopleInfo);
-
-    // 传递参数 引用类型传递的是地址，也是按值传递
-    function add(a, b){
-        return a + b;
-    }
-    function fn(fn){
-        fn.person = 'xm';
-        fn = function(){
-
-        };
-        fn.person = 'xh';
-    }
-    fn(add);
-    console.log(add.person);
-
-
 </script>
 
 </body>
