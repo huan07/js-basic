@@ -24,8 +24,8 @@
         job: 'engineer'
     };
 
-    function equalObjs(objA, objB) {
-        for(var attr in objA) {
+    function equalObjs(objA, objB){
+        for (var attr in objA) {
             if (objA[attr] !== objB[attr]) {
                 return false;
             }
@@ -38,12 +38,12 @@
     var colorArray = ['red', 'blue'];
     var colorArray2 = ['red', 'blue'];
 
-    function equalArrays(arrayA, arrayB) {
+    function equalArrays(arrayA, arrayB){
         var arrayALen = arrayA.length;
         if (arrayALen !== arrayB.length) {
             return false;
         }
-        for(var i = 0; i < arrayALen; i++) {
+        for (var i = 0; i < arrayALen; i++) {
             if (arrayA[i] !== arrayB[i]) {
                 return false;
             }
@@ -60,9 +60,9 @@
         job: 'engineer'
     };
 
-    function copyObj(obj) {
+    function copyObj(obj){
         var newObj = {};
-        for(var attr in obj) {
+        for (var attr in obj) {
             newObj[attr] = obj[attr];
         }
         return newObj;
@@ -72,12 +72,12 @@
     console.log(personXInfo === peopleInfo);
 
     // 传递参数 引用类型传递的是地址，也是按值传递
-    function add(a, b) {
+    function add(a, b){
         return a + b;
     }
-    function fn(fn) {
+    function fn(fn){
         fn.person = 'xm';
-        fn = function() {
+        fn = function(){
 
         };
         fn.person = 'xh';
