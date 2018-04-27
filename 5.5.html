@@ -143,7 +143,7 @@
 
 <script>
     // sum.prototype.constructor===sum
-    // 非继承方法  call apply (接受参数不一样) 没有参数传递的情况，用法一样
+    // 非继承方法  call apply  特定的作用域调用函数； 接受参数不一样，没有参数传递的情况，用法一样
     // 1.用来传递参数
     // 2.扩充函数赖以运行的作用域, 优点：对象不需要和方法有任何耦合
     // bind this值会被绑定到bind的第一个参数，
@@ -164,7 +164,7 @@
     function callSum(num1, num2){
         return sum.call(this, num1, num2);
     }
-    console.log(applySum1(11, 22), applySum2(22, 33), callSum(33, 44))
+    console.log(applySum1(11, 22), applySum2(22, 33), callSum(33, 44));
 
     // 2.
     window.color = "windowColor";
