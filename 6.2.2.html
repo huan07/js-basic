@@ -30,7 +30,7 @@
     console.log('对象实例constructor属性========', person.constructor, Person, person.constructor === Person);
     // 构造函数与普通函数的区别：调用方式不一样
 
-    // Person的调用方式！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！call
+    // Person的调用方式！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！call 对象冒充
     // 1.
     var person = new Person('person5', 50, 'a beautifull woman');
     person.sayName();
@@ -56,10 +56,11 @@
         this.sayName = sayName;
     }
 
-    var person1 = new Person('person8', 80, 'software engineer');
+    var person = new Person('person8', 80, 'software engineer');
     var person2 = new Person('person9', 90, 'a beautifull woman');
-    console.log(person1.sayName(), person2.sayName());
-    console.log(person2.sayName, person2.sayName, person1.sayName === person2.sayName);
+    person.sayName();
+    person2.sayName();
+    console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);
 </script>
 
 </body>
