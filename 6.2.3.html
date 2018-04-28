@@ -6,10 +6,10 @@
 </head>
 <body>
 <script>
-    // prototype  每个函数都有，是一个指针，指向对象（其用途：包含特定类型的所有实例共享的属性和方法）
-    function Person(){
+    // prototype  每个函数都有，是一个指针，指向对象（其用途：包含特定类型的所有实例 共享的属性和方法）
+    function Person(){ // 实例属性，不可以共享
     }
-    Person.prototype.name = 'person11_person12'; // 可以创建 所有实例 共享的属性，方法
+    Person.prototype.name = 'person11_person12'; // 原型属性，共享
     Person.prototype.age = 30;
     Person.prototype.job = 'job';
     Person.prototype.sayName = function(){
@@ -18,18 +18,20 @@
 
     var person11 = new Person();
     var person12 = new Person();
-    console.log(person11.sayName, person12.sayName, person11.sayName === person12.sayName);
-    console.log('原型对象constructor属性==============', Person.prototype.constructor, Person, Person.prototype.constructor === Person);
+    console.log('原型对象共享的方法======', person11.sayName, person11.sayName === person12.sayName);
+
     // 原型对象的属性constructor ！！！！！！最初包含，共享的！！！！！！！！！！！！！！！！！！！！！！！！！！
+    console.log('原型对象constructor属性========', Person.prototype.constructor, Person.prototype.constructor === Person);
 
-    // 实例对象的内部属性 [[Prototype]] __proto__  指向构造函数的原型对象 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    // 实例对象的内部属性 [[Prototype]] __proto__  指向构造函数的原型对象 ！！！！！！！！！！！！！！！！！！
+    console.log('实例对象的内部属性__proto__=====', person11.__proto__, person11.__proto__ === Person.prototype);
 
-    // isPrototypeof  原型对象 是否是 实例对象的原型
-    console.log('isPrototypeOf, ', Person.prototype.isPrototypeOf(person11), Person.prototype.isPrototypeOf(person12));
+    // isPrototypeof  原型对象 是否是 实例对象的原型！！！！！！！！！！！！！！！！！！！！！！
+    console.log('isPrototypeOf=====, ', Person.prototype.isPrototypeOf(person11), Person.prototype.isPrototypeOf(person12));
 
-    // getPrototypeOf  返回对象实例的 原型对象
-    console.log('getPrototypeOf, ', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
-    console.log('getPrototypeOf, ', Object.getPrototypeOf(person11).name, Object.getPrototypeOf(person11).age);
+    // getPrototypeOf  返回实例对象的 原型对象！！！！！！！！！！！！！！！！！！！！！！
+    console.log('getPrototypeOf, ===', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
+    console.log('getPrototypeOf, ===', Object.getPrototypeOf(person11).name, Object.getPrototypeOf(person11).age);
 
 
     // 先搜索对象实例，再搜索原型  属性  通过对象实例访问原型的值
@@ -48,7 +50,7 @@
     console.log(person11.hasOwnProperty('name'), 'name' in person11);
 
     function hasPrototypeProperty(object, name){ // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        return !object.hasOwnProperty(name)&&(name in object);   // 不属于实例属性  属于对象属性
+        return !object.hasOwnProperty(name) && (name in object);   // 不属于实例属性  属于对象属性
     }
     console.log('hasPrototypeProperty, ', hasPrototypeProperty(person11, 'name'), hasPrototypeProperty(person12, 'name'));
 
@@ -145,7 +147,7 @@
     };
     var obj = new CreatObj();
     var str = ' ';
-    for(var i in obj){
+    for (var i in obj) {
         console.log(str += obj[i]);
     }
 </script>
