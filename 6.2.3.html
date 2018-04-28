@@ -89,7 +89,7 @@
     // 原型的动态性 ！！！！！！！！！！！！！！！！
     var friend = new People();
 
-    People.prototype.sayHi = function(){
+    People.prototype.sayHi = function(){ // 创建实例后添加原型属性方法
         console.log('sayHi //' + this.name + '//' + this.age + '//' + this.job);
     };
     friend.sayHi();
@@ -102,7 +102,7 @@
     }
     var friend2 = new Person();
 
-    Person.prototype = {
+    Person.prototype = { // 创建实例后重写原型对象
         constructor: Person,
         name: 'nicholas',
         age: 30,
