@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>6.2.5</title>
+    <title>6.2.5 动态原型模式</title>
 </head>
 <body>
 <script>
-    // 动态原型模式
     function PersonFD(name, age, job){
         this.name = name;
         this.age = age;
         this.job = job;
 
         if (typeof this.sayName !== 'function') {
-            PersonFD.prototype.sayName = function(){
+            PersonFD.prototype.sayName = function(){ // 只需要第一次初始化，没有必要每次构造函数实例化都初始化
                 console.log(this.name + '-' + this.age + '-' + this.job);
             };
         }
     }
 
     var personFD = new PersonFD('YH', 30, 'LADY');
+    var personFD2 = new PersonFD('YH2', 30, 'LADY2');
     personFD.sayName();
+    personFD2.sayName();
 </script>
 
 </body>
