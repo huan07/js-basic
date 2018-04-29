@@ -7,8 +7,8 @@
 <body>
 
 <script>
-    function outputNumber(count) {
-        for(var i = 0; i < count; i++) {
+    function outputNumber(count){
+        for (var i = 0; i < count; i++) {
             console.log(i);
         }
 
@@ -16,8 +16,8 @@
     }
     outputNumber(3);
 
-    function outputNumber2(count) {
-        for(var i = 0; i < count; i++) {
+    function outputNumber2(count){
+        for (var i = 0; i < count; i++) {
             console.log(i);
         }
 
@@ -33,13 +33,13 @@
     console.log('私有作用域场景：临时需要的变量============================');
     console.log('优势：减少闭包占用的内存问题==============只要函数执行完毕 立即销毁其作用域链================');
 
-    (function() { // 理解成 声明一个函数表达式（只有函数表达式可以带上括号）， 这个函数表达式立即执行，执行结束后匿名函数内部变量被销毁
+    (function(){ // 理解成 声明一个函数表达式（只有函数表达式可以带上括号）， 这个函数表达式立即执行，执行结束后匿名函数内部变量被销毁
         // 块级作用域  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     })();
 
-    function outputNumber3(count) {
-        (function() {
-            for(var i = 0; i < count; i++) {
+    function outputNumber3(count){
+        (function(){
+            for (var i = 0; i < count; i++) {
                 console.log(i);
             }
         })();
@@ -49,11 +49,11 @@
     outputNumber3(3);
 
     // example
-    (function() {
+    (function(){
         console.log('no value');
     })();
 
-    var a = (function() {
+    var a = (function(){
         return 'return value';
     })();
     console.log(a);

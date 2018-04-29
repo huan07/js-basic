@@ -36,7 +36,7 @@
     function createFunction(){
         var result = new Array();
 
-        for(var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
             result[i] = function(){ // ....
                 return i;
             }; // .....
@@ -52,7 +52,7 @@
     function createFunction2(){
         var result = new Array();
 
-        for(var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
             result[i] = function(num){ // 创建另一个匿名函数  高级了!!!!!!!!!!!!!!!!!!!!!!!!!!
                 return function(){ // 闭包
                     return num;

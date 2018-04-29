@@ -13,17 +13,17 @@
     // 1.在构造函数定义特权方法
     // 2.在私有作用域中定义私有变量，函数，原型上定义特权方法
 
-    function MyObject() {
+    function MyObject(){
 
         // 私有变量，方法
         var privateVar = 10;
 
-        function privateFun() {
+        function privateFun(){
             return false;
         }
 
         // 特权方法
-        this.publicMethod = function() { // 闭包
+        this.publicMethod = function(){ // 闭包
             privateVar++;
             /*return privateFun();*/
 
@@ -35,15 +35,15 @@
     myObject.publicMethod();
 
 
-    function Person(name) {
+    function Person(name){
         // 隐藏了不应该被直接修改的数据，（在这里，要么传值，要么setName修改name）
         // 不被采纳
 
-        this.getName = function() {
+        this.getName = function(){
             return name;
         };
 
-        this.setName = function(value) {
+        this.setName = function(value){
             name = value;
         };
     }
@@ -59,22 +59,22 @@
 <script>
     // 静态私有变量
 
-    (function() {
+    (function(){
 
         // 私有变量，函数
         var privateVar = 100;
 
-        function privateFun() {
+        function privateFun(){
             return false;
         }
 
         // 构造函数 使用函数表达式方式，(全局变量MyObject，但是严格模式下会报错？？？)
-        MyObject = function() {
+        MyObject = function(){
 
         };
 
         // 特权方法
-        MyObject.prototype.publicMethod = function() {
+        MyObject.prototype.publicMethod = function(){
             privateVar++;
             /*return privateFun();*/
 
@@ -83,18 +83,18 @@
     })();
 
     // example
-    (function() {
+    (function(){
         var name = ''; // 静态的，所有实例共享的属性
 
-        Person = function(value) {
+        Person = function(value){
             name = value;
         };
 
-        Person.prototype.getName = function() {
+        Person.prototype.getName = function(){
             return name;
         };
 
-        Person.prototype.setName = function(value) {
+        Person.prototype.setName = function(value){
             name = value;
         };
     })();
@@ -113,19 +113,19 @@
     // 模块模式
     // 单例的公共接口
     // 用在：对单例进行初始化，又需要维护其私有变量
-    var singleton = function() {
+    var singleton = function(){
 
         // 私有变量，函数
         var privateVar = 10;
 
-        function privateFun() {
+        function privateFun(){
             return false;
         }
 
         // 特权属性，方法
         return {
             publicProperty: true,
-            publicMethod: function() {
+            publicMethod: function(){
                 privateVar++;
                 return privateFun();
             }
