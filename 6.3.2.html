@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>借用构造函数 实现继承</title>
+    <title>6.3.2借用构造函数 实现继承</title>
 </head>
 <body>
 <script>
-    function SuperType() {
+    function SuperType(){
         this.colors = ['red', 'red2', 'red3'];
     }
 
-    function SubType() {
+    function SubType(){
         SuperType.call(this);
     }
 
@@ -24,11 +24,11 @@
 
 <script>
     // 向父类传递参数
-    function SuperType(name) {
+    function SuperType(name){
         this.name = name;
     }
 
-    function SubType() {
+    function SubType(){
         SuperType.call(this, 'child');
         this.age = 29;
     }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>原型链</title>
+    <title>6.3.1原型链</title>
 </head>
 <body>
 <script>
@@ -17,23 +17,26 @@
     // 实例
 
     // 实例与原型的链条  ＝> 原型链
-    function SuperType() {
+    function SuperType(){
         this.property = `property`;
     }
-    SuperType.prototype.getSuperType = function() {
+    SuperType.prototype.getSuperValue = function(){
         return this.property;
     };
 
-    function SubType() {
+    function SubType(){
         this.subproperty = `subproperty`;
     }
-    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象：！！！具有SuperType实例所有的属性和方法！！！！！！！！
-    SubType.prototype.getSubValue = function() { // 添加方法 / 覆盖方法 要写在后面     2.不能用对象字面量，会覆盖上面的
+    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象：！！！具有  SuperType实例  所有的属性和方法！！！！！！！！
+    SubType.prototype.getSubValue = function(){ // 添加方法 / 覆盖方法 要写在后面     2.不能用对象字面量，会覆盖上面的
         return this.subproperty;
     };
 
     var parent = new SuperType();
     var child = new SubType();
+    console.log(parent.property, parent.getSuperValue(),);
+    console.log(child.subproperty, child.getSubValue(), child.property, child.getSuperValue());
+
     console.log('instanceof    ==   ');
     console.log(parent instanceof SuperType, parent instanceof Object);
     console.log(child instanceof SubType, child instanceof SuperType, child instanceof Object);
@@ -45,10 +48,6 @@
     console.log(SuperType.prototype.constructor, SuperType.prototype.constructor === SuperType);
     console.log(SubType.prototype.constructor, SubType.prototype.constructor === SubType, SubType.prototype.constructor === SuperType);
 
-    console.log('instance fun    ==  ');
-    console.log(parent.getSuperType());
-    console.log(child.getSuperType(), child.getSubValue());
-
     // 原型链搜索机制
     // 搜索实例
     // 搜索自己的prototype
@@ -59,11 +58,11 @@
     // 原型链的问题
     // 1.包含引用类型值的原型  子类的原型 变成父类的实例，父类的实例属性被子类共享；
     // 2.在创建子类的实例时，不能向父类的构造函数传递参数
-    function SuperType() {
+    function SuperType(){
         this.colors = ['red', 'red2', 'red3'];
     }
 
-    function SubType() {
+    function SubType(){
 
     }
     SubType.prototype = new SuperType();
