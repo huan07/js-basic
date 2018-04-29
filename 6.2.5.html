@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>6.2.5</title>
 </head>
 <body>
 <script>
     // 动态原型模式
-    function PersonFD(name, age, job) {
+    function PersonFD(name, age, job){
         this.name = name;
         this.age = age;
         this.job = job;
 
         if (typeof this.sayName !== 'function') {
-            PersonFD.prototype.sayName = function() {
+            PersonFD.prototype.sayName = function(){
                 console.log(this.name + '-' + this.age + '-' + this.job);
             };
         }
