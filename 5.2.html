@@ -114,10 +114,10 @@
 
     var values2 = [0, 1, 5, 10, 15];
     values2.sort();
-    console.log('values2.sort() = > 将数组的每一项调用toString,比较的是字符串', values2);
+    console.log('values2.sort() = > 将数组的每一项调用toString,比较的是字符串对应的字符编码值', values2);
 
 
-    console.log('sort()接受比较函数=============================');
+    console.log('sort()接收 比较函数 作为参数=============================');
     function compare11(value1, value2){  // 升序
         if (value1 < value2) {
             return -1;
@@ -146,7 +146,7 @@
     console.log('values22.sort(compare22) =', values22);
 
 
-    function compare33(value1, value2){ // 升序 简易版
+    function compare33(value1, value2){ // 升序 简易版 针对数值类型
         return value1 - value2;
     }
     var values33 = [0, 1, 5, 10, 15];
@@ -154,7 +154,7 @@
     console.log('values33.sort(compare33) =', values33);
 
 
-    function compare44(value1, value2){ // 降序 简易版
+    function compare44(value1, value2){ // 降序 简易版 针对数值类型
         return value2 - value1;
     }
     var values44 = [0, 1, 5, 10, 15];

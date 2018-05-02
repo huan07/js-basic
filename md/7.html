@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 2
+    var fullname = 'john doe';
+    var obj = {
+        fullname: 'colin thrig',
+        prop: {
+            fullname: 'aurelio de rosa',
+            getFullname: function(){
+                return this.fullname;
+            }
+        }
+    };
+    console.log(obj.prop.getFullname()); // aurelio de rosa
+    var test = obj.prop.getFullname;  // test函数在window环境执行，
+    console.log(test()); //   'john doe'
+
+</script>
+
+</body>
+</html>
