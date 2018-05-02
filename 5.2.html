@@ -43,10 +43,10 @@
     console.log('改', colors);
 
     colors[colors.length] = 'colorX';
-    console.log('增', colors);
+    console.log('数组末尾 增', colors);
 
     colors[colors.length] = 'colorY';
-    console.log('增', colors);
+    console.log('数组末尾 增', colors);
 
 </script>
 
@@ -59,10 +59,9 @@
     console.log('Array.isArray(colors5)', Array.isArray(colors5));
 
     // 3. to add？？？？？？？
-
-    console.log('["yh",30,"baidu"].join(",")', ["yh", 30, "baidu"].join(","));
     console.log('["yh",30,"baidu"].join("||")', ["yh", 30, "baidu"].join("||"));
 
+    console.log('["yh",30,"baidu"].join(",")', ["yh", 30, "baidu"].join(","));
     console.log('["yh",30,"baidu"].join()', ["yh", 30, "baidu"].join());
     console.log('["yh",30,"baidu"].join(undefined)', ["yh", 30, "baidu"].join(undefined));
 
@@ -70,13 +69,41 @@
 </script>
 
 <script>
-    console.log('// 数组 栈 方法========================== to add');
+    console.log('// 数组 栈 方法    ====项的插入push、移除pop发生在栈的顶部(数组末尾)  后进先出===================');
+    var colors = [];
+    var count = colors.push('red', 'black');
+    console.log('push', colors, count);
 
+    count = colors.push('yellow');
+    console.log('push', colors, count);
+
+    var lastItem = colors.pop();
+    console.log('pop', colors, lastItem);
 </script>
 
 <script>
-    console.log('// 数组 队列 方法========================== to add');
+    console.log('// 数组 队列 方法========从列表的前端移除shift, 末端添加push  先进先出========== ');
+    var colors = [];
+    var count = colors.push('red2', 'black2');
+    console.log('push', colors, count);
 
+    count = colors.push('yellow2');
+    console.log('push', colors, count);
+
+    var firstItem = colors.shift();
+    console.log('shift', colors, firstItem);
+
+
+    console.log('模拟反 队列方法，数组前端添加unshift，末端移除pop，');
+    var colors = [];
+    var count = colors.unshift('red3', 'black3');
+    console.log('unshift', colors, count);
+
+    count = colors.unshift('yellow3');
+    console.log('unshift', colors, count);
+
+    var lastItem = colors.pop();
+    console.log(colors, lastItem);
 </script>
 
 <script>
