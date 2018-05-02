@@ -164,8 +164,6 @@
 
 <script>
     console.log('不影响原始数组，concat, slice=========================================');
-
-
     console.log('concat 创建当前数组副本，并且向尾部追加元素，数组========================');
     var colors11 = ['red', 'blue'];
     var colors12 = colors11.concat();
@@ -177,9 +175,10 @@
     console.log('slice 截取数组的一部分 ==============================================');
     var colors14 = ['red1', 'blue1', 'yellow1', '11', '21'];
     var colors15 = colors14.slice(0);
-    var colors16 = colors14.slice(0, 2);
+    var colors16 = colors14.slice(0, 2); // 不包括结束位置的项，
     console.log(colors15);
     console.log(colors16);
+
 
     console.log('splice 执行数组的 增 删 改====================从 第1个参数 位置开始执行');
     var colors17 = ['red', 'blue1', 'blue2', 'blue3'];
@@ -229,8 +228,8 @@
 </script>
 
 <script>
-    console.log('filter map ===返回 array ===//对空数组不会执行===不会改变原始数组');
-    var filterResult = numbers.filter(function(item, index, array){
+    console.log('filter 返回true的项组成的数组，map 返回 array ===//对空数组不会执行===不会改变原始数组');
+    var filterResult = numbers.filter(function(item, index, array){ //
         return item > 3;
     });
     console.log('filterResult', filterResult);
@@ -242,8 +241,8 @@
 </script>
 
 <script>
-    console.log('find,    == 返回item/undefined     ===//对空数组不会执行===不会改变原始数组');
-    console.log('findIndex  == 返回index/-1      ===//对空数组不会执行===不会改变原始数组');
+    console.log('find,    == 返回true的项 item/undefined     ===//对空数组不会执行===不会改变原始数组');
+    console.log('findIndex  == 返回true的项 index/-1      ===//对空数组不会执行===不会改变原始数组');
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
     var findResult = numbers.find(function(item, index, array){
         return item > 3;
@@ -257,7 +256,7 @@
 </script>
 
 <script>
-    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能====//对空数组不会执行==');
+    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能==== //对空数组不会执行==');
 
 </script>
 
