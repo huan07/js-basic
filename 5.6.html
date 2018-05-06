@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.6</title>
+</head>
+<body>
+<script>
+    // 每当读取基本类型值，后台会创建对应的基本包装类型的对象
+    var s1 = 'some text';
+    var s2 = s1.substring(2);
+
+    // 访问s1时，处于读取模式，后台执行 创建实例，销毁实例；
+    var s1 = new String('some text');
+    var s2 = s1.substring(2);
+    s1 = null;
+
+    var value = '25';
+    var number = Number(value);
+    var obj = new Number(value);
+    console.log(typeof number, typeof obj);
+</script>
+
+<script>
+    // Boolean实例
+    var falseObj = new Boolean(false);
+    console.log('falseObj && true !!!!', falseObj && true, typeof falseObj, falseObj instanceof Boolean);
+
+    var falseValue = false;
+    console.log('falseValue && true !!!!', falseValue && true, typeof falseValue, falseValue instanceof Boolean);
+
+
+    // Number实例
+    var number = 10;
+    console.log('number.toString(2) !!!! ', number.toString(2));
+    console.log('number.toString(16) !!!! ', number.toString(16));
+
+    var floatNmm = 3.14627;
+    console.log('floatNmm.toFixed !!!! ', floatNmm.toFixed(2), floatNmm.toFixed(3));
+
+
+    // String实例
+    var strValue = 'hello world';
+    console.log(strValue.length, strValue[1], strValue.charAt(1), strValue.charCodeAt(1));
+
+    var strValue = 'hello world';
+    var concatResult = strValue.concat(' hello');
+    console.log('concat !!!! ', concatResult);
+    console.log(strValue);
+
+    var concatResult = strValue.concat(' hello ', 'baidu');
+    console.log('concat !!!! ', concatResult);
+    console.log(strValue);
+
+    console.log('相比较concat方法，用的较多的是 + !!!!', 'hello world' + ' hello');
+
+    // substr方法第二个参数指的是个数，第一个参数都是指位置，第二个参数不是必须的，
+    var strValue = 'baidu company';
+    console.log(strValue.slice(1), strValue.substring(1), strValue.substr(1), '  strValue = ' + strValue);
+    console.log(strValue.slice(1, 4), strValue.substring(1, 4), strValue.substr(1, 4), '  strValue = ' + strValue);
+
+</script>
+
+</body>
+</html>
