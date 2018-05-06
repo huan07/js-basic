@@ -59,6 +59,27 @@
     console.log(strValue.slice(1), strValue.substring(1), strValue.substr(1), '  strValue = ' + strValue);
     console.log(strValue.slice(1, 4), strValue.substring(1, 4), strValue.substr(1, 4), '  strValue = ' + strValue);
 
+
+    // indexOf lastIndexOf
+    var strValue = 'hello world';
+    console.log(strValue.indexOf('o'), strValue.lastIndexOf('o'));
+
+
+    // match  search  replace  replace的第二个参数可以是函数 to add
+    var text = 'cat, bat, sat, fat';
+    var pattern = /.at/;
+    var matches = text.match(pattern);
+    console.log('matches  !!!!', matches);
+
+    var searchPatt = /at/;
+    var pos = text.search(searchPatt);
+    console.log('pos  !!!!', pos);
+
+    console.log(text.replace('at', 'ond'));
+    console.log(text.replace(/at/g, 'ond'));
+
+
+    // split
 </script>
 
 </body>
