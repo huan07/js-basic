@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function getQueryStr(key){
+        var queryObj = {};
+        var search = window.location.search || '?c=html5&type=1';
+        if (search) {
+            var queryArr = decodeURIComponent(search.substr(1)).split('&');
+            queryArr.forEach(function(item, index){
+                var str = item.split('=');
+                queryObj[str[0]] = str[1];
+            });
+        }
+        return queryObj[key];
+    }
+    var value = getQueryStr('type');
+    console.log(value);
+
+</script>
+
+</body>
+</html>
