@@ -11,10 +11,18 @@
         if (!foo) {
             var foo = 10;
         }
-        alert(foo);
+        console.log(foo);
 
     }
     bar();  // 10
+
+
+    //
+    for (var i = 1; i <= 3; i++) {
+        setTimeout(function(){
+            console.log(i);
+        }, i);
+    }
 
 
 </script>

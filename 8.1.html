@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    console.log('全局变量，window对象属性的区别============');
+    // 全局变量，window对象属性的区别  全局作用域中声明的变量会变成window对象的属性
     // 1. 全局变量不能通过delete操作符删除，window对象可以；
     // 2. 访问未声明的变量会报错，可以通过window对象查询未声明的变量是否存在
     var xx = 'xx';
@@ -15,11 +15,11 @@
     delete window.xx;
     delete window.yy;
 
-    console.log(window.xx, '删不掉');
-    console.log(window.yy, '可以删window属性');
+    console.log('删不掉', window.xx);
+    console.log('可以删window属性', window.yy);
 
-    // var newValue = oldValue;  // 会报错
-    var _newValue = window.oldValue;  // 只是查询对象的属性
+    // console.log(oldValue);
+    console.log(window.oldValue);
 </script>
 
 <script>
@@ -37,7 +37,6 @@
     console.log('跨浏览器获取窗口大小===??==================================');
 
     console.log('跨浏览器获取页面视口大小===============================');
-
     var pageWidth = window.innerWidth;
     var pageHeight = window.innerHeight;
     if (typeof pageWidth !== 'number') {
@@ -73,17 +72,18 @@
 
 <script>
     console.log('setTimeout setInterval====================================');
-    setTimeout(function() {
+    setTimeout(function(){
         console.log('第一个参数可以传字符串，可能会导致性能损失');
-        console.log('第二个参数表示经过的时间后将 当前执行 添加到v任务队列');
+        console.log('第二个参数表示经过的时间后将 当前执行 添加到任务队列');
     }, 2000);
 
-    var timeoutId = setTimeout(function() {
+    var timeoutId = setTimeout(function(){
+        console.log('设置超时调用');
     }, 2000);
     clearTimeout(timeoutId); // 立马调用clearTimeout()，结果就是什么也没有发生
 
 
-    setInterval(function() {
+    setInterval(function(){
         //console.log('按间隔重复执行，直至调用被取消或者页面被卸载');
     }, 2000);
 
@@ -92,7 +92,7 @@
     var num = 0;
     var max = 10;
     var intervalId = null;
-    function incrementNum() {
+    function incrementNum(){
         num++;
         if (num === max) {
             clearInterval(intervalId);
@@ -104,7 +104,7 @@
     //
     var num2 = 0;
     var max2 = 10;
-    function incre() {
+    function incre(){
         num2++;
         if (num2 < max2) {
             setTimeout(incre, 500); // 再设置一次超时调用
@@ -113,6 +113,11 @@
         }
     }
     setTimeout(incre, 500);
+</script>
+
+<script>
+    // 考题  md 8
+
 </script>
 
 </body>
