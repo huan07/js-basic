@@ -13,16 +13,10 @@
     // 引用类型值，值的副本是指针，两个变量引用同一个对象，
 
     // 传递参数：按值传递，
-    /*function setName(obj){
-     obj.name='yh';
-     }
-     var person=new Object();
-     setName(person);
-     console.log(person);*/
 
     function setName(obj){ // 可能是考题
         obj.name = 'yc';
-        obj = new Object();  // 函数执行后，函数内部的变量立即被销毁
+        obj = new Object();  // 函数执行后，函数内部的变量obj立即被销毁
         obj.name = 'ycXL';
     }
     var person = new Object();
