@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>10.1</title>
+    <title>10.1</title><!--
+    <link rel="stylesheet" type="text/css" href="10.1x.css">
+    <script type="text/javascript" src="10.1x.js"></script>-->
 </head>
 <body>
 
@@ -134,6 +136,26 @@
         fragment.appendChild(liNode);
     }
     myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
+
+    // 5.
+    function loadScript(){
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '//' + window.location.host + '/js-basic/10.1.js';
+        document.body.appendChild(script);
+
+    }
+
+    function loadLink(){
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '//' + window.location.host + '/js-basic/10.1.css';
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(link);
+    }
+    loadLink();
+    loadScript();
 </script>
 
 <script>
