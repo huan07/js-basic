@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10.1</title>
+</head>
+<body>
+
+<div id="myId" class="myClass classDefine">myId</div>
+<div class="myClass">myClass</div>
+<div class="myClass">myClass</div>
+
+
+<form action="">
+    <input type="radio" value="male" name="gender" /> Male
+    <input type="radio" checked="checked" value="female" name="gender" /> Female
+</form>
+<form action="">
+    <input type="radio" value="male" name="gender" /> Male
+    <input type="radio" checked="checked" value="female" name="gender" /> Female
+</form>
+
+
+<img src="https://www.baidu.com/img/bd_logo1.png" alt="百度图标" width="90">
+<img src="https://www.baidu.com/img/bd_logo1.png" alt="百度图标" width="90">
+
+
+<a href="http://www.baidu.com">跳转到百度首页</a>
+<a href="http://www.baidu.com">跳转到百度首页</a>
+
+<div id="myDiv" class="myClass" my_special_attr="hello" data-attr="data-value">getAttribute</div>
+
+
+<script>
+    console.log(window.document);
+
+    console.log(document.childNodes, document.firstChild, document.lastChild);
+
+    var html = document.documentElement;
+    var body = document.body;
+    console.log(html, body);
+    console.log(html === document.childNodes[0]);
+    console.log(html === document.firstChild);
+
+    var title = document.title;
+    console.log(title);
+    document.title = 'DOM';
+    console.log(document.title);
+
+    // 可访问的网页请求有关
+    console.log(document.URL, document.referrer);
+    console.log(document.domain); // 可以设置
+</script>
+
+<script>
+    var idEle = document.getElementById('myId');
+
+    var divEles = document.getElementsByTagName('div');
+    var allEles = document.getElementsByTagName('*');
+    console.log(idEle, divEles, allEles);
+
+    var radioNameEles = document.getElementsByName('gender');
+    console.log(radioNameEles);
+
+    console.log('=  =  =  =  =  =  =  =  =  =  =  =  ');
+    console.log(document.forms, document.getElementsByTagName('form'));
+    console.log(document.images, document.getElementsByTagName('img'));
+    console.log(document.links, document.getElementsByTagName('a'));
+</script>
+
+<script>
+    document.writeln("Hello World!");
+    document.writeln("Have a nice day!");
+    document.writeln("<strong>" + (new Date()).toString() + "</strong>")
+</script>
+
+<script>
+    console.log(idEle, idEle.id, idEle.className);
+    idEle.id = 'id';
+    idEle.className = 'className className2';
+    idEle.title = 'title';
+    idEle.lang = 'fr';
+    idEle.dir = 'rtl';
+</script>
+
+<script>
+    console.log('getAttribute,  setAttribute,  removeAttribute  ||  ||  ||');
+    var myDivEle = document.getElementById('myDiv');
+    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'));
+    console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
+
+    console.log('style,  onclick 两种获取方式有差异           ＝   to add');
+
+    myDivEle.setAttribute('id', 'id1');
+    myDivEle.setAttribute('class', 'class1');
+    myDivEle.setAttribute('dir', 'rtl');
+    myDivEle.removeAttribute('my_special_attr');
+
+    console.log(myDivEle.attributes);
+</script>
+
+<script>
+    // createElement,  appendChild,
+    var div = document.createElement('div');
+    div.id = 'idCreated';
+    div.className = 'classCreated';
+    document.body.appendChild(div);
+</script>
+
+</body>
+</html>
