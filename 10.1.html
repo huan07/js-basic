@@ -103,7 +103,7 @@
 </script>
 
 <script>
-    console.log('createElement,  appendChild,  =    =    =');
+    console.log('createElement,  appendChild  ||  ||  ||');
     var div = document.createElement('div');
     div.id = 'idCreated';
     div.className = 'classCreated';
@@ -133,15 +133,13 @@
         liNode.appendChild(textNode);
         fragment.appendChild(liNode);
     }
-    myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档删除
+    myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
 </script>
 
 <script>
     var myTextNode = myDivEle.firstChild;
     console.log(myTextNode, myTextNode.nodeType, myTextNode.nodeName);
     myDivEle.firstChild.nodeValue = 'getAttribute changed';
-
-
 </script>
 
 </body>
