@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<!-- 有一段注释测试 -->
+
 <div id="myId" class="myClass classDefine">myId</div>
 <div class="myClass">myClass</div>
 <div class="myClass">myClass</div>
@@ -30,6 +32,7 @@
 
 <div id="myDiv" class="myClass" my_special_attr="hello" data-attr="data-value">getAttribute</div>
 
+<ul id="myList"></ul>
 
 <script>
     console.log(window.document);
@@ -105,6 +108,40 @@
     div.id = 'idCreated';
     div.className = 'classCreated';
     document.body.appendChild(div);
+
+    // 2
+    var element = document.createElement('div');
+    element.className = 'classCreated';
+    var textNode = document.createTextNode('hello javascript');
+    element.appendChild(textNode);
+    document.body.appendChild(element);
+
+    // 3
+    var comment = document.createComment('创建注释节点');
+    document.body.appendChild(comment);
+
+    // 4.
+    var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
+    console.log(fragment.nodeType, fragment.nodeName, fragment.nodeValue);
+
+    var myList = document.getElementById('myList');
+    var liNode = null;
+    var textNode = null;
+    for (var i = 0; i <= 3; i++) {
+        liNode = document.createElement('li');
+        textNode = document.createTextNode('Item' + (i + 1));
+        liNode.appendChild(textNode);
+        fragment.appendChild(liNode);
+    }
+    myList.appendChild(fragment);
+</script>
+
+<script>
+    var myTextNode = myDivEle.firstChild;
+    console.log(myTextNode, myTextNode.nodeType, myTextNode.nodeName);
+    myDivEle.firstChild.nodeValue = 'getAttribute changed';
+
+
 </script>
 
 </body>
