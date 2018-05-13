@@ -90,7 +90,7 @@
 </script>
 
 <script>
-    console.log('getAttribute,  setAttribute,  removeAttribute  =  =  =  =  =  =  =  =  =  =  ');
+    console.log('getAttribute,  setAttribute,  removeAttribute,  attributes  =  =  =  =  =  =  =  =  =  =  ');
     var myDivEle = document.getElementById('myDiv');
     console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'), myDivEle.getAttribute('className'), 'class className浏览器的兼容');
     console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
@@ -102,7 +102,7 @@
     myDivEle.setAttribute('dir', 'rtl');
     myDivEle.removeAttribute('my_special_attr');
 
-    console.log(myDivEle.attributes);
+    console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
 </script>
 
 <script>
