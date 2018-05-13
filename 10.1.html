@@ -60,13 +60,15 @@
 
 <script>
     var idEle = document.getElementById('myId');
+
     var classEles = document.getElementsByClassName('myClass');
 
     var divEles = document.getElementsByTagName('div');
     var allEles = document.getElementsByTagName('*');
+
     var radioNameEles = document.getElementsByName('gender');
     console.log('getElementById  =  =  =  =  =  =  =  =  =  =  ');
-    console.log(idEle, classEles, divEles, allEles, radioNameEles);
+    console.log(idEle, classEles, divEles, radioNameEles, radioNameEles[0]);
 
     console.log(idEle, idEle.id, idEle.className, idEle.innerHTML, idEle.innerText);
     /*    idEle.id = 'id';
