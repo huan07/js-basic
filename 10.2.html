@@ -7,14 +7,35 @@
 </head>
 <body>
 <div id="box" title="标题" class="bbb">
-    <p>测试DIV1</p>
     <p>测试DIV2</p> <!-- 有的浏览器会将空白部分作为节点 处理兼容性方式 -->
-    <p>测试DIV3</p>
 </div>
 
 <script>
-    // 忽略空白字符
-    // 移除空白字符
+    // 忽略空白文本节点
+    function filterWhiteNode(node){
+        var ret = [];
+        for (var i = 0, len = node.length; i < len; i++) { // len提前取值适用于node是固定的数组长度
+            if (node[i].nodeType === 3 && /^\s+$/.test(node[i].nodeValue)) {
+                continue;
+            }
+            ret.push(node[i]);
+        }
+        return ret;
+    }
+    var boxEle = document.getElementById('box');
+    console.log(filterWhiteNode(boxEle.childNodes));
+
+
+    // 移除文本节点
+    function removeWhiteNode(node){ // 怪怪的方式
+        for (var i = 0; i < node.length; i++) {
+            if (node[i].nodeType === 3 && /^\s+$/.test(node[i].nodeValue)) {
+                node[i].parentNode.removeChild(node[i])
+            }
+        }
+        return node;
+    }
+    console.log(removeWhiteNode(boxEle.childNodes));
 
 </script>
 
