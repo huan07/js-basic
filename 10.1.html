@@ -15,6 +15,7 @@
 <body>
 
 <!-- 有一段注释测试 -->
+<div id="textNodeNodeType">test textNode nodeType</div>
 
 <div id="myId" class="myClass classDefine"><span>myId</span></div>
 <div class="myClass">myClass</div>
@@ -39,14 +40,18 @@
 
 <script>
     console.log(window.document, document);
-    console.log(document.nodeType, document.nodeName, document.nodeValue);
+    console.log('document节点', document.nodeType, document.nodeName, document.nodeValue);
 
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
 
     var html = document.documentElement;
     var body = document.body;
     console.log(html, body, body.ownerDocument);
-    console.log(body.nodeType, body.nodeName, body.nodeValue);
+    console.log('元素节点', body.nodeType, body.nodeName, body.nodeValue);
+
+    var ele = document.getElementById('textNodeNodeType');
+    var textNode = ele.childNodes[0];
+    console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
     console.log(title);
