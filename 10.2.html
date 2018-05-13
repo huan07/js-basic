@@ -7,11 +7,16 @@
 </head>
 <body>
 <div id="box" title="标题" class="bbb">
-    <p>测试DIV2</p> <!-- 有的浏览器会将空白部分作为节点 处理兼容性方式 -->
+    <p>测试box</p> <!-- 有的浏览器会将空白部分作为节点 处理兼容性方式 -->
+</div>
+
+<div id="box2" title="标题" class="bbb">
+    <p>测试box2</p> <!-- 有的浏览器会将空白部分作为节点 处理兼容性方式 -->
 </div>
 
 <script>
-    // 忽略空白文本节点
+    // 获取节点的浏览器兼容处理，有的浏览器将空白部分当作节点，有的不是
+    // 1. 忽略空白文本节点
     function filterWhiteNode(node){
         var ret = [];
         for (var i = 0, len = node.length; i < len; i++) { // len提前取值适用于node是固定的数组长度
@@ -23,19 +28,24 @@
         return ret;
     }
     var boxEle = document.getElementById('box');
+    console.log(boxEle.childNodes);
     console.log(filterWhiteNode(boxEle.childNodes));
 
 
-    // 移除文本节点
-    function removeWhiteNode(node){ // 怪怪的方式
-        for (var i = 0; i < node.length; i++) {
-            if (node[i].nodeType === 3 && /^\s+$/.test(node[i].nodeValue)) {
-                node[i].parentNode.removeChild(node[i])
+    // 2. 移除文本节点
+    function removeWhiteNode(node){
+        var childNodes = node.childNodes; // 怪怪的方式 childNodes的大小在变化的
+        for (var i = 0; i < childNodes.length; i++) {
+            var childI = childNodes[i];
+            if (childI.nodeType === 3 && /^\s+$/.test(childI.nodeValue)) {
+                childI.parentNode.removeChild(childI)
             }
         }
         return node;
     }
-    console.log(removeWhiteNode(boxEle.childNodes));
+    var box2Ele = document.getElementById('box2');
+    console.log(box2Ele.childNodes);
+    console.log(removeWhiteNode(box2Ele).lastChild.nodeName);
 
 </script>
 
