@@ -41,11 +41,11 @@
     console.log(window.document, document);
     console.log(document.nodeType, document.nodeName, document.nodeValue);
 
-    console.log(document.childNodes, document.firstChild, document.lastChild);
+    console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
 
     var html = document.documentElement;
     var body = document.body;
-    console.log(html, body);
+    console.log(html, body, body.ownerDocument);
     console.log(body.nodeType, body.nodeName, body.nodeValue);
 
     var title = document.title;
