@@ -38,15 +38,15 @@
 <ul id="myList"></ul>
 
 <script>
-    console.log(window.document);
+    console.log(window.document, document);
+    console.log(document.nodeType, document.nodeName, document.nodeValue);
 
     console.log(document.childNodes, document.firstChild, document.lastChild);
 
     var html = document.documentElement;
     var body = document.body;
     console.log(html, body);
-    console.log(html === document.childNodes[0]);
-    console.log(html === document.firstChild);
+    console.log(body.nodeType, body.nodeName, body.nodeValue);
 
     var title = document.title;
     console.log(title);
