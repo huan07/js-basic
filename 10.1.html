@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>10.1</title><!--
+    <title>10.1</title>
+    <!--
     <link rel="stylesheet" type="text/css" href="10.1x.css">
-    <script type="text/javascript" src="10.1x.js"></script>-->
+    <script type="text/javascript" src="10.1x.js"></script>
+    script标签要放在body的最后节点，
+    DOM操作必须等待html文档加载完毕，才可以获取
+
+    可以放在前面，调用onload事件
+    -->
 </head>
 <body>
 
@@ -14,7 +20,6 @@
 <div class="myClass">myClass</div>
 <div class="myClass">myClass</div>
 
-
 <form action="">
     <input type="radio" value="male" name="gender" /> Male
     <input type="radio" checked="checked" value="female" name="gender" /> Female
@@ -23,12 +28,8 @@
     <input type="radio" value="male" name="gender" /> Male
     <input type="radio" checked="checked" value="female" name="gender" /> Female
 </form>
-
-
 <img src="https://www.baidu.com/img/bd_logo1.png" alt="百度图标" width="90">
 <img src="https://www.baidu.com/img/bd_logo1.png" alt="百度图标" width="90">
-
-
 <a href="http://www.baidu.com">跳转到百度首页</a>
 <a href="http://www.baidu.com">跳转到百度首页</a>
 
@@ -59,15 +60,22 @@
 
 <script>
     var idEle = document.getElementById('myId');
+    var classEles = document.getElementsByClassName('myClass');
 
     var divEles = document.getElementsByTagName('div');
     var allEles = document.getElementsByTagName('*');
-    console.log(idEle, divEles, allEles);
-
     var radioNameEles = document.getElementsByName('gender');
-    console.log(radioNameEles);
+    console.log('getElementById  =  =  =  =  =  =  =  =  =  =  ');
+    console.log(idEle, classEles, divEles, allEles, radioNameEles);
 
-    console.log('=  =  =  =  =  =  =  =  =  =  =  =  ');
+    console.log(idEle, idEle.id, idEle.className);
+    idEle.id = 'id';
+    idEle.className = 'className className2';
+    idEle.title = 'title';
+    idEle.lang = 'fr';
+    idEle.dir = 'rtl';
+
+    console.log('document.forms  =  =  =  =  =  =  =  =  =  =  ');
     console.log(document.forms, document.getElementsByTagName('form'));
     console.log(document.images, document.getElementsByTagName('img'));
     console.log(document.links, document.getElementsByTagName('a'));
@@ -80,16 +88,7 @@
 </script>
 
 <script>
-    console.log(idEle, idEle.id, idEle.className);
-    idEle.id = 'id';
-    idEle.className = 'className className2';
-    idEle.title = 'title';
-    idEle.lang = 'fr';
-    idEle.dir = 'rtl';
-</script>
-
-<script>
-    console.log('getAttribute,  setAttribute,  removeAttribute  ||  ||  ||');
+    console.log('getAttribute,  setAttribute,  removeAttribute  =  =  =  =  =  =  =  =  =  =  ');
     var myDivEle = document.getElementById('myDiv');
     console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'));
     console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
@@ -105,7 +104,7 @@
 </script>
 
 <script>
-    console.log('createElement,  appendChild  ||  ||  ||');
+    console.log('createElement,  appendChild  =  =  =  =  =  =  =  =  =  =  ');
     var div = document.createElement('div');
     div.id = 'idCreated';
     div.className = 'classCreated';
