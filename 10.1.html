@@ -16,7 +16,7 @@
 
 <!-- 有一段注释测试 -->
 
-<div id="myId" class="myClass classDefine">myId</div>
+<div id="myId" class="myClass classDefine"><span>myId</span></div>
 <div class="myClass">myClass</div>
 <div class="myClass">myClass</div>
 
@@ -68,12 +68,12 @@
     console.log('getElementById  =  =  =  =  =  =  =  =  =  =  ');
     console.log(idEle, classEles, divEles, allEles, radioNameEles);
 
-    console.log(idEle, idEle.id, idEle.className);
-    idEle.id = 'id';
-    idEle.className = 'className className2';
-    idEle.title = 'title';
-    idEle.lang = 'fr';
-    idEle.dir = 'rtl';
+    console.log(idEle, idEle.id, idEle.className, idEle.innerHTML, idEle.innerText);
+    /*    idEle.id = 'id';
+     idEle.className = 'className className2';
+     idEle.title = 'title';
+     idEle.lang = 'fr';
+     idEle.dir = 'rtl';*/
 
     console.log('document.forms  =  =  =  =  =  =  =  =  =  =  ');
     console.log(document.forms, document.getElementsByTagName('form'));
