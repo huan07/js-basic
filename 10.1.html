@@ -111,7 +111,8 @@
 </script>
 
 <script>
-    console.log('createElement,  appendChild,  createDocumentFragment  =  =  =  =  =  =  =  =  =  =  ');
+    console.log('createElement,  createTextNode,  createComment,  createDocumentFragment  =  =  =  =  ');
+    console.log('appendChild, insertBefore  =  =  =  =  ');
     var div = document.createElement('div');
     div.id = 'idCreated';
     div.className = 'classCreated';
@@ -119,7 +120,7 @@
 
     // 2
     var element = document.createElement('div');
-    element.className = 'classCreated';
+    element.className = 'class2Created';
     var textNode = document.createTextNode('hello javascript');
     element.appendChild(textNode);
     document.body.appendChild(element);
@@ -127,8 +128,11 @@
     // 3
     var comment = document.createComment('创建注释节点');
     document.body.appendChild(comment);
+    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
+    var comment_2 = document.createComment('创建另一注释节点测试');
+    comment.parentNode.insertBefore(comment_2, comment);
 
-    // 4.
+    // 4. 练习 添加列表项
     var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
     console.log(fragment.nodeType, fragment.nodeName, fragment.nodeValue);
 
@@ -142,6 +146,9 @@
         fragment.appendChild(liNode);
     }
     myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
+
+    // 4.2 练习 反转列表项
+    
 
     // 5.
     function loadScript(){
