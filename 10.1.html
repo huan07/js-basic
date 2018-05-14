@@ -112,7 +112,7 @@
 
 <script>
     console.log('createElement,  createTextNode,  createComment,  createDocumentFragment  =  =  =  =  ');
-    console.log('appendChild, insertBefore  =  =  =  =  ');
+    console.log('appendChild, insertBefore  =  =  =  =  '); // 没有insertAfter;
     var div = document.createElement('div');
     div.id = 'idCreated';
     div.className = 'classCreated';
@@ -129,8 +129,11 @@
     var comment = document.createComment('创建注释节点');
     document.body.appendChild(comment);
     // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
-    var comment_2 = document.createComment('创建另一注释节点测试');
+    var comment_2 = document.createComment('创建另一注释节点测试 放在前面');
     comment.parentNode.insertBefore(comment_2, comment);
+    var comment_3 = document.createComment('创建另一注释节点测试 放在后面');
+    comment.parentNode.appendChild(comment_3);
+    /* 创建的DOM放到树后，只用到一次的  不能 comment.parentNode.appendChild(comment_2); */
 
     // 4. 练习 添加列表项！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
@@ -157,6 +160,7 @@
         // myList.removeChild(childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
     }
     myList.appendChild(fragment);
+    // myList.appendChild(fragment); 片段树是空的，
 
     // 5.
     function loadScript(){
