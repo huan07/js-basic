@@ -22,18 +22,18 @@
     var values = [1, 2, 99, 98];
     var max = Math.max.apply(Math, values);
 
-    var values2 = ['2', '15'];
+    var values2 = ['2', '15']; // 转换为数字再比较的
     var max2 = Math.max.apply(Math, values2);
     console.log('max  !!!!  ', max, max2);
 
-    var floatMum = 3.6;
-    console.log((Math.floor(floatMum)), Math.ceil(floatMum), Math.round(floatMum));
+    var floatMum = 3.66;
+    console.log('返回整数  !!!!  ', Math.floor(floatMum), Math.ceil(floatMum), Math.round(floatMum));
 
     var num = Math.floor(Math.random() * 10 + 1);
     /* 生成 1～10 的随机数 */
     var num2 = Math.floor(Math.random() * 8 + 2);
     /* 生成 2～9 的随机数 */
-    console.log(num, num2);
+    console.log('Math.random()  [0,1) ', Math.random(), num, num2);
 
     function selectFrom(lowerValue, upperValue){
         var choices = upperValue - lowerValue + 1;
