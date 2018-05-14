@@ -132,7 +132,7 @@
     var comment_2 = document.createComment('创建另一注释节点测试');
     comment.parentNode.insertBefore(comment_2, comment);
 
-    // 4. 练习 添加列表项
+    // 4. 练习 添加列表项！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
     console.log(fragment.nodeType, fragment.nodeName, fragment.nodeValue);
 
@@ -147,12 +147,12 @@
     }
     myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
 
-    // 4.2 练习 考题 反转列表项
+    // 4.2 练习 考题 反转列表项！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment();
     var myList = document.getElementById('myList');
 
     var childNodes = myList.childNodes;
-    for (var i = childNodes.length - 1; i >= 0; i++) {
+    for (var i = childNodes.length - 1; i >= 0; i--) {
         fragment.appendChild(childNodes[i]);
         // myList.removeChild(childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
     }
