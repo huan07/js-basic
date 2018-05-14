@@ -147,8 +147,16 @@
     }
     myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
 
-    // 4.2 练习 反转列表项
-    
+    // 4.2 练习 考题 反转列表项
+    var fragment = document.createDocumentFragment();
+    var myList = document.getElementById('myList');
+
+    var childNodes = myList.childNodes;
+    for (var i = childNodes.length - 1; i >= 0; i++) {
+        fragment.appendChild(childNodes[i]);
+        // myList.removeChild(childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
+    }
+    myList.appendChild(fragment);
 
     // 5.
     function loadScript(){
@@ -156,7 +164,6 @@
         script.type = 'text/javascript';
         script.src = '//' + window.location.host + '/js-basic/10.1.js';
         document.body.appendChild(script);
-
     }
 
     function loadLink(){
