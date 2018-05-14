@@ -17,7 +17,7 @@
 <!-- 有一段注释测试 -->
 <div id="textNodeNodeType">test textNode nodeType</div>
 
-<div id="myId" class="myClass classDefine"><span>myId</span></div>
+<div id="myId" class="myClass classDefine"><span>div span text</span></div>
 <div class="myClass">myClass</div>
 <div class="myClass">myClass</div>
 
@@ -112,11 +112,12 @@
 
 <script>
     console.log('createElement,  createTextNode,  createComment,  createDocumentFragment  =  =  =  =  ');
-    console.log('appendChild, insertBefore  =  =  =  =  '); // 没有insertAfter;
+    console.log('appendChild, insertBefore  =  =  =  =  ');
     var div = document.createElement('div');
     div.id = 'idCreated';
     div.className = 'classCreated';
     document.body.appendChild(div);
+
 
     // 2
     var element = document.createElement('div');
@@ -125,15 +126,32 @@
     element.appendChild(textNode);
     document.body.appendChild(element);
 
-    // 3
+
+    // 3. 没有insertAfter;
     var comment = document.createComment('创建注释节点');
     document.body.appendChild(comment);
     // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
-    var comment_2 = document.createComment('创建另一注释节点测试 放在前面');
+
+    var comment_2 = document.createComment('创建另一注释节点测试 insertBefore');
     comment.parentNode.insertBefore(comment_2, comment);
-    var comment_3 = document.createComment('创建另一注释节点测试 放在后面');
+
+    var comment_3 = document.createComment('创建另一注释节点测试 appendChild');
     comment.parentNode.appendChild(comment_3);
     /* 创建的DOM放到树后，只用到一次的  不能 comment.parentNode.appendChild(comment_2); */
+
+    // 3.2 自定义insertAfter, 在指定的两个元素之间添加；考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    function myInsertAfter(newEle, targetEle){
+        var parent = targetEle.parentNode;
+        if (parent.lastChild === targetEle) {
+            parent.appendChild(newEle);
+        } else {
+            parent.insertBefore(newEle, targetEle.nextSibling);
+        }
+    }
+    var xx = document.getElementById('myId');
+    var p = document.createElement('p');
+    myInsertAfter(p, xx);
+
 
     // 4. 练习 添加列表项！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
@@ -150,7 +168,7 @@
     }
     myList.appendChild(fragment); // 子节点转移到ul元素，并且从文档片段删除
 
-    // 4.2 练习 考题 反转列表项！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    // 4.2 练习 反转列表项  考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment();
     var myList = document.getElementById('myList');
 
@@ -161,6 +179,7 @@
     }
     myList.appendChild(fragment);
     // myList.appendChild(fragment); 片段树是空的，
+
 
     // 5.
     function loadScript(){
