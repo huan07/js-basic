@@ -43,7 +43,6 @@
     var strValue = 'hello world';
     console.log(strValue.length, strValue[1], strValue.charAt(1), strValue.charCodeAt(1));
 
-    var strValue = 'hello world';
     var concatResult = strValue.concat(' hello');
     console.log('concat !!!! ', concatResult);
     console.log(strValue);
@@ -51,7 +50,6 @@
     var concatResult = strValue.concat(' hello ', 'baidu');
     console.log('concat !!!! ', concatResult);
     console.log(strValue);
-
     console.log('相比较concat方法，用的较多的是 + !!!!', 'hello world' + ' hello');
 
     // substr方法第二个参数指的是个数，第一个参数都是指位置，第二个参数不是必须的，
@@ -62,7 +60,21 @@
 
     // indexOf lastIndexOf
     var strValue = 'hello world';
-    console.log(strValue.indexOf('o'), strValue.lastIndexOf('o'));
+    console.log('indexOf !!!! ', strValue.indexOf('o'), strValue.lastIndexOf('o'));
+
+    var str = 'heee';
+    var char = 'e';
+
+    function getCharIndexArr(str, char){
+        var charIndexArr = [];
+        var pos = str.indexOf(char);
+        for (; pos > -1;) {
+            charIndexArr.push(pos);
+            pos = str.indexOf(char, pos + 1);
+        }
+        return charIndexArr;
+    }
+    console.log('getCharIndexArr !!!! ', getCharIndexArr('here', 'e'));
 
 
     // match  search  replace  replace的第二个参数可以是函数 to add
