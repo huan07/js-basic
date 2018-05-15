@@ -8,8 +8,15 @@
 <script>
     var uri = "http://www.wrox.com/illegal value.html#start?&=";
     console.log('encodeURI  !!!!  ', encodeURI(uri), decodeURI(encodeURI(uri)));
-    console.log('encodeURIComponent  !!!!  ', encodeURIComponent(uri), decodeURIComponent(encodeURIComponent(uri)));
+    console.log('encodeURIComponent  编码的更加彻底 !!!!  ', encodeURIComponent(uri), decodeURIComponent(encodeURIComponent(uri)));
 
+    // eval() 解析字符串代码    字符串解析器的作用 没有返回值  定义的变量、函数不会被提升
+    'alert(100)';
+    eval('alert(100)');
+    alert(200);
+
+    // window对象扮演Global对象的角色
+    console.log(window.RegExp, window.Error, window.Array, window.Object, window);
 
     //
     var global = function(){
