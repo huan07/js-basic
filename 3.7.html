@@ -92,9 +92,8 @@
 
     // 练习题：arguments, apply  ！！！！！！！！！！！！！！！！！！！！！可以是考题
     function min(){
-        var len = arguments.length;
         var minNumber = arguments[0];
-        for (var i = 0; i < len; i++) {
+        for (var i = 0, len = arguments.length; i < len; i++) {
             var indexI = arguments[i];
             if (minNumber > indexI) {
                 minNumber = indexI;
