@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+<body>
+<ul id="id">
+    <li>Item 11</li>
+    <li>Item 22</li>
+    <li>Item 33</li>
+</ul>
+<script>
+    function reverseLiOrder(node){
+        var children = node.children; // children没有空文本节点，childNodes会有空文本节点  参照10.1
+        var fragment = document.createDocumentFragment();
+        for (var i = children.length - 1; i >= 0; i--) {
+            fragment.appendChild(children[i]);
+        }
+        node.appendChild(fragment);
+    }
+    reverseLiOrder(document.getElementById('id'));
+</script>
+
+</body>
+</html>

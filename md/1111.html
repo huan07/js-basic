@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+</head>
+<body>
+
+<div id="id"></div>
+<p></p>
+
+<div id="id2"></div>
+
+<script>
+    // 1.
+    // document对象获取节点：getElementById, getElementsByClassName, getElementsByTagName, getElementsByName(针对表单name),
+    // document对象创建元素节点，文本节点，注释节点，文档片段，createElement, createDocumentFragment
+    // element对象获取节点，获取的是它的后代元素：getElementsByClassName,getElementsByTagName,
+    // 追加新的子元素: appendChild,
+    // 在现有的子元素前追加新的子元素: insertBefore
+    // 自定义insertAfter
+    // element对象:parentNode, childNodes, firstChild, lastChild, previousSibling, nextSibling,
+
+    //2.
+    function myInsertAfter(targetEle, newEle){
+        var parentNode = targetEle.parentNode;
+        if (parentNode.lastChild === targetEle) {
+            parentNode.appendChild(newEle);
+        } else {
+            parentNode.insertBefore(newEle, targetEle.nextSibling);
+        }
+    }
+    var comment = document.createComment('测试insertAfter 有兄弟节点，在兄弟节点前insertBefore');
+    var comment2 = document.createComment('测试insertAfter 本身就是父节点的最后一个节点');
+    myInsertAfter(document.getElementById('id'), comment);
+    myInsertAfter(document.getElementById('id2'), comment2);
+</script>
+
+</body>
+</html>
