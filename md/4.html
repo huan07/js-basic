@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str = '78uiuu7';
+    // 逐位置查询字符，出现过的话就累加，没有出现过的话就计为1；
+
+    function getMaxNumChar(str){
+        if (str.length === 1) {
+            return str;
+        }
+
+        var charNumObj = {};
+        for (var i = 0, len = str.length; i < len; i++) {
+            var item = str.charAt(i);
+            if (charNumObj[item]) {
+                charNumObj[item] += 1;
+            } else {
+                charNumObj[item] = 1;
+            }
+        }
+
+        var maxChar = '';
+        var maxNum = 1;
+        for (var attr in charNumObj) {
+            if (charNumObj[attr] > maxNum) {
+                maxChar = attr;
+                maxNum = charNumObj[attr];
+            }
+        }
+        return maxChar;
+    }
+
+    var maxChar = getMaxNumChar(str);
+
+    console.log(maxChar);
+</script>
+
+</body>
+</html>
