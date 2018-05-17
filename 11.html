@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        button:focus {
+            background-color: red
+        }
+    </style>
+    <script>
+        alert(document.readyState);
+    </script>
+</head>
+<body>
+<div id="myDiv"></div>
+
+<p class="selected">outer p</p>
+<img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="270" height="129">
+
+<div id="myDiv2" class="bd user disabled">
+    <p class="selected">inner p</p>
+    <img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="370" height="229">
+</div>
+
+<button id="myButton">button focus test</button>
+
+<div id="myDiv3" data-appId="12345" data-appX="67890" data-myname="yh">data-</div>
+
+<div id="myDiv4"></div>
+<div id="myDiv5"></div>
+
+<script>
+    // querySelector, querySelectorAll
+    var body = document.querySelector('body');
+    var myDiv = document.querySelector('#myDiv');
+    var outerP = document.querySelector('.selected');
+    var outerImg = document.body.querySelector('img.button');
+    console.log(body, myDiv, outerP, outerImg);
+
+    var myDiv2 = document.querySelector('#myDiv2');
+    var innerP = myDiv2.querySelector('.selected');
+    var innerImg = myDiv2.querySelector('img.button');
+    console.log(myDiv2, innerP, innerImg);
+
+    var p = document.querySelector('.selected');
+    var img = document.querySelectorAll('img.button');
+    console.log(p, img);
+    console.log(document.getElementById('myDiv2').querySelectorAll('p'), document.querySelectorAll('#myDiv2 img'));
+</script>
+<script>
+    // classList
+    var myDiv2 = document.querySelector('#myDiv2');
+    var classNames = myDiv2.className.split(/\s+/); // 删除类名的某一项
+    var pos = 0;
+    for (var i = 0, len = classNames.length; i < len; i++) {
+        if ((classNames[i]) === 'disabled') {
+            pos = i;
+            break;
+        }
+    }
+    classNames.splice(pos, 1);
+    myDiv2.className = classNames.join(' ');
+</script>
+
+<script>
+    // activeElement
+    console.log(document.activeElement);
+    var myBtn = document.getElementById('myButton');
+    myBtn.focus();
+    console.log(document.activeElement === myBtn, document.hasFocus());
+    alert(document.activeElement.tagName);
+
+    alert(document.readyState);
+</script>
+
+<script>
+    console.log('document.compatMode  =  ', document.compatMode);
+
+    console.log(document.charset);
+    document.charset = 'UTF-16'; // 不管用
+    console.log(document.charset, document.defaultCharset, document.defaultCharset === document.charset);
+</script>
+<script>
+    // data-
+    var div = document.getElementById('myDiv3');
+    var appId = div.dataset.appId; // 不管用 取不到值
+    var appid = div.dataset.appid; // 取值的是data-appId; 在浏览器显示的是 data-小写 属性;
+    var x = div.dataset.appx;
+    var myname = div.dataset.myname;
+    console.log(appId, appid, x, myname);
+
+    /*div.dataset.appid = 'appid';
+     div.dataset.appname = 'appname';*/
+</script>
+
+<script>
+    // innerHTML
+    // outerHTML
+    var div = document.getElementById('myDiv4');
+    div.outerHTML = '<p>test outerHTML</p>';  // div整体被替换了
+
+    var div = document.getElementById('myDiv5');
+    var p = document.createElement('p');
+    var text = document.createTextNode('another way to accomplish');
+    p.appendChild(text);
+    div.parentNode.replaceChild(p, div);
+</script>
+</body>
+</html>
