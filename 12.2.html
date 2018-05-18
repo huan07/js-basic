@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="myDiv">测试元素的样式</div>
+<script>
+    // cssFloat / styleFloat
+    var myDiv = document.getElementById('myDiv');
+    myDiv.style.backgroundColor = 'red';
+
+    myDiv.style.width = '300px';
+    myDiv.style.height = '200px';
+
+    console.log(myDiv.style, myDiv.style.cssText);
+    myDiv.style.removeProperty('height');
+
+
+    //
+    var prop;
+    var value;
+    for (var i = 0, len = myDiv.style.length; i < len; i++) {
+        console.log(myDiv.style[i], myDiv.style.item(i));
+
+        prop = myDiv.style[i];
+        value = myDiv.style.getPropertyValue(prop);
+        console.log(prop + ' => ' + value);
+    }
+
+
+</script>
+
+</body>
+</html>
