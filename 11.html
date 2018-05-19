@@ -144,16 +144,6 @@
     div.parentNode.replaceChild(p, div);
 
 
-    var div = document.getElementById('myDiv6');
-    console.log('div.innerText = ', div.innerText);
-    document.getElementById('myDiv7').innerText = '测试 innerText 赋值 先前代后代元素整体被移除';
-
-
-    var div = document.getElementById('myDiv8');
-    console.log('div.outerText = ', div.outerText);
-    document.getElementById('myDiv9').outerText = '测试 outerText 赋值  整体包括本身标签都被替换，类似replace';
-</script>
-<script>
     // 内存与性能问题
     var myUl = document.getElementById('myUl');
     var liList = ['列表项1', '列表项2', '列表项3', '列表项4', '列表项5'];
@@ -162,6 +152,15 @@
         innerItems += '<li>' + liList[i] + '</li>';
     }
     myUl.innerHTML = innerItems;
+
+
+    var div = document.getElementById('myDiv6');
+    console.log('div.innerText = ', div.innerText);
+    document.getElementById('myDiv7').innerText = '测试 innerText 赋值 先前代后代元素整体被移除';
+
+    var div = document.getElementById('myDiv8');
+    console.log('div.outerText = ', div.outerText);
+    document.getElementById('myDiv9').outerText = '测试 outerText 赋值  整体包括本身标签都被替换，类似replace';
 </script>
 
 <script>
