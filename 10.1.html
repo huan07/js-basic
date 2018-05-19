@@ -116,15 +116,10 @@
 <script>
     console.log('createElement,  createTextNode,  createComment,  createDocumentFragment  =  =  =  =  ');
     console.log('appendChild, insertBefore, removeChild, replaceChild,  =  =  =  =  ');
-    var div = document.createElement('div');
-    div.id = 'idCreated';
-    div.className = 'classCreated';
-    document.body.appendChild(div);
-
-
     // 2
     var element = document.createElement('div');
-    element.className = 'class2Created';
+    element.id = 'idCreated';
+    element.className = 'classCreated';
     var textNode = document.createTextNode('hello javascript');
     element.appendChild(textNode);
     document.body.appendChild(element);
