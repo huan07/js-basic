@@ -34,9 +34,9 @@
 
     // 2. 移除文本节点
     function removeWhiteNode(node){
-        var childNodes = node.childNodes; // 怪怪的方式 childNodes的大小在变化的
-        for (var i = 0; i < childNodes.length; i++) {
-            var childI = childNodes[i];
+        var _childNodes = node.childNodes; // 怪怪的方式 childNodes的大小在变化的
+        for (var i = 0; i < _childNodes.length; i++) {
+            var childI = _childNodes[i];
             if (childI.nodeType === 3 && /^\s+$/.test(childI.nodeValue)) {
                 childI.parentNode.removeChild(childI)
             }
