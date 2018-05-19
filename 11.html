@@ -130,16 +130,17 @@
 </script>
 
 <script>
-    // innerHTML  outerHTML
+    // 高薪创建节点的方式：
+    // innerHTML 后代元素
+    // outerHTML 后代元素及本身
     // innerText 获取后代元素所有的文本  与textContent属性的跨浏览器兼容处理
     // outerText
     var div = document.getElementById('myDiv4');
-    div.outerHTML = '<p>test outerHTML</p>';  // div整体被替换了
+    div.outerHTML = '<p>test outer HTML</p>';  // div整体被替换了
 
     var div = document.getElementById('myDiv5');
     var p = document.createElement('p');
-    var text = document.createTextNode('another way to accomplish');
-    p.appendChild(text);
+    p.appendChild(document.createTextNode('another way to accomplish outer HTML'));
     div.parentNode.replaceChild(p, div);
 
 
