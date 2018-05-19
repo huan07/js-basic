@@ -130,10 +130,10 @@
     document.body.appendChild(comment);
     // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
 
-    var comment_2 = document.createComment('创建另一注释节点测试 insertBefore');
+    var comment_2 = document.createComment('创建另一注释节点测试 1');
     comment.parentNode.insertBefore(comment_2, comment);
 
-    var comment_3 = document.createComment('创建另一注释节点测试 appendChild');
+    var comment_3 = document.createComment('创建另一注释节点测试 2');
     comment.parentNode.appendChild(comment_3);
     /* 创建的DOM放到树后，只用到一次的  不能 comment.parentNode.appendChild(comment_2); */
 
