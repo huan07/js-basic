@@ -126,6 +126,7 @@
 
     // 3. 没有insertAfter;
     var comment = document.createComment('创建注释节点');
+    console.log('注释节点', comment.nodeType, comment.nodeName, comment.nodeValue);
     document.body.appendChild(comment);
     // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
 
