@@ -34,30 +34,29 @@
 <ul id="myUl" style="margin-top: 50px;"></ul>
 
 <div id="myDiv6">
-    <p>测试innerText取值</p>
+    <p>测试inner Text取值</p>
     <ul>
         <li>列表项1</li>
         <li>列表项2</li>
     </ul>
 </div>
 <div id="myDiv7">
-    <p>测试innerText赋值</p>
+    <p>测试inner Text赋值</p>
     <ul>
         <li>列表项1</li>
         <li>列表项2</li>
     </ul>
 </div>
 
-
 <div id="myDiv8">
-    <p>测试outerText取值</p>
+    <p>测试outer Text取值</p>
     <ul>
         <li>列表项11</li>
         <li>列表项22</li>
     </ul>
 </div>
 <div id="myDiv9">
-    <p>测试outerText赋值</p>
+    <p>测试outer Text赋值</p>
     <ul>
         <li>列表项11</li>
         <li>列表项22</li>
@@ -134,7 +133,7 @@
     // innerHTML 后代元素
     // outerHTML 后代元素及本身
     // innerText 获取后代元素所有的文本  与textContent属性的跨浏览器兼容处理
-    // outerText
+    // outerText 取值和innerText一样，赋值有差别
     var div = document.getElementById('myDiv4');
     div.outerHTML = '<p>test outer HTML</p>';  // div整体被替换了
 
@@ -156,11 +155,11 @@
 
     var div = document.getElementById('myDiv6');
     console.log('div.innerText = ', div.innerText);
-    document.getElementById('myDiv7').innerText = '测试 innerText 赋值 先前代后代元素整体被移除';
+    document.getElementById('myDiv7').innerText = '测试 inner Text 赋值 后代元素整体被移除';
 
     var div = document.getElementById('myDiv8');
     console.log('div.outerText = ', div.outerText);
-    document.getElementById('myDiv9').outerText = '测试 outerText 赋值  整体包括本身标签都被替换，类似replace';
+    document.getElementById('myDiv9').outerText = '测试 outer Text 赋值  后代元素及元素本身整体被移除';
 </script>
 
 <script>
