@@ -40,9 +40,8 @@
             if (childI.nodeType === 3 && /^\s+$/.test(childI.nodeValue)) {
                 childI.parentNode.removeChild(childI);
                 continue;
-            } else {
-                i++
             }
+            i++;
         }
         return node;
     }
