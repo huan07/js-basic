@@ -170,10 +170,10 @@
     var fragment = document.createDocumentFragment();
     var myList = document.getElementById('myList');
 
-    var childNodes = myList.childNodes;  // 参照md/10.html
-    for (var i = childNodes.length - 1; i >= 0; i--) {
-        fragment.appendChild(childNodes[i]);
-        // myList.removeChild(childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
+    var _childNodes = myList.childNodes;  // 参照md/10.html
+    for (var i = _childNodes.length - 1; i >= 0; i--) {
+        fragment.appendChild(_childNodes[i]);
+        // myList.removeChild(_childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
     }
     myList.appendChild(fragment);
     // myList.appendChild(fragment); 文档片段是空的，
