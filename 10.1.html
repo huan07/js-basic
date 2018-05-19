@@ -48,8 +48,8 @@
 
     var html = document.documentElement;
     var body = document.body;
-    console.log(html, body, body.ownerDocument);
-    console.log('元素节点', body.nodeType, body.nodeName, body.nodeValue);
+    console.log(html, html === document.lastChild, body, body.ownerDocument);
+    console.log('元素节点', html.nodeType, html.nodeName, html.nodeValue);
 
     var ele = document.getElementById('textNodeNodeType');
     var textNode = ele.childNodes[0];
