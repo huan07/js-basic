@@ -53,6 +53,7 @@
 
     var ele = document.getElementById('textNodeNodeType');
     var textNode = ele.childNodes[0];
+    console.log(ele.parentNode, ele.previousSibling, ele.nextSibling); // 空文本节点
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
