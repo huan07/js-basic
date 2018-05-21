@@ -72,7 +72,6 @@
     var alertFun = function(){
         alert('click DOM2级事件处理程序');
     };
-
     btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行 false 冒泡阶段 最大限度的兼容各种浏览器
     btn.addEventListener('click', function(){ // 事件 从上到下 执行
         alert('clicked again');
