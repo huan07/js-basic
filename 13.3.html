@@ -28,13 +28,13 @@
 <input type="button" value="click me3" id="btn3" />
 
 <script>
-    var btn2 = document.getElementById('btn2');
-    btn2.onclick = function(event){
+    var btn = document.getElementById('btn2');
+    btn.onclick = function(event){
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     };
 
-    var btn22 = document.getElementById('btn22');
-    btn22.addEventListener('click', function(event){
+    var btn = document.getElementById('btn22');
+    btn.addEventListener('click', function(event){
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     }, false);
 
@@ -44,7 +44,7 @@
     };
 
     // 一个函数处理多个事件时，type属性
-    var btn3 = document.getElementById('btn3');
+    var btn = document.getElementById('btn3');
     var handler = function(event){
         switch(event.type) {
             case 'click':
@@ -60,9 +60,9 @@
                 break;
         }
     };
-    btn3.onclick = handler;
-    btn3.onmouseover = handler;
-    btn3.onmouseout = handler;
+    btn.onclick = handler;
+    btn.onmouseover = handler;
+    btn.onmouseout = handler;
 </script>
 
 </body>
