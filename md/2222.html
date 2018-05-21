@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="事件处理程序，浏览器的兼容性处理方式" id="btn1">
+<script>
+    // 1.1 事件冒泡，事件捕获
+
+
+    // 1.2
+    var eventHandler = {
+        addHandler: function(eventEle, eventName, fun){
+            if (eventEle.addEventListener) {
+                eventEle.addEventListener(eventName, fun, false);
+            } else if (eventEle.attachEvent) {
+                eventEle.attachEvent('on' + eventName, fun);
+            } else {
+                eventEle['on' + eventName] = fun;
+            }
+        },
+        removeHandler: function(eventEle, eventName, fun){
+            if (eventEle.removeEventListener) {
+                eventEle.removeEventListener(eventName, fun, false);
+            } else if (eventEle.detachEvent) {
+                eventEle.detachEvent('on' + eventName, fun);
+            } else {
+                eventEle['on' + eventName] = null;
+            }
+        }
+    };
+    var btn = document.getElementById('btn1');
+    /*    eventHandler.addHandler(btn, 'click', function(){
+     alert('addHandler');
+     });
+     setTimeout(function(){
+     eventHandler.removeHandler(btn, 'click', function(){
+     alert('addHandler');
+     })
+     }, 2000); // 移除不了事件处理程序！！！！！*/
+
+    //
+    var handlerFun = function(){
+        alert('handler function');
+    };
+    eventHandler.addHandler(btn, 'click', handlerFun);
+    setTimeout(function(){
+        eventHandler.removeHandler(btn, 'click', handlerFun);
+    }, 5000);
+</script>
+
+</body>
+</html>
