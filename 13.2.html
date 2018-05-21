@@ -36,13 +36,13 @@
 
 
 <!-- DOM0级事件处理程序 -->
-<input type="button" value="click DOM0级事件处理程序" id="btn11" />
+<input type="button" value="click DOM0级事件处理程序" id="btnDOM0" />
 
 <!-- DOM2级事件处理程序 -->
-<input type="button" value="click DOM2级事件处理程序" id="btn12" />
+<input type="button" value="click DOM2级事件处理程序" id="btnDOM2" />
 
 <!-- IE事件处理程序 -->
-<input type="button" value="click IE事件处理程序" id="btn13" />
+<input type="button" value="click IE事件处理程序" id="btnIE" />
 
 <!-- 跨浏览器的处理程序 -->
 <input type="button" value="click btn14 跨浏览器的处理程序" id="btn14" />
@@ -56,31 +56,33 @@
 
 
 <script>
-    var btn = document.getElementById('btn11');
+    var btn = document.getElementById('btnDOM0');
     btn.onclick = function(){
         alert('click DOM0级事件处理程序');
         alert(this.id); // 在元素的作用域中运行 this引用当前元素 在冒泡阶段被处理
+        alert('this === window  ' + (this === window)); // false
+        alert('this === event.target  ' + (this === event.target)); // true
     };
 
     //  btn.onclick=null;
 </script>
 
 <script>
-    var btn = document.getElementById('btn12');
+    var btn = document.getElementById('btnDOM2');
     var alertFun = function(){
         alert('click DOM2级事件处理程序');
     };
     btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行 false 冒泡阶段 最大限度的兼容各种浏览器
-    btn.addEventListener('click', function(){ // 事件 从上到下 执行
-        alert('clicked again');
+    btn.addEventListener('click', function(event){ // 事件 从上到下 执行
         alert(this.id);
         alert('this === window  ' + (this === window)); // false
+        alert('this === event.target  ' + (this === event.target)); // true
     }, false);
     // btn.removeEventListener('click', alertFun, false);
 </script>
 
 <script>
-    var btn = document.getElementById('btn13');
+    var btn = document.getElementById('btnIE');
     var attchFun = function(){
         alert('click IE事件处理程序');
     };
