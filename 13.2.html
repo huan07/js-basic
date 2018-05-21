@@ -2,47 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body > * {
+            display: block;
+            margin: 0 0 20px 50px;
+        }
+    </style>
 </head>
 <body>
 
-<input type="button" value="click me" onclick="alert('Clicked')" /><br>
-<input type="button" value="click me2" onclick="showMessage()" /><br><br><br>
-
-
+<input type="button" value="click me" onclick="alert('Clicked')" />
+<input type="button" value="click me" onclick="showMessage()" />
+<input type="button" value="click me" onclick="xx()">
+<input type="button" value="click me" onclick="try{xx();}catch(ex){}">
 <!-- 局部变量event 事件对象 可以直接访问的-->
-<input type="button" value="click me3 event" onclick="alert(event)" /><br>
-<input type="button" value="click me4 event.type" onclick="alert(event.type)" /><br>
-<input type="button" value="click me5 event.target 目标元素" onclick="alert(event.target)" /><br>
-<input type="button" value="click me5 event.target.value" onclick="alert(event.target.value)" /><br><br><br>
-
-
+<input type="button" value="click me3 event" onclick="alert(event)" />
+<input type="button" value="click me4 event.type" onclick="alert(event.type)" />
+<input type="button" value="click me5 event.target 目标元素" onclick="alert(event.target)" />
+<input type="button" value="click me5 event.target.value" onclick="alert(event.target.value)" />
 <!-- this 事件的目标元素-->
-<input type="button" value="click me6 this 目标元素" onclick="alert(this)" /><br>
-<input type="button" value="click me7 this.value" onclick="alert(this.value)" /><br><br><br>
+<input type="button" value="click me6 this 目标元素" onclick="alert(this)" />
+<input type="button" value="click me7 this.value" onclick="alert(this.value)" />
 
 
-<input type="button" value="click me9" id="btn9" /><br>
-<input type="button" value="click me10" id="btn10" /><br><br><br>
+<input type="button" value="click me9" id="btn9" />
+<input type="button" value="click me10" id="btn10" /><br><br>
 
 <!-- 动态创建函数 with扩展作用域 to add-->
 
 
 <!-- DOM0级事件处理程序 -->
-<input type="button" value="click btn11 DOM0级事件处理程序" id="btn11" /><br>
+<input type="button" value="click DOM0级事件处理程序" id="btn11" />
 
 <!-- DOM2级事件处理程序 -->
-<input type="button" value="click btn12 DOM2级事件处理程序" id="btn12" /><br>
+<input type="button" value="click DOM2级事件处理程序" id="btn12" />
 
 <!-- IE事件处理程序 -->
-<input type="button" value="click btn13 IE事件处理程序" id="btn13" /><br>
+<input type="button" value="click btn13 IE事件处理程序" id="btn13" />
 
 <!-- 跨浏览器的处理程序 -->
-<input type="button" value="click btn14 跨浏览器的处理程序" id="btn14" /><br><br><br>
+<input type="button" value="click btn14 跨浏览器的处理程序" id="btn14" />
 
 
 <script type="text/javascript">
-    function showMessage() {
+    function showMessage(){
         alert("hello baidu");
     }
 </script>
@@ -50,9 +59,9 @@
 
 <script>
     var btn = document.getElementById('btn11');
-    btn.onclick = function() {
-        alert('click btn11 DOM0级事件处理程序');
-        alert(this.id); // 在元素的作用域中运行 在冒泡阶段被处理
+    btn.onclick = function(){
+        alert('click DOM0级事件处理程序');
+        alert(this.id); // 在元素的作用域中运行 this引用当前元素 在冒泡阶段被处理
     };
 
     //  btn.onclick=null;
@@ -60,24 +69,25 @@
 
 <script>
     var btn = document.getElementById('btn12');
-    var alertFun = function() {
-        alert('click btn12 DOM2级事件处理程序');
+    var alertFun = function(){
+        alert('click DOM2级事件处理程序');
     };
 
-    btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行 冒泡阶段 最大限度的兼容各种浏览器
-    btn.addEventListener('click', function() { // 事件 从上到下 执行
+    btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行 false 冒泡阶段 最大限度的兼容各种浏览器
+    btn.addEventListener('click', function(){ // 事件 从上到下 执行
         alert('clicked again');
+        alert(this.id);
     }, false);
     // btn.removeEventListener('click', alertFun, false);
 </script>
 
 <script>
     var btn = document.getElementById('btn13');
-    var attchFun = function() {
+    var attchFun = function(){
         alert('click btn13 IE事件处理程序');
     };
     btn.attachEvent('onclick', attchFun); // 在全局作用域执行 只支持事件冒泡
-    btn.attachEvent('onclick', function() { // 事件 从下到上 执行
+    btn.attachEvent('onclick', function(){ // 事件 从下到上 执行
         alert('clicked again');
         alert(this === window);
     });
@@ -86,7 +96,7 @@
 
 <script>
     var EventUtil = {
-        addHandler: function(element, type, handler) {
+        addHandler: function(element, type, handler){
             if (element.addEventListener) {
                 element.addEventListener(type, handler, false);
             } else if (element.attachEvent) {
@@ -95,7 +105,7 @@
                 element['on' + type] = handler;
             }
         },
-        removeHandler: function(element, type, handler) {
+        removeHandler: function(element, type, handler){
             if (element.removeEventListener) {
                 element.removeEventListener(type, handler, false);
             } else if (element.detachEvent) {
@@ -106,7 +116,7 @@
         }
     }
     var btn = document.getElementById('btn14');
-    var btnHandler = function() {
+    var btnHandler = function(){
         console.log('btn10Handler');
     };
     EventUtil.addHandler(btn, 'click', btnHandler);
