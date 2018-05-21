@@ -2,32 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body > * {
+            display: block;
+            margin: 0 0 20px 50px;
+        }
+    </style>
 </head>
 <body>
 
 <input type="button" value="click me" id="btn"
-       onclick="console.log(event,event.type,event.target,event.target.value)" /><br><br><br>
+       onclick="console.log(event,event.type,event.target,event.target.value)" />
 
 
 <!-- DOM0 DOM2的事件对象 -->
-<input type="button" value="click me2" id="btn2" /><br>
-<input type="button" value="click me2" id="btn22" /><br><br><br>
+<input type="button" value="click me2" id="btn2" />
+<input type="button" value="click me2" id="btn22" />
 
-<input type="button" value="click me3" id="btn3" /><br>
+<input type="button" value="click me3" id="btn3" />
 
 <script>
     var btn2 = document.getElementById('btn2');
-    btn2.onclick = function(event) {
+    btn2.onclick = function(event){
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     };
 
     var btn22 = document.getElementById('btn22');
-    btn22.addEventListener('click', function(event) {
+    btn22.addEventListener('click', function(event){
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     }, false);
 
-    document.body.onclick = function(event) { // 冒泡啦
+    document.body.onclick = function(event){ // 冒泡啦
         // console.log(event.target); // 按钮元素 点击的是按钮  事件的真正目标
         // console.log(this);
         // console.log(event.currentTarget);
@@ -35,7 +46,7 @@
 
     // 一个函数处理多个事件时，type属性
     var btn3 = document.getElementById('btn3');
-    var handler = function(event) {
+    var handler = function(event){
         switch(event.type) {
             case 'click':
                 alert('clicked');
@@ -53,8 +64,6 @@
     btn3.onclick = handler;
     btn3.onmouseover = handler;
     btn3.onmouseout = handler;
-
-
 </script>
 
 </body>
