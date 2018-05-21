@@ -22,10 +22,8 @@
 <input type="button" value="click me" onclick="xx()">
 <input type="button" value="click me" onclick="try{xx();}catch(ex){}">
 <!-- 局部变量event 事件对象 可以直接访问的-->
-<input type="button" value="click me3 event" onclick="alert(event)" />
-<input type="button" value="click me4 event.type" onclick="alert(event.type)" />
-<input type="button" value="click me5 event.target 目标元素" onclick="alert(event.target)" />
-<input type="button" value="click me5 event.target.value" onclick="alert(event.target.value)" />
+<input type="button" value="click me event" onclick="console.log(event,event.type,event.target,event.target.value)" />
+
 <!-- this 事件的目标元素-->
 <input type="button" value="click me6 this 目标元素" onclick="alert(this)" />
 <input type="button" value="click me7 this.value" onclick="alert(this.value)" />

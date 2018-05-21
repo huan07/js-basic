@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<input type="button" value="click me" id="btn"
+<input type="button" value="click me event" id="btn"
        onclick="console.log(event,event.type,event.target,event.target.value)" />
 
 
@@ -38,10 +38,9 @@
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     }, false);
 
-    document.body.onclick = function(event){ // 冒泡啦
-        // console.log(event.target); // 按钮元素 点击的是按钮  事件的真正目标
-        // console.log(this);
-        // console.log(event.currentTarget);
+    document.body.onclick = function(event){ // 冒泡啦 input=>body
+        console.log(event.target); // 按钮元素 点击的是按钮  事件的真正目标
+        console.log(this, this === event.currentTarget); // 事件处理程序是注册到document.body元素
     };
 
     // 一个函数处理多个事件时，type属性
