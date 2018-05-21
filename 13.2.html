@@ -44,7 +44,7 @@
 <input type="button" value="click DOM2级事件处理程序" id="btn12" />
 
 <!-- IE事件处理程序 -->
-<input type="button" value="click btn13 IE事件处理程序" id="btn13" />
+<input type="button" value="click IE事件处理程序" id="btn13" />
 
 <!-- 跨浏览器的处理程序 -->
 <input type="button" value="click btn14 跨浏览器的处理程序" id="btn14" />
@@ -77,6 +77,7 @@
     btn.addEventListener('click', function(){ // 事件 从上到下 执行
         alert('clicked again');
         alert(this.id);
+        alert('this === window  ' + (this === window)); // false
     }, false);
     // btn.removeEventListener('click', alertFun, false);
 </script>
@@ -84,12 +85,13 @@
 <script>
     var btn = document.getElementById('btn13');
     var attchFun = function(){
-        alert('click btn13 IE事件处理程序');
+        alert('click IE事件处理程序');
     };
-    btn.attachEvent('onclick', attchFun); // 在全局作用域执行 只支持事件冒泡
+    btn.attachEvent('onclick', attchFun); // 在全局作用域执行 只支持事件冒泡  btn.attachEvent undefined TypeError
     btn.attachEvent('onclick', function(){ // 事件 从下到上 执行
         alert('clicked again');
-        alert(this === window);
+        alert(this.id);
+        alert('this === window' + (this === window)); // true
     });
     // btn.detachEvent('onclick', attchFun);
 </script>
