@@ -27,6 +27,11 @@
 
 <input type="button" value="click me3" id="btn3" />
 
+<input type="button" value="click me event对象属性及方法" id="btn4">
+<a href="http://www.baidu.com" id="link">跳转到百度首页</a>
+<a href="http://www.baidu.com" id="link2">跳不到百度首页，阻止了默认行为</a>
+<a href="http://www.baidu.com" id="link3">跳不到百度首页，阻止了默认行为，并且停止了事件在DOM层的传播（冒泡，捕获）</a>
+
 <script>
     var btn = document.getElementById('btn2');
     btn.onclick = function(event){
@@ -63,6 +68,25 @@
     btn.onclick = handler;
     btn.onmouseover = handler;
     btn.onmouseout = handler;
+</script>
+
+<script>
+    var btn = document.getElementById('btn4');
+
+    var link = document.getElementById('link2');
+    link.onclick = function(event){
+        alert('event.cancelable  =  ' + event.cancelable); // 是否可以取消默认行为
+        event.preventDefault();
+    };
+
+    var link = document.getElementById('link3');
+    link.onclick = function(event){
+        alert('event.cancelable  =  ' + event.cancelable);
+        event.preventDefault();
+
+        alert('event.bubbles  =  ' + event.bubbles); // 是否冒泡
+        event.stopPropagation();
+    };
 </script>
 
 </body>
