@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<img src="https://www.baidu.com/img/bd_logo1.png" alt="" id="img" onload="alert('Image loaded.')">
+<img src="https://www.baidu.com/img/bd_logo1.png" alt="" id="img" onload="console.log('Image loaded.')">
 <img src="https://www.baidu.com/img/bd_logo1.png" alt="" id="img2" width="270">
 <script>
     // onload
@@ -29,11 +29,30 @@
     window.addEventListener('load', function(){
         var image = document.createElement('img');
         image.addEventListener('load', function(event){
-            alert(event.target.src);
+            console.log('创建 img元素  =  ', event.target.src);
         }, false);
         document.body.appendChild(image);
         image.src = 'https://www.baidu.com/img/bd_logo1.png';
         image.width = 360;
+    }, false);
+
+    window.addEventListener('load', function(){
+        var image = new Image(); // 无法添加到DOM树
+        image.addEventListener('load', function(event){
+            console.log('无法添加到DOM树  =  new Image() loaded');
+        }, false);
+        image.src = 'https://www.baidu.com/img/bd_logo1.png';
+        document.body.appendChild(image); // 这不添加的好好的 ？？？
+    }, false);
+
+    window.addEventListener('load', function(){
+        var script = document.createElement('script');
+        script.addEventListener('load', function(event){
+            console.log(event.target.src, event.target.type);
+        }, false);
+        script.type = 'text/javascript';
+        script.src = '//' + window.location.host + '/js-basic/10.1.js';
+        document.body.appendChild(script); // 添加到文档后才开始下载，和css一样
     }, false);
 </script>
 
