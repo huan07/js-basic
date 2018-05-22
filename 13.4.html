@@ -42,7 +42,7 @@
             console.log('无法添加到DOM树  =  new Image() loaded');
         }, false);
         image.src = 'https://www.baidu.com/img/bd_logo1.png';
-        document.body.appendChild(image); // 这不添加的好好的 ？？？
+        // document.body.appendChild(image); // 这不添加的好好的 ？？？
     }, false);
 
     window.addEventListener('load', function(){
@@ -53,6 +53,22 @@
         script.type = 'text/javascript';
         script.src = '//' + window.location.host + '/js-basic/10.1.js';
         document.body.appendChild(script); // 添加到文档后才开始下载，和css一样
+    }, false);
+</script>
+<script>
+    // unload  清除引用，避免内存泄露
+    // resize
+    window.addEventListener('resize', function(){
+        console.log('window resized'); // 少加大计算量的代码，频繁被执行，会导致浏览器反应变慢
+    }, false);
+
+    // scroll 发生在window对象，实际表示的是页面中元素的变化
+    window.addEventListener('scroll', function(){
+        if (document.compatMode === 'CSS1Compat') {
+            console.log(document.documentElement.scrollTop); // 少加大计算量的代码
+        } else {
+            console.log(document.body.scrollTop);
+        }
     }, false);
 </script>
 
