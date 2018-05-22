@@ -64,7 +64,7 @@
         alert('this === event.target  ' + (this === event.target)); // true
     };
 
-    //  btn.onclick=null;
+    //  btn.onclick = null;
 </script>
 
 <script>
@@ -115,13 +115,13 @@
                 element['on' + type] = null;
             }
         }
-    }
+    };
     var btn = document.getElementById('btn14');
     var btnHandler = function(){
-        console.log('btn10Handler');
+        console.log('btn14Handler');
     };
     EventUtil.addHandler(btn, 'click', btnHandler);
-    //EventUtil.removeHandler(btn10, 'click', btn10Handler);
+    //EventUtil.removeHandler(btn, 'click', btnHandler);
 </script>
 
 

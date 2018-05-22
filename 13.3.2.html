@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body > * {
+            display: block;
+            margin: 0 0 20px 50px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="click me btnDOM0" id="btnDOM0">
+<input type="button" value="click me btnIE" id="btnIE">
+
+<a href="http://www.baidu.com" id="link">跳转到百度首页</a>
+<a href="http://www.baidu.com" id="link2">跳转到百度首页 取消默认行为，取消事件传播</a>
+
+<script>
+    var btn = document.getElementById('btnDOM0');
+    btn.onclick = function(){
+        var event = window.event;
+        console.log(event, event.type, event.target, event.target.value);
+        console.log(event.srcElement === this);
+    };
+
+    var btn = document.getElementById('btnIE');
+    btn.attachEvent('onclick', function(event){
+        // also window.event
+        console.log(event, event.type, event.target, event.target.value);
+        console.log(event.srcElement === this);   // this=>window 在全局作用域执行的
+    });
+
+    var link = document.getElementById('link');
+    link.onclick = function(){
+        var event = window.event;
+        event.returnValue = false; // 取消事件的默认行为
+
+        event.cancelBubble = true;  // 取消事件冒泡
+    };
+</script>
+<script>
+    var EventUtil = {
+        getEvent: function(event){
+            return event ? event : window.event;
+        },
+        getTarget: function(event){
+            return event.target || event.srcElement;
+        },
+        preventDefault: function(event){
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+        },
+        stopPropagation: function(event){
+            if (event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+    };
+
+    var link = document.getElementById('link2');
+    link.onclick = function(event){
+        var e = EventUtil.getEvent(event);
+        console.log(EventUtil.getTarget(e));
+
+        EventUtil.preventDefault(e);
+        EventUtil.stopPropagation(e);
+    };
+
+    document.body.onclick = function(){
+        console.log('propagation to me');
+    }
+</script>
+</body>
+</html>
