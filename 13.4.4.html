@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="10.1.css">
+</head>
+<body>
+
+<input type="text" value="" id="input">
+
+<script>
+    // keydown
+    // keypress  键盘上的字符健
+    // keyup
+    var input = document.getElementById('input');
+    input.addEventListener('keydown', function(event){
+        console.log('keydown  =  ' + event.target.value);
+    }, false);
+
+    input.addEventListener('keypress', function(event){
+        console.log('keypress  =  ' + event.keyCode, event.charCode);
+    }, false);
+
+    input.addEventListener('keyup', function(event){
+        console.log('keyup  =  ' + event.target.value);
+    }, false);
+</script>
+
+</body>
+</html>
