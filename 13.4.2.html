@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body > * {
+            display: block;
+            margin: 0 0 20px 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="id">clientX pageX</div>
+
+<div id="id2">兼容处理pageX</div>
+
+<div id="id3">鼠标事件的屏幕坐标 screenX</div>
+
+<div id="mouseover">mouseover 获得光标的元素</div>
+<div id="mouseout">mouseout 失去光标的元素</div>
+<script>
+    // focus blur 不会冒泡
+
+</script>
+
+<script>
+    // mousedown mouseup click
+
+</script>
+
+<script>
+    //
+    var div = document.getElementById('id');
+    div.addEventListener('click', function(event){
+        var clientX = event.clientX; // 客户区坐标位置：不包括页面滚动的距离
+        var clientY = event.clientY;
+
+        var pageX = event.pageX;
+        var pageY = event.pageY; // 事件发生时在页面的位置 ie8不支持
+    }, false);
+
+    var div = document.getElementById('id2');
+    div.addEventListener('click', function(event){
+        var pageX = event.pageX;
+        var pageY = event.pageY;
+        if (pageX === undefined) {
+            pageX = event.clientX + document.documentElement.scrollLeft || document.body.scrollLeft;
+        }
+        if (pageY === undefined) {
+            pageY = event.clientY + document.documentElement.scrollTop || document.body.scrollTop
+        }
+        console.log(pageX, pageY);
+    }, false);
+</script>
+<script>
+    var div = document.getElementById('id3');
+    div.addEventListener('click', function(event){
+        var screenX = event.screenX;
+        var screenY = event.screenY;
+
+        var keys = [];
+        if (event.shiftKey) {
+            keys.push('shift');
+        }
+        if (event.ctrlKey) {
+            keys.push('ctrl');
+        }
+        if (event.altKey) {
+            keys.push('alt');
+        }
+        if (event.metaKey) {
+            keys.push('cmd');
+        }
+        console.log(keys);
+    }, false);
+</script>
+
+<script>
+    var divover = document.getElementById('mouseover');
+    var divout = document.getElementById('mouseout');
+    divover.addEventListener('mouseover', function(){
+        console.log('相关元素是失去光标的元素');
+    }, false);
+
+    divout.addEventListener('mouseout', function(){
+        console.log('相关元素是获得光标的元素');
+    }, false);
+</script>
+
+</body>
+</html>
