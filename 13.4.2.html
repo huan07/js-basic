@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
-<div id="id">clientX pageX</div>
+<div id="id">事件发生时，鼠标指针在视口的位置clientX pageX</div>
 
-<div id="id2">兼容处理pageX</div>
+<div id="id2">鼠标指针在页面的位置 兼容处理pageX</div>
 
 <div id="id3">鼠标事件的屏幕坐标 screenX</div>
 
@@ -68,18 +68,6 @@
             keys.push('cmd');
         }
         console.log(keys);
-    }, false);
-</script>
-
-<script>
-    var divover = document.getElementById('mouseover');
-    var divout = document.getElementById('mouseout');
-    divover.addEventListener('mouseover', function(){
-        console.log('相关元素是失去光标的元素');
-    }, false);
-
-    divout.addEventListener('mouseout', function(){
-        console.log('相关元素是获得光标的元素');
     }, false);
 </script>
 
