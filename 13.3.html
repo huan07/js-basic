@@ -23,7 +23,8 @@
 
 <script>
     var btn = document.getElementById('btnDOM0');
-    btn.onclick = function(event){
+    btn.onclick = function(event){ // event传入，方便获取的，浏览器会默认传递event ！！！！！！！！！！！！！！！！！！！！！！！！！！！
+        console.log(arguments, arguments.length);
         console.log(event, event.type, event.target.value, event.target, this, event.currentTarget);
     };
 

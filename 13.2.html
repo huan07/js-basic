@@ -7,20 +7,15 @@
 </head>
 <body>
 
-<input type="button" value="click me" onclick="alert('Clicked')" />
-<input type="button" value="click me" onclick="showMessage()" />
-<input type="button" value="click me" onclick="xx()">
-<input type="button" value="click me" onclick="try{xx();}catch(ex){}">
+<input type="button" value="click me" onclick="alert('Clicked')" /> <!-- 1.内联模型 -->
+<input type="button" value="click me2" onclick="showMessage()" />
+<input type="button" value="click me3" onclick="xx()">
+<input type="button" value="click me4" onclick="try{xx();}catch(ex){}">
 <!-- 局部变量event 事件对象 可以直接访问的-->
 <input type="button" value="click me event" onclick="console.log(event,event.type,event.target,event.target.value)" />
 
 <!-- this 事件的目标元素-->
-<input type="button" value="click me6 this 目标元素" onclick="alert(this)" />
-<input type="button" value="click me7 this.value" onclick="alert(this.value)" />
-
-
-<input type="button" value="click me9" id="btn9" />
-<input type="button" value="click me10" id="btn10" /><br><br>
+<input type="button" value="click me6 this 目标元素" onclick="console.log(this,this.value)" />
 
 <!-- 动态创建函数 with扩展作用域 to add-->
 
@@ -47,6 +42,7 @@
 
 <script>
     var btn = document.getElementById('btnDOM0');
+    /* 2.脚本模型 */
     btn.onclick = function(){
         alert('click DOM0级事件处理程序');
         alert(this.id); // 在元素的作用域中运行 this引用当前元素 在冒泡阶段被处理
