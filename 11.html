@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="S-UA-Compatible" content="IE=IEVersion">
     <title></title>
     <style>
         button:focus {
@@ -111,7 +110,7 @@
 </script>
 
 <script>
-    console.log('document.compatMode = ', document.compatMode, 'document.documentMode = ', document.documentMode,);
+    console.log('document.compatMode = ', document.compatMode);
 
     console.log(document.charset);
     document.charset = 'UTF-16'; // 不管用
@@ -134,7 +133,7 @@
     // innerHTML 后代元素
     // outerHTML 后代元素及本身
     // innerText 获取后代元素所有的文本  与textContent属性的跨浏览器兼容处理
-    // outerText 取值和innerText一样，赋值有差别
+    // outerText 取值和innerText一样，赋值有差别(替换掉了元素本身)
     var div = document.getElementById('myDiv4');
     div.outerHTML = '<p>test outer HTML</p>';  // div整体被替换了
 
@@ -167,9 +166,5 @@
     document.getElementById('myUl').scrollIntoView(); // ??? chrome浏览器并不支持
 </script>
 
-<script>
-    var containsFlag = document.documentElement.contains(document.body);
-    console.log('containsFlag', containsFlag);
-</script>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title></title>
+</head>
+<body>
+<script>
+    console.log('document.documentMode = ', document.documentMode); // undefined ? ? ? ?
+</script>
+
+<script>
+    // contains 是否是后代节点
+    var containsFlag = document.documentElement.contains(document.body);
+    console.log('containsFlag = ', containsFlag);
+</script>
+</body>
+</html>
