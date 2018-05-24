@@ -10,12 +10,11 @@
         }
     </style>
     <script>
-        alert(document.readyState);
+        console.log('document.readyState = ', document.readyState);
     </script>
 </head>
 <body>
 <div id="myDiv"></div>
-
 <p class="selected">outer p</p>
 <img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="270" height="129">
 
@@ -78,12 +77,12 @@
     console.log(myDiv2, innerP, innerImg);
 
     var p = document.querySelector('.selected');
-    var img = document.querySelectorAll('img.button');
-    console.log(p, img);
-    console.log(document.getElementById('myDiv2').querySelectorAll('p'), document.querySelectorAll('#myDiv2 img'));
+    var pAll = document.querySelectorAll('.selected');
+    console.log(p, pAll);
+    console.log(document.getElementById('myDiv2').querySelectorAll('p'), document.querySelectorAll('#myDiv2 p'));
 </script>
 <script>
-    // classList
+    // classList 仅firefox chrome支持
     var myDiv2 = document.querySelector('#myDiv2');
     var classNames = myDiv2.className.split(/\s+/); // 删除类名的某一项
     var pos = 0;
@@ -95,21 +94,24 @@
     }
     classNames.splice(pos, 1);
     myDiv2.className = classNames.join(' ');
+
+    var _classList = myDiv2.classList;
+    if (_classList.contains('bd')) {
+        _classList.add('bd2');
+    }
+    _classList.toggle('user2');
 </script>
 
 <script>
     // activeElement
-    console.log(document.activeElement);
+    console.log('document.activeElement = ', document.activeElement); // 文档刚刚加载完成 activeElement 是body元素
     var myBtn = document.getElementById('myButton');
     myBtn.focus();
     console.log(document.activeElement === myBtn, document.hasFocus());
-    alert(document.activeElement.tagName);
-
-    alert(document.readyState);
 </script>
 
 <script>
-    console.log('document.compatMode  =  ', document.compatMode, 'document.documentMode  =  ', document.documentMode,);
+    console.log('document.compatMode = ', document.compatMode, 'document.documentMode = ', document.documentMode,);
 
     console.log(document.charset);
     document.charset = 'UTF-16'; // 不管用
@@ -118,18 +120,17 @@
 <script>
     // data-
     var div = document.getElementById('myDiv3');
-    var appId = div.dataset.appId; // 不管用 取不到值
-    var appid = div.dataset.appid; // 取值的是data-appId; 在浏览器显示的是 data-小写 属性;
-    var x = div.dataset.appx;
-    var myname = div.dataset.myname;
-    console.log(appId, appid, x, myname);
-
-    /*div.dataset.appid = 'appid';
-     div.dataset.appname = 'appname';*/
+    var _dataset = div.dataset;
+    var appid = _dataset.appid;
+    var appId = _dataset.appId; // 取不到值，转换后映射到标签都是小写的形式
+    var appx = _dataset.appx;
+    var myname = _dataset.myname;
+    console.log(appid, appId, appx, myname);
+    // _dataset.appid = 1234554321;
 </script>
 
 <script>
-    // 高薪创建节点的方式：
+    // 高创建节点的方式：
     // innerHTML 后代元素
     // outerHTML 后代元素及本身
     // innerText 获取后代元素所有的文本  与textContent属性的跨浏览器兼容处理
