@@ -76,6 +76,7 @@
     btn.attachEvent('onclick', function(){ // 事件 从下到上 执行
         alert('clicked again');
         alert(this.id);
+        alert('this === btn' + (this === btn)); // false
         alert('this === window' + (this === window)); // true
     });
     // btn.detachEvent('onclick', attchFun);
