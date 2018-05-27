@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="10.1.css">
+    <style>
+        #myDiv {
+            width: 180px;
+        }
+    </style>
 </head>
 <body>
 <div id="myDiv">测试元素的样式</div>
 <script>
     // cssFloat / styleFloat
     var myDiv = document.getElementById('myDiv');
+    myDiv.style.cssFloat = 'right';
     myDiv.style.backgroundColor = 'red';
 
     myDiv.style.width = '300px';
@@ -29,7 +36,22 @@
         console.log(prop + ' => ' + value);
     }
 
+    var computedStyle = document.defaultView.getComputedStyle(myDiv, null);
+    console.log(computedStyle.width, computedStyle.height);
+</script>
 
+<script>
+    // 样式表
+    for (var i = 0, len = document.styleSheets.length; i < len; i++) {
+        var sheet = document.styleSheets[i];
+        console.log(i, sheet.rel, sheet.type, sheet.href, sheet.disabled);
+    }
+
+    function getStyleSheet(element){
+        return element.sheet || element.styleSheet;
+    }
+    console.log(getStyleSheet(document.getElementsByTagName('link')[0]).href);
+    console.log(getStyleSheet(document.getElementsByTagName('style')[0]).href);
 </script>
 
 </body>
