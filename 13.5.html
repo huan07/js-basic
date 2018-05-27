@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
+    <style>
+        .myLiClass {
+            color: blueviolet;
+        }
+    </style>
 </head>
 <body>
 <ul id="myUl">
@@ -13,14 +18,14 @@
 </ul>
 
 <script>
-    // 事件委托：利用事件冒泡，通过指定父元素的事件处理程序，管理同一类型的所有事件，减少函数数量，减少内存的占用，提高性能
+    // 事件委托：利用事件冒泡，通过指定父元素的事件处理程序，管理同一类型的所有事件
     var ul = document.getElementById('myUl');
     ul.addEventListener('click', function(event){
-        var li = event.target;
-        var id = li.id;
+        var target = event.target;
+        var id = target.id;
         switch(id) {
             case 'myLi':
-                li.className = 'myLiClass';
+                target.className = 'myLiClass';
                 break;
             case 'myLi2':
                 console.log('第二个列表项');
