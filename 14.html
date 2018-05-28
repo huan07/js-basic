@@ -50,7 +50,8 @@
         <option>Banana</option>
     </select>
 </form>
-<textarea id="myTextarea" rows="5" cols="50">HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。</textarea><br>
+<textarea id="myTextarea" rows="5" cols="50">各种前端内容。</textarea><br>
+<textarea id="myTextarea2" rows="5" cols="50">HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。</textarea><br>
 <script>
     // 提交表单
     var form = document.getElementById('form');
@@ -87,6 +88,7 @@
     // focus, blur, change =>input/textarea/select
     var input = document.getElementById('myInput');
     var textarea = document.getElementById('myTextarea');
+    var textarea2 = document.getElementById('myTextarea2');
     var select = document.getElementById('mySelect');
 
     input.addEventListener('focus', function(event){
@@ -112,10 +114,14 @@
     textarea.addEventListener('focus', function(event){
         var target = event.target;
         target.select();
+        //target.setSelectionRange(0,2);
     }, false);
 
-    textarea.addEventListener('select', function(event){
-        console.log('选中文本框的文本触发', event.target.value);
+    textarea2.addEventListener('select', function(event){
+        var target = event.target;
+        var value = target.value;
+        var selected = value.substring(target.selectionStart, target.selectionEnd);
+        console.log('选中文本框的文本触发', value, selected);
     }, false);
 </script>
 
