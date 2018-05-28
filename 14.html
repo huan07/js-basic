@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="10.1.css">
+</head>
+<body>
+<form id="form">
+    <input type="text" value="button submit">
+    <br>
+
+    <ul>
+        <li><input type="radio" name="colors" value="red">red</li>
+        <li><input type="radio" name="colors" value="blue">blue</li>
+        <li><input type="radio" name="colors" value="green">green</li>
+    </ul>
+    <br>
+
+    <button type="submit" name="submitBtn">submit form test</button>
+    <button type="reset">reset form test</button>
+</form>
+
+<form id="form2">
+    <input type="text" value="not need button to submit">
+</form>
+
+<form id="form3">
+    <input type="text" value="input submit">
+    <input type="submit" value="submit form">
+    <input type="reset" value="reset form">
+</form>
+
+<form id="form4">
+    <input type="text" value="image submit">
+    <input type="image" src="https://www.baidu.com/img/bd_logo1.png">
+</form>
+
+<script>
+    // 提交表单
+    var form = document.getElementById('form');
+    form.addEventListener('submit', function(event){/* 包含表单按钮的情况下，才能触发form submit */
+        event.stopPropagation();
+        console.log('submit form');
+
+        var target = event.target;
+        var btn = target.elements['submitBtn'];
+        btn.disabled = true; // 不管用啊？？？要加上css控制，还是啥的
+    }, false);
+
+    form.addEventListener('reset', function(event){
+        event.stopPropagation();
+        console.log('reset form');
+    }, false);
+
+    var field1 = form.elements[0];
+    var fieldCount = form.elements.length;
+    field1.focus();
+    console.log(field1, fieldCount);
+
+    var colorsFields = form.elements['colors'];
+    console.log(colorsFields);
+
+    var form = document.getElementById('form2');
+    // form.submit(); 不停的闪屏？？？
+</script>
+
+<script>
+
+</script>
+
+</body>
+</html>
