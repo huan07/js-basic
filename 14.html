@@ -22,7 +22,7 @@
 
     <button type="submit" name="submitBtn">submit form test</button>
     <button type="reset">reset form test</button>
-    <button type="button">button only</button>
+    <button type="button">button only</button> <!-- 仅仅是按钮，但是可以有onclick事件 -->
 </form>
 
 <form id="form2">
@@ -40,6 +40,19 @@
     <input type="image" src="https://www.baidu.com/img/bd_logo1.png">
 </form>
 
+
+<form id="myForm">
+    <input type="text" id="myInput"><br>
+    <select id="mySelect">
+        <option>Apple</option>
+        <option>Orange</option>
+        <option>Pineapple</option>
+        <option>Banana</option>
+    </select>
+</form>
+<textarea id="myTextarea" rows="5" cols="50">
+HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。
+    </textarea><br>
 <script>
     // 提交表单
     var form = document.getElementById('form');
@@ -73,7 +86,28 @@
 </script>
 
 <script>
+    // focus, blur, change
+    var input = document.getElementById('myInput');
+    var select = document.getElementById('mySelect');
+    var textarea = document.getElementById('myTextarea');
 
+    input.addEventListener('focus', function(event){
+        var target = event.target;
+        target.style.backgroundColor = 'red';
+        target.style.color = 'white';
+    }, false);
+
+    input.addEventListener('blur', function(event){
+        var target = event.target;
+        target.style.backgroundColor = 'black';
+        target.style.color = 'white';
+    }, false);
+
+    input.addEventListener('change', function(event){
+        var target = event.target;
+        var value = target.value;
+        console.log(value);
+    }, false);
 </script>
 
 </body>
