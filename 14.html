@@ -9,7 +9,10 @@
 <form id="form">
     <input type="text" value="button submit">
     <br>
-
+    <input type="text" value="button submit">
+    <br>
+    <input type="text" value="button submit" autofocus>
+    <br>
     <ul>
         <li><input type="radio" name="colors" value="red">red</li>
         <li><input type="radio" name="colors" value="blue">blue</li>
@@ -56,11 +59,14 @@
 
     var field1 = form.elements[0];
     var fieldCount = form.elements.length;
-    field1.focus();
+    // field1.focus();
     console.log(field1, fieldCount);
 
     var colorsFields = form.elements['colors'];
     console.log(colorsFields);
+    window.addEventListener('load', function(){
+        // document.forms[0].elements[1].focus();
+    }, false);
 
     var form = document.getElementById('form2');
     // form.submit(); 不停的闪屏？？？
