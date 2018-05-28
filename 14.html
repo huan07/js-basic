@@ -42,7 +42,7 @@
 
 
 <form id="myForm">
-    <input type="text" id="myInput"><br>
+    <input type="text" id="myInput" value="my value"><br>
     <select id="mySelect">
         <option>Apple</option>
         <option>Orange</option>
@@ -50,9 +50,7 @@
         <option>Banana</option>
     </select>
 </form>
-<textarea id="myTextarea" rows="5" cols="50">
-HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。
-    </textarea><br>
+<textarea id="myTextarea" rows="5" cols="50">HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。</textarea><br>
 <script>
     // 提交表单
     var form = document.getElementById('form');
@@ -86,15 +84,16 @@ HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。
 </script>
 
 <script>
-    // focus, blur, change
+    // focus, blur, change =>input/textarea/select
     var input = document.getElementById('myInput');
-    var select = document.getElementById('mySelect');
     var textarea = document.getElementById('myTextarea');
+    var select = document.getElementById('mySelect');
 
     input.addEventListener('focus', function(event){
         var target = event.target;
         target.style.backgroundColor = 'red';
         target.style.color = 'white';
+        target.value = 'some new value';
     }, false);
 
     input.addEventListener('blur', function(event){
@@ -103,10 +102,20 @@ HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。
         target.style.color = 'white';
     }, false);
 
-    input.addEventListener('change', function(event){
+    input.addEventListener('change', function(event){ // input,textarea 失去焦点，并且value值改变
         var target = event.target;
         var value = target.value;
         console.log(value);
+    }, false);
+
+    // select =>input/textarea 获得焦点时选择所有文本
+    textarea.addEventListener('focus', function(event){
+        var target = event.target;
+        target.select();
+    }, false);
+
+    textarea.addEventListener('select', function(event){
+        console.log('选中文本框的文本触发', event.target.value);
     }, false);
 </script>
 
