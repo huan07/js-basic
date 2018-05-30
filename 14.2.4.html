@@ -7,7 +7,7 @@
 </head>
 <body>
 <form id="form">
-    <input type="text" value="" required><br>
+    text:<input type="text" name="text" value="text" required><br>
     <textarea rows="5" cols="50" required>各种前端内容。回车换行</textarea><br>
     <select required>
         <option>Apple</option>
@@ -16,8 +16,19 @@
         <option>Banana</option>
     </select><br>
 
-    <input type="email" name="email"><br>
-    <input type="url" name="url"><br>
+    email:<input type="email" name="email"><br>
+    url:<input type="url" name="url"><br><br>
+    number:<input type="number" name="number"><br>
+    range:<input type="range" name="range"><br>
+    datetime:<input type="datetime" name="datetime"><br>
+    datetime-local:<input type="datetime-local" name="datetime-local"><br>
+    date:<input type="date" name="date"><br>
+    month:<input type="month" name="month"><br>
+    week:<input type="week" name="week"><br>
+    time:<input type="time" name="time"><br><br>
+
+    pattern:<input type="text" pattern="\d+" name="pattern">
+
     <input type="submit" value="submit form">
     <input type="reset" value="reset form">
 </form>

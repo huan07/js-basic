@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<select name="location" id="location">
+    <option value="Sunnyvale CA">Sunnyvale</option>
+    <option value="Sunnyvale2 CA">Sunnyvale</option>
+    <option value="">China</option>
+    <option>Australia</option>
+</select><br><br>
+
+<select name="location2" id="location2" multiple>
+    <option value="Sunnyvale CA">Sunnyvale</option>
+    <option value="Sunnyvale2 CA">Sunnyvale2</option>
+    <option value="">China</option>
+    <option>Australia</option>
+</select><br><br>
+
+<select name="" id="select3"></select><br><br>
+
+<select name="" id="select4">
+    <option value="Sunnyvale CA">Sunnyvale</option>
+    <option value="Sunnyvale2 CA">Sunnyvale2</option>
+</select>
+<select name="" id="select5"></select><br><br>
+
+<script>
+    var selectEle = document.getElementById('location');
+    console.log(selectEle.multiple, selectEle.type);
+    console.log(selectEle.options, selectEle.options[1].value, selectEle.options[1].text);
+    console.log('selectedIndex = ', selectEle.selectedIndex);
+    selectEle.addEventListener('change', function(event){
+        console.log('selectedIndex = ', selectEle.selectedIndex);
+        var target = event.target;
+        var value = target.value;
+        console.log('selectedValue = ', value);
+    }, false);
+</script>
+
+<script>
+    function getSelectedOptions(selectEle){
+        var result = [];
+        var option = null;
+        for (var i = 0, len = selectEle.options.length; i < len; i++) {
+            option = selectEle.options[i];
+            if (option.selected) {
+                result.push(option);
+            }
+        }
+        return result;
+    }
+
+    var selectEle = document.getElementById('location2');
+    var selectedOption = getSelectedOptions(selectEle);
+    console.log('selectedOption = ', selectedOption);
+    selectEle.addEventListener('change', function(event){
+        var selectedOption = getSelectedOptions(event.target);
+        console.log('selectedOption = ', selectedOption);
+    }, false);
+</script>
+
+<script>
+    var selectEle = document.getElementById('select3');
+
+    var newOption = new Option('optionText', 'optionValue');
+    selectEle.add(newOption, undefined);
+
+
+    var newOption2 = new Option('optionText2', 'optionValue2');
+    selectEle.add(newOption2, newOption);
+
+    var newOption3 = new Option('optionText3', 'optionValue3');
+    selectEle.add(newOption3, newOption2);
+
+    var newOption4 = new Option('optionText4', 'optionValue4');
+    selectEle.add(newOption4, newOption3);
+
+    var option = document.createElement('option');
+    option.appendChild(document.createTextNode('optionText DOM'));
+    option.setAttribute('value', 'optionValue DOM');
+    selectEle.appendChild(option);
+</script>
+
+<script>
+    var selectFromEle = document.getElementById('select4');
+    var selectToEle = document.getElementById('select5');
+    selectToEle.appendChild(selectFromEle.options[1]);
+</script>
+
+</body>
+</html>
