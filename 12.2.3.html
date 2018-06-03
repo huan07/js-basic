@@ -22,6 +22,15 @@
             top: 60px;
             left: 60px;
         }
+
+        .testToTOP {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+        }
     </style>
 </head>
 <body>
@@ -65,13 +74,27 @@
         }
     }
     console.log(getViewport());
+</script>
 
+<script>
     // 滚动大小
     // scrollWidth: 包含滚动内容的元素的大小
+    // scrollLeft: 读取，设置ele的滚动位置
 
+    // 文档的总宽度高度（在标准模式下，html元素是浏览器视口中滚动的元素）
+    var html = document.documentElement;
+    var docHeight = Math.max(html.scrollHeight, html.clientHeight);
+    var docWidth = Math.max(html.scrollWidth, html.clientWidth);
+    console.log(docHeight, docWidth);
 
-    // 元素大小 to add
+    // 将ele滚动到顶部
+    function scrollToTop(ele){
+        if (ele.scrollTop !== 0) {
+            ele.scrollTop = 0;
+        }
+    }
 
+    // 元素大小
 
 </script>
 
