@@ -1,0 +1,9 @@
+{
+    "code": 200,
+    "msg": {
+        "price": 0.0,
+        "originalPrice": 80.0,
+        "type": 0,
+        "originalType": 1
+    }
+}

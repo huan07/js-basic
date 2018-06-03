@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // Ajax
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  同一个域中相同的端口、协议的URL发送请求
+    xhr.send(null);
+    console.log(xhr);
+
+    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+        console.log(xhr.response, JSON.parse(xhr.response));
+    } else {
+        console.log('request was unsuccessful' + xhr.status)
+    }
+</script>
+
+<script>
+    // 异步请求：js继续执行不必等待响应
+
+    var xhr2 = new XMLHttpRequest();
+    xhr2.onreadystatechange = function(){
+        console.log(xhr2.readyState);
+        if (xhr2.readyState === 4) {
+            console.log(this, xhr2, this === xhr2); // ? ? ?
+
+            var myHeader = xhr2.getResponseHeader('MyHeader'); // 设置成功，然而并没有取到值
+            var allHeader = xhr2.getAllResponseHeaders();
+            console.log(myHeader, allHeader);
+            if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
+                console.log(xhr2.response, JSON.parse(xhr2.response));
+            } else {
+                console.log('request was unsuccessful' + xhr2.status)
+            }
+        }
+    };
+    xhr2.open('get', 'ajax2_info.json', true);
+    xhr2.setRequestHeader('Accept', 'application/json');
+    xhr2.setRequestHeader('Content-type', 'application/json');
+    xhr2.setRequestHeader('MyHeader', 'MyValue');
+    xhr2.send(null);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // JSON数据格式
+    // 不支持undefined
+    // JSON字符串类型值必须用双引号
+    // JSON对象的key必须用双引号，最后一个key-value不需要,
+    // stringify js对象序列化为JSON字符串，
+    // parse
+    var book = {
+        title: "Professional JavaScript",
+        authors: ["Nicholas C.Zakas"],
+        year: 2011
+    };
+    var jsonText = JSON.stringify(book); // value为函数，undefined会被忽略
+    console.log(book, jsonText, JSON.parse(jsonText));
+
+</script>
+
+</body>
+</html>
