@@ -32,6 +32,11 @@
     console.log('obj.toString()==', person4.toString());
     console.log('JSON.stringify(obj)', JSON.stringify(person4));
 
+    var keys = Object.keys(person4);
+    for (var i of keys) {
+        console.log('key=> ', i);
+    }
+
     // 访问对象属性：点表示法，[字符串]，[变量名]
     var person = {
         age: 31
