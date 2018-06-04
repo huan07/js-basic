@@ -47,18 +47,26 @@
     console.log(fn, fn.person);
 
 
-    // 考题   赋值操作符从右往左读取  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    // 考题1  赋值操作符从右往左读取  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     function fn2(){
         var x = y = 1;
     }
     fn2();
     // console.log(x,y); // 报错, 1;
+
+    // 考题2  函数声明提升  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    function foo(){
+        console.log('函数声明 前');
+    }
+
+    console.log(foo);
+    function foo(){ // 声明提升后，后面的函数覆盖前面的函数
+        console.log('函数声明 后');
+    }
 </script>
 
 <script>
-    /*
-     * typeof
-     */
+    // typeof
     console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
     console.log('Boolean', typeof true);
@@ -74,9 +82,7 @@
     console.log(typeof xx, typeof(xx), typeof 'xx');
 
 
-    /*
-     instanceof  对象是否是某个引用类型的实例
-     */
+    // instanceof  对象是否是某个引用类型的实例
     console.log('instanceof===============================>');
     console.log([] instanceof Array);
     console.log([] instanceof Object);
@@ -88,9 +94,7 @@
 </script>
 
 <script>
-    /*
-     Undefined
-     */
+    // Undefined
     console.log('Undefined===============================>');
     // 可以显式的设置为nudefined；或者不初始化变量的值就是undefined；
     var message = undefined;
@@ -106,9 +110,7 @@
 </script>
 
 <script>
-    /*
-     Null
-     */
+    // Null
     console.log('Null===========================>');
     // 定义的变量准备用于保存对象，初始化为null
 
@@ -117,9 +119,7 @@
 </script>
 
 <script>
-    /*
-     Boolean
-     */
+    // Boolean
     console.log('Boolean()====================> 所有类型的值都可以调用 转型函数');
     console.log('流控制语句（if语句）es会自动执行  Boolean()转换 ');
     console.log(Boolean('str'), Boolean(1), Boolean({ 1: 2, }), Boolean({}));
@@ -127,9 +127,7 @@
 </script>
 
 <script>
-    /*
-     Number
-     */
+    // Number
     var intNum = 55;
 
     var octalNum = 070;
@@ -159,17 +157,13 @@
     console.log('0.15+0.25===0.4', 0.15 + 0.25 === 0.4);
 
 
-    /*
-     Number数值范围
-     */
+    // Number数值范围
     console.log(Number.MIN_VALUE, Number.MAX_VALUE);
     console.log(isFinite(Number.MIN_VALUE), isFinite(Number.MIN_VALUE + Number.MIN_VALUE));
     console.log(isFinite(Number.MAX_VALUE), isFinite(Number.MAX_VALUE + Number.MAX_VALUE));
 
 
-    /*
-     NaN: Not a Number
-     */
+    // NaN: Not a Number
     console.log('返回NaN 不会导致代码停止执行', 2 / 0, 0 / 0, -2 / 0);
     console.log('取余', 5 % 3);
     console.log('除以，取商', 5 / 3);
@@ -180,12 +174,10 @@
     console.log('对象判断    ！！！！！！！！to add');
 
 
-    /*
-     数值转换
-     Number()：用于任何数据类型
-     parseInt()：针对字符串
-     parseFloat()：针对字符串
-     */
+    // 数值转换
+    // Number()：用于任何数据类型
+    // parseInt()：针对字符串
+    // parseFloat()：针对字符串
     console.log('Number()==========================>', Number(true), Number(false), Number(null), Number(undefined));
 
     console.log(Number('1'), Number('-1'));
@@ -218,9 +210,7 @@
 </script>
 
 <script>
-    /*
-     String 是不可变的
-     */
+    // String 是不可变的
     var str = 'string';
     console.log('String类型          ', str, str.length);
 
