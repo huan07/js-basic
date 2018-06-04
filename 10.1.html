@@ -203,5 +203,13 @@
     loadScript();
 </script>
 
+<script>
+    // cloneNode
+    var myList = document.getElementById('myList');
+    var deepList = myList.cloneNode(true);
+    var shallowList = myList.cloneNode();
+    console.log(deepList, shallowList);
+</script>
+
 </body>
 </html>
