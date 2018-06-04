@@ -15,7 +15,7 @@
         var message = "hi";
     }
     test(); // 执行完函数，函数内的变量会被立即销毁
-    // console.log(message); // 此处报错 message没有定义
+    // console.log(message); // 此处报错  js访问 没有定义的变量 会报错
 
 
     /*
@@ -47,11 +47,11 @@
     console.log(fn, fn.person);
 
 
-    // 考题   遍历赋值从右往左读取  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-    function fn(){
+    // 考题   赋值操作符从右往左读取  ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    function fn2(){
         var x = y = 1;
     }
-    fn();
+    fn2();
     // console.log(x,y); // 报错, 1;
 </script>
 
