@@ -37,7 +37,9 @@
 <a href="http://www.baidu.com">跳转到百度首页</a>
 <a href="http://www.baidu.com">跳转到百度首页</a>
 
-<div id="myDiv" class="myClass" my_special_attr="my_special_value" data-attr="data-value">getAttribute</div>
+<div id="myDiv" class="myClass" my_special_attr="my_special_value" data-attr="data-value" style="background-color: red;"
+     onclick="console.log(event.type)">getAttribute
+</div>
 
 <ul id="myList"></ul>
 
@@ -96,10 +98,12 @@
 <script>
     console.log('getAttribute,  setAttribute,  removeAttribute,  attributes  =  =  =  =  =  =  =  =  =  =  ');
     var myDivEle = document.getElementById('myDiv');
-    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'), myDivEle.getAttribute('className'), 'class className浏览器的兼容');
+    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'), myDivEle.getAttribute('className'));
     console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
 
-    console.log('style,  onclick 两种获取方式、设置属性方式有差异           ＝   to add  =  =  =  =  =  =  =  =  =  =  兼容性');
+    console.log('特殊的特性');
+    console.log(myDivEle.style, myDivEle.getAttribute('style'));
+    console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
 
     myDivEle.setAttribute('id', 'id1');
     myDivEle.setAttribute('class', 'class1');
