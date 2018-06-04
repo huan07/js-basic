@@ -18,7 +18,7 @@
 <body>
 
 <!-- 有一段注释测试 -->
-<div id="textNodeNodeType">test text Node node Type</div>
+<div id="textNodeNodeType">test</div>
 
 <div id="myId" class="myClass classDefine"><span>div span text</span></div>
 <div class="myClass">myClass</div>
@@ -55,6 +55,7 @@
     var textNode = ele.childNodes[0];
     console.log(ele.parentNode, ele.previousSibling, ele.nextSibling); // 空文本节点
     console.log(ele.nextElementSibling); // 忽略空文本节点
+    console.log(textNode.parentNode, textNode.previousSibling, textNode.nextSibling); // 唯一的子节点
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
@@ -175,7 +176,8 @@
     var _childNodes = myList.childNodes;  // 参照md/10.html
     for (var i = _childNodes.length - 1; i >= 0; i--) {
         fragment.appendChild(_childNodes[i]);
-        // myList.removeChild(_childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的 ？？？
+        // myList.removeChild(_childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的
+        // 是的，DOM节点不能同时出现在文档的多个位置上
     }
     myList.appendChild(fragment);
     // myList.appendChild(fragment); 文档片段是空的，
