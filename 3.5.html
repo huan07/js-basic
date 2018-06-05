@@ -7,13 +7,9 @@
 <body>
 
 <script>
-    /*
-     js操作符能够适用于String, Number,Boolean,Object(调用对象的valueOf() 或 toString()类型 )
-     */
+    // js操作符能够适用于String, Number,Boolean,Object(调用对象的valueOf() 或 toString()类型 )
 
-    /*
-     ++ --
-     */
+    // ++ --
     var age = 20;
     var beforeAppend = ++age;
     console.log('++ ', beforeAppend, age);
@@ -26,26 +22,47 @@
     console.log('规则 to add ');
 
 
-    /*
-     + - 非数值运算，自动调用Number()转型函数，
-     */
+    // + - 非数值运算，自动调用Number()转型函数，
 
 
     // 位操作符 to add
 
 
-    // !  !! 可以模拟 Boolean()
-    // && 短路操作符 第一个操作数是true, 才回去执行第二个操作符
-    // || 短路操作符 可以用来避免为变量赋值null, undefined
+    // !  先将操作数转换为布尔值，再算逻辑值；  !! 可以模拟 Boolean()
+
+    // && 有一个操作数不是布尔值的规则
+    console.log({} && '第一个操作数是对象，返回第二个操作数');
+
+    console.log(3 && { name: 'who' });
+    console.log(0 && { name: 'who' });
+
+    console.log({} && { age: 31 });
+
+    console.log(true && NaN, true && undefined, true && null);
+    console.log(false && NaN, false && undefined, false && null);
+
+    // && 短路操作 第一个操作数是true, 才会对第二个操作数求值
     var found = true;
-    // var result = found && someUndefinedVariable;  // 左边操作数是true, 会执行 && 操作
+    // var result = found && someUndefinedVariable;
     // console.log(result); // error
 
     var found2 = false;
-    var result2 = found2 && someUndefinedVariable;  // 左边操作数是false, 不会执行 && 操作
-    console.log('&& 短路操作符', result2);
+    var result2 = found2 && someUndefinedVariable;
+    console.log('&& 短路操作', result2);
 
-    console.log('|| 短路操作符', [2, 3] || [], null || [], { name: 'yh' } || {}, null || {});
+    // || 有一个操作数不是布尔值的规则
+    console.log({} || '第一个操作数是对象，返回第一个操作数');
+
+    console.log(3 || { name: 'who' });
+    console.log(0 || { name: 'who' });
+
+    console.log({} || { age: 31 });
+
+    console.log(NaN || NaN, undefined || undefined, null || null);
+
+    // || 短路操作 第一个操作数是false, 才会对第二个操作数求值
+    // 可以用来避免为变量赋值null, undefined
+    console.log('|| 短路操作', [2, 3] || [], null || [], { name: 'yh' } || {}, null || {});
 </script>
 
 <script>
