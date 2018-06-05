@@ -121,7 +121,7 @@
 <script>
     // Boolean
     console.log('Boolean()====================> 所有类型的值都可以调用 转型函数');
-    console.log('流控制语句（if语句）es会自动执行  Boolean()转换 ');
+    console.log('流控制语句（if语句）会自动执行  Boolean()转换 ');
     console.log(Boolean('str'), Boolean(1), Boolean({ 1: 2, }), Boolean({}));
     console.log(Boolean(''), Boolean(0), Boolean(NaN), Boolean(null), Boolean(undefined));
 </script>
@@ -132,13 +132,13 @@
 
     var octalNum = 070;
     var octalNum2 = 079;
-    var octalNum3 = 09; //
+    var octalNum3 = 08; //
     console.log('字面值不符合八进制，前导零将被忽略', intNum, octalNum, octalNum2, octalNum3);
 
-    var hexNum = 0x3e;
-    var hexNum2 = 0x3f;
-    // var hexNum3 = 0x3g;  报错
-    console.log(hexNum, hexNum2);
+    var hexNum = 0xa;
+    var hexNum2 = 0xf;
+    // var hexNum3 = 0xg;
+    console.log('字面值不符合十六进制 报错', hexNum, hexNum2);
 
     var floatNum = 11.99;
     var floatNum2 = .99; // 不推荐
@@ -148,8 +148,8 @@
     var floatNum4 = 99.0;
     console.log('被转换为整数值的情形', floatNum3, floatNum4);
 
-    var floatNum5 = 3.3e6;
-    var floatNum6 = 3.3e-6;
+    var floatNum5 = 3.3e4;
+    var floatNum6 = 3.3e-7;
     var floatNum7 = 0.00000033;
     console.log('会将小数点后有6个零以上的浮点数值转换为以e表示法', floatNum5, floatNum6, floatNum7);
 
@@ -164,14 +164,14 @@
 
 
     // NaN: Not a Number
-    console.log('返回NaN 不会导致代码停止执行', 2 / 0, 0 / 0, -2 / 0);
+    console.log('返回NaN 不会导致代码停止执行！！！！', 2 / 0, 0 / 0, -2 / 0);
     console.log('取余', 5 % 3);
     console.log('除以，取商', 5 / 3);
 
     console.log(isNaN(NaN), isNaN('BLUE'));
-    console.log(isNaN(true), isNaN(10), isNaN('10')); // 会直接转换为数值，再判断
+    console.log('isNaN函数先将参数转换为数值，再判断', isNaN(true), isNaN('10'), isNaN(10));
 
-    console.log('对象判断    ！！！！！！！！to add');
+    console.log('isNaN适用于对象    ！！！！！！！！to add');
 
 
     // 数值转换
@@ -183,19 +183,21 @@
     console.log(Number('1'), Number('-1'));
     console.log(Number('1.9'), Number('.9'));
     console.log(Number('066'), Number('079'), Number('0079')); // 忽略前导零
-    console.log(Number('0xF'), Number('0x12')); // 转换为十进制
+    console.log(Number('0xF'), Number('0x11')); // 转换为十进制
     console.log(Number('')); // 0
     console.log(Number('2DD')); // 除了以上字符串类型，转换为NaN
 
     console.log('对象转换为数字    ！！！！！！！！to add');
-
-    console.log('parseInt()从左往右逐个解析字符，直到遇上非数字字符停止解析', parseInt('S'), parseInt(''));
-    console.log(parseInt('123blue'));
-    console.log(parseInt('07'), parseInt('071'), parseInt('072')); // es3, es5有区别（es5忽略前导零，当作十进制）
-    console.log(parseInt('0xF'), parseInt('0x12'));
+    
+    console.log('parseInt()第一个字符 不是数字字符也不是负号，返回 NaN', parseInt('S'), parseInt(''));
     console.log(parseInt('9'), parseInt('-9'));
+    console.log('parseInt()从左往右逐个解析字符，直到遇上非数字字符停止解析');
+    console.log(parseInt('123blue'));
+    console.log(parseInt('123.3'));
+    console.log(parseInt('07'), parseInt('071'), parseInt('072')); // es3, es5有区别（es5忽略前导零，当作十进制）
+    console.log(parseInt('0xF'), parseInt('0x11'));
 
-    console.log('parseInt()第二个参数区别 进制！！！！！！！！！！');
+    console.log('parseInt()第二个参数   消除es3, es5的分歧！！！！！！！！！！');
     console.log(parseInt('7', 8), parseInt('71', 8), parseInt('72', 8));
     console.log(parseInt('F', 16), parseInt('F'), parseInt('12', 16));
 
