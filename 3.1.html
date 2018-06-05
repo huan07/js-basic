@@ -191,7 +191,7 @@
 
     console.log('parseInt()第一个字符 不是数字字符也不是负号，返回 NaN', parseInt('S'), parseInt(''));
     console.log(parseInt('9'), parseInt('-9'));
-    console.log('parseInt()从左往右逐个解析字符，直到遇上非数字字符停止解析');
+    console.log('parseInt()从左往右逐个解析字符，遇上非数字字符停止解析');
     console.log(parseInt('123blue'));
     console.log(parseInt('123.3'));
     console.log(parseInt('07'), parseInt('071'), parseInt('072')); // es3, es5有区别（es5忽略前导零，当作十进制）
@@ -201,14 +201,15 @@
     console.log(parseInt('7', 8), parseInt('71', 8), parseInt('72', 8));
     console.log(parseInt('F', 16), parseInt('F'), parseInt('11', 16));
 
-    console.log('parseFloat() 逐个解析，遇到非字符、第二个无效的小数点为止  但是会忽略前导零，只解析十进制数', parseFloat('S'), parseFloat(''));
-    console.log(parseFloat('123blue'));
-    console.log(parseFloat('07'), parseFloat('071'), parseFloat('072')); // 忽略前导0
-    console.log(parseFloat('0xF'));
+    console.log(parseFloat('S'), parseFloat(''));
     console.log(parseFloat('9'), parseFloat('-9'));
+    console.log('parseFloat()逐个解析，遇到非数字字符、第二个无效的小数点停止解析  但是会始终忽略前导零，只解析十进制数');
+    console.log(parseFloat('123blue'));
     console.log(parseFloat('22.5'));
     console.log(parseFloat('22.56.8'));
     console.log(parseFloat('0022.5'));
+    console.log(parseFloat('07'), parseFloat('071'), parseFloat('072')); // 忽略前导0
+    console.log(parseFloat('0xF')); // 0
 </script>
 
 <script>
