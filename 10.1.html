@@ -129,14 +129,13 @@
     var comment = document.createComment('创建注释节点');
     console.log('注释节点', comment.nodeType, comment.nodeName, comment.nodeValue);
     document.body.appendChild(comment);
-    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样？？？
+    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样，是的 任何DOM节点不能同时出现在文档中的多个位置
 
     var comment_2 = document.createComment('创建另一注释节点测试 1');
     comment.parentNode.insertBefore(comment_2, comment);
 
     var comment_3 = document.createComment('创建另一注释节点测试 2');
     comment.parentNode.appendChild(comment_3);
-    /* 创建的DOM放到树后，只用到一次的  不能 comment.parentNode.appendChild(comment_2); */
 
     // 3.2 自定义insertAfter, 在指定的两个元素之间添加；考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     function myInsertAfter(newEle, targetEle){
