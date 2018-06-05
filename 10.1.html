@@ -206,6 +206,9 @@
     var deepList = myList.cloneNode(true);
     var shallowList = myList.cloneNode();
     console.log(deepList, shallowList);
+
+    var doctype = document.doctype;
+    console.log('文档类型节点', doctype.nodeType, doctype.nodeName, doctype.nodeValue);
 </script>
 
 </body>
