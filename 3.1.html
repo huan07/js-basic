@@ -188,7 +188,7 @@
     console.log(Number('2DD')); // 除了以上字符串类型，转换为NaN
 
     console.log('对象转换为数字    ！！！！！！！！to add');
-    
+
     console.log('parseInt()第一个字符 不是数字字符也不是负号，返回 NaN', parseInt('S'), parseInt(''));
     console.log(parseInt('9'), parseInt('-9'));
     console.log('parseInt()从左往右逐个解析字符，直到遇上非数字字符停止解析');
@@ -199,7 +199,7 @@
 
     console.log('parseInt()第二个参数   消除es3, es5的分歧！！！！！！！！！！');
     console.log(parseInt('7', 8), parseInt('71', 8), parseInt('72', 8));
-    console.log(parseInt('F', 16), parseInt('F'), parseInt('12', 16));
+    console.log(parseInt('F', 16), parseInt('F'), parseInt('11', 16));
 
     console.log('parseFloat() 逐个解析，遇到非字符、第二个无效的小数点为止  但是会忽略前导零，只解析十进制数', parseFloat('S'), parseFloat(''));
     console.log(parseFloat('123blue'));
