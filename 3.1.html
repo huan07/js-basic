@@ -120,7 +120,7 @@
 
 <script>
     // Boolean
-    console.log('Boolean()====================> 所有类型的值都可以调用 转型函数');
+    console.log('Boolean()====================> 任何数据类型的值 都可以调用 转型函数');
     console.log('流控制语句（if语句）会自动执行  Boolean()转换 ');
     console.log(Boolean('str'), Boolean(1), Boolean({ 1: 2, }), Boolean({}));
     console.log(Boolean(''), Boolean(0), Boolean(NaN), Boolean(null), Boolean(undefined));
@@ -186,6 +186,7 @@
     console.log(Number('0xF'), Number('0x11')); // 转换为十进制
     console.log(Number('')); // 0
     console.log(Number('2DD')); // 除了以上字符串类型，转换为NaN
+    console.log('+ 转换为数字', +'7888', typeof(+'7888'));
 
     console.log('对象转换为数字    ！！！！！！！！to add');
 
@@ -217,18 +218,18 @@
     var str = 'string';
     console.log('String类型          ', str, str.length);
 
-    console.log('toString()针对数值、布尔值、对象、字符串转换为字符串 第二个参数可以为进制数,');
-    console.log('String()针对任何数据类型的值转换为字符串');
+    console.log('toString()针对布尔值、字符串、数值、对象转换为字符串 第二个参数可以为进制数,');
+    console.log('String()针对 任何数据类型的值 转换为字符串');
     console.log('加号操作符也可以实现  + ""  ');
-    var age = 11;
     var flag = true;
+    var age = 11;
     var obj = {};
-    console.log(age.toString(), flag.toString(), obj.toString());
-    console.log(age.toString(10), age.toString(2), age.toString(8), age.toString(16));
+    console.log(flag.toString(), age.toString(), obj.toString());
+    console.log(age.toString(), age.toString(10), age.toString(2), age.toString(8), age.toString(16));
 
     console.log(String(undefined), String(null));
 
-    console.log(7888 + '', '8999' + '');
+    console.log('+ 转换为字符串', 7888 + '', '8999' + '', typeof(7888 + ''));
 </script>
 
 <script>
