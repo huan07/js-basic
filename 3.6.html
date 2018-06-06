@@ -156,6 +156,17 @@
             console.log('continue  ', 'm = ' + m, 'n = ' + n);
         }
     }
+
+    var num = 0;
+    for (var i = 0; i < 10; i++) {
+        for (j = 0; j < 10; j++) {
+            if (i == 5 && j == 5) {
+                break;
+            }
+            num++;
+        }
+    }
+    console.log(num);
 </script>
 
 </body>
