@@ -76,19 +76,14 @@
 
 
     // <  >  <=  >=  非数值操作数会执行自动类型转换，后台调用Number()
-    console.log('操作数都是字符串，逐个比较字符的字符编码值 '); // '2':50, '3':51, B:66, a:97,
+    console.log(1 < 2, 1 < '2', 0 < true, 0 < false, '数值比较');
+    console.log(1 < 'a', 1 >= NaN); // 'a'被转换成了NaN
+
     console.log('1~9', 'A~B', 'a~b');
-    console.log('1' < '2');
-    console.log('A' < 'a');
-    console.log('a' < 'b');
-    console.log(" '23' < '3' ", '23' < '3');
+    console.log('1' < '2', '10' < '2', '逐个字符编码比较');
 
-    console.log('一个操作数是数值，则将 另一个操作数 转换为数值，数值比较');
-    console.log(" '23' < 3 ", '23' < 3);
-    console.log(" 'a' < 3, NaN > 3 ", 'a' < 3, NaN > 3); // 'a'被转换成了NaN
-
-    console.log('一个操作数是布尔值，将 其 转换为数值，比较');
-    console.log(false < 0, false > 0, false == 0, false != 0, false === 0);
+    console.log('0' < true, false < true, '数值比较');
+    console.log(false < 0, false > 0, false == 0, false != 0, false === 0, '数值比较');
 
 
     // ==  !=  先转换操作数再比较，操作规则
