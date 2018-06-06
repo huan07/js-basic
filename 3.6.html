@@ -94,7 +94,7 @@
 
 
     // break 退出循环后  执行循环体之外的语句；
-    // continue 退出本次循环 继续下一次的循环；
+    // continue 退出本轮循环 继续下一轮的循环；
     var num = 0;
     for (var i = 1; i < 10; i++) {
         if (i % 5 === 0) {
@@ -144,7 +144,7 @@
             if (n === 3) {
                 break;
             }
-            console.log('break', n);
+            console.log('break  ', 'm = ' + m, 'n = ' + n);
         }
     }
 
@@ -153,7 +153,7 @@
             if (n === 3) {
                 continue;
             }
-            console.log('continue', n);
+            console.log('continue  ', 'm = ' + m, 'n = ' + n);
         }
     }
 </script>
