@@ -158,15 +158,27 @@
     }
 
     var num = 0;
-    for (var i = 0; i < 10; i++) {
-        for (j = 0; j < 10; j++) {
-            if (i == 5 && j == 5) {
+    for (var i = 0; i < 4; i++) {
+        for (j = 0; j < 4; j++) {
+            if (i == 2 && j == 2) {
                 break;
             }
             num++;
         }
     }
-    console.log(num);
+    console.log('break; 退出的是 最内层循环！！！！！！', num); // 14个
+
+    var num = 0;
+    outermost:
+        for (var i = 0; i < 4; i++) {
+            for (j = 0; j < 4; j++) {
+                if (i == 2 && j == 2) {
+                    break outermost;
+                }
+                num++;
+            }
+        }
+    console.log('break outermost; 退出的是 整个嵌套循环！！！！！', num); // 10个
 </script>
 
 </body>
