@@ -86,12 +86,16 @@
     console.log(false < 0, false > 0, false == 0, false != 0, false === 0, '数值比较');
 
 
-    // ==  !=  先转换操作数再比较，操作规则
+    // ==  !=  先转换操作数再比较
     // ===   !==  仅比较
     console.log('全等操作符 数据类型相同并且值相同');
 
-</script>
+    console.log(1 == true, 0 == false, '1' == true, '0' == false, '布尔值 转换为 数值，比较');
+    console.log(1 == '1', 0 == '0', '字符串 转换为 数值，比较');
 
+    console.log(1 === true, 0 === false, '1' === true, '0' === false, '全等比较');
+    console.log(1 === '1', 0 === '0');
+</script>
 
 </body>
 </html>
