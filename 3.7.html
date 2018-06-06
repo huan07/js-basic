@@ -16,7 +16,7 @@
     function person(){
         return 'xh';
     }
-    console.log(person(), new person());
+    console.log(person(), new person()); // new 之后 返回的是对象，而不是值 xh
 </script>
 
 <script>
@@ -36,7 +36,7 @@
 
 <script>
     function sum(num1, num2){
-        return num1 + num2; // 遇到return语句，返回   ；后面的语句不会执行
+        return num1 + num2; // 遇到return语句，返回值；后面的语句不会执行
     }
     var result = sum(8, 9);
     console.log(result, sum(88, 99));
@@ -85,8 +85,8 @@
         console.log(arguments[0] + num2);
     }
     doAdd2(22, 2);
-    doAdd2(33, 2);
-    doAdd2(33); // arguments.length是由传入的参数的个数决定的，
+    doAdd2(33, 3);
+    doAdd2(44); // arguments.length是由传入的参数的个数决定的，
 
     // 参数传递的都是值，不可能通过引用传递参数！！！！！！！！！！！！！！！！！！！！！！！！！！
 
