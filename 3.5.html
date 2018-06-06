@@ -80,7 +80,7 @@
     console.log(1 < 'a', 1 >= NaN); // 'a'被转换成了NaN
 
     console.log('1~9', 'A~B', 'a~b');
-    console.log('1' < '2', '10' < '2', '逐个字符编码比较');
+    console.log('1' < '2', '10' < '2', '逐个字符编码比较 针对只有两个操作数都是字符串的情况；其他情况都是 数值比较');
 
     console.log('0' < true, false < true, '数值比较');
     console.log(false < 0, false > 0, false == 0, false != 0, false === 0, '数值比较');
