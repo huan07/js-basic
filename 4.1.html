@@ -45,10 +45,12 @@
             if (objA[attr] !== objB[attr]) {
                 return false;
             }
-            return true;
         }
+        return true;
     }
-    console.log('判断两个{} 是否相等', equalObjs(peopleInfo, peopleInfo2), equalObjs(peopleInfo2, peopleInfo3));
+    console.log('判断两个{} 是否相等', equalObjs(peopleInfo, peopleInfo2));
+    console.log(equalObjs(peopleInfo, peopleInfo3));
+
 
     var colorArray = ['red', 'blue'];
     var colorArray2 = ['red', 'blue'];
@@ -62,16 +64,16 @@
             if (arrayA[i] !== arrayB[i]) {
                 return false;
             }
-            return true;
         }
+        return true;
     }
     console.log('判断两个[] 是否相等', equalArrays(colorArray, colorArray2));
 
 
     // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；！！！！！！！！！！！！！！！！！！！
     var personInfo = {
-        name: 'yh',
-        job: 'engineer'
+        name: 'yc',
+        job: 'woman'
     };
 
     function copyObj(obj){
@@ -82,7 +84,11 @@
         return newObj;
     }
     var personXInfo = copyObj(peopleInfo);
-    console.log(personXInfo == peopleInfo, personXInfo === peopleInfo);
+
+    var person2Info = personInfo;
+
+    console.log(personXInfo === peopleInfo);
+    console.log('比较的是指针', person2Info === personInfo);
 </script>
 
 </body>
