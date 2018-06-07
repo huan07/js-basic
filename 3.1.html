@@ -66,7 +66,7 @@
 </script>
 
 <script>
-    // typeof
+    // typeof 适用于检测基本类型
     console.log('typeof===============================>');
     console.log('Undefined', typeof undefined);
     console.log('Boolean', typeof true);
@@ -84,13 +84,9 @@
 
     // instanceof  对象是否是某个引用类型的实例
     console.log('instanceof===============================>');
-    console.log([] instanceof Array);
-    console.log([] instanceof Object);
-    console.log({} instanceof Object);
+    console.log([] instanceof Array, [] instanceof Object, {} instanceof Object);
 
-    console.log(null instanceof Object, 'Null  !!!!!!!! ');
-    console.log(false instanceof Boolean);
-    console.log(1 instanceof Number);
+    console.log(null instanceof Object, false instanceof Boolean, 1 instanceof Number);
 </script>
 
 <script>
