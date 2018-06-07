@@ -16,7 +16,7 @@
 
     function setName(obj){ // 可能是考题
         obj.name = 'yc';
-        obj = new Object();  // 函数执行后，函数内部的变量obj立即被销毁
+        obj = new Object();  // 函数命名参数obj是局部变量，函数执行后，obj立即被销毁
         obj.name = 'ycXL';
     }
     var person = new Object();
@@ -62,8 +62,8 @@
             if (arrayA[i] !== arrayB[i]) {
                 return false;
             }
+            return true;
         }
-        return true;
     }
     console.log('判断两个数组是否相等', equalArrays(colorArray, colorArray2));
 
@@ -82,7 +82,7 @@
         return newObj;
     }
     var personXInfo = copyObj(peopleInfo);
-    console.log(personXInfo === peopleInfo);
+    console.log(personXInfo == peopleInfo, personXInfo === peopleInfo);
 </script>
 
 </body>
