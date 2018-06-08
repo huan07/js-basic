@@ -9,8 +9,6 @@
 
 <script>
     // 在确保是数组的条件下， 调用api
-
-
     var colors = new Array();  // 1
 
     var colors2 = new Array(20); // 2
@@ -22,32 +20,37 @@
     var colors5 = ['yh', 30, 'baidu']; // 5 used
     console.log(colors, colors2, colors3, colors4, colors5);
 
-
     // 数组实例的valueOf(),  toString(), JSON.stringify(),
     console.log('arr.valueOf() => 数组本身', colors5.valueOf());
     console.log('arr.toString() => 逗号分隔的字符串', colors5.toString());
     console.log('JSON.stringify(arr)', JSON.stringify(colors5));
 
 
-    // 数组的length属性可读，可写；增删改；
+    // 数组项的读写
     var colors = ['red', 'blue', 'green'];
     console.log('读', colors[0]);
 
+    colors[1] = 'blue yellow';
+    console.log('改', colors);
+
     colors[5] = 'white';
+    console.log('增', colors);
+
+    // 数组的length属性增删
+    var colors = ['red2', 'blue2', 'green2', 'black2'];
+    colors.length = 5;
     console.log('增', colors);
 
     colors.length = 3;
     console.log('删', colors);
 
-    colors[1] = 'blue yellow';
-    console.log('改', colors);
-
+    // 数组末尾添加新项
+    var colors = ['red3', 'blue3', 'green3', 'black3'];
     colors[colors.length] = 'colorX';
     console.log('数组末尾 增', colors);
 
     colors[colors.length] = 'colorY';
     console.log('数组末尾 增', colors);
-
 </script>
 
 <script>
@@ -58,14 +61,14 @@
     // 2.全局执行环境 但是有浏览器兼容性
     console.log('Array.isArray(colors5)', Array.isArray(colors5));
 
-    // 3. to add？？？？？？？
-    console.log('["yh",30,"baidu"].join("||")', ["yh", 30, "baidu"].join("||"));
+    // 3.join
+    console.log(["yh", 30, "baidu"].join("||"));
 
-    console.log('["yh",30,"baidu"].join(",")', ["yh", 30, "baidu"].join(","));
-    console.log('["yh",30,"baidu"].join()', ["yh", 30, "baidu"].join());
-    console.log('["yh",30,"baidu"].join(undefined)', ["yh", 30, "baidu"].join(undefined));
+    console.log(["yh", 30, "baidu"].join(","));
+    console.log(["yh", 30, "baidu"].join());
+    console.log(["yh", 30, "baidu"].join(undefined));
 
-    console.log('[null,undefined,"baidu"].join(",")', [null, undefined, "baidu"].join(","));
+    console.log([null, undefined, "baidu"].join(","));
 </script>
 
 <script>
