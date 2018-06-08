@@ -254,13 +254,33 @@
     // reduce reduceRight   归并数组
     var values = [1, 2, 3, 4, 5];
     var sum = values.reduce(function(prev, cur, index, array){
+        // debugger;
         return prev + cur;
-    });
+    }); // cur 从第二行项开始的
 
     var sum2 = values.reduce(function(prev, cur, index, array){
+        // debugger;
         return prev + cur;
-    }, 10000);
+    }, 10000); // cur 从第一行项开始的
     console.log('reduce => ', sum, sum2);
+
+    // 题目1: 求最大值
+    var max = values.reduce(function(prev, cur, index, array){
+        return prev > cur ? prev : cur;
+    });
+    console.log(max);
+
+    // 题目2: reduce同时实现map,filter方法
+    var numbers = [10, 20, 30, 40];
+    var doubleOver50 = numbers.reduce(function(resultList, cur){
+        debugger;
+        cur = cur * 2;
+        if (cur > 50) {
+            resultList.push(cur);
+        }
+        return resultList;
+    }, []);
+    console.log(doubleOver50);
 </script>
 
 </body>
