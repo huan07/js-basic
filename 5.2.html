@@ -251,12 +251,16 @@
 </script>
 
 <script>
-    // reduce reduceRight =====缩小数组===============
+    // reduce reduceRight   =====缩小数组===============
     var values = [1, 2, 3, 4, 5];
     var sum = values.reduce(function(prev, cur, index, array){
         return prev + cur;
     });
-    console.log('reduce => ', sum);
+
+    var sum2 = values.reduce(function(prev, cur, index, array){
+        return prev + cur;
+    }, 10000);
+    console.log('reduce => ', sum, sum2);
 </script>
 
 </body>
