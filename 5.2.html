@@ -208,9 +208,9 @@
 </script>
 
 <script>
-    console.log('every some ===返回 boolean ===                     //对空数组不会执行===不会改变原始数组');
+    // every,some 返回boolean              对空数组不会执行，不会改变原始数组
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
-    var everyResult = numbers.every(function(item, index, array){ // 1.
+    var everyResult = numbers.every(function(item, index, array){
         return item > 3;
     });
     var someResult = numbers.some(function(item, index, array){
@@ -221,7 +221,7 @@
 </script>
 
 <script>
-    console.log('filter 返回true的项 组成的数组，map 返回 array      ===//对空数组不会执行===不会改变原始数组');
+    // filter 返回true的项 组成的数组，map 返回 array    对空数组不会执行，不会改变原始数组
     var filterResult = numbers.filter(function(item, index, array){ //
         return item > 3;
     });
@@ -232,12 +232,12 @@
     });
     console.log('mapResult => ', mapResult);
 
-    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能====     //对空数组不会执行==');
+    // forEach 执行某些操作，没有返回值 和 for 循环类型功能   对空数组不会执行，不会改变原始数组
 </script>
 
 <script>
-    console.log('find,    == 返回true的项 item/undefined           ===//对空数组不会执行===不会改变原始数组');
-    console.log('findIndex  == 返回true的项 index/-1               ===//对空数组不会执行===不会改变原始数组');
+    // find 返回true的项 item/undefined           对空数组不会执行，不会改变原始数组
+    // indIndex 返回true的项 index/-1               对空数组不会执行，不会改变原始数组
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
     var findResult = numbers.find(function(item, index, array){
         return item > 3;
@@ -251,7 +251,7 @@
 </script>
 
 <script>
-    console.log('reduce reduceRight =====缩小数组===============');
+    // reduce reduceRight =====缩小数组===============
     var values = [1, 2, 3, 4, 5];
     var sum = values.reduce(function(prev, cur, index, array){
         return prev + cur;
