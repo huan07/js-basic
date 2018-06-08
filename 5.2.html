@@ -8,7 +8,7 @@
 <body>
 
 <script>
-    // 在确保是数组的条件下， 调用api
+    // 在确保是数组的条件下，调用api；非数组调用会报错
     var colors = new Array();  // 1
 
     var colors2 = new Array(20); // 2
@@ -200,17 +200,15 @@
 <script>
     console.log('indexOf, lastIndexOf==========================================');
     var numbers = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4];
-    console.log('numbers.indexOf(1)', numbers.indexOf(1));
-    console.log('numbers.indexOf(1,4)', numbers.indexOf(1, 4));
-    console.log('numbers.lastIndexOf(3)', numbers.lastIndexOf(3));
-    console.log('numbers.lastIndexOf(3,4)', numbers.lastIndexOf(3, 4));
+    console.log(numbers.indexOf(1), numbers.indexOf(1, 4));
 
-    console.log('numbers.indexOf(11)', numbers.indexOf(11));
+    console.log(numbers.lastIndexOf(3), numbers.lastIndexOf(3, 4));
+
+    console.log(numbers.indexOf(11));
 </script>
 
 <script>
-    console.log('every some ===返回 boolean ===//对空数组不会执行===不会改变原始数组');
-
+    console.log('every some ===返回 boolean ===                     //对空数组不会执行===不会改变原始数组');
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
     var everyResult = numbers.every(function(item, index, array){ // 1.
         return item > 3;
@@ -218,34 +216,28 @@
     var someResult = numbers.some(function(item, index, array){
         return item > 3;
     });
-    console.log('everyResult', everyResult);
-    console.log('someResult', someResult);
-
-
-    var everyFun = function(item, index, array){ // 2.
-        return index > 3;
-    };
-    var everyResult_Fun = numbers.every(everyFun);
-
-    console.log('everyResult_Fun', everyResult_Fun);
+    console.log('everyResult => ', everyResult);
+    console.log('someResult => ', someResult);
 </script>
 
 <script>
-    console.log('filter 返回true的项组成的数组，map 返回 array ===//对空数组不会执行===不会改变原始数组');
+    console.log('filter 返回true的项 组成的数组，map 返回 array      ===//对空数组不会执行===不会改变原始数组');
     var filterResult = numbers.filter(function(item, index, array){ //
         return item > 3;
     });
-    console.log('filterResult', filterResult);
+    console.log('filterResult => ', filterResult);
 
     var mapResult = numbers.map(function(item, index, array){
-        return item * 2;
+        return item + 100;
     });
-    console.log('mapResult', mapResult);
+    console.log('mapResult => ', mapResult);
+
+    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能====     //对空数组不会执行==');
 </script>
 
 <script>
-    console.log('find,    == 返回true的项 item/undefined     ===//对空数组不会执行===不会改变原始数组');
-    console.log('findIndex  == 返回true的项 index/-1      ===//对空数组不会执行===不会改变原始数组');
+    console.log('find,    == 返回true的项 item/undefined           ===//对空数组不会执行===不会改变原始数组');
+    console.log('findIndex  == 返回true的项 index/-1               ===//对空数组不会执行===不会改变原始数组');
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
     var findResult = numbers.find(function(item, index, array){
         return item > 3;
@@ -256,11 +248,6 @@
         return item > 3;
     });
     console.log('findIndexResult', findIndexResult);
-</script>
-
-<script>
-    console.log('forEach ===执行某些操作，没有返回值 和 for 循环类型功能==== //对空数组不会执行==');
-
 </script>
 
 <script>
