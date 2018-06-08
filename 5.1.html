@@ -18,7 +18,7 @@
 
     var person3 = {  // 3 best   属性名会被自动转换为字符串
         name: 'person3',
-        5: 99
+        55: 99
     };
 
     var person4 = {  // 4
@@ -28,11 +28,11 @@
     console.log(person, person2, person3, person4);
 
     // 对象实例的valueOf(),  toString(), JSON.stringify(),
-    console.log('obj.valueOf()==', person4.valueOf());
-    console.log('obj.toString()==', person4.toString());
-    console.log('JSON.stringify(obj)', JSON.stringify(person4));
+    console.log('obj.valueOf()==', person3.valueOf());
+    console.log('obj.toString()==', person3.toString(), String(person3));
+    console.log('JSON.stringify(obj)', JSON.stringify(person3));
 
-    var keys = Object.keys(person4);
+    var keys = Object.keys(person3);
     for (var i of keys) {
         console.log('key=> ', i);
     }
