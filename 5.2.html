@@ -113,11 +113,11 @@
     console.log('// 数组 重排序 方法=============================');
     var values = [1, 10, 2, 20, 3, 30];
     values.reverse();
-    console.log('values.reverse() =', values);
+    console.log('values.reverse()反转数组项 => ', values);
 
-    var values2 = [0, 1, 5, 10, 15];
-    values2.sort();
-    console.log('values2.sort() = > 将数组的每一项调用toString,比较的是字符串对应的字符编码值', values2);
+    var values = [0, 1, 5, 10, 15];
+    values.sort();
+    console.log('values.sort()将数组的每一项调用toString,比较的是 逐个字符对应的字符编码值，默认升序排列', values);
 
 
     console.log('sort()接收 比较函数 作为参数=============================');
@@ -130,9 +130,9 @@
             return 0;
         }
     }
-    var values11 = [0, 1, 5, 10, 15];
-    values11.sort(compare11);
-    console.log('values11.sort(compare11) =', values11);
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare11);
+    console.log('values.sort(compare11) => ', values);
 
 
     function compare22(value1, value2){  // 降序
@@ -144,25 +144,25 @@
             return 0;
         }
     }
-    var values22 = [0, 1, 5, 10, 15];
-    values22.sort(compare22);
-    console.log('values22.sort(compare22) =', values22);
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare22);
+    console.log('values.sort(compare22) => ', values);
 
 
     function compare33(value1, value2){ // 升序 简易版 针对数值类型
         return value1 - value2;
     }
-    var values33 = [0, 1, 5, 10, 15];
-    values33.sort(compare33);
-    console.log('values33.sort(compare33) =', values33);
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare33);
+    console.log('values.sort(compare33) => ', values);
 
 
     function compare44(value1, value2){ // 降序 简易版 针对数值类型
         return value2 - value1;
     }
-    var values44 = [0, 1, 5, 10, 15];
-    values44.sort(compare44);
-    console.log('values44.sort(compare44) =', values44);
+    var values = [0, 1, 5, 10, 15];
+    values.sort(compare44);
+    console.log('values.sort(compare44) => ', values);
 </script>
 
 <script>
