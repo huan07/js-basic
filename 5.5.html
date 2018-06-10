@@ -7,8 +7,8 @@
 <body>
 
 <script>
-    console.log('每个 函数 都是Function类型的 实例，函数名 是一个指向函数对象的 指针（变量）');
-    console.log('函数是对象，函数名是指针');
+    // 每个 函数 都是Function类型的 实例，函数名 是一个指向函数对象的 指针（变量）
+    // 函数是对象，函数名是指针
 
     function sum(num1, num2){
         return num1 + num2;
@@ -24,15 +24,14 @@
     console.log(anotherSum(100, 200));
 </script>
 
-
 <script>
-    console.log('函数声明 函数表达式区别');
-    console.log('1:解析器', 'js引擎会将  函数声明  变量声明  提升到作用域的顶部');
+    // 函数声明 函数表达式区别
     // 唯一区别
-    console.log('函数表达式 按一般var变量的方式执行');
+    // 1.解析器将  函数声明  变量声明  提升到作用域的顶部
+    // 2.函数表达式 按一般var变量的方式执行
 
 
-    // 练习题
+    // 考题1
     console.log(fn);   // f fn(){}     ！！！！！！！！！！！！！
     function fn(){
 
@@ -44,6 +43,7 @@
 
     };
 
+    // 考题2
     var name = 'xm';
     var age = 18;
     function fun(){
@@ -63,10 +63,9 @@
     fun2();
 </script>
 
-
 <script>
-    // 1.函数作为参数==============
-    // 2.函数作为返回值=====匿名函数===========
+    // 1.函数作为参数
+    // 2.函数作为返回值 匿名函数
 
     function callSomeFunction(someFunction, someArgument){
         return someFunction(someArgument);
@@ -74,36 +73,43 @@
     function getGreeting(name){
         return "Hello," + name;
     }
-    console.log('函数作为参数  ', callSomeFunction(getGreeting, 'yh'));
+    console.log('函数作为参数 => ', callSomeFunction(getGreeting, 'yh'));
 
     function createComparisonFunction(propertyName){
         return function(obj1, obj2){
             var value1 = obj1[propertyName];
             var value2 = obj2[propertyName];
-            return value1 - value2; // 升序
-        }
+
+            if (value1 < value2) {
+                return -1;
+            } else if (value1 > value2) {
+                return 1;
+            } else {
+                return 0;
+            }
+        };
     }
     var personArray = [
         {
-            name: 11,
+            name: 'yh',
             age: 23
         },
         {
-            name: 12,
+            name: 'ym',
             age: 22
         },
         {
-            name: 13,
+            name: 'xh',
             age: 21
         }
     ];
-    personArray.sort(createComparisonFunction('age'));
-    console.log('函数作为返回值   ', personArray);  // ????????????????????????
+    personArray.sort(createComparisonFunction('name'));
+    console.log('函数作为返回值 => ', personArray);
 </script>
 
 <script>
-    // 函数内部属性 arguments,this======================
-    // arguments.callee 指向拥有arguments对象的函数===============
+    // 函数内部属性 arguments,this
+    // arguments.callee 指向拥有arguments对象的函数
     function factorial(num){
         if (num <= 1) {
             return 1;
@@ -117,16 +123,16 @@
     factorial = function(){
         return 0;
     };
-    console.log(trueFactorial(3), factorial(3));
+    console.log(trueFactorial(5), factorial(5));
 </script>
 
 <script>
-    // this 函数据以执行的环境对象========================
+    // this 函数据以执行的环境对象
     window.color = "red";
     var o = { color: "blue" };
 
     function sayColor(){
-        console.log('this      ', this.color);
+        console.log('this =>', this.color);
     }
 
     sayColor();
@@ -136,14 +142,13 @@
 </script>
 
 <script>
-    // caller to add
-    // callee to add
+    // caller
 
 </script>
 
 <script>
-    // sum.prototype.constructor===sum
-    // 非继承方法  call apply  特定的作用域调用函数； 接受参数不一样，没有参数传递的情况，用法一样
+    // sum.prototype.constructor === sum
+    // 非继承方法call,apply  特定的作用域调用函数； 接受参数不一样，没有参数传递的情况，用法一样
     // 1.用来传递参数
     // 2.扩充函数赖以运行的作用域, 优点：对象不需要和方法有任何耦合
     // bind this值会被绑定到bind的第一个参数，
@@ -153,7 +158,7 @@
         return num1 + num2;
     }
 
-    function applySum1(num1, num2){
+    function applySum(num1, num2){
         return sum.apply(this, arguments);
     }
 
@@ -164,27 +169,27 @@
     function callSum(num1, num2){
         return sum.call(this, num1, num2);
     }
-    console.log(applySum1(11, 22), applySum2(22, 33), callSum(33, 44));
+    console.log(applySum(11, 22), applySum2(22, 33), callSum(33, 44));
 
     // 2.
     window.color = "windowColor";
     var o = { color: "oColor" };
 
     function sayColor(){
-        console.log(this, this.color);
+        console.log(this.color);
     }
-
+    sayColor.apply(this);
     sayColor.apply(window);
-    sayColor.apply(this);  // 严格模式下  this是undefined
     sayColor.apply(o);
 
-    sayColor.call(window);
     sayColor.call(this);
+    sayColor.call(window);
     sayColor.call(o);
 
     var windowSayColor = sayColor.bind(window);
-    var oSayColor = sayColor.bind(o);
     windowSayColor();
+    
+    var oSayColor = sayColor.bind(o);
     oSayColor();
 </script>
 
