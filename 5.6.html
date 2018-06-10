@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    // 每当读取基本类型值，后台会创建对应的基本包装类型的对象
+    // 每当读取 基本类型值，后台会创建 对应的基本包装类型的对象
     var s1 = 'some text';
     var s2 = s1.substring(2);
 
@@ -24,33 +24,31 @@
 <script>
     // Boolean实例
     var falseObj = new Boolean(false);
-    console.log('falseObj && true !!!!', falseObj && true, typeof falseObj, falseObj instanceof Boolean);
+    console.log('falseObj && true => ', falseObj && true, typeof falseObj, falseObj instanceof Boolean);
 
     var falseValue = false;
-    console.log('falseValue && true !!!!', falseValue && true, typeof falseValue, falseValue instanceof Boolean);
+    console.log('falseValue && true => ', falseValue && true, typeof falseValue, falseValue instanceof Boolean);
 
 
     // Number实例
     var number = 10;
-    console.log('number.toString(2) !!!! ', number.toString(2));
-    console.log('number.toString(16) !!!! ', number.toString(16));
+    console.log('number.toString(2) => ', number.toString(2));
+    console.log('number.toString(16) => ', number.toString(16));
 
     var floatNmm = 3.14627;
-    console.log('floatNmm.toFixed !!!! ', floatNmm.toFixed(2), floatNmm.toFixed(3));
+    console.log('floatNmm.toFixed按照指定的小数位四舍五入转换为字符串 => ', floatNmm.toFixed(2), floatNmm.toFixed(3), typeof(floatNmm.toFixed(3)));
 
 
     // String实例
-    var strValue = 'hello world';
-    console.log(strValue.length, strValue[1], strValue.charAt(1), strValue.charCodeAt(1));
+    var strValue = 'Aa';
+    console.log(strValue.length, strValue[1], strValue.charAt(1), strValue.charCodeAt(0), strValue.charCodeAt(1));
 
     var concatResult = strValue.concat(' hello');
-    console.log('concat !!!! ', concatResult);
-    console.log(strValue);
+    console.log('concat => ', concatResult, '    ;strValue  ' + strValue);
 
     var concatResult = strValue.concat(' hello ', 'baidu');
-    console.log('concat !!!! ', concatResult);
-    console.log(strValue);
-    console.log('相比较concat方法，用的较多的是 + !!!!', 'hello world' + ' hello');
+    console.log('concat => ', concatResult, '    ;strValue  ' + strValue);
+    console.log('相比较concat方法，用的较多的是 + => ', 'hello world' + ' hello');
 
     // substr方法第二个参数指的是个数，第一个参数都是指位置，第二个参数不是必须的，
     var strValue = 'baidu company';
