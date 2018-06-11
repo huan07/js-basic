@@ -21,27 +21,21 @@
     person2.sayName();
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);  // 问题：不同实例上的同名函数是不相等的！！！！！！！！
 
-    // new 操作法 经历的4个步骤！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-    //（1）创建一个新对象
-    //（2）将构造函数的作用域赋给新对象（this指向这个新对象）
-    //（3）执行构造函数的代码（为新对象添加属性）
-    //（4）返回新对象
-
     console.log('对象实例constructor属性========', person.constructor, Person, person.constructor === Person);
-    // 构造函数与普通函数的区别：调用方式不一样
+    // 构造函数与普通函数的唯一区别：调用方式不一样
 
     // Person的调用方式！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！call 对象冒充
     // 1.
-    var person = new Person('person5', 50, 'a beautifull woman');
+    var person = new Person('person5', 50, '50 years old people');
     person.sayName();
 
     // 2.
-    Person('person6', 60, 'a beautifull woman too'); // 添加到Window
+    Person('person6', 60, '60 years old people'); // 添加到Window
     window.sayName();
 
     // 3. 在另一个对象的作用域中调用！！！！！！！！！！！！！！！！！！！！！！！
     var o = new Object();
-    Person.call(o, 'person7', 70, 'a beautifull woman too');
+    Person.call(o, 'person7', 70, '70 years old people');
     o.sayName();
 </script>
 
@@ -56,8 +50,8 @@
         this.sayName = sayName;
     }
 
-    var person = new Person('person8', 80, 'software engineer');
-    var person2 = new Person('person9', 90, 'a beautifull woman');
+    var person = new Person('person8', 80, '80 years old people');
+    var person2 = new Person('person9', 90, '90 years old people');
     person.sayName();
     person2.sayName();
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);
