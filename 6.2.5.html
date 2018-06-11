@@ -6,22 +6,22 @@
 </head>
 <body>
 <script>
-    function PersonFD(name, age, job){
+    function Person(name, age, job){
         this.name = name;
         this.age = age;
         this.job = job;
 
-        if (typeof this.sayName !== 'function') {
-            PersonFD.prototype.sayName = function(){ // 只需要第一次初始化，没有必要每次构造函数实例化都初始化
+        if (typeof this.sayName !== 'function') { // 只会在初次调用构造函数时执行
+            Person.prototype.sayName = function(){
                 console.log(this.name + '-' + this.age + '-' + this.job);
             };
         }
     }
 
-    var personFD = new PersonFD('YH', 30, 'LADY');
-    var personFD2 = new PersonFD('YH2', 30, 'LADY2');
-    personFD.sayName();
-    personFD2.sayName();
+    var person = new Person('YH', 30, 'LADY');
+    var person2 = new Person('YH2', 30, 'LADY2');
+    person.sayName();
+    person2.sayName();
 </script>
 
 </body>
