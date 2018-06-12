@@ -33,12 +33,15 @@
     }
 
     var compareNames = createComparisonFunction('name');
+    // compare得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
+    // 外部函数createComparisonFunction在执行完毕后，其活动对象不会被销毁
     console.log(compareNames);
-    var result = compareNames({ name: 'yh1' }, { name: 'yh2' });
+
+    var result = compareNames({ name: 'yh3' }, { name: 'yh2' });
     console.log(result);
 
 
-    compareNames = null; // 解除对匿名函数的引用（以便释放内存, 外层函数的活动对象被销毁）
+    compareNames = null; // 解除对匿名函数的引用（以便释放内存, 外部函数的活动对象被销毁）
 </script>
 
 <script>
@@ -56,9 +59,12 @@
         return result;
     }
 
-    console.log('createFunction', createFunction());
+    var arr = createFunction(); // 缓存提高性能
+    console.log('createFunction => ', arr);
     console.log(createFunction()[0]());
     console.log(createFunction()[9]());
+
+    console.log(arr[0](), arr[1]());
 
     function createFunction2(){
         var result = new Array();
@@ -68,17 +74,33 @@
                 return function(){ // 闭包
                     return num;
                 };
-            }(i); // .....................
+            }(i); // 传参数，按值传递
         }
 
         return result;
     }
-    console.log('createFunction2', createFunction2());
-    console.log(createFunction2()[0]());
-    console.log(createFunction2()[9]());
+    var arr2 = createFunction2();
+    console.log('createFunction2 => ', arr2);
+    console.log(arr2[0]());
+    console.log(arr2[9]());
+
+
+    // 今日头条考题
+    function fun(arr){
+        var i, len;
+        for (i = 0, len = arr.length; i < len; i++) {
+            (function(index){
+                setTimeout(function(){
+                    console.log(index, arr[index]);
+                }, i * 1000);
+            })(i);
+        }
+    }
+    fun(['y', 'a', 'n', 'g', 'h', 'u', 'a', 'n', 'h', 'a']);
+
 
     // 闭包的 this对象
-    // 匿名函数的执行环境具有全局性，this指向的是 window
+    // 匿名函数的执行环境具有全局性，this指向的是 => window
     var name = "The Window";
     var object = {
         name: "The Object",
@@ -89,7 +111,7 @@
             }
         }
     };
-    console.log('返回匿名函数', object.getNameFunc());
+    console.log('返回匿名函数 => ', object.getNameFunc());
     console.log(object.getNameFunc()());
 
     var name = "The Window";
@@ -102,7 +124,7 @@
             }
         }
     };
-    console.log('返回匿名函数2', object2.getNameFunc());
+    console.log('返回匿名函数2 => ', object2.getNameFunc());
     console.log(object2.getNameFunc()());
 
     var object3 = {
@@ -110,9 +132,11 @@
         getName: function(){
             return this.name;
         }
-    }
+    };
     console.log(object3.getName());
     console.log((object3.getName)());
+    // 考题 参照closure
+
     // 第三种方式 to add
 
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function f(){
+        var num = 1;
+
+        function g(){
+            console.log(num);
+        }
+
+        num++;
+        g();
+    }
+    f(); // 2
+
+
+    //
+    (function(){
+        var m = 0;
+
+        function getM(){
+            return m;
+        }
+
+        function seta(val){
+            m = val;
+        }
+
+        window.g = getM;
+        window.f = seta;
+    })();
+    f(100);
+    console.log(g()); // 100
+
+
+    //
+    function a(){
+        var i = 0;
+
+        function b(){
+            console.log(++i);
+        }
+
+        return b;
+    }
+    var c = a();
+    c(); // 1
+    c(); // 2
+
+
+    //
+    function fun(){
+        var count = 0;
+        return function(){
+            count++;
+            console.log(count);
+        }
+    }
+    var t1 = fun();
+    t1(); // 1
+    t1(); // 2
+    t1(); // 3
+</script>
+
+</body>
+</html>
