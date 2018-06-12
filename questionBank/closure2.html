@@ -33,7 +33,7 @@
 
         window.g = getM;
         window.f = seta;
-    })();
+    })(); // 加载，f()执行后执行
     f(100);
     console.log(g()); // 100
 
@@ -51,20 +51,6 @@
     var c = a();
     c(); // 1
     c(); // 2
-
-
-    //
-    function fun(){
-        var count = 0;
-        return function(){
-            count++;
-            console.log(count);
-        }
-    }
-    var t1 = fun();
-    t1(); // 1
-    t1(); // 2
-    t1(); // 3
 </script>
 
 </body>
