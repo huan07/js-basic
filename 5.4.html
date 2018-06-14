@@ -7,61 +7,133 @@
 <body>
 
 <script>
-    console.log('元字符：() [] {} \ ')
+    // 创建正则表达式
+    // 1.字面量形式
+    // 2.RegExp构造函数
 
-    console.log('元字符被转义：\(\)')
+    var re = null;
+    var i;
+    for (i = 0; i < 10; i++) {
+        re = /cat/g;
+        var xx = re.test('catastrophe');
+        console.log(xx);
+    }
 
-    var pattern1 = /[bc]at/i;  // 字面量形式定义 始终会共享同一个RegExp实例
-    var pattern1 = new RegExp("[bc]at", "i"); // 构造函数定义 生成一个新实例
 
-    console.log('构造函数的模式参数是字符串，在某些情况下要对字符进行双重转义 ?? 所有元字符都必须双重转义？？？？？？？？？？');
+    var re = null;
+    var i;
+    for (i = 0; i < 10; i++) {
+        re = new RegExp('cat', 'g');
+        var xx = re.test('catastrophe');
+        console.log(xx);
+    }
 </script>
 
 <script>
-    console.log('exec =================================');
-    var str = 'Hello world';
-    var patt = /Hello/g;
-    console.log('找到结果   返回 array', patt.exec(str));
-    console.log('找不到结果 返回 null', (/Hello4/g).exec(str));
+    // exec return [] or null ;
+    var text = 'mom and dad and baby';
+    var patt = /mom( and dad( and baby)?)?/gi;
+    var matches = patt.exec(text);
+    console.log(matches);
 
+    console.log(matches.index, matches.input);
+</script>
+<script>
+    var text = 'cat, bat, sat, fat';
+    var patt = /.at/;
+    var matches = patt.exec(text);
+    console.log('exec不设置g => ', matches);
 
-    console.log('exec ==不设置全局g==多次调用 将始终返回 第一个匹配项=====================');
+    matches = patt.exec(text);
+    console.log(matches);
 
-    console.log('exec ==设置全局g==多次调用在字符串中  继续查找 新匹配现=====================');
-    var text = "cat, bat, sat, fat";
-    var pattern1 = /.at/;   // . 任意的一个字符
-    var matches = pattern1.exec(text);
-    console.log('不设置全局g，第一次调用返回', matches);
-    matches = pattern1.exec(text);
-    console.log('不设置全局g，第二次调用返回', matches);
+    matches = patt.exec(text);
+    console.log(matches);
+</script>
+<script>
+    var text = 'cat, bat, sat, fat';
+    var patt = /.at/g;
+    var matches = patt.exec(text);
+    console.log('exec设置g 继续查找新匹配项=> ', matches);
 
+    matches = patt.exec(text);
+    console.log(matches);
 
-    var text = "ccat, bbat, ssat, ffat";
-    var pattern1 = /.at/g;
-    var matches = pattern1.exec(text);
-    console.log('设置全局g，第一次调用返回', matches);
-    matches = pattern1.exec(text);
-    console.log('设置全局g，第二次调用返回', matches);
+    matches = patt.exec(text);
+    console.log(matches);
 </script>
 
 <script>
-    console.log('test ==========经常被用在if语句=====================');
-    var str = 'Hello world';
-    var patt = /Hello/g;
-    console.log('找到结果   返回 true', patt.test(str));
-    console.log('找不到结果 返回 false', (/Hello4/g).test(str));
-
-    var text = "000-00-0000";
-    var pattern = /\d{3}-\d{2}-\d{4}/;
-    console.log('校验是数字字符串', pattern.test(text));
+    // test return boolean
+    var text = '000-00-0000';
+    var patt = /\d{3}-\d{2}-\d{4}/;
+    if (patt.test(text)) {
+        console.log('the patt was matched. ');
+    }
 </script>
 
 <script>
-    console.log('支持正则表达式的String对象的方法========================');
-    console.log('search');
-    console.log('match');
-    console.log('replace');
-    console.log('split');
+    var patt = new RegExp('cat', 'g');
+    console.log('继承方法 => ', patt.toString(), patt.valueOf())
+</script>
+
+<script>
+    // 字符串的模式匹配
+    // match return [] or null ;
+    var text = 'cat, bat, sat, fat';
+    var patt = /.at/;
+    var matches = text.match(patt);
+    console.log('String match不设置g => ', matches);
+
+    matches = text.match(patt);
+    console.log(matches);
+
+    matches = text.match(patt);
+    console.log(matches);
+</script>
+<script>
+    var text = 'cat, bat, sat, fat';
+    var patt = /.at/g;
+    var matches = text.match(patt);
+    console.log('String match设置g => ', matches);
+
+    matches = text.match(patt);
+    console.log(matches);
+
+    matches = text.match(patt);
+    console.log(matches);
+</script>
+
+<script>
+    // search return index（返回第一个匹配项的索引，始终从字符串开头向后查找模式patt, ）;
+    var text = 'cat, bat, sat, fat';
+    var patt = /at/;
+    var pos = text.search(patt);
+    console.log('String search不设置g => ', pos);
+
+    pos = text.search(patt);
+    console.log(pos);
+
+    pos = text.search(patt);
+    console.log(pos);
+</script>
+<script>
+    var text = 'cat, bat, sat, fat';
+    var patt = /at/g;
+    var pos = text.search(patt);
+    console.log('String search设置g => ', pos);
+
+    pos = text.search(patt);
+    console.log(pos);
+
+    pos = text.search(patt);
+    console.log(pos);
+</script>
+
+<script>
+    // replace
+
+
 </script>
 
 </body>
