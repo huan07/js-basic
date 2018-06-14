@@ -2,29 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>5.7</title>
 </head>
 <body>
 <script>
     var uri = "http://www.wrox.com/illegal value.html#start?&=";
-    console.log('encodeURI  !!!!  ', encodeURI(uri), decodeURI(encodeURI(uri)));
-    console.log('encodeURIComponent  编码的更加彻底 !!!!  ', encodeURIComponent(uri), decodeURIComponent(encodeURIComponent(uri)));
+    console.log('encodeURI => ', encodeURI(uri), decodeURI(encodeURI(uri)));
+    console.log('encodeURIComponent 编码的更加彻底 => ', encodeURIComponent(uri), decodeURIComponent(encodeURIComponent(uri)));
+</script>
 
-    // eval() 解析字符串代码    字符串解析器的作用 没有返回值  定义的变量、函数不会被提升
-    'alert(100)';
-    eval('alert(100)');
-    alert(200);
+<script>
+    // eval() => 像是ECMAScript解析器
+    // 字符串解析器的作用 没有返回值
+    // 定义的变量、函数不会被提升
+    'alert(1000)';
+    eval('alert(999)');
+    alert(999);
+</script>
+
+<script>
+    //
+    var global = (function(){
+        return this;
+    })();
+    console.log('global => ', global);
 
     // window对象扮演Global对象的角色
-    console.log(window.RegExp, window.Error, window.Array, window.Object, window);
+    console.log(window, window.Array, window.Object, window.RegExp, window.Error);
+</script>
 
-    //
-    var global = function(){
-        return this;
-    }();
-    console.log('global  !!!!  ', global);
-
-
+<script>
     // Math
     var values = [1, 2, 99, 98];
     var max = Math.max.apply(Math, values);
