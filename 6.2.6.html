@@ -20,7 +20,7 @@
     friend.sayJob();
 
     // 不能直接修改原生对象的构造函数，可以用这个模式
-    // 返回的对象与 构造函数，构造函数的原型属性没有关联 不能依赖instanceof来确定对象类型 to add 识别对象类型
+    // 返回的对象与 构造函数、构造函数的原型属性没有关联 不能依赖instanceof来确定对象类型 to add 识别对象类型
     // 不要使用这种模式
     function SpecialArray(){
         var values = new Array();

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>6.2.7稳妥构造函数模式</title>
 </head>
 <body>
 
@@ -13,24 +13,22 @@
     // 与寄生构造函数模式比较，1)新创建对象的实例方法不引用this
     // 2) 不使用new 操作符调用构造函数
     // 适合某些安全执行环境
-    function Person(name, age, job) {
+    function Person(name, age, job){
         var o = new Object();
 
         // 定义私有变量和函数
 
         o.age = age;
 
-        o.sayAge = function() {
+        o.sayAge = function(){
             console.log(age);
         };
 
         return o;
     }
 
-    var friend = new Person('yh', 33, 'a engineer');
+    var friend = Person('yh', 33, 'a engineer');
     friend.sayAge();
-
-
 </script>
 
 </body>
