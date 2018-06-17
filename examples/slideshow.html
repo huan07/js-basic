@@ -155,24 +155,18 @@
 
 <script>
     var slideIndex = 0;
-    showSlides();
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    var slidesLen = slides.length;
 
     function showSlides(){
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        var i;
-        var slidesLen = slides.length;
-        var dotsLen = dots.length;
-
-        for (i = 0; i < slidesLen; i++) {
+        for (var i = 0; i < slidesLen; i++) {
             slides[i].style.display = "none";
-        }
-        for (i = 0; i < dotsLen; i++) {
             dots[i].className = dots[i].className.replace("active", "");
         }
+
         slides[slideIndex].style.display = "block";
         dots[slideIndex].className += " active";
-
         slideIndex++;
         if (slideIndex >= slidesLen) {
             slideIndex = 0
@@ -180,6 +174,7 @@
 
         setTimeout(showSlides, 2000); // 切换时间为 2 秒
     }
+    showSlides();
 </script>
 
 </body>
