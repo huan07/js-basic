@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>scoping-hoisting</title>
 </head>
 <body>
 <script>
@@ -17,10 +17,10 @@
     console.log(x); // 2    x is changed
 
     // 可以用闭包来实现类似块级作用域
-    function foo() {
+    function foo(){
         var x = 10;
         if (true) {
-            (function() {
+            (function(){
                 var x = 20;
             })();
         }
@@ -43,16 +43,16 @@
      * 在 代码运行 前， 函数声明 和 变量定义 通常会被解释器移动到其所在作用域的最顶部！！！！！！！！！！！！！！！！！！！
      * */
 
-    function bar() {
+    function bar(){
         console.log('bar bar');
     }
-    function foo() {
+    function foo(){
         bar();
         var x = 1;
     }
     foo();
 
-    function foo2() {
+    function foo2(){
         var x;
         bar();
         x = 1;
@@ -60,7 +60,7 @@
     foo2();
 
 
-    function foo3() {
+    function foo3(){
         if (false) {
             var x = 1;
             console.log(x);
@@ -71,7 +71,7 @@
     }
     foo3();
 
-    function foo4() {
+    function foo4(){
         var x, y;
         if (false) {
             x = 1;
@@ -84,27 +84,27 @@
     foo4();
 
     // 此处注意！！！！！！！！！！！！！！！！！！！！！！！！！
-    function test() {
+    function test(){
         //  foo(); error foo is not function
         bar();
-        var foo = function() {
+        var foo = function(){
             console.log('this will not run');
         };
 
-        function bar() {
+        function bar(){
             console.log('this will  run');
         }
     }
     test();
 
-    function test2() {
+    function test2(){
         var foo;
         //  foo(); error foo is not function
         bar();
-        foo = function() {
+        foo = function(){
             console.log('this will not run');
         };
-        function bar() {
+        function bar(){
             console.log('this will  run');
         }
     }
@@ -117,7 +117,7 @@
     // 练习
     // 1.
     var foo = 1;
-    function barbar() {
+    function barbar(){
         if (!foo) {
             var foo = 10;
         }
@@ -125,7 +125,7 @@
     }
     barbar();
 
-    function barbar2() {
+    function barbar2(){
         var foo;
         if (!foo) {
             foo = 10;
@@ -136,18 +136,18 @@
 
     // 2.
     var a = 1;
-    function bb() {
+    function bb(){
         a = 10;
         return;
-        function a() {
+        function a(){
 
         }
     }
     bb();
     console.log(a);  // 1  to_learn ？？？？？？？？？？？？？？？？？？
 
-    function bb2() {
-        function a() {
+    function bb2(){
+        function a(){
 
         }
 
