@@ -22,7 +22,7 @@
 </script>
 
 <script>
-    // 闭包用途之一：外部函数的变量一直保留在内层中
+    // 闭包用途之一：外部函数的变量一直保留在内层中！！！
     // 练习题
     function a(){
         var i = 0;
@@ -57,7 +57,7 @@
     // 练习题3
     var a = 111;
     function test(){
-        console.log(a); // undefined
+        console.log(a); // undefined  在函数内部，变量声明提升
         var a = 11;
 
         function subTest(){
