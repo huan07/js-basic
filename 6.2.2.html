@@ -22,9 +22,10 @@
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);  // 问题：不同实例上的同名函数是不相等的！！！！！！！！
 
     console.log('对象实例constructor属性========', person.constructor, Person, person.constructor === Person);
-    // 构造函数与普通函数的唯一区别：调用方式不一样
 
-    // Person的调用方式！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！call 对象冒充
+
+    // 构造函数与普通函数的唯一区别：调用方式不一样
+    // Person的调用方式  call 对象冒充
     // 1.
     var person = new Person('person5', 50, '50 years old people');
     person.sayName();
@@ -33,7 +34,7 @@
     Person('person6', 60, '60 years old people'); // 添加到Window
     window.sayName();
 
-    // 3. 在另一个对象的作用域中调用！！！！！！！！！！！！！！！！！！！！！！！
+    // 3. 在另一个对象的作用域中调用
     var o = new Object();
     Person.call(o, 'person7', 70, '70 years old people');
     o.sayName();
