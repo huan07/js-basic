@@ -18,9 +18,8 @@
     // 闭包优点／缺点：可以把局部变量驻留在内存中，可以避免使用全局变量，
 
     // 闭包总结：
-    // 特点：
-
-
+    // 特点：1)函数inner是被嵌套在函数outer内的，2)函数outer需要返回函数inner
+    // 用途：1)函数inner可以读取函数outer内部变量，2)让函数outer变量的值保留在内存中
     function createComparisonFunction(propertyName){
 
         return function(object1, object2){  // 匿名函数当作值返回
