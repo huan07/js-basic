@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    // 闭包：有权访问另一个函数作用域中的变量的函数（用途1）
+    // 闭包：有权访问另一个函数作用域中的变量的函数
     // 闭包实现方式：一个函数内部创建另一个函数
 
     // 调用函数时，创建它的执行环境（后台会有表示变量的对象－变量对象）及作用域链
@@ -15,7 +15,9 @@
     // 闭包情况：在另一个函数内部定义的函数 会将包含函数（外部函数）的活动对象添加到它的作用域链中
     // 闭包的问题：闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存
 
-    // 闭包优点／缺点：可以把局部变量驻留在内存中，可以避免使用全局变量；内存占用浪费严重，内存泄漏
+    // 闭包优点／缺点：
+    // 1)可以把局部变量（外部函数的变量）驻留在内存中！！！，可以避免使用全局变量；
+    // 2)内存占用浪费严重，内存泄漏
 
     // 闭包总结：
     // 特点：1)函数inner是被嵌套在函数outer内的，2)函数outer需要返回函数inner
@@ -37,20 +39,20 @@
     }
 
     var compareNames = createComparisonFunction('name');
-    // compare得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
-    // 外部函数createComparisonFunction在执行完毕后，其活动对象不会被销毁
+    // compareNames得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
+    // 外部函数createComparisonFunction函数返回后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，
+    // 因为匿名函数的作用域链仍然在引用外部函数的活动对象，这个活动对象仍然留在内存中
     console.log(compareNames);
 
     var result = compareNames({ name: 'yh3' }, { name: 'yh2' });
     console.log(result);
 
 
-    compareNames = null; // 解除对匿名函数的引用（以便释放内存, 外部函数的活动对象被销毁）
+    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）
 </script>
 
 <script>
-    // 作用域链的副作用：闭包只能取得包含函数中任何变量的最后一个值（用途2，但会带来副作用）
-
+    // 作用域链的副作用：闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中
     function createFunction(){
         var result = new Array();
 
@@ -68,7 +70,7 @@
     console.log(createFunction()[0]());
     console.log(createFunction()[9]());
 
-    console.log(arr[0](), arr[1]());
+    console.log(arr[0](), arr[9]());
 
     function createFunction2(){
         var result = new Array();

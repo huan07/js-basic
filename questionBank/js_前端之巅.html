@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 闭包
+    (function outerFunc(outerArg){
+        var outerVar = 3;
+
+        (function middleFunc(middleArg){
+            var middleVar = 4;
+
+            (function innerFunc(innerArg){
+                var innerVar = 5;
+                console.log(outerArg, outerVar); // 沿着作用域链查找
+                console.log(middleArg, middleVar);
+                console.log(innerArg, innerVar);
+            })(789);
+        })(456);
+    })(123);
+</script>
+
+<script>
+    // 闭包
+    function addButtons(btnNumber){
+        var docFragment = document.createDocumentFragment();
+        for (var i = 0; i < btnNumber; i++) {
+            var btn = document.createElement('input');
+            btn.type = 'button';
+            btn.value = '按钮' + i;
+            btn.onclick = function(){
+                alert('第' + i + '个按钮');
+            };
+            docFragment.appendChild(btn);
+        }
+        document.body.appendChild(docFragment);
+    }
+    window.onload = addButtons(5);
+</script>
+
+<script>
+    // 闭包改良版本
+    function addButtons2(btnNumber){
+        var docFragment = document.createDocumentFragment();
+        for (var i = 0; i < btnNumber; i++) {
+            var btn = document.createElement('input');
+            btn.type = 'button';
+            btn.value = '按钮' + i + '改后';
+            btn.onclick = function(index){
+                return function(){
+                    alert('第' + index + '个按钮');
+                };
+            }(i);
+            docFragment.appendChild(btn);
+        }
+        document.body.appendChild(docFragment);
+    }
+    window.onload = addButtons2(5);
+</script>
+
+</body>
+</html>
