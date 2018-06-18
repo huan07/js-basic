@@ -198,7 +198,7 @@
 </script>
 
 <script>
-    console.log('indexOf, lastIndexOf==========================================');
+    console.log('indexOf, lastIndexOf===返回序号=======================================');
     var numbers = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4];
     console.log(numbers.indexOf(1), numbers.indexOf(1, 4));
 
@@ -236,8 +236,9 @@
 </script>
 
 <script>
-    // find 返回true的项 item/undefined           对空数组不会执行，不会改变原始数组
-    // findIndex 返回true的项 index/-1               对空数组不会执行，不会改变原始数组
+    // find 找到第一个返回true的项，item/undefined           对空数组不会执行，不会改变原始数组
+    // findIndex 找到第一个返回true的序号，index/-1               对空数组不会执行，不会改变原始数组
+    // 可以接收第二个参数
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
     var findResult = numbers.find(function(item, index, array){
         return item > 3;
@@ -248,6 +249,15 @@
         return item > 3;
     });
     console.log('findIndexResult => ', findIndexResult);
+
+    var person = {
+        name: 'yh',
+        age: 30
+    };
+    var xx = numbers.find(function(item, index, array){
+        return item > this.age; // this对象指向person对象
+    }, person);
+    console.log('接收第二个参数 => ', xx);
 </script>
 
 <script>
