@@ -16,6 +16,11 @@
     // 闭包的问题：闭包会携带包含它的函数的作用域，因此会比其他函数占用更多的内存
 
     // 闭包优点／缺点：可以把局部变量驻留在内存中，可以避免使用全局变量，
+
+    // 闭包总结：
+    // 特点：
+
+
     function createComparisonFunction(propertyName){
 
         return function(object1, object2){  // 匿名函数当作值返回
@@ -84,21 +89,6 @@
     console.log(arr2[0]());
     console.log(arr2[9]());
 
-
-    // 今日头条考题
-    function fun(arr){
-        var i, len;
-        for (i = 0, len = arr.length; i < len; i++) {
-            (function(index){
-                setTimeout(function(){
-                    console.log(index, arr[index]);
-                }, i * 1000);
-            })(i);
-        }
-    }
-    fun(['y', 'a', 'n', 'g', 'h', 'u', 'a', 'n', 'h', 'a']);
-
-
     // 闭包的 this对象
     // 匿名函数的执行环境具有全局性，this指向的是 => window
     var name = "The Window";
@@ -135,60 +125,10 @@
     };
     console.log(object3.getName());
     console.log((object3.getName)());
-    // 考题 参照closure
-
     // 第三种方式 to add
 
 
     // 内存泄露 ?  ?  ?   ?  ?   ?  ?    ?   ?    ?   ?    ?
-
-
-</script>
-<script>
-    // 练习题
-    function a(){
-        var i = 0;
-
-        function b(){
-            console.log('练习题 => ', ++i);
-        }
-
-        return b;
-    }
-    var c = a();
-    c();  // 1
-    c();  // 2
-
-    // 练习题2
-    function f1(){
-        var n = 999;
-        nAdd = function(){
-            n = n + 1;
-        };
-        function f2(){
-            console.log('练习题2 => ', n);
-        }
-
-        return f2;
-    }
-    var rs = f1();
-    rs();   // 999;
-    nAdd();
-    rs(); // 1000  n 一直保存在内存中，变量同名呢？？？？？？？
-
-    // 练习题3
-    var a = 111;
-    function test(){
-        console.log(a); // undefined
-        var a = 11;
-
-        function subTest(){
-            console.log(a); // 11
-        }
-
-        return subTest;
-    }
-    test()();
 </script>
 
 </body>
