@@ -67,6 +67,29 @@
         return subTest;
     }
     test()();
+
+    // 闭包常考题
+    function fun(n, o){
+        console.log(o);
+        return {
+            fun: function(m){
+                return fun(m, n); // 闭包的存在，n 一直保存在内存中！！！！！
+                // 沿着作用域链查找 n ;
+            }
+        }
+    }
+    var a = fun(0); // undefined
+    a.fun(1); // 0
+    a.fun(2); // 0
+    a.fun(3); // 0
+
+
+    var b = fun(0).fun(1).fun(2).fun(3); // undefined 0 1 2
+
+
+    var c = fun(0).fun(1); // undefined 0
+    c.fun(2); // 1
+    c.fun(3); // 1
 </script>
 
 <script>
@@ -91,54 +114,6 @@
             }, 1000);
         })(i2);
     }
-</script>
-
-<script>
-    function fun(n, o){
-        console.log(o);
-        return {
-            fun: function(m){
-                return fun(m, n); // 闭包的存在，n 一直保存在内存中！！！！！
-                // 沿着作用域链查找 n ;
-            }
-        }
-    }
-    var a = fun(0); // undefined
-    a.fun(1); // 0
-    a.fun(2); // 0
-    a.fun(3); // 0
-
-
-    var b = fun(0).fun(1).fun(2).fun(3); // undefined 0 1 2
-
-
-    var c = fun(0).fun(1); // undefined 0
-    c.fun(2); // 1
-    c.fun(3); // 1
-</script>
-<script>
-    function fun0(){
-        var num = 99;
-        console.log(num);
-    }
-    function fun1(){
-        console.log(num);
-    }
-    fun0();
-    // fun1(); // error
-
-
-    function fun00(){
-        var num = 99;
-        console.log(num);
-
-        function fun11(){
-            console.log(num);
-        }
-
-        fun11();
-    }
-    fun00();
 </script>
 
 <script>
