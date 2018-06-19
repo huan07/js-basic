@@ -38,12 +38,17 @@
     }
 
     // 访问对象属性：点表示法，[字符串]，[变量名]
+    // 方括号读写对象属性
     var person = {
         age: 31
     };
-    console.log(person.age, person['age']);
     var agePropertyName = 'age';
-    console.log(person[agePropertyName]);
+    console.log(person.age, person['age'], person[agePropertyName]);
+
+    var firstName = 'first name';
+    person[firstName] = 'YiXing';
+    person['last Name'] = 'Zhang';
+    console.log(person, person['last Name'], person[firstName]);
 </script>
 
 </body>
