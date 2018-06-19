@@ -5,6 +5,54 @@
     <title></title>
 </head>
 <body>
+
+<script>
+    // == js先对操作数执行隐式类型转换，再比较
+    // === 直接比较
+</script>
+
+
+<script>
+    // js会隐式的将key转换为字符串类型 String(xx)
+    var foo = new Object();
+    var bar = new Object();
+    var map = new Object();
+
+    map[foo] = 'foo';
+    map[bar] = 'bar';
+
+    console.log('map => ', map, map[foo]);
+</script>
+
+
+<script>
+    // 变量提升，函数声明提升（函数声明和函数表达式的唯一区别）
+
+    console.log('函数声明提升，生效的是最后一个函数的声明 => ', foo());
+    function foo(){
+        return 1;
+    }
+    console.log(foo());
+
+    function foo(){
+        return 2;
+    }
+    console.log(foo());
+
+
+    // console.log(bar()); // error  // 变量声明提升，此时bar是undefined, 函数表达式还没有赋值给bar, 不能当作函数来调用
+    var bar = function(){
+        return 11;
+    };
+    console.log(bar());
+
+    var bar = function(){
+        return 22;
+    };
+    console.log(bar());
+</script>
+
+
 <script>
     // 闭包
     (function outerFunc(outerArg){
@@ -21,9 +69,7 @@
             })(789);
         })(456);
     })(123);
-</script>
 
-<script>
     // 闭包
     function addButtons(btnNumber){
         var docFragment = document.createDocumentFragment();
@@ -39,9 +85,7 @@
         document.body.appendChild(docFragment);
     }
     window.onload = addButtons(5);
-</script>
 
-<script>
     // 闭包改良版本
     function addButtons2(btnNumber){
         var docFragment = document.createDocumentFragment();
