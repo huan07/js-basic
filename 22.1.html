@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="util/Object.prototype.toString.js"></script>
+<script>
+    // Object.prototype.toString 检测某个值是哪种原生构造函数实例
+    var xx = [];
+    var xx2 = null;
+    console.log(isArray(xx), isArray(xx2));
+
+    var yy = {};
+    var yy2 = null;
+    console.log(isObject(yy), isObject(yy2));
+
+    var zz = /cat/gi;
+    var zz2 = null;
+    console.log(isRegExp(zz), isRegExp(zz2));
+</script>
+
+<script>
+    function Person(name, age, job){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+    }
+    var person = new Person('yh', 31, 'engineer');
+    console.log(person);
+
+    var person2 = Person('yc', 30, 'a woman'); // 不用new调用，this指向Window对象
+    console.log(person2);
+    console.log(window.name, window.age, window.job);
+    console.log(name, age, job);
+
+
+    function People(name, age){
+        if (this instanceof People) { // 创建作用域安全的构造函数, 避免this指向Window对象，推荐使用
+            this.name = name;
+            this.age = age;
+        } else {
+            return new People(name, age);
+        }
+    }
+
+    console.log('');
+    var people = new People('yh2', 31, 'engineer');
+    console.log(people);
+
+    var people2 = People('yc2', 30, 'a woman');
+    console.log(people2);
+    console.log(window.name, window.age);
+    console.log(name, age);
+
+
+    // 使用构造函数窃取模式的继承并且不使用原型链，继承很可能被破坏
+    function Polygon(sides){
+        if (this instanceof Polygon) { // 起初this => Rectangle
+            this.sides = sides;
+            this.getArea = function(){
+                return 0;
+            };
+        } else {
+            return new Polygon(sides); // new 出来之后this => Polygon
+        }
+    }
+
+    function Rectangle(width, height){
+        Polygon.call(this, 2);
+        this.width = width;
+        this.height = height;
+        this.getArea = function(){
+            return this.width * this.height;
+        }; // 没有继承到sides属性
+    }
+    var rect = new Rectangle(5, 10);
+    console.log(rect.sides);
+
+
+    // 解决上述问题：使用构造函数窃取模式的继承结合使用原型链或者寄生组合（？？）
+    function Polygon2(sides){
+        if (this instanceof Polygon2) {
+            this.sides = sides;
+            this.getArea = function(){
+                return 0;
+            };
+        } else {
+            return new Polygon2(sides);
+        }
+    }
+
+    function Rectangle2(width, height){
+        Polygon2.call(this, 2);
+        this.width = width;
+        this.height = height;
+        this.getArea = function(){
+            return this.width * this.height;
+        };
+    }
+    Rectangle2.prototype = new Polygon2();
+
+    var rect = new Rectangle2(5, 10);
+    console.log(rect.sides);
+</script>
+
+
+<script>
+    // 惰性载入函数，提高代码执行性能，to add 可以参照es6-basic/8/contains 加深理解
+</script>
+
+
+</body>
+</html>
