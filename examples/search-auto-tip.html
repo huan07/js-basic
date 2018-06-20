@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框自动提示</title>
+    <link rel="stylesheet" type="text/css" href="0.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        #myInput {
+            background-image: url('https://static.runoob.com/images/mix/searchicon.png'); /* 21x21 */
+            background-repeat: no-repeat;
+            background-position: 4px center;
+            background-size: 21px 21px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            font-size: 18px;
+            line-height: 30px;
+            padding: 4px 4px 4px 29px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        #myUL li a {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 30px;
+            color: black;
+            background-color: #f6f6f6;
+            padding: 4px;
+            border: 1px solid #ddd;
+            margin-top: -1px;
+        }
+
+        #myUL li a.header {
+            background-color: #e2e2e2;
+            cursor: default;
+        }
+
+        #myUL li a:hover:not(.header) {
+            background-color: #eee;
+        }
+
+    </style>
+</head>
+<body>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+
+<ul id="myUL">
+    <li><a href="#" class="header">A</a></li>
+    <li><a href="#">Adele</a></li>
+    <li><a href="#">Agnes</a></li>
+
+    <li><a href="#" class="header">B</a></li>
+    <li><a href="#">Billy</a></li>
+    <li><a href="#">Bob</a></li>
+
+    <li><a href="#" class="header">C</a></li>
+    <li><a href="#">Calvin</a></li>
+    <li><a href="#">Christina</a></li>
+    <li><a href="#">Cindy</a></li>
+</ul>
+
+<script>
+    function myFunction(){
+        var i, a;
+        var input = document.getElementById('myInput');
+        var filter = input.value.toUpperCase();
+
+        var ul = document.getElementById("myUL");
+        var li = ul.getElementsByTagName('li');
+        var len = li.length;
+
+
+        for (i = 0; i < len; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
