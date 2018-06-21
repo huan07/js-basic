@@ -127,6 +127,7 @@
 </ul>
 
 <script>
+    var inputEle = document.getElementById("myInput");
     var myNodelist = document.getElementsByTagName("LI");
     var i;
     for (i = 0; i < myNodelist.length; i++) {
@@ -156,16 +157,15 @@
 
 
     function newElement(){
-        var inputValue = document.getElementById("myInput").value;
+        var inputValue = inputEle.value;
         if (inputValue === '') {
             alert("You must write something!");
             return false;
         }
 
         var li = document.createElement("li");
-        var t = document.createTextNode(inputValue);
-        li.appendChild(t);
-        document.getElementById("myUL").appendChild(li);
+        var toAddItem = document.createTextNode(inputValue);
+        li.appendChild(toAddItem);
 
         var span = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
@@ -173,7 +173,8 @@
         span.appendChild(txt);
         li.appendChild(span);
 
-        document.getElementById("myInput").value = "";
+        document.getElementById("myUL").appendChild(li);
+        inputEle.value = "";
 
         for (i = 0; i < close.length; i++) {
             close[i].onclick = function(){
