@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>屏幕底部弹出消息</title>
+    <link rel="stylesheet" type="text/css" href="0.css">
+    <style>
+        button {
+            margin: 50px 0 0 50px;
+        }
+
+        #snackbar {
+            visibility: hidden;
+
+            -webikt-box-sizing: border-box;
+            box-sizing: border-box;
+            min-width: 250px;
+
+            text-align: center;
+            font-size: 18px;
+            line-height: 54px;
+            color: #fff;
+            background-color: #333;
+            padding: 0 16px;
+            border-radius: 2px;
+
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            /*
+                        margin-left: -125px;   对固定宽度才有效 */
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="myFunction()">显示 Snackbar</button>
+
+<div id="snackbar">一些文本..</div>
+
+<script>
+    function myFunction(){
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function(){
+            x.className = x.className.replace("show", "");
+        }, 3000);
+    }
+</script>
+
+</body>
+</html>
