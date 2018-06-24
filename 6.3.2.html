@@ -26,9 +26,12 @@
     function SuperType(name){
         this.name = name;
     }
+    SuperType.prototype.xx = function(){
+        console.log('不能被子类实例所用');
+    };
 
     function SubType(){
-        SuperType.call(this, 'child'); // 子类向超类型构造函数传递参数
+        SuperType.call(this, 'child'); // 向超类型构造函数传递参数
         this.age = 29;
     }
 
@@ -40,7 +43,7 @@
 
     // 问题：
     // 方法在构造函数定义，函数无法被复用
-    // 超类型原型方法对子类是不可用的；
+    // 超类型的原型方法对子类是不可用的；
 </script>
 
 </body>
