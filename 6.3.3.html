@@ -8,6 +8,8 @@
 <script>
     // 原型链  对原型属性和方法的继承
     // 构造函数  对实例属性的继承
+
+    // 问题：调用了2次超类型的构造函数
     function SuperType(name){
         this.name = name;
         this.colors = ['red', 'red2', 'red3'];
@@ -20,12 +22,12 @@
     function SubType(name, age){
 
         // 继承属性  各自属性
-        SuperType.call(this, name);
+        SuperType.call(this, name);  // 实例化instance调用了第二次 SuperType 有待优化
         this.age = age;
     }
 
     // 继承方法 共同方法
-    SubType.prototype = new SuperType();
+    SubType.prototype = new SuperType(); // 调用了第一次 SuperType 有待优化
     SubType.prototype.constructor = SubType;
     SubType.prototype.sayAge = function(){
         console.log(this.age);
