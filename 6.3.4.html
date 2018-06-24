@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.3.4原型式继承</title>
+</head>
+<body>
+<script>
+    function object(o){
+        function F(){
+
+        }
+
+        F.prototype = o; // 浅复制
+        return new F();
+    }
+
+    var person = {
+        name: 'ycg',
+        friends: ['friend', 'friend2', 'friend3']
+    };
+
+    var person2 = object(person);
+    person2.name = 'name2';
+    person2.friends.push('friendX');
+
+    var person3 = object(person);
+    person3.name = 'name3';
+    person3.friends.push('friendY');
+
+    console.log(person, person2, person3);
+</script>
+
+<script>
+    var people = {
+        name: 'ddn',
+        friends: ['friend', 'friend2', 'friend3']
+    };
+
+    var people2 = Object.create(people);
+    people2.name = 'name2';
+    people2.friends.push('friendX');
+
+    var people3 = Object.create(people);
+    people3.name = 'name3';
+    people3.friends.push('friendY');
+
+    console.log(people, people2, people3);
+</script>
+
+<script>
+    var people = {
+        name: 'yh',
+        friends: ['friend', 'friend2', 'friend3']
+    };
+
+    var people2 = Object.create(people, {
+        name: {
+            value: 'name2'
+        }
+    });
+
+    var people3 = Object.defineProperty(people, 'name', {
+        value: 'name3'
+    });
+    console.log(people, people2, people3);
+</script>
+
+</body>
+</html>
