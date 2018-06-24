@@ -7,11 +7,11 @@
 <body>
 <script>
     function SuperType(){
-        this.colors = ['red', 'blue', 'green']; // 解决引用类型值被共享 ！！！
+        this.colors = ['red', 'blue', 'green'];
     }
 
     function SubType(){
-        SuperType.call(this);
+        SuperType.call(this); // 解决引用类型值被共享的问题
     }
 
     var instance1 = new SubType();
@@ -23,13 +23,12 @@
 </script>
 
 <script>
-    // 子类向超类型构造函数传递参数 ！！！
     function SuperType(name){
         this.name = name;
     }
 
     function SubType(){
-        SuperType.call(this, 'child');
+        SuperType.call(this, 'child'); // 子类向超类型构造函数传递参数
         this.age = 29;
     }
 
