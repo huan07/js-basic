@@ -6,9 +6,11 @@
 </head>
 <body>
 <script>
-    // 私有变量=> 函数中定义的变量，不能在函数外部被访问到
+    // 私有变量：任何在函数中定义的变量，不能在函数外部被访问到
     // 私有变量=> 函数的参数，局部变量，函数内部定义的其他函数
+
     // 在函数内创建一个闭包，通过自己的作用域链 访问私有变量
+
     // 特权方法：可以访问私有变量，私有函数的公有方法
     // 1.在构造函数定义特权方法
     // 2.在私有作用域中定义私有变量，函数，原型上定义特权方法
@@ -34,15 +36,17 @@
     var myObject = new MyObject();
     myObject.publicMethod();
 
-
+    // example
     function Person(name){
         // 隐藏了不应该被直接修改的数据，（在这里，要么传值，要么setName修改name）
         // 不被采纳
 
+        // 特权方法
         this.getName = function(){
             return name;
         };
 
+        // 特权方法
         this.setName = function(value){
             name = value;
         };
@@ -53,7 +57,7 @@
     person.setName('yh changed');
     console.log(person.getName());
 
-    // 构造函数模式的缺点：对每个实例都会创建新方法=====================,可以用静态私有变量解决
+    // 构造函数模式的缺点：对每个实例都会创建同样的方法！！使用静态私有变量避免这个问题
 </script>
 
 <script>
@@ -74,7 +78,7 @@
         };
 
         // 特权方法
-        MyObject.prototype.publicMethod = function(){
+        MyObject.prototype.publicMethod = function(){ // 实例用同一个函数
             privateVar++;
             /*return privateFun();*/
 
@@ -104,37 +108,61 @@
     person1.setName("Greg");
     console.log(person1.getName());
 
-    var person2 = new Person("Michael");
+    var person2 = new Person("Michael"); // 影响到所有的实例对象
     console.log(person1.getName());
-    console.log(person2.getName()); // 每个实例都没有自己的私有变量
+    console.log(person2.getName());
 </script>
 
 <script>
-    // 模块模式
-    // 单例的公共接口
+    // 模块模式：通过为单例添加私有变量和特权方法使其得到增强
     // 用在：对单例进行初始化，又需要维护其私有变量
     var singleton = function(){
 
         // 私有变量，函数
-        var privateVar = 10;
+        var privateVar = 1000;
 
         function privateFun(){
             return false;
         }
 
         // 特权属性，方法
-        return {
+        return { // 对象字面量定义的是单例的公共接口
             publicProperty: true,
             publicMethod: function(){
                 privateVar++;
                 return privateFun();
             }
         }
-    };
+    }();
 
-    // example
+    console.log(singleton);
+</script>
 
+<script>
+    // 增强的模块模式
+    var singletonEnhanced = function(){
 
+        // 私有变量，函数
+        var privateVar = 20;
+
+        function privateFun(){
+            return false;
+        }
+
+        var object = new Object();
+
+        // 特权属性，方法
+        object.publicProperty = true;
+
+        object.publicMethod = function(){
+            privateVar++;
+            return privateFun;
+        };
+
+        return object;
+    }();
+
+    console.log(singletonEnhanced);
 </script>
 </body>
 </html>
