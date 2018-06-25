@@ -6,14 +6,14 @@
 </head>
 <body>
 <script>
-    // 私有变量：任何在函数中定义的变量，不能在函数外部被访问到
-    // 私有变量=> 函数的参数，局部变量，函数内部定义的其他函数
+    // 私有变量：任何在函数中定义的变量，不能在函数外部被访问到！！
+    // 私有变量 => 包括函数的参数、局部变量、函数内部定义的其他函数
 
     // 在函数内创建一个闭包，通过自己的作用域链 访问私有变量
 
     // 特权方法：可以访问私有变量，私有函数的公有方法
     // 1.在构造函数定义特权方法
-    // 2.在私有作用域中定义私有变量，函数，原型上定义特权方法
+    // 2.在私有作用域中（匿名函数立即执行）定义私有变量，函数，原型上定义特权方法
 
     function MyObject(){
 
@@ -66,7 +66,7 @@
     (function(){
 
         // 私有变量，函数
-        var privateVar = 100;
+        var privateVar = 20;
 
         function privateFun(){
             return false;
@@ -119,7 +119,7 @@
     var singleton = function(){
 
         // 私有变量，函数
-        var privateVar = 1000;
+        var privateVar = 30;
 
         function privateFun(){
             return false;
@@ -139,17 +139,17 @@
 </script>
 
 <script>
-    // 增强的模块模式
+    // 增强的模块模式：单例必须是某种类型的实例，返回单例
     var singletonEnhanced = function(){
 
         // 私有变量，函数
-        var privateVar = 20;
+        var privateVar = 40;
 
         function privateFun(){
             return false;
         }
 
-        var object = new Object();
+        var object = new Object(); //
 
         // 特权属性，方法
         object.publicProperty = true;
