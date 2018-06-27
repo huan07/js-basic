@@ -6,9 +6,9 @@
 </head>
 <body>
 <script>
-    // Ajax
+    // Ajax 同步：js代码等到服务器相应之后再继续执行
     var xhr = new XMLHttpRequest();
-    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  同一个域中相同的端口、协议的URL发送请求
+    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  与当前页面是同一个域、相同的端口、协议的URL发送请求
     xhr.send(null);
     console.log(xhr);
 
@@ -21,18 +21,18 @@
 
 <script>
     // 异步请求：js继续执行不必等待响应
-
     var xhr2 = new XMLHttpRequest();
     xhr2.onreadystatechange = function(){
         console.log(xhr2.readyState);
         if (xhr2.readyState === 4) {
-            console.log(this, xhr2, this === xhr2); // ? ? ?
+            console.log(this, xhr2, this === xhr2); // 浏览器兼容性
 
             var myHeader = xhr2.getResponseHeader('MyHeader'); // 设置成功，然而并没有取到值
             var allHeader = xhr2.getAllResponseHeaders();
             console.log(myHeader, allHeader);
+
             if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
-                console.log(xhr2.response, JSON.parse(xhr2.response));
+                console.log(xhr2.response);
             } else {
                 console.log('request was unsuccessful' + xhr2.status)
             }
@@ -46,8 +46,12 @@
 </script>
 
 <script>
-    // get  向服务器查询某些信息  URL末尾的查询字符串必须经过编码
+    // get  向服务器查询某些信息  URL末尾的查询字符串必须经过编码(name,value)
     // post 向服务器发送应该被保存的数据
+
+    // 区别：
+    // 查询信息name,value要紧跟在请求的URL后面，有数量限制；暴露在外面不安全；发送相同的数据，get请求的速度快；
+    // post请求消耗的资源多；
 </script>
 
 </body>
