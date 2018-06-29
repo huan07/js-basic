@@ -5,17 +5,49 @@
     <title>5.3</title>
 </head>
 <body>
+
+<script>
+    var beginDate = new Date('January 1, 1970 08:00:00'); // 用从这一时刻开始 经过的毫秒数 来保存日期时间
+    console.log('beginDate => ', beginDate);
+    console.log('表示日期的毫秒数 => ', beginDate.getTime());
+
+    var someDate = new Date('January 1, 1970 09:00:00');
+    console.log('someDate => ', someDate);
+    console.log('表示日期的毫秒数，一个小时后的 毫秒数 => ', someDate.getTime());
+</script>
+
+
 <script>
     var now = new Date();
     console.log('now => ', now);
 
-    console.log(now.getFullYear());
+    console.log(now.getFullYear(), '年');
 
-    console.log(now.getMonth() + 1);
+    console.log(now.getMonth() + 1, '月');
 
-    console.log(now.getDate(),);
+    console.log(now.getDate(), '日');
 
-    console.log(now.getDay())
+    console.log(now.getDay(), '周几');
+
+    console.log(now.getTime());
+</script>
+
+
+<script>
+    setTimeout(function(){
+        var someDate = new Date();
+        console.log('someDate => ', someDate);
+
+        console.log(someDate.getFullYear(), '年');
+
+        console.log(someDate.getMonth() + 1, '月');
+
+        console.log(someDate.getDate(), '日');
+
+        console.log(someDate.getDay(), '周几');
+
+        console.log(someDate.getTime());
+    }, 1000);
 </script>
 
 </body>
