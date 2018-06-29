@@ -8,7 +8,7 @@
 <script>
     // Ajax 同步：js代码等到服务器相应之后再继续执行
     var xhr = new XMLHttpRequest();
-    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  与当前页面是同一个域、相同的端口、协议的URL发送请求
+    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  URL与当前页面是同一个域、相同的端口、协议（同源策略）；
     xhr.send(null);
     console.log(xhr);
 

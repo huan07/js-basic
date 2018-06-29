@@ -54,5 +54,64 @@
     }, 5000);
 </script>
 
+<script>
+    // instanceof  instance.__proto__.constructor === 函数即可返回true
+    // 2.1
+    function A(){
+
+    }
+    var a1 = new A();
+    var a2 = A();
+    console.log('A');
+    console.log(a1 instanceof A);
+    console.log(a2 instanceof A);
+
+
+    // 2.2
+    // 创建一个对象
+    // this => 创建后的对象
+    // 执行函数体的代码
+    // 返回对象
+
+
+    // 2.3
+    function B(){
+        return {};
+    }
+    var b1 = new B();
+    var b2 = B();
+    console.log('B');
+    console.log(b1 instanceof B); // to do
+    console.log(b2 instanceof B);
+
+    function C(){
+        return 'C';
+    }
+    var c1 = new C();
+    var c2 = C();
+    console.log('C');
+    console.log(c1 instanceof C); // to do
+    console.log(c2 instanceof C);
+</script>
+
+<script>
+    // 4.1
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('get', 'url', true);
+
+    xhr.send(null);
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                console.log(xhr.response);
+            } else {
+                console.log(xhr.status);
+            }
+        }
+    }
+</script>
+
 </body>
 </html>

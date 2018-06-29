@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨源资源共享 CORS</title>
+</head>
+<body>
+<script>
+    // CORS思想：使用自定义的HTTP头部让浏览器，服务器通信，从而决定请求／相应成功或失败
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt', false);
+    xhr.setRequestHeader('Origin', 'http://www.runoob.com'); // 1.
+    xhr.setRequestHeader('MyRequestHeader', 'MyRequestValue');
+    xhr.send(null);
+    console.log(xhr);
+
+    // 2.如果服务器接受请求，就回发Access-Control-Allow-Origin(与Origin一致，浏览器才会接受请求，否则的话请求被驳回)
+    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+        console.log(xhr.response);
+    } else {
+        console.log('request was unsuccessful' + xhr.status)
+    }
+    // 请求和相应都不包含cookie信息
+</script>
+</body>
+</html>
