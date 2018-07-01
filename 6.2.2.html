@@ -41,7 +41,7 @@
 </script>
 
 <script>
-    var sayName = function(){ // 指向函数的指针 被person1、person2对象共享   但是作为全局函数不合适
+    var sayName = function(){ // 指向函数的指针 被person1、person2对象共享   但是作为全局函数被用作 函数的方法 不合适
         console.log(this.name + '-' + this.job)
     };
     function Person(name, age, job){
