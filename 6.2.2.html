@@ -25,7 +25,7 @@
 
 
     // 构造函数与普通函数的唯一区别：调用方式不一样
-    // Person的调用方式  call 对象冒充
+    // Person的调用方式  call对象冒充
     // 1.
     var person = new Person('person5', 50, '50 years old people');
     person.sayName();
@@ -41,7 +41,10 @@
 </script>
 
 <script>
-    var sayName = function(){ // 指向函数的指针 被person1、person2对象共享   但是作为全局函数被用作 函数的方法 不合适
+    var sayName = function(){
+        // 指向函数的指针 被person1、person2对象共享；
+        // 但是作为全局函数被用作 对象的方法 不合适；
+        // 对象有很多方法，就需要定义很多的全局函数，这样的话，自定义的引用类型没有封装性；！！
         console.log(this.name + '-' + this.job)
     };
     function Person(name, age, job){
@@ -51,8 +54,8 @@
         this.sayName = sayName;
     }
 
-    var person = new Person('person8', 80, '80 years old people');
-    var person2 = new Person('person9', 90, '90 years old people');
+    var person = new Person('person8', 80, 'job');
+    var person2 = new Person('person9', 90, 'job2');
     person.sayName();
     person2.sayName();
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);
