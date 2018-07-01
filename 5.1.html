@@ -37,18 +37,18 @@
         console.log('key=> ', i);
     }
 
-    // 读对象属性：点表示法，[字符串]，[变量名]
+    // 读对象属性：点表示法，[变量名]，[字符串]
     // 方括号还可以 写对象属性
     var person = {
         age: 31
     };
     var agePropertyName = 'age';
-    console.log(person.age, person['age'], person[agePropertyName]);
+    console.log(person.age, person[agePropertyName], person['age']);
 
     var firstName = 'first name';
-    person[firstName] = 'YiXing';
-    person['last Name'] = 'Zhang';
-    console.log(person, person['last Name'], person[firstName]);
+    person[firstName] = 'XiZhu';
+    person['last Name'] = 'LUO';
+    console.log(person, person[firstName], person['last Name']);
 </script>
 
 </body>
