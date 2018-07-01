@@ -36,7 +36,7 @@
     // getPrototypeOf Object方法  返回实例的 原型
     console.log('getPrototypeOf => ', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
 
-    // 对象熟悉搜索机制：
+    // 对象属性搜索机制：
     // 先搜索实例属性，找到就返回；否则，继续搜索原型属性；
     // 不能通过实例重写原型的值；
 
@@ -82,7 +82,7 @@
     }
     console.log('重写整个原型对象之前 => ', People.prototype, People.prototype.constructor); // People
     People.prototype = {
-        // constructor:People, // 手动设置变成可以枚举  不写的话默认值是Object
+        // constructor:People, // 手动设置变成可以枚举
         name: 'people_name',
         age: 'people_age',
         job: 'people_job',
@@ -90,7 +90,7 @@
             console.log(this.name + '-' + this.age);
         }
     };
-    console.log('重写整个原型对象之后 => ', People.prototype, People.prototype.constructor); // Object
+    console.log('重写整个原型对象之后 => ', People.prototype, People.prototype.constructor); // 搜索到原型链上的constructor值: Object
 
     var people = new People();
     people['name_job'] = 'name_job';
