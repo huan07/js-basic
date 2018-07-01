@@ -48,8 +48,8 @@
     console.log('delete => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
 
     // getOwnPropertyDescriptor  获取对象上属性的描述，
-    person12.name = 'person12';
-    var instanceDescriptor = Object.getOwnPropertyDescriptor(person12, 'name');
+    person11.name = 'person11';
+    var instanceDescriptor = Object.getOwnPropertyDescriptor(person11, 'name');
     var prototypeDescriptor = Object.getOwnPropertyDescriptor(Person.prototype, 'name');
     console.log('Object.getOwnPropertyDescriptor => ', instanceDescriptor, prototypeDescriptor);
 
