@@ -7,7 +7,7 @@
 <body>
 <script>
     // 组合使用构造函数模式和原型模式
-    function Person(name, age, job){ // 实例属性
+    function Person(name, age, job){ // 实例属性（属于自己特有的属性）
         this.name = name;
         this.age = age;
         this.job = job;
@@ -23,7 +23,9 @@
 
     var person = new Person('yh', 30, 'a beautifull woman');
     var person2 = new Person('yh2', 30, 'a beautifull woman');
+
     person2.friends.push('friend3');
+    
     console.log(person.friends, person2.friends, person.friends === person2.friends);
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName)
 </script>
