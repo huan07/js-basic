@@ -70,10 +70,10 @@
     // Object.keys() 可枚举的实例属性  返回数组
     // Object.getOwnPropertyNames() 所有实例属性  返回数组
     // 原生constructor不可枚举
-    var person13 = new Person();
-    person13['name_age'] = 'name_age';
-    console.log('Object.keys => ', Object.keys(person13), Object.keys(Person.prototype));
-    console.log('Object.getOwnPropertyNames => ', Object.getOwnPropertyNames(person13), Object.getOwnPropertyNames(Person.prototype));
+    var people = new Person();
+    people['name_age'] = 'name_age';
+    console.log('Object.keys => ', Object.keys(people), Object.keys(Person.prototype));
+    console.log('Object.getOwnPropertyNames => ', Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(Person.prototype));
 </script>
 
 <script>
