@@ -19,7 +19,7 @@
     var person2 = new Person('person2', 40, 'a beautifull woman');
     person.sayName();
     person2.sayName();
-    console.log(person.sayName, person2.sayName, person.sayName === person2.sayName);  // 问题：不同实例上的同名函数是不相等的！！！！！！！！
+    console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
 
     console.log('对象实例constructor属性========', person.constructor, Person, person.constructor === Person);
 
