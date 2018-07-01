@@ -98,7 +98,7 @@
     console.log(Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(People.prototype));
 
 
-    // 原型的动态性 ！！！！！！！！！！！！！！！！
+    // 原型的动态性 ！！ to do
     var friend = new People();
 
     People.prototype.sayHi = function(){ // 创建实例后添加原型属性方法，实例和原型的松散连接
@@ -106,7 +106,6 @@
     };
     friend.sayHi();
 
-    // 原型的动态性 ！！！！！！！！！！！！！！！！
     // 创建实例的情况下 重写默认的prototype对象：1.切断了构造函数与最初原型的联系
     // 实例的指针指向原型，不是构造函数，
     function Person(){
@@ -135,19 +134,19 @@
         age: 30,
         friend: 'yc',
         sayHiWord: function(){
-            return 'XxX XxX XxX XxX XxX';
+            console.log('XxX XxX XxX XxX XxX');
         }
     };
 
     var xx = new XxX();
-    xx.sayHiWord(); // ?????????不管用
+    xx.sayHiWord();
 
 
     // 原生对象的原型
 </script>
 <script>
-    // 原型对象的问题
-    // 所有实例在默认情况下都将取得相同的属性值   对于包含引用类型值的属性，问题突出！！！！！！！！！！！！！
+    // 问题：所有实例在 默认情况下都将 取得相同的属性值；
+    // 共享对函数非常适用，对于包含引用类型值的属性，问题突出！！
     function Person(){
 
     }
@@ -163,7 +162,9 @@
     var person = new Person();
     var person2 = new Person();
     person2.friends.push('friend3');
+
     console.log('原型对象的问题 => ', person.friends, person2.friends, person.friends === person2.friends);
+    person.sayName();
     person2.sayName();
 
     // 练习题
