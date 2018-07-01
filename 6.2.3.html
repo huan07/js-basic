@@ -23,7 +23,7 @@
     console.log(person11);
     console.log('原型对象共享的方法 => ', person11.sayName, person11.sayName === person12.sayName);
 
-    // constructor ！！最初包含，共享的
+    // constructor ！！最初包含，共享的，不可枚举
     console.log('实例constructor属性 => ', person11.constructor, person11.constructor === Person);
     console.log(Person.prototype.constructor, Person.prototype.constructor === Person);
 
