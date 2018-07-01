@@ -7,9 +7,9 @@
 <body>
 <script>
     // prototype  每个函数都有，是一个指针，指向对象（其用途：包含特定类型的所有实例 共享的属性和方法）
-    function Person(){ // 实例属性，不可以共享
+    function Person(){ // 实例属性、方法，不共享
     }
-    Person.prototype.name = 'person11_person12'; // 原型属性，共享
+    Person.prototype.name = 'person11_person12'; // 原型属性、方法，共享
     Person.prototype.age = 30;
     Person.prototype.job = 'job';
     Person.prototype.sayName = function(){
@@ -17,37 +17,44 @@
     };
 
     var person11 = new Person();
+    person11.name = 'person11';
+
     var person12 = new Person();
     console.log(person11);
     console.log('原型对象共享的方法 => ', person11.sayName, person11.sayName === person12.sayName);
 
-    // 对象的属性constructor ！！！！！！最初包含，共享的
-    console.log('对象的属性constructor => ', person11.constructor, person11.constructor === Person);
+    // constructor ！！最初包含，共享的
+    console.log('实例constructor属性 => ', person11.constructor, person11.constructor === Person);
     console.log(Person.prototype.constructor, Person.prototype.constructor === Person);
 
-    // 实例对象的内部属性 [[Prototype]] __proto__  指向构造函数的原型
+    // 实例的内部属性 [[Prototype]] __proto__  指向构造函数的原型
     console.log('__proto__ => ', person11.__proto__, person11.__proto__ === Person.prototype);
 
-    // isPrototypeof  继承方法  原型对象 是否是 实例对象的原型
-    console.log('isPrototypeOf => ', Person.prototype.isPrototypeOf(person11), Person.prototype.isPrototypeOf(person12));
+    // isPrototypeOf  原型 是否是 实例的原型      继承方法！！
+    console.log('isPrototypeOf => ', Person.prototype.isPrototypeOf(person11));
 
-    // getPrototypeOf Object方法  返回实例对象的 原型
+    // getPrototypeOf Object方法  返回实例的 原型
     console.log('getPrototypeOf => ', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
 
+    // 对象熟悉搜索机制：
+    // 先搜索实例属性，找到就返回；否则，继续搜索原型属性；
+    // 不能通过实例重写原型的值；
 
-    // 先搜索对象实例，再搜索原型  属性
-    // 不能通过对象实例重写原型的值
-    // delete 删除 对象实例 属性
-    // hasOwnProperty 是否是 对象实例 属性
+    // hasOwnProperty 是否是 实例属性    继承方法！！
+    // delete 删除 实例属性
     person11.name = 'person11'; // 屏蔽原型的属性
     console.log('hasOwnProperty => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
     delete person11.name;
     console.log('delete => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
 
-    // getOwnPropertyDescriptor ??
+    // getOwnPropertyDescriptor  获取对象上属性的描述，
+    person12.name = 'person12';
+    var instanceDescriptor = Object.getOwnPropertyDescriptor(person12, 'name');
+    var prototypeDescriptor = Object.getOwnPropertyDescriptor(Person.prototype, 'name');
+    console.log('Object.getOwnPropertyDescriptor => ', instanceDescriptor, prototypeDescriptor);
 
 
-    // in,  for in 可枚举的对象实例 + 原型
+    // in,  for in 可枚举的属性
     console.log('in   for in => ', 'name' in person11);
     person11.name = 'person11';
     console.log('name' in person11);
