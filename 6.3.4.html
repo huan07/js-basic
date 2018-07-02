@@ -21,7 +21,7 @@
     };
 
     var person2 = object(person);
-    person2.name = 'name2';
+    person2.name = 'name2'; // 修改的是实例属性，原型属性不变
     person2.friends.push('friendX');
 
     var person3 = object(person);
@@ -56,16 +56,16 @@
         friends: ['friend', 'friend2', 'friend3']
     };
 
-    var people2 = Object.create(people, {
+    var people2 = Object.create(people, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例属性
         name: {
             value: 'name2'
         }
     });
 
-    var people3 = Object.defineProperty(people, 'name', {
-        value: 'name3'
+    var people3 = Object.defineProperty(people, 'age', {
+        value: 31
     });
-    console.log(people, people2, people3);
+    console.log('Object.create,  Object.defineProperty => ', people, people2, people3);
 </script>
 
 </body>
