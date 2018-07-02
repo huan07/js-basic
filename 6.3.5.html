@@ -18,7 +18,7 @@
     function createAnother(original){
         var clone = object(original);
         clone.sayHi = function(){ // 不能做到函数复用
-            console.log('hi' + clone.friends.length);
+            console.log('hi ' + clone.friends.length);
         };
         return clone;
     }
