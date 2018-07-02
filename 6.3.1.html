@@ -27,7 +27,7 @@
     function SubType(){
         this.subproperty = 'subproperty';
     }
-    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象，constructor改变了！！
+    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象，constructor改变了！！（具备实例＋原型属性）
     SubType.prototype.getSubValue = function(){ // 添加方法 / 覆盖方法 要写在后面     2.不能用对象字面量，会覆盖上面的
         return this.subproperty;
     };
