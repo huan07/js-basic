@@ -19,12 +19,12 @@
 
     function SubType(name, age){
 
-        // 继承属性  各自属性
+        // 继承属性
         SuperType.call(this, name);  // 实例化instance, 调用了第二次SuperType
         this.age = age;
     }
 
-    // 继承方法 共同方法
+    // 继承方法
     SubType.prototype = new SuperType(); // 调用了第一次SuperType
     SubType.prototype.constructor = SubType;
     SubType.prototype.sayAge = function(){
