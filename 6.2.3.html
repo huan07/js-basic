@@ -27,7 +27,8 @@
     console.log('实例constructor属性 => ', person11.constructor, person11.constructor === Person);
     console.log(Person.prototype.constructor, Person.prototype.constructor === Person);
 
-    // 实例的内部属性 [[Prototype]] __proto__  指向构造函数的原型
+    // 实例的内部属性 [[Prototype]]
+    // 部分浏览器支持的__proto__  指向构造函数的原型
     console.log('__proto__ => ', person11.__proto__, person11.__proto__ === Person.prototype);
 
     // isPrototypeOf  原型 是否是 实例的原型      继承方法！！
