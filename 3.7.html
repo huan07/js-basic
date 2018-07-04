@@ -5,11 +5,12 @@
     <title>3.7</title>
 </head>
 <body>
+
 <script>
     function sayHi(name, message){
         console.log(name + '-' + message);
     }
-    sayHi('yh', 'software engineer'); // 调用函数后 才执行函数声明部分
+    sayHi('yh', 'software engineer'); // 调用函数后 才去执行函数体内代码
     console.log(sayHi); // 访问函数指针
 
     // example
@@ -20,23 +21,8 @@
 </script>
 
 <script>
-    // 链式调用  链式太长不推荐使用
-    var operation = {
-        add: function(num1, num2){
-            console.log(num1 + num2);
-            return this;
-        },
-        subtract: function(num1, num2){
-            console.log(num1 - num2);
-            return this;
-        }
-    };
-    operation.add(11, 2).subtract(11, 2);
-</script>
-
-<script>
     function sum(num1, num2){
-        return num1 + num2; // 遇到return语句，返回值；后面的语句不会执行
+        return num1 + num2; // 遇到return语句，返回值  ;后面的语句不会执行
     }
     var result = sum(8, 9);
     console.log(result, sum(88, 99));
@@ -50,22 +36,22 @@
     }
     console.log(diff(13, 7));
 
-    function sayHi2(name, message){
-        return; // return语句，返回的是undefined；后面的语句不会执行
+    function sayHi(name, message){
+        return; // return语句，返回的是undefined  ;后面的语句不会执行
         console.log(name + '-' + message);
     }
-    sayHi2('yh', 'software engineer');
+    sayHi('yh', 'software engineer');
     // return语句 推荐做法：要么需要返回值；要么不需要返回值；
 </script>
 
 <script>
-    // es参数在内部是用一个数组来表示的 在函数体内通过arguments对象（并不是Array的实例）来访问参数数组，
-    function sayHi3(){
-        console.log('arguments对象 ' + JSON.stringify(arguments), arguments, arguments.length);
+    // es参数在内部是用一个 数组 来表示的 在函数体内通过arguments对象（并不是Array的实例）来访问 参数数组
+    function sayHi(){
+        console.log('arguments对象 => ' + JSON.stringify(arguments), arguments, arguments.length);
     }
-    sayHi3('sunday');
-    sayHi3('sunday', 'sunday2');
-    sayHi3('sunday', 'sunday2', 'sunday3');
+    sayHi('sunday');
+    sayHi('sunday', 'sunday2');
+    sayHi('sunday', 'sunday2', 'sunday3');
 
     function doAdd(){
         if (arguments.length === 1) {
@@ -79,14 +65,15 @@
 
     // arguments的值永远与对应的命名参数的值同步（但是它们的内存空间是独立的）
     function doAdd2(num1, num2){
-        console.log(JSON.stringify(arguments));
-        arguments[1] = 10000; // 不传第二个参数（此时 num2=undefined） 这个地方会不执行的；！！！！！！！！！！！！！！！！！！！
-        // 只有传第二个参数，这个地方才会去改写；
-        console.log(arguments[0] + num2);
+
+        arguments[1] = 10000;
+        // 不传第二个参数，这个地方执行的，但是num2依然是undefined，它们之间的值没有同步
+
+        console.log(arguments[0] + num2, arguments[0] + arguments[1]);
     }
     doAdd2(22, 2);
     doAdd2(33, 3);
-    doAdd2(44); // arguments.length是由传入的参数的个数决定的，
+    doAdd2(44); // arguments.length 是由传入的参数的个数决定的，
 
     // 参数传递的都是值，不可能通过引用传递参数！！！！！！！！！！！！！！！！！！！！！！！！！！
 
@@ -105,6 +92,21 @@
     var min2 = min.apply(this, [9, 3]);
     var min3 = min.apply(this, [18]);
     console.log(min1, min2, min3);
+</script>
+
+<script>
+    // 链式调用  链式太长不推荐使用
+    var operation = {
+        add: function(num1, num2){
+            console.log(num1 + num2);
+            return this;
+        },
+        subtract: function(num1, num2){
+            console.log(num1 - num2);
+            return this;
+        }
+    };
+    operation.add(11, 2).subtract(11, 2);
 </script>
 
 </body>
