@@ -68,6 +68,8 @@
 
         arguments[1] = 10000;
         // 不传第二个参数，这个地方执行的，但是num2依然是undefined，它们之间的值没有同步
+        // 单向影响，修改arguments值同步到命名参数
+        // 严格模式赋值无效
 
         console.log(arguments[0] + num2, arguments[0] + arguments[1]);
     }
