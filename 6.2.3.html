@@ -47,6 +47,7 @@
     console.log('hasOwnProperty => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
     delete person11.name;
     console.log('delete => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
+    console.log(Person.prototype.hasOwnProperty('name'), Person.prototype.hasOwnProperty('age'));
 
     // getOwnPropertyDescriptor  获取对象上属性的描述，
     person11.name = 'person11';

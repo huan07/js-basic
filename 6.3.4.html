@@ -62,9 +62,13 @@
     });
 
     var people3 = Object.defineProperty(people, 'age', {
+        writable: true,
         value: 31
     });
     console.log('Object.create,  Object.defineProperty => ', people, people2, people3);
+
+    console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(people2), 'name'));
+    console.log(Object.getOwnPropertyDescriptor(people3, 'name'));
 </script>
 
 </body>
