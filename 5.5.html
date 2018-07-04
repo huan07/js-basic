@@ -132,7 +132,7 @@
     var o = { color: "blue" };
 
     function sayColor(){
-        console.log('this =>', this.color);
+        console.log('this =>', this.color, this);
     }
 
     sayColor();
@@ -148,7 +148,10 @@
 
 <script>
     // sum.prototype.constructor === sum
-    // 非继承方法call,apply  特定的作用域调用函数； 接受参数不一样，没有参数传递的情况，用法一样
+
+    // 非继承方法call,apply  在特定的作用域调用函数（改变this的指向，this => 第一个参数）；
+    // 接受参数不一样，
+
     // 1.用来传递参数
     // 2.扩充函数赖以运行的作用域, 优点：对象不需要和方法有任何耦合
     // bind this值会被绑定到bind的第一个参数，
