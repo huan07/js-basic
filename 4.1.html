@@ -6,10 +6,10 @@
 </head>
 <body>
 <script>
-    // 基本类型值：简单的数据段，操作保存在变量的  实际值  ，按值访问
-    // 引用类型值：多个值构成的对象，js不能直接操作 对象的内存空间，操作的是  对象的引用 ，按引用访问
+    // 基本类型值：简单的数据段，操作保存在变量的  实际值，按值访问
+    // 引用类型值：多个值构成的对象，js不能直接操作 对象的内存空间，操作的是  对象的引用，按引用访问
 
-    // 复制变量值：基本类型值，值的副本是 独立的，
+    // 复制变量值：基本类型值，值的副本，完全独立的两个变量，
     //            引用类型值，值的副本是 指针，两个变量引用同一个对象，
 
     // 传递参数：按值传递，
@@ -55,7 +55,7 @@
     var colorArray = ['red', 'blue'];
     var colorArray2 = ['red', 'blue'];
 
-    function equalArrays(arrayA, arrayB){
+    function equalArrs(arrayA, arrayB){
         var arrayALen = arrayA.length;
         if (arrayALen !== arrayB.length) {
             return false;
@@ -67,10 +67,10 @@
         }
         return true;
     }
-    console.log('判断两个[] 是否相等', equalArrays(colorArray, colorArray2));
+    console.log('判断两个[] 是否相等', equalArrs(colorArray, colorArray2));
 
 
-    // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；！！！！！！！！！！！！！！！！！！！
+    // 浅拷贝    功能不完善，如果完善到属性值是引用类型，称为深拷贝；！！
     var personInfo = {
         name: 'yc',
         job: 'woman'
@@ -84,11 +84,9 @@
         return newObj;
     }
     var personXInfo = copyObj(peopleInfo);
-
     var person2Info = personInfo;
-
-    console.log(personXInfo === peopleInfo);
     console.log('比较的是指针,是否指向同一个对象', person2Info === personInfo);
+    console.log(personXInfo === peopleInfo);
 </script>
 
 </body>
