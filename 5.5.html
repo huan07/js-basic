@@ -7,14 +7,14 @@
 <body>
 
 <script>
-    // 每个 函数 都是Function类型的 实例，函数名 是一个指向函数对象的 指针（变量）
+    // 每个 函数 都是 Function类型的实例，函数名 是一个指向函数对象的 指针（变量）
     // 函数是对象，函数名是指针
 
     function sum(num1, num2){
         return num1 + num2;
     }
-    console.log(sum(10, 20));
-    console.log(sum.length, sum, sum.prototype, sum.prototype.constructor === sum);
+    console.log(sum(10, 20), sum.length,);
+    console.log(sum, sum.prototype, sum.prototype.constructor === sum);
 
     var anotherSum = sum;// 访问函数指针，非调用！！！！！！！！！！！！！！！！！！！！！！
     console.log(anotherSum(10, 20));
