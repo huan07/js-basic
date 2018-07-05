@@ -90,6 +90,20 @@
     var arr2 = createFunction2();
     console.log('createFunction2 => ', arr2);
     console.log(arr2[0](), arr2[9]());
+
+    // 匿名函数的自我执行
+    function myCompare(){
+        var result = new Array();
+
+        for (var i = 0; i < 5; i++) {
+            result[i] = (function(m){
+                return m;
+            })(i);
+        }
+        return result;
+    }
+    var t = myCompare();
+    console.log('t => ', t);
 </script>
 
 <script>
