@@ -24,7 +24,7 @@
     // 用途：1)函数inner可以读取函数outer内部变量，2)让函数outer变量的值保留在内存中
     function createComparisonFunction(propertyName){
 
-        return function(object1, object2){  // 匿名函数当作值返回
+        return function(object1, object2){  // 匿名函数用途：1.作为函数的值返回，实现闭包；
             var value1 = object1[propertyName];  //
             var value2 = object2[propertyName]; // 访问了createComparisonFunction的变量propertyName
 
@@ -40,19 +40,20 @@
 
     var compareNames = createComparisonFunction('name');
     // compareNames得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
-    // 外部函数createComparisonFunction函数返回后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，
-    // 因为匿名函数的作用域链仍然在引用外部函数的活动对象，这个活动对象仍然留在内存中
+    // 外部函数createComparisonFunction执行完毕后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，！！
+    // 因为匿名函数的作用域链仍然在引用外部函数的活动对象，这个活动对象仍然留在内存中！！
     console.log(compareNames);
 
     var result = compareNames({ name: 'yh3' }, { name: 'yh2' });
     console.log(result);
 
 
-    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）
+    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）！！
 </script>
 
 <script>
-    // 作用域链的副作用：闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中
+    // 作用域链的副作用：
+    // 闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中！！
     function createFunction(){
         var result = new Array();
 
@@ -89,7 +90,9 @@
     console.log('createFunction2 => ', arr2);
     console.log(arr2[0]());
     console.log(arr2[9]());
+</script>
 
+<script>
     // 闭包的 this对象
     // 匿名函数的执行环境具有全局性，this指向的是 => window
     var name = "The Window";
