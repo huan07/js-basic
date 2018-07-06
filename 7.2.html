@@ -91,14 +91,14 @@
     console.log('createFunction2 => ', arr2);
     console.log(arr2[0](), arr2[9]());
 
-    // 匿名函数的自我执行
+    // 匿名函数的立即自我执行  可以引申为今日头条考题closure.html
     function myCompare(){
         var result = new Array();
 
         for (var i = 0; i < 5; i++) {
             result[i] = (function(m){
                 return m;
-            })(i);
+            })(i); // 按值传递 ！！
         }
         return result;
     }

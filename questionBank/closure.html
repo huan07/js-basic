@@ -7,6 +7,20 @@
 <body>
 
 <script>
+    // 没有块级作用域
+    for (var j = 0; j < 3; j++) { // 美团点评考题 8
+        setTimeout(function(){
+            console.log('没有块级作用域 j秒 => ', j);
+        }, j);
+    }
+    for (var k = 0; k < 3; k++) {
+        setTimeout(function(){
+            console.log('没有块级作用域 k * 1000秒 => ', k);
+        }, k * 1000);
+    }
+</script>
+
+<script>
     // 闭包 今日头条考题：每隔1s打印出数组的每项
     function fun(arr){
         var i, len;
@@ -19,6 +33,31 @@
         }
     }
     fun(['y', 'a', 'n', 'g', 'h', 'u', 'a', 'n', 'h', 'a']);
+</script>
+
+<script>
+    // 闭包 美团点评常考题
+    function fun(n, o){
+        console.log(o);
+        return {
+            fun: function(m){
+                return fun(m, n); // 闭包的存在，n 一直保存在内存中！！！！！
+                // 沿着作用域链查找 n ;
+            }
+        }
+    }
+    var a = fun(0); // undefined
+    a.fun(1); // 0
+    a.fun(2); // 0
+    a.fun(3); // 0
+
+
+    var b = fun(0).fun(1).fun(2).fun(3); // undefined 0 1 2
+
+
+    var c = fun(0).fun(1); // undefined 0
+    c.fun(2); // 1
+    c.fun(3); // 1
 </script>
 
 <script>
@@ -67,112 +106,7 @@
         return subTest;
     }
     test()();
-
-    // 闭包常考题
-    function fun(n, o){
-        console.log(o);
-        return {
-            fun: function(m){
-                return fun(m, n); // 闭包的存在，n 一直保存在内存中！！！！！
-                // 沿着作用域链查找 n ;
-            }
-        }
-    }
-    var a = fun(0); // undefined
-    a.fun(1); // 0
-    a.fun(2); // 0
-    a.fun(3); // 0
-
-
-    var b = fun(0).fun(1).fun(2).fun(3); // undefined 0 1 2
-
-
-    var c = fun(0).fun(1); // undefined 0
-    c.fun(2); // 1
-    c.fun(3); // 1
 </script>
 
-<script>
-    // 没有块级作用域
-    for (var i = 0; i < 3; i++) {
-        setTimeout(function(){
-            console.log('没有块级作用域 0秒 => ', i);
-        }, 0);
-    }
-
-
-    for (var i = 0; i < 3; i++) {
-        setTimeout(function(){
-            console.log('没有块级作用域 1000秒 => ', i);
-        }, 1000);
-    }
-
-    for (var i = 0; i < 3; i++) {
-        setTimeout(function(){
-            console.log('没有块级作用域 i * 1000秒 => ', i);
-        }, i * 1000);
-    }
-</script>
-<script>
-    for (var i2 = 0; i2 < 3; i2++) {
-        (function(i){
-            setTimeout(function(){
-                console.log('i2 => ', i);
-            }, 1000);
-        })(i2);
-    }
-</script>
-
-<script>
-    // 闭包的this
-    var x = 20;
-    var a = {
-        x: 15,
-        fn: function(){
-            var x = 30;
-            return function(){
-                return this.x;
-            };
-        }
-    };
-    console.log(a.fn()); // f(){}
-    console.log('匿名函数的执行环境具有全局性，this指向的是 => window, 可以改变函数执行环境 ');
-    console.log(a.fn()()); // 20
-    console.log(a.fn().call(this)); // 20
-    console.log(a.fn().call(a)); // 15
-</script>
-<script>
-    var x = 20;
-    var a = {
-        x: 15,
-        fn: function(){
-            var x = 30;
-            var that = this;
-            return function(){
-                return that.x;
-            };
-        }
-    };
-    console.log('that还是指向a对象！！！！！ => ');
-    console.log(a.fn()()); // 15
-    console.log(a.fn().call(this)); // 15
-    console.log(a.fn().call(a)); // 15
-</script>
-<script>
-    var x = 20;
-    var a = {
-        x: 15,
-        fn: function(){
-            var x = 30;
-            return function(){
-                return x;
-            };
-        }
-    };
-    console.log('沿着作用域链查找变量，找到就调用并且停止查找 => ');
-    console.log(a.fn()()); // 30
-    console.log(a.fn().call(this)); // 30
-    console.log(a.fn().call(a)); // 30
-</script>
 </body>
 </html>

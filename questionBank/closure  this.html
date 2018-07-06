@@ -2,9 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>closure  this</title>
+    <title>closure this</title>
 </head>
 <body>
 
+<script>
+    // 闭包的this
+    var x = 20;
+    var a = {
+        x: 15,
+        fn: function(){
+            var x = 30;
+            return function(){
+                return this.x;
+            };
+        }
+    };
+    console.log(a.fn()); // f(){}
+    console.log('匿名函数的执行环境具有全局性，this指向的是 => window, 可以改变函数执行环境 ');
+    console.log(a.fn()()); // 20
+    console.log(a.fn().call(this)); // 20
+    console.log(a.fn().call(a)); // 15
+</script>
+<script>
+    var x = 20;
+    var a = {
+        x: 15,
+        fn: function(){
+            var x = 30;
+            var that = this;
+            return function(){
+                return that.x;
+            };
+        }
+    };
+    console.log('that还是指向a对象！！！！！ => ');
+    console.log(a.fn()()); // 15
+    console.log(a.fn().call(this)); // 15
+    console.log(a.fn().call(a)); // 15
+</script>
+<script>
+    var x = 20;
+    var a = {
+        x: 15,
+        fn: function(){
+            var x = 30;
+            return function(){
+                return x;
+            };
+        }
+    };
+    console.log('沿着作用域链查找变量，找到就调用并且停止查找 => ');
+    console.log(a.fn()()); // 30
+    console.log(a.fn().call(this)); // 30
+    console.log(a.fn().call(a)); // 30
+</script>
 </body>
 </html>
