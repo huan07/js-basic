@@ -40,7 +40,7 @@
 
     var compareNames = createComparisonFunction('name');
     // compareNames得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
-    // 外部函数createComparisonFunction执行完毕后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，！！
+    // 外部函数createComparisonFunction执行完毕后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，！！1
     // 因为匿名函数的作用域链仍然在引用外部函数的活动对象，这个活动对象仍然留在内存中！！
     console.log(compareNames);
 
@@ -48,12 +48,12 @@
     console.log(result);
 
 
-    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）！！
+    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）！！2
 </script>
 
 <script>
     // 作用域链的副作用：
-    // 闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中！！
+    // 闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中！！3
     // （局部变量 模仿全局变量 一直保留在内存中）
     function createFunction(){
         var result = new Array();
@@ -82,7 +82,7 @@
                 return function(){ // 闭包
                     return num;
                 };
-            }(i); // 传参数，按值传递
+            }(i); // 传参数，按值传递4
         }
 
         return result;
@@ -91,7 +91,7 @@
     console.log('createFunction2 => ', arr2);
     console.log(arr2[0](), arr2[9]());
 
-    // 匿名函数的立即自我执行  可以引申为今日头条考题closure.html
+    // 匿名函数的立即自我执行！！5  可以引申为今日头条考题closure.html
     function myCompare(){
         var result = new Array();
 
