@@ -7,7 +7,7 @@
 <body>
 
 <script>
-    // 闭包的this
+    // 闭包的this指向
     var x = 20;
     var a = {
         x: 15,
@@ -18,8 +18,7 @@
             };
         }
     };
-    console.log(a.fn()); // f(){}
-    console.log('匿名函数的执行环境具有全局性，this指向的是 => window, 可以改变函数执行环境 ');
+    console.log(a.fn()); // f(){return this.x;}
     console.log(a.fn()()); // 20
     console.log(a.fn().call(this)); // 20
     console.log(a.fn().call(a)); // 15
@@ -36,7 +35,7 @@
             };
         }
     };
-    console.log('that还是指向a对象！！！！！ => ');
+    console.log('that => a');
     console.log(a.fn()()); // 15
     console.log(a.fn().call(this)); // 15
     console.log(a.fn().call(a)); // 15
@@ -52,7 +51,7 @@
             };
         }
     };
-    console.log('沿着作用域链查找变量，找到就调用并且停止查找 => ');
+    console.log('标识符解析过程 =>');
     console.log(a.fn()()); // 30
     console.log(a.fn().call(this)); // 30
     console.log(a.fn().call(a)); // 30
