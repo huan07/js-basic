@@ -27,7 +27,7 @@
         var maxChar = '';
         var maxNum = 1;
         for (var attr in charNumObj) {
-            if (charNumObj[attr] > maxNum) {
+            if (charNumObj[attr] >= maxNum) {
                 maxChar = attr;
                 maxNum = charNumObj[attr];
             }
