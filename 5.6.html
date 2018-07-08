@@ -61,6 +61,9 @@
     var strValue = 'hello world';
     console.log('indexOf => ', strValue.indexOf('el'), strValue.lastIndexOf('el'));
 
+    var string = 'heehee';
+    console.log('从第二个位置开始查找，包括第二个位置的结果 => ', string.indexOf('e'), string.indexOf('e', 2));
+
     function getCharIndexArr(str, char){
         var charIndexArr = [];
         var pos = str.indexOf(char);
