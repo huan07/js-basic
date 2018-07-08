@@ -35,9 +35,25 @@
     var text = 'mom and dad and baby';
     var patt = /mom( and dad( and baby)?)?/gi;
     var matches = patt.exec(text);
-    console.log(matches);
-
+    console.log('1 => ', matches);
+    
     console.log(matches.index, matches.input);
+
+
+    var text = ' and dad and baby';
+    var patt = /mom( and dad( and baby)?)?/gi;
+    var matches = patt.exec(text);
+    console.log('2 => ', matches);
+    /*
+     console.log(matches.index, matches.input);*/
+
+
+    var text = ' and baby';
+    var patt = /mom( and dad( and baby)?)?/gi;
+    var matches = patt.exec(text);
+    console.log('3 => ', matches);
+    /*
+     console.log(matches.index, matches.input);*/
 </script>
 <script>
     var text = 'cat, bat, sat, fat';
