@@ -45,11 +45,11 @@
     console.log(strValue.length, strValue[1], strValue.charAt(1), strValue.charCodeAt(0), strValue.charCodeAt(1));
 
     var concatResult = strValue.concat(' hello');
-    console.log('concat => ', concatResult, '    ;strValue  ' + strValue);
+    console.log('concatResult => ', concatResult, '    ;strValue => ' + strValue);
 
     var concatResult = strValue.concat(' hello ', 'baidu');
-    console.log('concat => ', concatResult, '    ;strValue  ' + strValue);
-    console.log('相比较concat方法，用的较多的是 + => ', 'hello world' + ' hello');
+    console.log('concatResult => ', concatResult, '    ;strValue => ' + strValue);
+    console.log('相比较concat方法，用的较多的是 + => ', strValue + ' hello baidu');
 
     // substr方法第二个参数指的是个数，第一个参数都是指位置，第二个参数不是必须的，
     var strValue = 'baidu company';
