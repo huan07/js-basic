@@ -11,19 +11,26 @@
     // 2.将构造函数的作用域赋给这个对象，this指向这个新对象，
     // 3.执行构造函数中的代码，为这个新对象添加属性，
     // 4.返回这个新对象，
+    function Base(){
+
+    }
+    var obj = {};
+    obj.__proto__ = Base.prototype;
+    Base.apply(obj);
+
+    Base.prototype.constructor = Base;
 
 
     //
     var string = 'get-element-by-id ';
     function getHumpStr(str){
         var arr = str.split('-');
-        var result = arr.map(function(item, index){
-            if (index !== 0) {
-                return item.substr(0, 1).toUpperCase() + item.substr(1);
+        return arr.map(function(item, index){
+            if (index === 0) {
+                return item;
             }
-            return item;
+            return item.substring(0, 1).toUpperCase() + item.substring(1);
         }).join('');
-        return result;
     }
     console.log(getHumpStr(string));
 </script>
