@@ -7,13 +7,15 @@
 <body>
 
 <script>
-    var beginDate = new Date('January 1, 1970 08:00:00'); // 用从这一时刻开始 经过的毫秒数 来保存日期时间
+    var beginDate = new Date('January 1, 1970 08:00:00'); // 用从这一时刻开始  经过的毫秒数  来保存日期时间
     console.log('beginDate => ', beginDate);
     console.log('表示日期的毫秒数 => ', beginDate.getTime());
 
     var someDate = new Date('January 1, 1970 09:00:00');
     console.log('someDate => ', someDate);
     console.log('表示日期的毫秒数，一个小时后的 毫秒数 => ', someDate.getTime());
+     
+    console.log(new Date('January 1, 1970 07:00:00').getTime())
 </script>
 
 
