@@ -106,7 +106,7 @@
 
 <script>
     // 2.search
-    // return index（返回字符串中第一个匹配项的索引，始终从字符串开头向后查找模式patt）
+    // return index（返回字符串中  第一个匹配项的索引  ，始终从字符串开头向后查找模式patt）
     var text = 'cat, bat, sat, fat';
     var patt = /at/;
     var pos = text.search(patt);
@@ -133,6 +133,36 @@
 
 <script>
     // 3.replace
+    var text = 'cart, bAt, sat, fat';
+    var result = text.replace(/at/gi, 'ond2'); // 替换所有子字符串
+    console.log('result => ', result);
+
+    var result2 = text.replace('at', 'ond'); // 只替换找到的第一个子字符串
+    console.log('result2 => ', result2);
+
+    var ele = "<p>hello</p>";
+    function htmlEscape(text){
+        return text.replace(/[<>]/g, function(match, pos, originalText){
+            switch(match) {
+                case '<':
+                    return ' &lt ';
+                    break;
+                case '>':
+                    return ' &gt ';
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+    console.log(htmlEscape(ele));
+</script>
+
+<script>
+    // 4.split
+    var colorText = 'red,blue,green,yellow';
+    var colors = colorText.split(',');
+    // to add others
 </script>
 
 </body>
