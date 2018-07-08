@@ -48,5 +48,16 @@
     }, 1000);
 </script>
 
+<script>
+    var now = new Date('July 8, 2018');
+    var tomorrow = new Date('July 9, 2018');
+
+    console.log(now.valueOf(), tomorrow.valueOf(), now < tomorrow);
+
+    console.log('now.toString() => ', now.toString(), now.toLocaleString());
+    console.log('now.toDateString() => ', now.toDateString(), now.toLocaleDateString());
+    console.log('now.toTimeString() => ', now.toTimeString(), now.toLocaleTimeString());
+</script>
+
 </body>
 </html>
