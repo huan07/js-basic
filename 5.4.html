@@ -8,21 +8,21 @@
 
 <script>
     // 创建正则表达式
-    // 1.字面量形式
+    // 1.字面量
     // 2.RegExp构造函数
 
     var re = null;
     var i;
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 3; i++) {
         re = /cat/g;
-        var xx = re.test('catastrophe');
+        var xx = re.test('catastrophe'); // 没有失败呢？？
         console.log(xx);
     }
 
 
     var re = null;
     var i;
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 3; i++) {
         re = new RegExp('cat', 'g');
         var xx = re.test('catastrophe');
         console.log(xx);
@@ -30,7 +30,8 @@
 </script>
 
 <script>
-    // exec return [] or null ;
+    // exec
+    // return [] or null ;
     var text = 'mom and dad and baby';
     var patt = /mom( and dad( and baby)?)?/gi;
     var matches = patt.exec(text);
@@ -64,7 +65,8 @@
 </script>
 
 <script>
-    // test return boolean
+    // test
+    // return boolean
     var text = '000-00-0000';
     var patt = /\d{3}-\d{2}-\d{4}/;
     if (patt.test(text)) {
