@@ -9,11 +9,11 @@
 <script>
     var beginDate = new Date('January 1, 1970 08:00:00'); // 用从这一时刻开始  经过的毫秒数  来保存日期时间
     console.log('beginDate => ', beginDate);
-    console.log('表示日期的毫秒数 => ', beginDate.getTime());
+    console.log('表示日期的毫秒数 => ', beginDate.getTime(), beginDate.valueOf());
 
     var someDate = new Date('January 1, 1970 09:00:00');
     console.log('someDate => ', someDate);
-    console.log('表示日期的毫秒数，一个小时后的 毫秒数 => ', someDate.getTime());
+    console.log('表示日期的毫秒数，一个小时后的 毫秒数 => ', someDate.getTime(), someDate.valueOf());
 
     console.log(new Date('January 1, 1970 07:00:00').getTime())
 </script>
@@ -52,7 +52,7 @@
     var now = new Date('July 8, 2018');
     var tomorrow = new Date('July 9, 2018');
 
-    console.log(now.valueOf(), tomorrow.valueOf(), now < tomorrow);
+    console.log(now < tomorrow); // 比较的是毫秒数，getTime,valueOf,
 
     console.log('now.toString() => ', now.toString(), now.toLocaleString());
     console.log('now.toDateString() => ', now.toDateString(), now.toLocaleDateString());
