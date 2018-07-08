@@ -21,9 +21,7 @@
 
 <script>
     var now = new Date();
-    console.log('now => ', now);
-
-    console.log(now.getTime());
+    console.log('now => ', now, now.getTime());
 
     console.log(now.getFullYear(), '年');
 
@@ -38,7 +36,7 @@
 <script>
     setTimeout(function(){
         var someDate = new Date();
-        console.log('someDate => ', someDate);
+        console.log('someDate => ', someDate, someDate.getTime());
 
         console.log(someDate.getFullYear(), '年');
 
@@ -47,8 +45,6 @@
         console.log(someDate.getDate(), '日');
 
         console.log(someDate.getDay(), '周几');
-
-        console.log(someDate.getTime());
     }, 1000);
 </script>
 
