@@ -53,11 +53,11 @@
     console.log(html, html === document.lastChild, body, body.ownerDocument === document);
     console.log('元素节点', html.nodeType, html.nodeName, html.tagName, html.nodeValue);
 
-    var ele = document.getElementById('textNodeNodeType');
-    var textNode = ele.childNodes[0];
-    console.log(ele.parentNode, ele.previousSibling, ele.nextSibling); // 空文本节点
-    console.log(ele.nextElementSibling); // 忽略空文本节点
-    console.log(textNode.parentNode, textNode.previousSibling, textNode.nextSibling); // 唯一的子节点
+    var divEle = document.getElementById('textNodeNodeType');
+    var textNode = divEle.childNodes[0];
+    console.log(divEle.parentNode, divEle.previousSibling, divEle.nextSibling); // 空文本节点
+    console.log('nextElementSibling => ', divEle.nextElementSibling); // 忽略空文本节点
+    console.log(textNode, textNode.previousSibling, textNode.nextSibling); // 唯一的子节点
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
