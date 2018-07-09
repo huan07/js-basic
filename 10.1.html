@@ -107,6 +107,7 @@
     console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
 
     myDivEle.setAttribute('id', 'id1');
+    myDivEle.setAttribute('myColor', 'myRed');
     myDivEle.removeAttribute('my_special_attr'); // 按h5规范，自定义特性应该加上data-
 
     console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
