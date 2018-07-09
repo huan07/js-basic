@@ -28,5 +28,29 @@
     person2.sayName();
 </script>
 
+<script>
+    // 考题 两种定义对象的区别
+    var people = {};
+    Object.defineProperty(people, 'age', {
+        configurable: false,
+        enumerable: false,
+        writable: false,
+        value: 18
+    });
+
+    var people_2 = {};
+    Object.defineProperty(people_2, 'age', { // 和上面等价的结果
+        value: 28
+    });
+
+    var object = { age: 29 };
+    console.log(people, people_2);
+    console.log(object);
+
+    console.log(Object.getOwnPropertyDescriptor(people, 'age'));
+    console.log(Object.getOwnPropertyDescriptor(people_2, 'age'));
+    console.log(Object.getOwnPropertyDescriptor(object, 'age'));
+</script>
+
 </body>
 </html>
