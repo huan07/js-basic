@@ -38,7 +38,7 @@
 <a href="http://www.baidu.com">跳转到百度首页</a>
 
 <div id="myDiv" class="myClass" my_special_attr="my_special_value" data-attr="data-value" style="background-color: red;"
-     onclick="console.log(event.type)">getAttribute
+     onclick="console.log(event.type)">getAttribute测试
 </div>
 
 <ul id="myList"></ul>
@@ -98,17 +98,15 @@
 <script>
     console.log('getAttribute,  setAttribute,  removeAttribute,  attributes  =  =  =  =  =  =  =  =  =  =  ');
     var myDivEle = document.getElementById('myDiv');
-    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'), myDivEle.getAttribute('className'));
+    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'));
     console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
 
     console.log('特殊的特性，两种方式取值的结果不一样');
     console.log(myDivEle.style, myDivEle.getAttribute('style'));
-    console.log(myDivEle.onclick, myDivEle.getAttribute('onclick')); // 优先使用对象的属性；getAttribute主要用于自定义特性值
+    console.log(myDivEle.onclick, myDivEle.getAttribute('onclick')); // 优先使用对象的属性；getAttribute主要用于自定义特性值！！
 
     myDivEle.setAttribute('id', 'id1');
-    myDivEle.setAttribute('class', 'class1');
-    myDivEle.setAttribute('dir', 'rtl');
-    myDivEle.removeAttribute('my_special_attr');
+    myDivEle.removeAttribute('my_special_attr'); // 按h5规范，自定义特性应该加上data-
 
     console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
 </script>
