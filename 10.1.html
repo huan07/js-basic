@@ -51,13 +51,15 @@
     var html = document.documentElement;
     var body = document.body;
     console.log(html, html === document.lastChild, body, body.ownerDocument === document);
-    console.log('元素节点', html.nodeType, html.nodeName, html.tagName, html.nodeValue);
+
 
     var divEle = document.getElementById('textNodeNodeType');
     var textNode = divEle.childNodes[0];
-    console.log(divEle.parentNode, divEle.previousSibling, divEle.nextSibling); // 空文本节点
     console.log('nextElementSibling => ', divEle.nextElementSibling); // 忽略空文本节点
+    console.log(divEle, divEle.previousSibling, divEle.nextSibling); // 空文本节点
     console.log(textNode, textNode.previousSibling, textNode.nextSibling); // 唯一的子节点
+
+    console.log('元素节点', divEle.nodeType, divEle.nodeName, divEle.tagName, divEle.nodeValue);
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
