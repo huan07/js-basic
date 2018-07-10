@@ -29,6 +29,32 @@
 </script>
 
 <script>
+    // 访问器属性
+    var book = {
+        _year: 2018,
+        edition: 1
+    };
+
+    Object.defineProperty(book, 'year', {
+        get: function(){
+            return this._year
+        },
+        set: function(newValue){
+            if (newValue > 2018) {
+                this._year = newValue;
+                this.edition += (newValue - 2018);
+            }
+        }
+    });
+
+    book.year = 2004;
+    console.log('book.edition => ', book.edition);
+
+    book.year = 2024;
+    console.log('book.edition => ', book.edition);
+</script>
+
+<script>
     // 考题 两种定义对象的区别
     var people = {};
     Object.defineProperty(people, 'age', {
