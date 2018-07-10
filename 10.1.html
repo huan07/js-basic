@@ -53,13 +53,13 @@
     console.log(html, html === document.lastChild, body, body.ownerDocument === document);
 
 
-    var divEle = document.getElementById('textNodeNodeType');
-    var textNode = divEle.childNodes[0];
-    console.log('nextElementSibling => ', divEle.nextElementSibling); // 忽略空文本节点
-    console.log(divEle, divEle.previousSibling, divEle.nextSibling); // 空文本节点
+    var idEle = document.getElementById('textNodeNodeType');
+    var textNode = idEle.childNodes[0];
+    console.log('nextElementSibling => ', idEle.nextElementSibling); // 忽略空文本节点
+    console.log(idEle, idEle.previousSibling, idEle.nextSibling, idEle.childNodes.length); // 空文本节点
     console.log(textNode, textNode.previousSibling, textNode.nextSibling); // 文本是父节点的唯一的子节点
 
-    console.log('元素节点', divEle.nodeType, divEle.nodeName, divEle.tagName, divEle.nodeValue);
+    console.log('元素节点', idEle.nodeType, idEle.nodeName, idEle.tagName, idEle.nodeValue);
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
