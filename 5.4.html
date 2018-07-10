@@ -40,17 +40,15 @@
     console.log(matches.index, matches.input);
 
 
-    var text = ' and dad and baby';
-    var patt = /mom( and dad( and baby)?)?/gi;
-    var matches = patt.exec(text);
+    var patt2 = /mom( and dad)?/gi;
+    var matches = patt2.exec(text);
     console.log('2 => ', matches);
     /*
      console.log(matches.index, matches.input);*/
 
 
-    var text = ' and baby';
-    var patt = /mom( and dad( and baby)?)?/gi;
-    var matches = patt.exec(text);
+    var patt3 = /mom/gi;
+    var matches = patt3.exec(text);
     console.log('3 => ', matches);
     /*
      console.log(matches.index, matches.input);*/
