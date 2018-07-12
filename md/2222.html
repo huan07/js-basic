@@ -62,9 +62,9 @@
     }
     var a1 = new A();
     var a2 = A();
-    console.log('A');
-    console.log(a1 instanceof A);
-    console.log(a2 instanceof A);
+    console.log('A => ');
+    console.log(a1 instanceof A); // true
+    console.log(a2 instanceof A); // false
 
 
     // 2.2
@@ -80,8 +80,8 @@
     }
     var b1 = new B();
     var b2 = B();
-    console.log('B');
-    console.log(b1 instanceof B); // to do
+    console.log('B => ');
+    console.log(b1 instanceof B); // to do  false
     console.log(b2 instanceof B);
 
     function C(){
@@ -89,8 +89,8 @@
     }
     var c1 = new C();
     var c2 = C();
-    console.log('C');
-    console.log(c1 instanceof C); // to do
+    console.log('C => ');
+    console.log(c1 instanceof C); // to do  true
     console.log(c2 instanceof C);
 </script>
 
