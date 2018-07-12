@@ -11,9 +11,17 @@
     <li>Item 22</li>
     <li>Item 33</li>
 </ul>
+
+<ul id="id2">
+    <li>Item 11</li>
+    <li>Item 22</li>
+    <li>Item 33</li>
+</ul>
 <script>
     function reverseLiOrder(node){
-        var children = node.children; // children没有空文本节点，childNodes会有空文本节点  参照10.1
+        var children = node.children;
+        // children没有空文本节点，childNodes会有空文本节点  参照10.1
+        // 通用性强一些
         var fragment = document.createDocumentFragment();
         for (var i = children.length - 1; i >= 0; i--) {
             fragment.appendChild(children[i]);
@@ -21,6 +29,18 @@
         node.appendChild(fragment);
     }
     reverseLiOrder(document.getElementById('id'));
+
+
+    function reverseItemsCustom(ul){
+        var li = ul.getElementsByTagName('li');
+        var fragment = document.createDocumentFragment();
+
+        for (var i = li.length - 1; i >= 0; i--) {
+            fragment.appendChild(li[i]);
+        }
+        ul.appendChild(fragment);
+    }
+    reverseItemsCustom(document.getElementById('id2'));
 </script>
 
 </body>
