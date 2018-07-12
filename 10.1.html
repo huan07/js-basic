@@ -133,7 +133,7 @@
     var comment = document.createComment('创建注释节点');
     console.log('注释节点', comment.nodeType, comment.nodeName, comment.nodeValue);
     document.body.appendChild(comment);
-    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样，是的 任何DOM节点不能同时出现在文档中的多个位置
+    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样，任何DOM节点不能同时出现在文档中的多个位置
 
     var comment_2 = document.createComment('创建另一注释节点测试 1');
     comment.parentNode.insertBefore(comment_2, comment);
