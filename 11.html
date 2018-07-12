@@ -29,7 +29,7 @@
 <div id="myDiv4"></div>
 <div id="myDiv5"></div>
 
-<ul id="myUl" style="margin-top: 50px;"></ul>
+<ul id="myUl"></ul>
 
 <div id="myDiv6">
     <p>测试inner Text取值</p>
@@ -61,6 +61,7 @@
     </ul>
 </div>
 
+<div id="x" style="background-color:olive;padding-top: 450px;">测试 页面滚动效果x可见</div>
 
 <script>
     // querySelector, querySelectorAll
@@ -110,7 +111,7 @@
 </script>
 
 <script>
-    console.log('document.compatMode = ', document.compatMode);
+    console.log('document.compatMode == ', document.compatMode);
 
     console.log(document.charset);
     document.charset = 'UTF-16'; // 不管用
@@ -163,7 +164,13 @@
 </script>
 
 <script>
-    document.getElementById('myUl').scrollIntoView(); // ??? chrome浏览器并不支持
+    setInterval(function(){
+        document.getElementById('x').scrollIntoView();
+    }, 3000);
+    
+    setInterval(function(){
+        document.documentElement.scrollIntoView();
+    }, 6000);
 </script>
 
 </body>
