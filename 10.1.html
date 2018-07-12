@@ -46,7 +46,7 @@
 <ul id="myList"></ul>
 
 <script>
-    console.log(window.document, document);
+    console.log(document, window.document);
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
     console.log('document节点', document.nodeType, document.nodeName, document.nodeValue);
 
@@ -112,7 +112,7 @@
 
     myDivEle.setAttribute('id', 'id1');
     myDivEle.setAttribute('myColor', 'myRed'); // 推荐用属性设置特性
-    myDivEle.removeAttribute('my_special_attr'); // 按h5规范，自定义特性应该加上data-
+    myDivEle.removeAttribute('my_special_attr'); // 按h5规范，自定义特性应该加上data- ！！
 
     console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
 </script>
