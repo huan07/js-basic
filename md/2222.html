@@ -14,44 +14,6 @@
 
 
     // 1.2
-    var eventHandler = {
-        addHandler: function(eventEle, eventName, fun){
-            if (eventEle.addEventListener) {
-                eventEle.addEventListener(eventName, fun, false);
-            } else if (eventEle.attachEvent) {
-                eventEle.attachEvent('on' + eventName, fun);
-            } else {
-                eventEle['on' + eventName] = fun;
-            }
-        },
-        removeHandler: function(eventEle, eventName, fun){
-            if (eventEle.removeEventListener) {
-                eventEle.removeEventListener(eventName, fun, false);
-            } else if (eventEle.detachEvent) {
-                eventEle.detachEvent('on' + eventName, fun);
-            } else {
-                eventEle['on' + eventName] = null;
-            }
-        }
-    };
-    var btn = document.getElementById('btn1');
-    /*    eventHandler.addHandler(btn, 'click', function(){
-     alert('addHandler');
-     });
-     setTimeout(function(){
-     eventHandler.removeHandler(btn, 'click', function(){
-     alert('addHandler');
-     })
-     }, 2000); // 移除不了事件处理程序！！！！！*/
-
-    //
-    var handlerFun = function(){
-        alert('handler function');
-    };
-    eventHandler.addHandler(btn, 'click', handlerFun);
-    setTimeout(function(){
-        eventHandler.removeHandler(btn, 'click', handlerFun);
-    }, 5000);
 </script>
 
 <script>
