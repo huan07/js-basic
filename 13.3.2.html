@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>13.3.2</title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
@@ -16,23 +16,21 @@
     var btn = document.getElementById('btnDOM0');
     btn.onclick = function(){
         var event = window.event;
-        console.log(event, event.type, event.target, event.target.value);
-        console.log(event.srcElement === this);
+        console.log(event.srcElement === this);  // true
     };
 
     var btn = document.getElementById('btnIE');
     btn.attachEvent('onclick', function(event){
         // also window.event
-        console.log(event, event.type, event.target, event.target.value);
-        console.log(event.srcElement === this);   // this=>window 在全局作用域执行的
+        console.log(event.srcElement === this);  // false  this=>window 在全局作用域执行的
     });
 
-    var link = document.getElementById('link');
-    link.onclick = function(){
+    var linkX = document.getElementById('link');
+    linkX.onclick = function(){ // test only in ie
         var event = window.event;
         event.returnValue = false; // 取消事件的默认行为
 
-        event.cancelBubble = true;  // 取消事件冒泡
+        event.cancelBubble = true;  // 只能取消事件冒泡（ie只支持事件冒泡）
     };
 </script>
 <script>
@@ -59,6 +57,8 @@
         }
     };
 
+
+    // test
     var link = document.getElementById('link2');
     link.onclick = function(event){
         var e = EventUtil.getEvent(event);
@@ -69,7 +69,7 @@
     };
 
     document.body.onclick = function(){
-        console.log('propagation to me');
+        console.log('propagation to document.body');
     }
 </script>
 </body>
