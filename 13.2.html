@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>13.2</title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
@@ -10,27 +10,28 @@
 <input type="button" value="click me" onclick="alert('Clicked')" /> <!-- 1.内联模型 -->
 <input type="button" value="click me2" onclick="showMessage()" />
 <input type="button" value="click me3" onclick="xx()">
-<input type="button" value="click me4" onclick="try{xx();}catch(ex){}">
+<input type="button" value="click me4" onclick="try{xx();}catch(ex){}"><br><br>
+
 <!-- 局部变量event 事件对象 可以直接访问的-->
-<input type="button" value="click me event" onclick="console.log(event,event.type,event.target,event.target.value)" />
+<input type="button" value="click me 局部变量event" onclick="console.log(event.target,event.target.value)" />
 
 <!-- this 事件的目标元素-->
-<input type="button" value="click me6 this 目标元素" onclick="console.log(this,this.value)" />
+<input type="button" value="click me 目标元素this" onclick="console.log(this,this.value,this === event.target)" /><br><br>
 
 <!-- 动态创建函数 with扩展作用域 to add-->
 
 
 <!-- DOM0级事件处理程序 -->
-<input type="button" value="click DOM0级事件处理程序" id="btnDOM0" />
+<input type="button" value="click DOM0级" id="btnDOM0" />
 
 <!-- DOM2级事件处理程序 -->
-<input type="button" value="click DOM2级事件处理程序" id="btnDOM2" />
+<input type="button" value="click DOM2级" id="btnDOM2" />
 
 <!-- IE事件处理程序 -->
-<input type="button" value="click IE事件处理程序" id="btnIE" />
+<input type="button" value="click IE" id="btnIE" />
 
 <!-- 跨浏览器的处理程序 -->
-<input type="button" value="click btn14 跨浏览器的处理程序" id="btn14" />
+<input type="button" value="click 跨浏览器" id="btnCross" />
 
 
 <script type="text/javascript">
@@ -41,12 +42,13 @@
 
 
 <script>
-    var btn = document.getElementById('btnDOM0');
     /* 2.脚本模型 */
-    btn.onclick = function(){
+
+    var btn = document.getElementById('btnDOM0');
+    btn.onclick = function(event){
         alert('click DOM0级事件处理程序');
         alert(this.id); // 在元素的作用域中运行 this引用当前元素 在冒泡阶段被处理
-        alert('this === event.target  ' + (this === event.target)); // true
+        alert('this === event.target => ' + (this === event.target)); // true
     };
 
     //  btn.onclick = null;
@@ -57,10 +59,10 @@
     var alertFun = function(){
         alert('click DOM2级事件处理程序');
     };
-    btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行 false 冒泡阶段 最大限度的兼容各种浏览器
-    btn.addEventListener('click', function(event){ // 事件 从上到下 执行
+    btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行
+    btn.addEventListener('click', function(event){  // 事件 从上到下 执行
         alert(this.id);
-        alert('this === event.target  ' + (this === event.target)); // true
+        alert('this === event.target => ' + (this === event.target)); // true
     }, false);
     // btn.removeEventListener('click', alertFun, false);
 </script>
@@ -70,11 +72,11 @@
     var attchFun = function(){
         alert('click IE事件处理程序');
     };
-    btn.attachEvent('onclick', attchFun); // 在全局作用域执行 只支持事件冒泡  btn.attachEvent undefined TypeError when at chrome
+    btn.attachEvent('onclick', attchFun); // 在全局作用域执行！！ 只支持事件冒泡  btn.attachEvent undefined TypeError when at chrome
     btn.attachEvent('onclick', function(){ // 事件 从下到上 执行
         alert('clicked again');
         alert(this.id);
-        alert('this === window' + (this === window)); // true
+        //alert('this === window' + (this === window)); // true
     });
     // btn.detachEvent('onclick', attchFun);
 </script>
@@ -100,14 +102,13 @@
             }
         }
     };
-    var btn = document.getElementById('btn14');
+    var btn = document.getElementById('btnCross');
     var btnHandler = function(){
         console.log('btn14Handler');
     };
     EventUtil.addHandler(btn, 'click', btnHandler);
     //EventUtil.removeHandler(btn, 'click', btnHandler);
 </script>
-
 
 </body>
 </html>
