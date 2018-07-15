@@ -176,9 +176,8 @@
 
     var _childNodes = myList.childNodes;  // 参照md/10.html
     for (var i = _childNodes.length - 1; i >= 0; i--) {
-        fragment.appendChild(_childNodes[i]);
-        // myList.removeChild(_childNodes[i]);  子元素appendChild到文档片段后 会从myList消失的
-        // 是的，DOM节点不能同时出现在文档的多个位置上
+        fragment.appendChild(_childNodes[i]); // 子元素appendChild到文档片段后 会从myList中被移除
+        // DOM节点不能同时出现在文档的多个位置上
     }
     myList.appendChild(fragment);
     // myList.appendChild(fragment); 文档片段是空的，
