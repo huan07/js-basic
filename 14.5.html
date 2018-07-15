@@ -2,24 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>14.5</title>
     <style>
+        iframe {
+            border: 1px solid #d7d7d7;
+        }
+
+        iframe:focus { /* 没有焦点光标的效果 ? ? */
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
         .editable {
-            width: 400px;
+            width: 80%;
             height: 100px;
             border: 1px solid red;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-<iframe name="richedit" style="width:800px;height: 200px;" src="blank.html"></iframe>
+
+<iframe name="richedit" style="width: 80%;height: 200px;" src="blank.html"></iframe>
+
+<div class="editable" contenteditable></div>
+
+<div class="editable" id="richedit"></div>
+
 <script>
     window.addEventListener('load', function(){
         frames['richedit'].document.designMode = 'on';
     }, false);
 </script>
 
-<div class="editable" contenteditable></div>
+<script>
+    var div = document.getElementById('richedit');
+    div.contenteditable = 'true';  // 不管用呢
+</script>
 
 </body>
 </html>
