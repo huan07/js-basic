@@ -2,43 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>14.1</title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
+
 <form id="form">
     <input type="text" value="button">
     <br>
     <input type="text" value="button">
     <br>
     <input type="text" value="button" autofocus>
-    <br>
+    <br><br>
+
     <ul>
         <li><input type="radio" name="colors" value="red">red</li>
         <li><input type="radio" name="colors" value="blue">blue</li>
         <li><input type="radio" name="colors" value="green">green</li>
     </ul>
-    <br>
 
-    <button type="submit" name="submitBtn">form test</button>
-    <button type="reset">reset form test</button>
+    <button type="submit" name="submitBtn">提交按钮</button>
+    <button type="reset">重置按钮</button>
+
     <button type="button">button only</button> <!-- 仅仅是按钮，但是可以有onclick事件 -->
 </form>
+<br><br>
 
 <form id="form2">
-    <input type="text" value="not need button to">
+    <input type="text" value="不需要 提交按钮 的表单提交">
 </form>
+<br><br>
 
 <form id="form3">
     <input type="text" value="input">
-    <input type="submit" value="form test">
-    <input type="reset" value="reset form">
+
+    <input type="submit" value="提交按钮2">
+    <input type="reset" value="重置按钮2">
 </form>
+<br><br>
 
 <form id="form4">
     <input type="text" value="image">
     <input type="image" src="https://www.baidu.com/img/bd_logo1.png">
 </form>
+<br><br>
 
 <form id="myForm">
     <input type="text" id="myInput" value="my value"><br>
@@ -49,13 +56,16 @@
         <option>Banana</option>
     </select>
 </form>
+<br><br>
+
 <textarea id="myTextarea" rows="5" cols="50">各种前端内容。</textarea><br>
 <textarea id="myTextarea2" rows="5" cols="50">HTML, XML, SQL, ASP, 和 PHP 等各种前端内容。</textarea><br>
+
 <script>
     // 提交表单
     var form = document.getElementById('form');
-    form.addEventListener('submit', function(event){/* 包含表单按钮的情况下，才能触发form submit */
-        event.stopPropagation();
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
         console.log('submit form');
 
         var target = event.target;
@@ -64,63 +74,70 @@
     }, false);
 
     form.addEventListener('reset', function(event){
-        event.stopPropagation();
+        // event.preventDefault();
         console.log('reset form');
     }, false);
 
-    var field1 = form.elements[0];
-    var fieldCount = form.elements.length;
-    // field1.focus();
-    console.log(field1, fieldCount);
 
-    var colorsFields = form.elements['colors'];
-    console.log(colorsFields);
-    window.addEventListener('load', function(){
-        // document.forms[0].elements[1].focus();
-    }, false);
-
-    var form = document.getElementById('form2');
-    // form.submit(); 不停的闪屏？？？
+    var form2 = document.getElementById('form2');
+    // form2.submit(); // 不停的闪屏
 </script>
 
 <script>
-    // focus, blur, change =>input/textarea/select
+    var form = document.getElementById('form');
+    var field0 = form.elements[0];
+    var fieldCount = form.elements.length;
+    console.log(field0, fieldCount);
+
+    var colorsFields = form.elements['colors'];
+    console.log(colorsFields);
+
+    window.addEventListener('load', function(){
+        // field0.focus();
+    }, false);
+</script>
+
+<script>
+    // focus,
+    // blur,
+    // change => input / textarea 失去焦点，并且value值改变触发
+    // change => select
     var input = document.getElementById('myInput');
-    var textarea = document.getElementById('myTextarea');
-    var textarea2 = document.getElementById('myTextarea2');
     var select = document.getElementById('mySelect');
 
     input.addEventListener('focus', function(event){
         var target = event.target;
         target.style.backgroundColor = 'red';
-        target.style.color = 'white';
         target.value = 'some new value';
     }, false);
 
     input.addEventListener('blur', function(event){
         var target = event.target;
         target.style.backgroundColor = 'black';
-        target.style.color = 'white';
     }, false);
 
-    input.addEventListener('change', function(event){ // input,textarea 失去焦点，并且value值改变
+    input.addEventListener('change', function(event){
         var target = event.target;
         var value = target.value;
         console.log(value);
     }, false);
+</script>
 
-    // select =>input/textarea 获得焦点时选择所有文本
+<script>
+    // select => input/textarea 获得焦点时选择所有文本
+    var textarea = document.getElementById('myTextarea');
+    var textarea2 = document.getElementById('myTextarea2');
+
     textarea.addEventListener('focus', function(event){
         var target = event.target;
         target.select();
-        //target.setSelectionRange(0,2);
     }, false);
 
     textarea2.addEventListener('select', function(event){
         var target = event.target;
         var value = target.value;
         var selected = value.substring(target.selectionStart, target.selectionEnd);
-        console.log('选中文本框的文本触发', value, selected);
+        console.log(value, selected);
     }, false);
 </script>
 

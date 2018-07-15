@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>14.2.2</title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
+
 <input type="text" name="" value="1" id="myInput">
 <input type="text" name="" value="1" id="myInput2">
 
@@ -29,7 +30,7 @@
     input.addEventListener('keypress', function(event){
         var target = event.target;
         var charCode = event.charCode || event.keyCode; // 拿到当前输入的值
-        if (!/\d/.test(String.fromCharCode(charCode))) { // 但是可以通过复制黏贴
+        if (!/\d/.test(String.fromCharCode(charCode))) { // 但是无法屏蔽复制黏贴
             event.preventDefault();
         }
         console.log('keypress value = ', target.value)
