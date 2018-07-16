@@ -39,7 +39,12 @@
 <a href="http://www.baidu.com">跳转到百度首页</a>
 <a href="http://www.baidu.com">跳转到百度首页</a>
 
-<div id="myDiv" class="myClass" my_special_attr="my_special_value" data-attr="data-value" style="background-color: red;"
+<div id="myDiv" class="myClass"
+     my_special_attr="my_special_value"
+     data-attr="data-value"
+     data-Attr2="data-Value2"
+     dataAttr3="dataValue3"
+     style="background-color: red;"
      onclick="console.log(event.type)">getAttribute测试
 </div>
 
@@ -106,13 +111,14 @@
     console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
 
     console.log('特殊的特性，两种方式取值的结果不一样');
-    // getAttribute主要用于自定义特性值！！
     console.log(myDivEle.style, myDivEle.getAttribute('style'));
     console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
+    // getAttribute用于自定义特性取值！！
 
     myDivEle.setAttribute('id', 'id1');
     myDivEle.setAttribute('myColor', 'myRed'); // 推荐用属性设置特性
-    myDivEle.removeAttribute('my_special_attr'); // 按h5规范，自定义特性应该加上data- ！！
+    myDivEle.removeAttribute('my_special_attr');
+    // 按h5规范，自定义特性应该加上data-小写字母
 
     console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
 </script>
