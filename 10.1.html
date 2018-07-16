@@ -115,12 +115,12 @@
     console.log('特殊的特性，两种方式取值的结果不一样');
     console.log(myDivEle.style, myDivEle.getAttribute('style'));
     console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
-    // getAttributezhu主要用于特性取值！！
+    // getAttribute主要用于特性取值！！
 
     myDivEle.setAttribute('id', 'id1');
-    myDivEle.setAttribute('myColor', 'myRed'); // 推荐用属性设置特性
+    myDivEle.setAttribute('myColor', 'myRed'); // 浏览器会解析为小写属性，推荐用DOM属性设置特性
     myDivEle.removeAttribute('my_special_attr');
-    // 按h5规范，自定义特性格式data-小写字母（浏览器会解析为小写属性）
+    // 按h5规范，自定义特性格式为data-小写字母（浏览器会解析为小写属性）
 
     console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
 </script>
