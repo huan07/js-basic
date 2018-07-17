@@ -5,8 +5,9 @@
     <title>跨源资源共享 CORS</title>
 </head>
 <body>
+
 <script>
-    // CORS思想：使用自定义的HTTP头部让浏览器，服务器通信，从而决定请求／相应成功或失败
+    // CORS思想：使用自定义的HTTP头部让浏览器与服务器通信，从而决定请求／响应成功或失败
 
     var xhr = new XMLHttpRequest();
     xhr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt', false);
@@ -21,7 +22,52 @@
     } else {
         console.log('request was unsuccessful' + xhr.status)
     }
-    // 请求和相应都不包含cookie信息
+    // 请求和响应都不包含cookie信息
 </script>
+
+<script>
+    // IE XDR请求都是异步的
+    // 限制条件
+    var xdr = new XDomainRequest();
+    xdr.onload = function(){
+        console.log(xdr.responseText);
+    };
+    xdr.onerror = function(){
+        console.log('An error occurred.')
+    };
+    xdr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt');
+    xdr.send(null);
+    console.log('xdr =>', xdr);
+</script>
+<script>
+    var xdr = new XDomainRequest();
+    xdr.onload = function(){
+        console.log(xdr.responseText);
+    };
+    xdr.onerror = function(){
+        console.log('An error occurred.')
+    };
+    xdr.open('post', 'http://www.runoob.com/try/ajax/ajax_info.txt');
+    xdr.contentType = 'application/x-www-form-urlencoded';
+    xdr.send('name=value&name2=value2');
+    console.log('xdr =>', xdr);
+</script>
+
+<script>
+    // 其他浏览器对CORS的实现
+    // open方法传入绝对URL即可
+    // 限制条件
+</script>
+
+<script>
+    // Preflighted Requests
+</script>
+
+<script>
+    // 带凭据的请求
+    // 1. withCredentials => true, 指定请求应该发送凭据
+    // 2.如果服务器接受带凭据的请求，会用Access-Control-Allow-Credentials:true, 响应
+</script>
+
 </body>
 </html>
