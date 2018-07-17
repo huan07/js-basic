@@ -87,7 +87,7 @@
     People.prototype.name = 'yh';
     var people = new People();
     for (var attr in people) { // 兼容性，确保people是Object类型
-        console.log('attr => ', attr);
+        console.log('可枚举的对象属性（实例＋继承/原型 属性）attr => ', attr);
     }
 
 
