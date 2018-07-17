@@ -27,8 +27,9 @@
 
 <script>
     var btn = document.getElementById('btnDOM0');
-    btn.onclick = function(event){
+    btn.onclick = function(event){ // event参数是arguments[0], 浏览器传递的
         console.log(arguments, arguments.length);
+        console.log(event);
         console.log(event.target, this === event.target, this === event.currentTarget);
     };
 
