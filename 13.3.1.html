@@ -78,7 +78,7 @@
         event.preventDefault();
 
         alert('event.bubbles  =  ' + event.bubbles); // 是否冒泡
-        event.stopPropagation(); // 取消事件冒泡／捕获
+        event.stopPropagation(); // 取消事件冒泡／捕获   document.body.onclick不会被触发
     };
 </script>
 
