@@ -21,7 +21,7 @@
 
     var btn = document.getElementById('btnIE');
     btn.attachEvent('onclick', function(event){
-        // also window.event
+        // 也可以用window.event
         console.log(event.srcElement === this);  // false  this=>window 在全局作用域执行的
     });
 
