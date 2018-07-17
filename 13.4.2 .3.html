@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>13.4.2 .3</title>
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
@@ -28,15 +28,16 @@
     //
     var div = document.getElementById('id');
     div.addEventListener('click', function(event){
-        var clientX = event.clientX; // 客户区坐标位置：不包括页面滚动的距离
+        var clientX = event.clientX; // 客户区坐标位置：事件发生时鼠标指针在视口中的坐标（不包括页面滚动的距离）
         var clientY = event.clientY;
 
-        var pageX = event.pageX;
-        var pageY = event.pageY; // 事件发生时在页面的位置 ie8不支持
+        var pageX = event.pageX; // 页面坐标位置：事件发生时在页面的位置 ie8不支持
+        var pageY = event.pageY;
     }, false);
 
+
     var div = document.getElementById('id2');
-    div.addEventListener('click', function(event){
+    div.addEventListener('click', function(event){ // 兼容ie8的页面坐标
         var pageX = event.pageX;
         var pageY = event.pageY;
         if (pageX === undefined) {
@@ -51,7 +52,7 @@
 <script>
     var div = document.getElementById('id3');
     div.addEventListener('click', function(event){
-        var screenX = event.screenX;
+        var screenX = event.screenX; // 屏幕坐标位置
         var screenY = event.screenY;
 
         var keys = [];
