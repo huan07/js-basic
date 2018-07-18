@@ -25,10 +25,10 @@
 </script>
 
 <script>
-    console.log('window.screenLeft  window.screenX================');
+    // 跨浏览器 窗口相对于屏幕左边，上边的位置
     var leftPos = (typeof window.screenLeft) === 'number' ? window.screenLeft : window.screenX;
     var topPos = (typeof window.screenTop) === 'number' ? window.screenTop : window.screenY;
-    console.log(leftPos, topPos);  // 涉及到多个框架，会有特殊性；在跨浏览器情况下无法拿到精确值
+    console.log('leftPos, topPos => ', leftPos, topPos);  // 涉及到多个框架，会有特殊性；在跨浏览器情况下无法拿到精确值
 
     console.log('跨浏览器获取窗口大小===??==================================');
 
