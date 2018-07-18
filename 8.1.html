@@ -6,37 +6,33 @@
 </head>
 <body>
 <script>
-    // 全局变量，window对象属性的区别  全局作用域中声明的变量会变成window对象的属性
-    // 1. 全局变量不能通过delete操作符删除，window对象可以；
-    // 2. 访问未声明的变量会报错，可以通过window对象查询未声明的变量是否存在
-    var xx = 'xx';
-    window.yy = 'yy';
+    var age = 29;
+    window.color = 'red';
 
-    delete window.xx;
-    delete window.yy;
+    delete window.age;
+    delete window.color;
 
-    console.log('删不掉', window.xx);
-    console.log('可以删window属性', window.yy);
+    console.log('删不掉全局变量 => ', window.age);
+    console.log('可以删window属性 => ', window.color);
 
-    // console.log(oldValue);
-    console.log(window.oldValue);
+    // console.log(a); // 调用未声明的变量报错
+    console.log('可以访问window属性 => ', window.attr);
 </script>
 
 <script>
-    console.log('页面有多个框架，每个框架会有自己的window对象==========');
-    console.log('to add to addto addto add');
+    // 页面有多个框架，每个框架会有自己的window对象
+
 </script>
 
 <script>
     console.log('window.screenLeft  window.screenX================');
-    var leftPos = typeof window.screenLeft === 'number' ? window.screenLeft : window.screenX;
-    var topPos = typeof window.screenTop === 'number' ? window.screenTop : window.screenY;
-
+    var leftPos = (typeof window.screenLeft) === 'number' ? window.screenLeft : window.screenX;
+    var topPos = (typeof window.screenTop) === 'number' ? window.screenTop : window.screenY;
     console.log(leftPos, topPos);  // 涉及到多个框架，会有特殊性；在跨浏览器情况下无法拿到精确值
 
     console.log('跨浏览器获取窗口大小===??==================================');
 
-    console.log('跨浏览器获取页面视口大小===============================');
+    // 跨浏览器获取页面视口大小
     var pageWidth = window.innerWidth;
     var pageHeight = window.innerHeight;
     if (typeof pageWidth !== 'number') {
@@ -48,20 +44,20 @@
             pageHeight = document.body.clientHeight;
         }
     }
-    console.log(pageWidth, pageHeight);
+    console.log('pageWidth, pageHeight => ', pageWidth, pageHeight);
 </script>
 
 <script>
-    console.log('try{...} catch(ex){...}==================================================');
+    // try{;} catch(ex){;}
     console.log('浏览器内置的屏蔽程序阻止弹出窗口，会阻止原生的confirm????=======================');
 
     var blocked = false;
     try {
         var wroxWin = window.open('http://www.baidu.com', '_blank');
-        if (wroxWin === null) {
+        if (wroxWin === null) { // 浏览器内置的屏蔽程序阻止弹出窗口 返回null
             blocked = true;
         }
-    } catch (ex) {
+    } catch (ex) { // 浏览器扩展或其他程序阻止的弹出窗口 抛错
         blocked = true;
     }
 
@@ -71,27 +67,24 @@
 </script>
 
 <script>
-    console.log('setTimeout setInterval  第一个参数是回调函数，====================================');
-    setTimeout(function(){
-        console.log('第一个参数可以传字符串，可能会导致性能损失');
-        console.log('第二个参数表示经过的时间后将 当前执行 添加到任务队列');
-    }, 2000);
+    // setTimeout setInterval
 
+    // 字符串参数，可能导致性能损失，不建议用
+    setTimeout("alert('Hello world!')", 2000);
+
+    // 函数参数
     var timeoutId = setTimeout(function(){
-        console.log('设置超时调用');
+        console.log('超时调用回调函数');
     }, 2000);
     clearTimeout(timeoutId); // 立马调用clearTimeout()，结果就是什么也没有发生
 
 
-    setInterval(function(){
-        //console.log('按间隔重复执行，直至调用被取消或者页面被卸载');
-    }, 2000);
-
     // example
     // 开发环境，避免使用间歇调用，可以用超时调用来模拟的
     var num = 0;
-    var max = 10;
+    var max = 5;
     var intervalId = null;
+
     function incrementNum(){
         num++;
         if (num === max) {
@@ -99,11 +92,14 @@
             console.log('num === max  clearInterval');
         }
     }
-    intervalId = setInterval(incrementNum, 2000);
+    intervalId = setInterval(incrementNum, 1000);
 
-    //
+    // 超时调用模仿间隙调用
+    // 优势：
+    // 没必要跟踪超时调用ID, 执行一次后，调用就会自动停止
+    // 后一个间隙调用可能会在前一个间隙调用结束之前执行
     var num2 = 0;
-    var max2 = 10;
+    var max2 = 6;
     function incre(){
         num2++;
         if (num2 < max2) {
@@ -113,24 +109,6 @@
         }
     }
     setTimeout(incre, 500);
-    // 考题  md 8
-</script>
-
-<script>
-    /*if (confirm('Are you sure?')) {
-     alert('sure ');
-     } else {
-     alert('cancel ')
-     }
-
-     var promptResult = prompt('how old are you', '31');
-     if (promptResult !== null) {
-     alert('your age is ' + promptResult);
-     }*/
-
-    // window.print();
-
-    // window.find(); 不管用
 </script>
 
 </body>
