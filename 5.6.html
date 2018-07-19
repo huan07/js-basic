@@ -122,7 +122,7 @@
     var text = 'cat, bat, sat, fat';
     var patt = /at/g;
     var pos = text.search(patt);
-    console.log('search设置g => ', pos);
+    console.log('search设置g 没什么用处=> ', pos);
 
     pos = text.search(patt);
     console.log(pos);
@@ -164,6 +164,37 @@
     var colors = colorText.split(',');
     // to add others
 </script>
+
+<script>
+    // []
+    var str = 'hello world hello wprld';
+    var patt = /w[o-p]r/g;
+    var match = str.match(patt);
+    console.log('在方括号之间的字符 [] => ', match);
+
+
+    var str2 = "Is this all there is?";
+    var patt2 = /[^a-t]/g;
+    var match = str2.match(patt2);
+    console.log('不在方括号之间的字符 [^] => ', match);
+</script>
+
+<script>
+    // ()
+    var color = 'red, blue, yellow, black';
+    var patt3 = /(red|blue)/g;
+    var match = color.match(patt3);
+    console.log('查找任何指定的选项 () => ', match);
+</script>
+
+<script>
+    // .  查找单个字符，除了换行和行结束符
+    // \n 查找换行符
+    // \w 查找单词字符  \W
+    // \d 查找数字      \D
+    // \s 查找空白字符  \S
+</script>
+
 
 </body>
 </html>
