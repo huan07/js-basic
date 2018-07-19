@@ -83,7 +83,7 @@
     var text = 'cat, bat, sat, fat';
     var patt = /.at/;
     var matches = text.match(patt);
-    console.log('match不设置g 始终返回字符串的第一个匹配项 => ', matches);
+    console.log('match不设置g 始终返回第一个匹配项 => ', matches);
 
     matches = text.match(patt);
     console.log(matches);
@@ -95,7 +95,7 @@
     var text = 'cat, bat, sat, sa4t, fa4t';
     var patt = /.at/g;
     var matches = text.match(patt);
-    console.log('match设置g 返回字符串的匹配项组成的数组 => ', matches);
+    console.log('match设置g 返回字符串的所有匹配项组成的数组 => ', matches);
 
     matches = text.match(patt);
     console.log(matches);
@@ -106,7 +106,7 @@
 
 <script>
     // 2.search
-    // return index（返回字符串中  第一个匹配项的索引  ，始终从字符串开头向后查找模式patt）
+    // return index（返回字符串中  第一个匹配项的索引，始终从字符串开头向后查找模式patt）
     var text = 'cat, bat, sat, fat';
     var patt = /at/;
     var pos = text.search(patt);
@@ -133,11 +133,11 @@
 
 <script>
     // 3.replace
-    var text = 'cart, bAt, sat, fat';
-    var result = text.replace(/at/gi, 'ond2'); // 替换所有子字符串
+    var text = 'cart, bAt, sat';
+    var result = text.replace(/at/gi, 'replaced'); // 替换所有子字符串
     console.log('result => ', result);
 
-    var result2 = text.replace('at', 'ond'); // 只替换找到的第一个子字符串
+    var result2 = text.replace('at', 'replaced2'); // 替换找到的第一个子字符串
     console.log('result2 => ', result2);
 
     var ele = "<p>hello</p>";

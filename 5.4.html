@@ -15,7 +15,7 @@
     var i;
     for (i = 0; i < 3; i++) {
         re = /cat/g;
-        var xx = re.test('catastrophe'); // 没有失败呢？？
+        var xx = re.test('catastrophe'); // es3 返回true, false, false, es5返回一致
         console.log(xx);
     }
 
@@ -33,6 +33,7 @@
     // 1.exec
     // return [] or null ;
     var text = 'mom and dad and baby';
+
     var patt = /mom( and dad( and baby)?)?/gi;
     var matches = patt.exec(text);
     console.log('1 => ', matches, matches.index, matches.input);
@@ -63,7 +64,7 @@
     var text = 'cat, bat, sat, fat';
     var patt = /.at/g;
     var matches = patt.exec(text);
-    console.log('exec设置g 继续查找新匹配项 => ', matches);
+    console.log('exec设置g 返回下一个匹配项 => ', matches);
 
     matches = patt.exec(text);
     console.log(matches);
@@ -80,11 +81,6 @@
     if (patt.test(text)) {
         console.log('the patt was matched. ');
     }
-</script>
-
-<script>
-    var patt = new RegExp('cat', 'g');
-    console.log('继承方法 => ', patt.toString(), patt.valueOf())
 </script>
 
 </body>
