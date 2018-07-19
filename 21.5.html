@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21.5</title>
+</head>
+<body>
+
+<script>
+    // 图像Ping
+    // 一个网页可以从任何网页加载图像，不用担心跨域问题，请求的数据是通过查询字符串形式发送的
+    var img = new Image();
+
+    img.onload = img.onerror = function(){
+        console.log('Done');
+    };
+
+    img.src = 'https://www.baidu.com/img/bd_logo1.png?qua=high&name=value';
+</script>
+
+<script>
+    // jsonp
+    // 为script.src指定一个跨域的URL
+    function handleResponse(response){
+        console.log(response, response.city);
+    }
+
+    var script = document.createElement('script');
+    script.src = 'http://freegeoip.net/json?callback=handleResponse';
+    document.body.appendChild(script);
+</script>
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>跨源资源共享 CORS</title>
+    <title>21.4</title>
 </head>
 <body>
 
@@ -67,6 +67,31 @@
     // 带凭据的请求
     // 1. withCredentials => true, 指定请求应该发送凭据
     // 2.如果服务器接受带凭据的请求，会用Access-Control-Allow-Credentials:true, 响应
+</script>
+
+
+<script>
+    // 跨浏览器的CORS
+    function createCORSRequest(method, url){
+        var xhr = new XMLHttpRequest();
+        if ('withCredentials' in xhr) {
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest !== 'undefined') {
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            xhr = null;
+        }
+        return xhr;
+    }
+
+    var request = createCORSRequest('get', 'ajax_info.json');
+    if (request) {
+        request.onload = function(){
+            console.log(this, this.response);
+        };
+        request.send();
+    }
 </script>
 
 </body>
