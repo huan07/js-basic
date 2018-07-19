@@ -170,13 +170,13 @@
     var str = 'hello world hello wprld';
     var patt = /w[o-p]r/g;
     var match = str.match(patt);
-    console.log('在方括号之间的字符 [] => ', match);
+    console.log('在方括号之间的任何字符 [] => ', match);
 
 
     var str2 = "Is this all there is?";
     var patt2 = /[^a-t]/g;
     var match = str2.match(patt2);
-    console.log('不在方括号之间的字符 [^] => ', match);
+    console.log('任何不在方括号之间的字符 [^] => ', match);
 </script>
 
 <script>
@@ -193,6 +193,50 @@
     // \w 查找单词字符  \W
     // \d 查找数字      \D
     // \s 查找空白字符  \S
+</script>
+
+<script>
+    // 量词
+    // n* [0,n]
+    // n+ [1,n]
+    // n? [0,1]
+
+    var str = "Hello World! Helloo baidu!";
+    var patt4 = /lo*/g;
+    var match = str.match(patt4);
+    console.log('量词 * 至少0个 => ', match);
+
+
+    var patt5 = /\w+/g;
+    var match = str.match(patt5);
+    console.log('量词 + 至少1个 => ', match);
+
+
+    var patt6 = /lo?/g;
+    var match = str.match(patt6);
+    console.log('量词 ？ 0/1个 => ', match);
+</script>
+<script>
+    // n{X}
+    // n{X,}
+    // n{X,Y}
+    var str = "1002, 10003 or 100004?";
+    var patt7 = /\d{4}/g;
+    var match = str.match(patt7);
+    console.log('n{4} [4,4]区间内 => ', match);
+
+
+    var patt8 = /\d{4,}/g;
+    var match = str.match(patt8);
+    console.log('n{4,} [4,oo]区间内 => ', match);
+
+    var patt9 = /\d{4,5}/g;
+    var match = str.match(patt9);
+    console.log('n{4,5} [4,5]区间内 => ', match);
+</script>
+<script>
+    // ^n
+    // n$
 </script>
 
 
