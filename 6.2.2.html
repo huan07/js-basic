@@ -10,7 +10,7 @@
         this.name = name;
         this.age = age;
         this.job = job;
-        this.sayName = function(){ // 每个方法都要在每个实例上重新创建一遍，（完成的是相同的任务，没有必要 待改进！！）
+        this.sayName = function(){ // 每个方法都要在每个实例上重新创建一遍，（完成的是相同的任务，没有必要 待改进）
             console.log(this.name + '-' + this.age);
         };
     }
@@ -19,7 +19,11 @@
     var person2 = new Person('person2', 40, 'a beautifull woman');
     person.sayName();
     person2.sayName();
+
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
+
+    console.log('person对象 => ', person, person instanceof Person); // 能够识别实例的类型
+    console.log('函数规则 => ', Person.prototype, Person.prototype.constructor === Person);
 
     console.log('实例constructor属性 => ', person.constructor, Person, person.constructor === Person);
 
