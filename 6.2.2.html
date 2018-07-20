@@ -22,10 +22,8 @@
 
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
 
-    console.log('person对象 => ', person, person instanceof Person); // 能够识别实例的类型
+    console.log('person对象 => ', person, person.constructor === Person, person instanceof Person); // 能够识别实例的类型
     console.log('函数规则 => ', Person.prototype, Person.prototype.constructor === Person);
-
-    console.log('实例constructor属性 => ', person.constructor, Person, person.constructor === Person);
 
 
     // 构造函数与普通函数的唯一区别：调用方式不一样
