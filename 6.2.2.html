@@ -19,7 +19,6 @@
     var person2 = new Person('person2', 40, 'a beautifull woman');
     person.sayName();
     person2.sayName();
-
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
 
     console.log('person对象 => ', person, person.constructor === Person, person instanceof Person); // 能够识别实例的类型
@@ -28,11 +27,10 @@
 
     // 构造函数与普通函数的唯一区别：调用方式不一样
     // Person的调用方式  call对象冒充
-    // 1.
-    var person = new Person('person5', 50, '50 years old people');
-    person.sayName();
+    // 1. new
 
-    // 2.
+
+    // 2. 普通函数
     Person('person6', 60, '60 years old people'); // 添加到Window
     window.sayName();
 

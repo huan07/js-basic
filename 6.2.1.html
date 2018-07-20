@@ -21,7 +21,6 @@
     var person2 = createPerson('person2', 29, 'a woman');
     person.sayName();
     person2.sayName();
-
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的
 
     console.log('person对象 => ', person, person.constructor === createPerson, person instanceof createPerson); // 不能识别实例的类型
