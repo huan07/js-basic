@@ -21,20 +21,19 @@
 </script>
 
 <script>
-    // Ajax 同步请求：js代码等到服务器相应之后再继续执行
-    // URL与当前页面是同一个域、相同的端口、协议（同源策略）；
-    // 同步不需要 onreadystatechange函数
+    // Ajax 同步请求：js代码等到服务器相应之后再继续执行，因此不需要onreadystatechange函数；
+    // 同源策略：URL必须与启动请求的页面是同一个域、相同的端口、协议；
     var xhr = new createXHR();
     xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送
-    xhr.send(null);
-    console.log('同步请求 => ', xhr);
+    xhr.send(null); // 真正发送请求
+    console.log('同步请求 => ', xhr, xhr.readyState, xhr.status, xhr.statusText);
+    console.log(xhr.response, xhr.responseText, xhr.responseXML);
 </script>
-
 <script>
     var xhr = new createXHR();
     xhr.open('get', 'ajax_info.json?t=' + Math.random(), false); // 避免304，浏览器的缓存数据
     xhr.send(null);
-    console.log('同步请求2 => ', xhr);
+    console.log('同步请求2 => ', xhr.status);
 </script>
 
 
@@ -45,15 +44,15 @@
     xhr2.onreadystatechange = function(){
 
         if (xhr2.readyState === 4) {
-            console.log(this, xhr2, this === xhr2); // 浏览器兼容性
 
             var myheader = xhr2.getResponseHeader('myheader'); // 设置成功，然而并没有取到值
             var allHeader = xhr2.getAllResponseHeaders();
+            console.log('this === xhr2', this === xhr2); // 不用this,而是用XHR实例，onreadystatechange作用域问题
             console.log(myheader);
             console.log(allHeader);
 
             if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
-                console.log(xhr2.response, xhr2.responseText);
+                console.log(xhr2.response);
             } else {
                 console.log('request was unsuccessful' + xhr2.status)
             }
