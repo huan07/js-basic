@@ -45,11 +45,10 @@
 
         if (xhr2.readyState === 4) {
 
-            var myheader = xhr2.getResponseHeader('myheader'); // 设置成功，然而并没有取到值
+            var myHeader = xhr2.getResponseHeader('MyHeader'); // 设置成功，然而并没有取到值
             var allHeader = xhr2.getAllResponseHeaders();
             console.log('this === xhr2', this === xhr2); // 不用this,而是用XHR实例，onreadystatechange作用域问题
-            console.log(myheader);
-            console.log(allHeader);
+            console.log('getResponseHeader => ', myHeader, allHeader);
 
             if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
                 console.log(xhr2.response);
