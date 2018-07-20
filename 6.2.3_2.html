@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.2.3_2</title>
+</head>
+<body>
+
+<script>
+    function People(){
+
+    }
+    console.log('重写整个原型对象之前 => ', People.prototype, People.prototype.constructor); // People
+    People.prototype = {
+        // constructor:People, // 手动设置变成可以枚举
+        name: 'people_name',
+        age: 'people_age',
+        job: 'people_job',
+        sayName: function(){
+            console.log(this.name + '-' + this.age);
+        }
+    };
+    console.log('重写整个原型对象之后 => ', People.prototype, People.prototype.constructor); // 搜索到原型链上的constructor值: Object
+
+    var people = new People();
+    people['name_job'] = 'name_job';
+    console.log(Object.keys(people), Object.keys(People.prototype));
+    console.log(Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(People.prototype));
+
+
+    // 原型的动态性 ！！ to do
+    var friend = new People();
+
+    People.prototype.sayHi = function(){ // 创建实例后添加原型属性方法，实例和原型的松散连接
+        console.log('sayHi //' + this.name + '//' + this.age + '//' + this.job);
+    };
+    friend.sayHi();
+
+    // 创建实例的情况下 重写默认的prototype对象：1.切断了构造函数与最初原型的联系
+    // 实例的指针指向原型，不是构造函数，
+    function Person(){
+
+    }
+    var friend2 = new Person();
+
+    Person.prototype = { // 创建实例后重写原型对象
+        constructor: Person,
+        name: 'nicholas',
+        age: 30,
+        friend: 'yc',
+        sayHi: function(){
+            return 'sayHi //' + this.friend;
+        }
+    };
+    // friend2.sayHi(); // error
+
+
+    function XxX(){
+
+    }
+    XxX.prototype = {
+        constructor: XxX,
+        name: 'nicholas',
+        age: 30,
+        friend: 'yc',
+        sayHiWord: function(){
+            console.log('XxX XxX XxX XxX XxX');
+        }
+    };
+
+    var xx = new XxX();
+    xx.sayHiWord();
+
+
+    // 原生对象的原型
+</script>
+<script>
+    // 问题：所有实例在 默认情况下都将 取得相同的属性值；
+    // 共享对函数非常适用，对于包含引用类型值的属性，问题突出！！
+    function Person(){
+
+    }
+
+    Person.prototype = {
+        constructor: Person,
+        name: 'name',
+        friends: ['friend1', 'friend2'],
+        sayName: function(){
+            console.log(this.name + '-' + this.friends.length);
+        }
+    };
+    var person = new Person();
+    var person2 = new Person();
+    person2.friends.push('friend3');
+
+    console.log('原型对象的问题 => ', person.friends, person2.friends, person.friends === person2.friends);
+    person.sayName();
+    person2.sayName();
+
+    // 练习题
+    function CreatObj(){
+        this.name = 'aaa';
+        this.price = 'bbb';
+    }
+    CreatObj.prototype.action = function(){
+        console.log('ccc');
+    };
+    var obj = new CreatObj();
+    var str = ' ';
+    for (var i in obj) {
+        str += obj[i];
+        console.log(str);
+    }
+</script>
+
+</body>
+</html>

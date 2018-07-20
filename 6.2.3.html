@@ -20,28 +20,32 @@
     person11.name = 'person11';
 
     var person12 = new Person();
-    console.log(person11);
-    console.log('原型对象共享的方法 => ', person11.sayName, person11.sayName === person12.sayName);
+    console.log(person11, person12);
+    console.log('实例共享的方法 => ', person11.sayName, person11.sayName === person12.sayName);
 
-    // constructor ！！最初包含，共享的，不可枚举
-    console.log('实例constructor属性 => ', person11.constructor, person11.constructor === Person);
-    console.log(Person.prototype.constructor, Person.prototype.constructor === Person);
+    // constructor ！！默认共享、不可枚举
+    console.log('实例constructor属性 => ', person11, person11.constructor === Person);
+    console.log(Person.prototype, Person.prototype.constructor === Person);
+    var descriptor = Object.getOwnPropertyDescriptor(person11, 'constructor'); // 实例上没有这个属性！！
+    var descriptor2 = Object.getOwnPropertyDescriptor(Person.prototype, 'constructor');
+    console.log('测试默认是否可枚举 => ', descriptor, descriptor2);
+
 
     // 实例的内部属性 [[Prototype]]
-    // 部分浏览器支持的__proto__  指向构造函数的原型
+    // 只有部分浏览器支持的__proto__  指向构造函数的原型
     console.log('__proto__ => ', person11.__proto__, person11.__proto__ === Person.prototype);
 
-    // isPrototypeOf  原型 是否是 实例的原型      继承方法！！
+    // 实例 的内部指针执行 构造函数的原型 返回true    从Object继承的方法！！
     console.log('isPrototypeOf => ', Person.prototype.isPrototypeOf(person11));
 
-    // getPrototypeOf Object方法  返回实例的 原型
+    // 返回 实例的原型
     console.log('getPrototypeOf => ', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
 
     // 对象属性搜索机制：
     // 先搜索实例属性，找到就返回；否则，继续搜索原型属性；
     // 不能通过实例重写原型的值；
 
-    // hasOwnProperty 是否是 实例属性    继承方法！！
+    // hasOwnProperty 是否是 实例属性              从Object继承的方法！！
     // delete 删除 实例属性
     person11.name = 'person11'; // 屏蔽原型的属性
     console.log('hasOwnProperty => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
@@ -49,14 +53,8 @@
     console.log('delete => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
     console.log(Person.prototype.hasOwnProperty('name'), Person.prototype.hasOwnProperty('age'));
 
-    // getOwnPropertyDescriptor  获取对象上属性的描述，
-    person11.name = 'person11';
-    var instanceDescriptor = Object.getOwnPropertyDescriptor(person11, 'name');
-    var prototypeDescriptor = Object.getOwnPropertyDescriptor(Person.prototype, 'name');
-    console.log('Object.getOwnPropertyDescriptor => ', instanceDescriptor, prototypeDescriptor);
 
-
-    // in,  for in 可枚举的属性
+    // in,  for in   实例＋原型 可枚举的属性
     console.log('in   for in => ', 'name' in person11);
     person11.name = 'person11';
     console.log('name' in person11);
@@ -76,113 +74,6 @@
     people['name_age'] = 'name_age';
     console.log('Object.keys => ', Object.keys(people), Object.keys(Person.prototype));
     console.log('Object.getOwnPropertyNames => ', Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(Person.prototype));
-</script>
-
-<script>
-    function People(){
-
-    }
-    console.log('重写整个原型对象之前 => ', People.prototype, People.prototype.constructor); // People
-    People.prototype = {
-        // constructor:People, // 手动设置变成可以枚举
-        name: 'people_name',
-        age: 'people_age',
-        job: 'people_job',
-        sayName: function(){
-            console.log(this.name + '-' + this.age);
-        }
-    };
-    console.log('重写整个原型对象之后 => ', People.prototype, People.prototype.constructor); // 搜索到原型链上的constructor值: Object
-
-    var people = new People();
-    people['name_job'] = 'name_job';
-    console.log(Object.keys(people), Object.keys(People.prototype));
-    console.log(Object.getOwnPropertyNames(people), Object.getOwnPropertyNames(People.prototype));
-
-
-    // 原型的动态性 ！！ to do
-    var friend = new People();
-
-    People.prototype.sayHi = function(){ // 创建实例后添加原型属性方法，实例和原型的松散连接
-        console.log('sayHi //' + this.name + '//' + this.age + '//' + this.job);
-    };
-    friend.sayHi();
-
-    // 创建实例的情况下 重写默认的prototype对象：1.切断了构造函数与最初原型的联系
-    // 实例的指针指向原型，不是构造函数，
-    function Person(){
-
-    }
-    var friend2 = new Person();
-
-    Person.prototype = { // 创建实例后重写原型对象
-        constructor: Person,
-        name: 'nicholas',
-        age: 30,
-        friend: 'yc',
-        sayHi: function(){
-            return 'sayHi //' + this.friend;
-        }
-    };
-    // friend2.sayHi(); // error
-
-
-    function XxX(){
-
-    }
-    XxX.prototype = {
-        constructor: XxX,
-        name: 'nicholas',
-        age: 30,
-        friend: 'yc',
-        sayHiWord: function(){
-            console.log('XxX XxX XxX XxX XxX');
-        }
-    };
-
-    var xx = new XxX();
-    xx.sayHiWord();
-
-
-    // 原生对象的原型
-</script>
-<script>
-    // 问题：所有实例在 默认情况下都将 取得相同的属性值；
-    // 共享对函数非常适用，对于包含引用类型值的属性，问题突出！！
-    function Person(){
-
-    }
-
-    Person.prototype = {
-        constructor: Person,
-        name: 'name',
-        friends: ['friend1', 'friend2'],
-        sayName: function(){
-            console.log(this.name + '-' + this.friends.length);
-        }
-    };
-    var person = new Person();
-    var person2 = new Person();
-    person2.friends.push('friend3');
-
-    console.log('原型对象的问题 => ', person.friends, person2.friends, person.friends === person2.friends);
-    person.sayName();
-    person2.sayName();
-
-    // 练习题
-    function CreatObj(){
-        this.name = 'aaa';
-        this.price = 'bbb';
-    }
-    CreatObj.prototype.action = function(){
-        console.log('ccc');
-    };
-    var obj = new CreatObj();
-    var str = ' ';
-    for (var i in obj) {
-        str += obj[i];
-        console.log(str);
-    }
 </script>
 
 </body>
