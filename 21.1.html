@@ -22,7 +22,8 @@
 
 <script>
     // Ajax 同步请求：js代码等到服务器相应之后再继续执行，因此不需要onreadystatechange函数；
-    // 同源策略：URL必须与启动请求的页面是同一个域、相同的端口、协议；
+    // 跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域中的资源；可以预防某些恶意行为；
+    // URL必须与启动请求的页面是相同的协议、域名、端口号；
     var xhr = new createXHR();
     xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送
     xhr.send(null); // 真正发送请求
@@ -100,7 +101,7 @@
 
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-    xhr.send('&post=test');
+    xhr.send('name=value&name2=value2');
 </script>
 
 </body>
