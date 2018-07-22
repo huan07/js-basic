@@ -170,13 +170,13 @@
     var str = 'hello world hello wprld';
     var patt = /w[o-p]r/g;
     var match = str.match(patt);
-    console.log('在方括号之间的任何字符 [] => ', match);
+    console.log('在[]之间的任何一个字符 => ', match);
 
 
     var str2 = "Is this all there is?";
     var patt2 = /[^a-t]/g;
     var match = str2.match(patt2);
-    console.log('任何不在方括号之间的字符 [^] => ', match);
+    console.log('不在[^]之间的任何一个字符 => ', match);
 </script>
 
 <script>
