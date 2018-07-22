@@ -69,6 +69,15 @@
 </script>
 
 <script>
+    // 9.身份证号码
+    // 15位数字
+    // 17位数字＋数字/X/x
+    var idCardNo = '340822198907070229';
+    var patt = /(^\d{15}$|^\d{17}[\dxX]$)/;
+    console.log('idCardNo => ', patt.test(idCardNo));
+</script>
+
+<script>
     // 11. 去除 首位的字符
     var str = '/as/df//';
     str = str.replace(/(^\/*|\/*$)/g, '');
@@ -83,7 +92,6 @@
     str3 = str3.replace(/(^A*|A*$)/g, '');
     console.log('去除 首位的 =>', str3);
 </script>
-
 
 </body>
 </html>
