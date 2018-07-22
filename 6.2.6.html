@@ -19,8 +19,9 @@
     var friend = new Person('yh', 30, 'a engineer');
     friend.sayJob();
 
+
     // 不能直接修改原生对象的构造函数，可以用这个模式
-    // 返回的对象与 构造函数、构造函数的原型属性没有关联 不能依赖instanceof来确定对象类型 to add 识别对象类型
+    // 返回的对象与 构造函数、构造函数的原型属性没有关联 不能依赖instanceof来确定对象类型
     // 不要使用这种模式
     function SpecialArray(){
         var values = new Array();
@@ -37,12 +38,9 @@
     var colorsJoin = colors.toPipedString();
     console.log(colorsJoin);
 
-    var _pro = SpecialArray.prototype;
+    console.log(colors instanceof SpecialArray);
 
-    console.log(colors.constructor === SpecialArray, Object.getPrototypeOf(colors) === _pro, _pro.isPrototypeOf(colors));
-
-    console.log(Object.getPrototypeOf(colors));
-    console.log(_pro, _pro.constructor === SpecialArray);
+    console.log(Object.getPrototypeOf(colors) === SpecialArray.prototype);
 </script>
 
 </body>

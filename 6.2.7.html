@@ -7,9 +7,9 @@
 <body>
 
 <script>
-    // 稳妥构造函数模式
     // 没有公共属性，方法不引用this对象
     // 适合在安全环境使用（禁止使用 this，new）；防止数据被其他应用程序改动
+
     // 与寄生构造函数模式比较，1)新创建对象的实例方法不引用this
     // 2) 不使用new 操作符调用构造函数
     // 适合某些安全执行环境
@@ -21,7 +21,7 @@
         o.age = age;
 
         o.sayAge = function(){
-            console.log(age);
+            console.log(age); // 闭包的age数据保留在内存中
         };
 
         return o;
