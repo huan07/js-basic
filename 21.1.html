@@ -70,11 +70,37 @@
 
 <script>
     // get  向服务器查询某些信息  URL末尾的查询字符串必须经过编码(name,value)
-    // post 向服务器发送应该被保存的数据
+
 
     // 区别：
     // 查询信息name,value经过编码后 紧跟在请求的URL后面，有数量限制；暴露在外面不安全；发送相同的数据，get请求的速度快；
     // post请求消耗的资源多；
+</script>
+
+
+<script>
+    // post请求 用于向服务器发送应该被保存的数据
+    // 应该把数据作为请求的主体提交
+
+    // 使用XHR来模仿表单提交
+    var xhr = createXHR();
+
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4) {
+
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+                console.log(xhr.response);
+            } else {
+                console.log('request was unsuccessful' + xhr.status)
+            }
+        }
+    };
+
+    xhr.open('post', 'ajaxPost_info.json', true);
+
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xhr.send('&post=test');
 </script>
 
 </body>

@@ -2,29 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>21.2</title>
 </head>
 <body>
+
 <form id="user-info">
     fullname: <input type="text" name="fullname" value="meimei Han"><br>
     <input type="radio" name="gender" value="male" checked>男<br>
     <input type="radio" name="gender" value="female">女<br>
     <input type="submit" value="提交">
 </form>
+
 <script>
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function(){
         if (xhr.readyState === 4) {
+
             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
                 console.log(xhr.response);
             } else {
-
+                console.log('request was unsuccessful' + xhr.status)
             }
         }
     };
 
-    xhr.open('post', 'ajax2_info.json', true);
+    xhr.open('post', 'ajaxPost_info.json', true);
 
     var data = new FormData(document.getElementById('user-info'));
 
