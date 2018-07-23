@@ -66,14 +66,13 @@
         }
     });
 
-    var people3 = Object.defineProperty(people, 'age', {
+    Object.defineProperty(people, 'age', {
         writable: true,
         value: 31
     });
     console.log('Object.create,  Object.defineProperty => ');
     console.log('people => ', people);
     console.log('people2 => ', people2);
-    console.log('people3 => ', people3);
 </script>
 
 </body>
