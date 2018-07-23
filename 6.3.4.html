@@ -28,7 +28,9 @@
     person3.name = 'name3';
     person3.friends.push('friendY');
 
-    console.log(person, person2, person3);
+    console.log('person => ', person);
+    console.log('person2 => ', person2);
+    console.log('person3 => ', person3);
 </script>
 
 <script>
@@ -45,7 +47,10 @@
     people3.name = 'name3';
     people3.friends.push('friendY');
 
-    console.log(people, people2, people3);
+    console.log('people => ', people);
+    console.log('people2 => ', people2);
+    console.log('people3 => ', people3);
+
     console.log(Object.create(null));
 </script>
 
@@ -55,7 +60,7 @@
         friends: ['friend', 'friend2', 'friend3']
     };
 
-    var people2 = Object.create(people, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例属性
+    var people2 = Object.create(people, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例对象
         name: {
             value: 'name2'
         }
@@ -65,10 +70,10 @@
         writable: true,
         value: 31
     });
-    console.log('Object.create,  Object.defineProperty => ', people, people2, people3);
-
-    console.log(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(people2), 'name'));
-    console.log(Object.getOwnPropertyDescriptor(people3, 'name'));
+    console.log('Object.create,  Object.defineProperty => ');
+    console.log('people => ', people);
+    console.log('people2 => ', people2);
+    console.log('people3 => ', people3);
 </script>
 
 </body>
