@@ -60,17 +60,18 @@
         friends: ['friend', 'friend2', 'friend3']
     };
 
+    Object.defineProperty(people, 'age', {
+        writable: true,
+        value: 31
+    });
+
     var people2 = Object.create(people, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例对象
         name: {
             value: 'name2'
         }
     });
 
-    Object.defineProperty(people, 'age', {
-        writable: true,
-        value: 31
-    });
-    console.log('Object.create,  Object.defineProperty => ');
+    console.log('Object.defineProperty, Object.create => ');
     console.log('people => ', people);
     console.log('people2 => ', people2);
 </script>
