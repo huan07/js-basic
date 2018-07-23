@@ -54,10 +54,11 @@
     console.log('isPrototypeOf =>');
     console.log(SubType.prototype.isPrototypeOf(child), SuperType.prototype.isPrototypeOf(child), Object.prototype.isPrototypeOf(child));
 
-    // 原型链搜索机制，调用方法
-    // 搜索实例方法
-    // 搜索自己的prototype方法
-    // 搜索父类的prototype 方法
+
+    // 原型链搜索机制，调用方法：
+    // 搜索实例方法，找到就返回；
+    // 否则，搜索自己的prototype方法，找到就返回；
+    // 否则，搜索父类的prototype 方法
 </script>
 
 <script>

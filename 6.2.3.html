@@ -42,7 +42,9 @@
     console.log('getPrototypeOf => ', Object.getPrototypeOf(person11), Object.getPrototypeOf(person11) === Person.prototype);
 
     // 对象属性搜索机制：
-    // 先搜索实例属性，找到就返回；否则，继续搜索原型属性；
+    // 先搜索实例属性，找到就返回；
+    // 否则，继续搜索原型属性；
+
     // 不能通过实例重写原型的值；
 
     // hasOwnProperty 是否是 实例属性              从Object继承的方法！！
