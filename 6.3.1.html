@@ -34,24 +34,24 @@
 
     var parent = new SuperType();
     var child = new SubType();
-    console.log(parent.property, parent.getSuperValue(),);
     console.log(child.subproperty, child.getSubValue(), child.property, child.getSuperValue());
     // 超类属性都被继承了
 
-    console.log('instanceof => ');
-    console.log(parent instanceof SuperType, parent instanceof Object);
-    console.log(child instanceof SubType, child instanceof SuperType, child instanceof Object);
-
-    console.log('isPrototypeOf =>');
-    console.log(SuperType.prototype.isPrototypeOf(parent));
-    console.log(SubType.prototype.isPrototypeOf(child), SuperType.prototype.isPrototypeOf(child));
     console.log('getPrototypeOf =>');
     console.log(Object.getPrototypeOf(parent), Object.getPrototypeOf(child));
 
     console.log('constructor =>');
-    console.log(SubType.prototype.constructor);
-    console.log(SubType.prototype.constructor === SubType);
-    console.log(SubType.prototype.constructor === SuperType);// 指向了超类的构造函数！！
+    console.log(SuperType.prototype, SubType.prototype);
+
+    console.log(SubType.prototype.constructor === SubType); // false
+    console.log(SubType.prototype.constructor === SuperType);// true 指向了超类的构造函数！！
+    console.log(SubType.prototype.constructor === Object); // false
+
+    console.log('instanceof => ');
+    console.log(child instanceof SubType, child instanceof SuperType, child instanceof Object);
+
+    console.log('isPrototypeOf =>');
+    console.log(SubType.prototype.isPrototypeOf(child), SuperType.prototype.isPrototypeOf(child), Object.prototype.isPrototypeOf(child));
 
     // 原型链搜索机制，调用方法
     // 搜索实例方法
