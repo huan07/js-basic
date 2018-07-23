@@ -76,15 +76,14 @@
 
     var instance1 = new SubType();
     instance1.colors.push('black');
-    console.log(instance1.colors);
 
     var instance2 = new SubType();
-    console.log(instance2.colors);
 
     var parent = new SuperType();
-    console.log(parent.colors);
+    console.log(instance1, instance1.colors);
+    console.log(instance2, instance2.colors);
+    console.log(parent);
 </script>
-
 
 </body>
 </html>
