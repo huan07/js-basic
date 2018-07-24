@@ -112,22 +112,5 @@
     setTimeout(incre, 500);
 </script>
 
-
-<script>
-    // 考题
-    // 间隙调用，超时调用
-    function foo(){
-        console.log('first');
-        setTimeout(function(){
-            console.log('second');
-        }, 5)
-    }
-
-    for (var i = 0; i < 10; i++) {
-        foo();
-    }
-
-</script>
-
 </body>
 </html>

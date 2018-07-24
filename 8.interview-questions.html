@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件循环</title>
+</head>
+<body>
+
+<script>
+    // js单线程，但是可以调度代码在特定的时刻执行
+    function printing(){
+        console.log(1);
+
+        setTimeout(function(){
+            console.log(4);
+        }, 1000);
+
+        setTimeout(function(){
+            console.log(3);
+        }, 0);
+
+        console.log(2);
+    }
+
+    printing();
+</script>
+
+<script>
+    // 间隙调用，超时调用
+    function foo(){
+        console.log('first');
+        setTimeout(function(){
+            console.log('second');
+        }, 5)
+    }
+
+    for (var i = 0; i < 10; i++) {
+        foo();
+    }
+
+</script>
+
+</body>
+</html>
