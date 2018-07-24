@@ -21,14 +21,14 @@
 </script>
 
 <script>
-    // Ajax 同步请求：js代码等到服务器相应之后再继续执行，因此不需要onreadystatechange函数；
+    // Ajax 同步请求：js代码等到服务器响应之后再继续执行，因此不需要onreadystatechange函数；
     // 跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域中的资源；可以预防某些恶意行为；
     // URL必须与启动请求的页面是相同的协议、域名、端口号；
     var xhr = new createXHR();
     xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送
     xhr.send(null); // 真正发送请求
     console.log('同步请求 => ', xhr, xhr.readyState, xhr.status, xhr.statusText);
-    console.log(xhr.response, xhr.responseText, xhr.responseXML);
+    console.log(xhr.response, xhr.responseText);
 </script>
 <script>
     var xhr = new createXHR();
@@ -39,16 +39,16 @@
 
 
 <script>
-    // Ajax 异步请求：js继续执行不必等待响应
+    // Ajax 异步请求：js继续执行而不必等待响应
     var xhr2 = new createXHR();
 
     xhr2.onreadystatechange = function(){
 
-        if (xhr2.readyState === 4) {
+        if (xhr2.readyState === 4) { // 浏览器兼容性，函数内部用xhr2对象，不用this对象
 
             var myHeader = xhr2.getResponseHeader('MyHeader'); // 设置成功，然而并没有取到值
             var allHeader = xhr2.getAllResponseHeaders();
-            console.log('this === xhr2', this === xhr2); // 不用this,而是用XHR实例，onreadystatechange作用域问题
+            console.log('this === xhr2', this === xhr2);
             console.log('getResponseHeader => ', myHeader, allHeader);
 
             if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
@@ -70,7 +70,7 @@
 </script>
 
 <script>
-    // get  向服务器查询某些信息  URL末尾的查询字符串必须经过编码(name,value)
+    // get请求 向服务器查询某些信息  URL末尾的查询字符串必须经过编码(name,value)
 
 
     // 区别：
