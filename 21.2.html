@@ -29,7 +29,7 @@
 
     xhr.open('post', 'ajaxPost_info.json', true);
 
-    var data = new FormData(document.getElementById('user-info'));
+    var data = new FormData(document.getElementById('user-info')); // 不必在XHR对象上设置请求头部
 
     xhr.send(data);
 </script>

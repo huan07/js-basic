@@ -101,9 +101,9 @@
         }
     };
 
-    xhr.open('post', 'ajaxPost_info.json', true); // 1.
+    xhr.open('post', 'ajaxPost_info.json', true);
 
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 1.
 
     xhr.send('name=value&name2=value2'); // 2.
 </script>
