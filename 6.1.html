@@ -53,8 +53,6 @@
 
     book.year = 2024;
     console.log('book.edition => ', book.edition);
-
-    // Object.defineProperties()
 </script>
 
 <script>
@@ -74,10 +72,23 @@
 
     var object = { age: 29 }; // 以这种方式定义对象，三个属性值默认都是true
     console.log(people, people_2, object);
-    
+
     console.log(Object.getOwnPropertyDescriptor(people, 'age'));
     console.log(Object.getOwnPropertyDescriptor(people_2, 'age'));
     console.log(Object.getOwnPropertyDescriptor(object, 'age'));
+</script>
+
+<script>
+    var he = {};
+    Object.defineProperties(he, {
+        name: {
+            value: 'hisName'
+        },
+        age: {
+            value: 30
+        }
+    });
+    console.log(Object.getOwnPropertyDescriptors(he));
 </script>
 
 </body>
