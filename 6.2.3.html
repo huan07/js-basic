@@ -69,8 +69,8 @@
 
     // 浏览器兼容性 to add
 
-    // Object.keys()  对象可枚举自身属性，返回数组
-    // Object.getOwnPropertyNames()   对象可枚举＋不可枚举自身属性，返回数组
+    // Object.keys() 对象 可枚举 自身属性，返回数组；
+    // Object.getOwnPropertyNames() 对象 可枚举＋不可枚举 自身属性，返回数组；
     var people = new Person();
     people['name_age'] = 'name_age';
     console.log('Object.keys => ', Object.keys(people), Object.keys(Person.prototype));
