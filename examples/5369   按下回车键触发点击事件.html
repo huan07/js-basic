@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按下回车键触发点击事件</title>
+    <link rel="stylesheet" type="text/css" href="0.css">
+    <style>
+
+    </style>
+</head>
+<body>
+
+<input id="myInput" value="Some text..">
+<button id="myBtn" onclick="javascript:alert('Hello World!')">按钮</button>
+
+<script>
+    var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event){
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("myBtn").click();
+        }
+    });
+</script>
+
+</body>
+</html>
