@@ -12,7 +12,7 @@
     person.age = 30;
     person.job = 'engineer';
     person.sayName = function(){
-        console.log(this.name + '-' + this.age + '-' + this.job); // this => 当前作用域下的对象
+        console.log(this.name + '-'); // this => 当前作用域下的对象
     };
 
     var person2 = { // 创建很多对象，会产生大量的重复代码
@@ -20,10 +20,11 @@
         age: 30,
         job: 'engineer',
         sayName: function(){
-            console.log(this.name + '-' + this.age + '-' + this.job);
+            console.log(this.name + '-');
         }
     };
 
+    console.log(person, person2);
     person.sayName();
     person2.sayName();
 </script>
@@ -72,9 +73,8 @@
     });
 
     var object = { age: 29 }; // 以这种方式定义对象，三个属性值默认都是true
-    console.log(people, people_2);
-    console.log(object);
-
+    console.log(people, people_2, object);
+    
     console.log(Object.getOwnPropertyDescriptor(people, 'age'));
     console.log(Object.getOwnPropertyDescriptor(people_2, 'age'));
     console.log(Object.getOwnPropertyDescriptor(object, 'age'));
