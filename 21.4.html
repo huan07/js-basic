@@ -7,14 +7,14 @@
 <body>
 
 <script>
-    // CORS思想：使用自定义的HTTP头部让浏览器与服务器通信，从而决定请求／响应成功或失败
+    // CORS思想：使用自定义的HTTP头部让浏览器与服务器通信，从而决定请求／响应成功，还是失败
 
     var xhr = new XMLHttpRequest();
     xhr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt', false);
     xhr.setRequestHeader('Origin', 'http://localhost:63342');// 1.
     xhr.send(null);
 
-    // 2.如果服务器接受请求，就回发Access-Control-Allow-Origin(与Origin一致，浏览器才会接受请求，否则的话请求被驳回)
+    // 2.如果服务器接受请求，就回发Access-Control-Allow-Origin(与Origin一致，浏览器才会接受请求，否则的话驳回请求)
     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
         console.log('xhr 不支持跨源=> ', xhr.response);
     } else {
@@ -37,7 +37,8 @@
 
 
 <script>
-    // IE XDR请求只有异步
+    // IE对CORS的实现 引入了XDR对象，XDR请求都是异步执行的
+
     // 限制条件
     var xdr = new XDomainRequest();
     xdr.onload = function(){
@@ -68,6 +69,7 @@
 <script>
     // 其他浏览器对CORS的实现
     // open方法传入绝对URL即可
+
     // 限制条件
 </script>
 

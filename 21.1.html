@@ -22,7 +22,7 @@
 
 <script>
     // Ajax 同步请求：js代码等到服务器响应之后再继续执行，因此不需要onreadystatechange函数；
-    // 跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域中的资源；可以预防某些恶意行为；
+    // 跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域中的资源；可以预防某些恶意行为；！！
     // URL必须与启动请求的页面是相同的协议、域名、端口号；
     var xhr = new createXHR();
     xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送
@@ -80,6 +80,12 @@
     // 发送相同的数据，get请求的速度快；
 
     // post请求消耗的资源会更多；
+
+
+    // post请求响应头部返回
+    // access-control-allow-credentials: true
+    // access-control-allow-origin: http://localhost:63342
+    // content-type: application/json
 </script>
 
 
