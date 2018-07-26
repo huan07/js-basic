@@ -167,8 +167,7 @@
 </script>
 
 <script>
-    console.log('不影响原始数组，返回新的数组，concat, slice=========================================');
-    console.log('concat 创建当前数组副本，并且向尾部追加元素，数组的每一项========================');
+    console.log('concat 创建当前数组副本，并且向尾部追加元素，数组的每一项， 返回新的数组================');
     var colors11 = ['red', 'blue'];
     var colors12 = colors11.concat(); // 创建副本
     var colors13 = colors11.concat('yellow', ['1', '2']);
@@ -176,7 +175,7 @@
     console.log(colors12);
     console.log(colors13);
 
-    console.log('slice 截取数组的一部分 ==============================================');
+    console.log('slice 截取数组的一部分， 返回新的数组==============================================');
     var colors14 = ['red2', 'blue2', 'yellow2', '12', '22'];
     var colors15 = colors14.slice(0); // 创建副本
     var colors16 = colors14.slice(0, 2); // 不包括结束位置的项，
