@@ -221,7 +221,9 @@
 </script>
 
 <script>
-    // filter 返回true的项 组成的数组，map 返回 array    对空数组不会执行，不会改变原始数组
+    // 对空数组不会执行，不会改变原始数组
+    // filter 返回true的项 组成的新的array，
+    // map 返回新的array
     var filterResult = numbers.filter(function(item, index, array){ //
         return item > 3;
     });
@@ -232,7 +234,7 @@
     });
     console.log('mapResult => ', mapResult);
 
-    // forEach 执行某些操作，没有返回值 和 for 循环类型功能   对空数组不会执行
+    // forEach 执行某些操作，没有返回值，不能中途退出循环 和 for循环类型功能   对空数组不会执行
 </script>
 
 <script>
