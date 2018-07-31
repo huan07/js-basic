@@ -16,7 +16,7 @@
     console.log(sum(10, 20), sum.length,);
     console.log(sum, sum.prototype, sum.prototype.constructor === sum);
 
-    var anotherSum = sum;// 访问函数指针，非调用！！！！！！！！！！！！！！！！！！！！！！
+    var anotherSum = sum;// 访问函数指针，而非调用函数
     console.log(anotherSum(10, 20));
 
     sum = null;
@@ -49,14 +49,14 @@
     function fun(){
         var name = 'xh';
         var age = 10;
-        console.log(name);  // 'xh'
+        console.log('name => ', name);  // 'xh'
     }
     fun();
 
     var name = 'xml';
     var age = 181;
     function fun2(){
-        console.log(name);  // undefined
+        console.log('name => ', name);  // undefined
         var name = 'xh';
         var age = 10;
     }
