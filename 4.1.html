@@ -83,10 +83,10 @@
         }
         return newObj;
     }
-    var personXInfo = copyObj(peopleInfo);
+
     var person2Info = personInfo;
-    console.log('遍历 比较对象的属性值', personXInfo === peopleInfo);
-    console.log('=== 比较的是引用地址', person2Info === personInfo);
+    var personXInfo = copyObj(peopleInfo);
+    console.log('=== 比较的是引用地址', person2Info === personInfo, personXInfo === peopleInfo);
 </script>
 
 </body>
