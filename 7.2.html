@@ -37,7 +37,7 @@
             } else {
                 return 0;
             }
-        }
+        };
     }
 
     var compareNames = createComparisonFunction('name');
@@ -120,7 +120,7 @@
         getNameFunc: function(){
             return function(){
                 return this.name;
-            }
+            };
         }
     };
     console.log('返回匿名函数 => ', object.getNameFunc());
@@ -133,7 +133,7 @@
             var that = this;
             return function(){
                 return that.name;
-            }
+            };
         }
     };
     console.log('返回匿名函数2 => ', object2.getNameFunc());
