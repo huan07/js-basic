@@ -150,7 +150,8 @@
     console.log((object3.getName)()); // => object3  ??
 
     console.log((object3.getName = object3.getName)());// => window  ?? 非严格模式
-    // 第三种方式 to add
+    var xx = object3.getName;
+    console.log('xx => ', xx());
 
 
     // 内存泄露 ?  ?  ?   ?  ?   ?  ?    ?   ?    ?   ?    ?
