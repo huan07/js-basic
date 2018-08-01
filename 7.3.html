@@ -41,7 +41,7 @@
     })();
 
     function outputNumber3(count){
-        (function(){  // 闭包可以通过作用域链调用包含函数的变量count
+        (function(){  // 闭包，可以通过作用域链访问包含函数的变量count
             for (var i = 0; i < count; i++) {
                 console.log(i);
             }
