@@ -136,11 +136,11 @@
         }
     }();
 
-    console.log(singleton);
+    console.log('singleton => ', singleton);
 </script>
 
 <script>
-    // 增强的模块模式：单例必须是某种类型的实例，返回单例
+    // 增强的模块模式
     var singletonEnhanced = function(){
 
         // 私有变量，函数
@@ -150,14 +150,14 @@
             return false;
         }
 
-        var object = new Object(); //
+        var object = new Object(); // 单例必须是某种类型的实例，返回单例
 
         // 特权属性，方法
         object.publicProperty = true;
 
         object.publicMethod = function(){
             privateVar++;
-            return privateFun;
+            return privateFun();
         };
 
         return object;
