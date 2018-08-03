@@ -5,6 +5,20 @@
     <title>scoping-hoisting</title>
 </head>
 <body>
+
+<script>
+    // 函数声明提升
+    function foo(){
+        console.log('函数声明 前');
+    }
+
+    console.log(foo);
+    function foo(){ // 声明提升后，后面的函数覆盖前面的函数
+        console.log('函数声明 后');
+    }
+</script>
+
+
 <script>
     // 在一个代码块的中变量并不会覆盖掉 代码块外面的变量
     var x = 1;
