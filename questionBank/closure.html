@@ -15,18 +15,41 @@
     for (var i = 0, len = nodes.length; i < len; i++) {
         nodes[i].addEventListener('click', function(){
             console.log('clicked button' + i);
-        });
+        }); // 不管用的
     }
 </script>-->
 
-<script>
+<!--<script>
     var nodes = document.getElementsByTagName('button');
     for (var i = 0, len = nodes.length; i < len; i++) {
         nodes[i].addEventListener('click', function(){
             (function(index){
                 console.log('clicked button' + index);
-            })(i);
+            })(i); // 不管用的
         });
+    }
+</script>-->
+
+<!--<script>
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0, len = nodes.length; i < len; i++) {
+        nodes[i].addEventListener('click', function(index){ // !!!!
+            return function(){
+                console.log('clicked button' + index);
+            }
+        }(i));
+    }
+</script>-->
+<script>
+    function handler(index){
+        return function(){
+            console.log('clicked button' + index);
+        };
+    }
+
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0, len = nodes.length; i < len; i++) {
+        nodes[i].addEventListener('click', handler(i));
     }
 </script>
 
