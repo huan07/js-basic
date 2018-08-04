@@ -6,9 +6,13 @@
 </head>
 <body>
 
-<button type="button">button 1</button>
-<button type="button">button 2</button>
-<button type="button">button 3</button>
+<button type="button" class="btn">button 1</button>
+<button type="button" class="btn">button 2</button>
+<button type="button" class="btn">button 3</button>
+
+<button type="button" class="button">button 1 另外方式</button>
+<button type="button" class="button">button 2 另外方式</button>
+<button type="button" class="button">button 3 另外方式</button>
 
 <!--<script>
     var nodes = document.getElementsByTagName('button');
@@ -30,8 +34,8 @@
     }
 </script>-->
 
-<!--<script>
-    var nodes = document.getElementsByTagName('button');
+<script>
+    var nodes = document.getElementsByClassName('btn');
     for (var i = 0, len = nodes.length; i < len; i++) {
         nodes[i].addEventListener('click', function(index){ // !!!!
             return function(){
@@ -39,7 +43,7 @@
             }
         }(i));
     }
-</script>-->
+</script>
 <script>
     function handler(index){
         return function(){
@@ -47,7 +51,7 @@
         };
     }
 
-    var nodes = document.getElementsByTagName('button');
+    var nodes = document.getElementsByClassName('button');
     for (var i = 0, len = nodes.length; i < len; i++) {
         nodes[i].addEventListener('click', handler(i));
     }

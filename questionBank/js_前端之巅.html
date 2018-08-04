@@ -56,16 +56,16 @@
 <script>
     // 闭包
     (function outerFunc(outerArg){
-        var outerVar = 3;
+        var outerVar = 1;
 
         (function middleFunc(middleArg){
             var middleVar = 4;
 
             (function innerFunc(innerArg){
-                var innerVar = 5;
-                console.log(outerArg, outerVar); // 沿着作用域链查找
-                console.log(middleArg, middleVar);
-                console.log(innerArg, innerVar);
+                var innerVar = 7;
+                console.log('outer => ', outerArg, outerVar); // 沿着作用域链查找
+                console.log('middle => ', middleArg, middleVar);
+                console.log('inner => ', innerArg, innerVar);
             })(789);
         })(456);
     })(123);
