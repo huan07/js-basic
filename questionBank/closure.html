@@ -6,6 +6,31 @@
 </head>
 <body>
 
+<button type="button">button 1</button>
+<button type="button">button 2</button>
+<button type="button">button 3</button>
+
+<script>
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0, len = nodes.length; i < len; i++) {
+        nodes[i].addEventListener('click', function(){
+            console.log('clicked button' + i);
+        });
+    }
+</script>
+
+<script>
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0, len = nodes.length; i < len; i++) {
+        nodes[i].addEventListener('click', function(){
+            (function(index){
+                console.log('clicked button' + index);
+            })(i);
+        });
+    }
+</script>
+
+
 <script>
     // 没有块级作用域
     for (var j = 0; j < 3; j++) { // 美团点评考题 8
