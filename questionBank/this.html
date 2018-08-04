@@ -6,8 +6,32 @@
 </head>
 <body>
 <script>
-    // md/5.html
-    // md/7.html
+    var User = {
+        count: 1,
+        getCount: function(){
+            return this.count;
+        }
+    };
+    console.log(User.getCount()); // 对象方法调用：this => 最后调用它的对象   1
+
+    var fn = User.getCount;  // 普通函数调用：this => window   undefined
+    console.log(fn());
+
+    // 2.
+    var fullname = 'john doe';
+    var obj = {
+        fullname: 'colin thrig',
+        prop: {
+            fullname: 'aurelio de rosa',
+            getFullname: function(){
+                return this.fullname;
+            }
+        }
+    };
+    console.log(obj.prop.getFullname()); // aurelio de rosa
+
+    var test = obj.prop.getFullname;
+    console.log(test()); // john doe
 </script>
 
 <script>
