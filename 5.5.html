@@ -189,7 +189,7 @@
     sayColor.call(window);
     sayColor.call(o);
 
-    var windowSayColor = sayColor.bind(window);
+    var windowSayColor = sayColor.bind(window); // 返回新的数组
     windowSayColor();
 
     var oSayColor = sayColor.bind(o);
