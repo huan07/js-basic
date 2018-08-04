@@ -5,6 +5,19 @@
     <title></title>
 </head>
 <body>
+<script>
+    // 1.
+    Function.prototype.a = 'a';
+    Object.prototype.b = 'b';
+
+    function Person(){
+
+    }
+    console.log('Person => ', Person);
+
+    var he = new Person();
+    console.log('he => ', he, he.a, he.b);
+</script>
 
 </body>
 </html>
