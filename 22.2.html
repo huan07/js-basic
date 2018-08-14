@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    // 对象定义为防篡改，就无法撤销
+
+    // 1.不可扩展对象
+    var person = { name: 'david' };
+    Object.preventExtensions(person);
+
+    person.age = 13;
+    console.log('person => ', person, Object.isExtensible(person));
+
+
+    // 密封的对象 不能删除对象属性和方法
+    var person = { name: 'lily' };
+    Object.seal(person);
+
+    person.age = 29;
+    console.log('person => ', person);
+
+    delete person.name;
+    console.log('person => ', person, Object.isSealed(person));
+
+
+    // 冻结的对象 不可扩展，又是密封的
+
+</script>
+
+</body>
+</html>

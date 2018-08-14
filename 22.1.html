@@ -6,6 +6,16 @@
 </head>
 <body>
 
+<button>点我</button>
+
+<button id="btn2">点我2</button>
+
+<button id="btn3">点我3 自定义bind函数</button>
+<button id="btn4">点我4 原生bind函数</button>
+
+<button id="btn5">点我5 自定义bind函数结合函数柯里化</button>
+<button id="btn6">点我6 原生bind函数结合函数柯里化</button>
+
 <script src="util/Object.prototype.toString.js"></script>
 <script>
     // Object.prototype.toString 检测某个值是哪种原生构造函数实例
@@ -32,7 +42,7 @@
     console.log(person);
 
     var person2 = Person('yc', 30, 'a woman'); // 不用new调用，this指向Window对象
-    console.log(person2);
+    console.log('person2 => ', person2);
     console.log(window.name, window.age, window.job);
     console.log(name, age, job);
 
@@ -46,17 +56,15 @@
         }
     }
 
-    console.log('');
+    console.log('调整后 => ');
     var people = new People('yh2', 31, 'engineer');
     console.log(people);
 
     var people2 = People('yc2', 30, 'a woman');
     console.log(people2);
-    console.log(window.name, window.age);
-    console.log(name, age);
 
 
-    // 使用构造函数窃取模式的继承并且不使用原型链，继承很可能被破坏
+    // 使用构造函数窃取模式的继承并且不使用原型链，继承很可能被破坏 to do
     function Polygon(sides){
         if (this instanceof Polygon) { // 起初this => Rectangle
             this.sides = sides;
@@ -80,7 +88,7 @@
     console.log(rect.sides);
 
 
-    // 解决上述问题：使用构造函数窃取模式的继承结合使用原型链或者寄生组合（？？）
+    // 解决上述问题：使用构造函数窃取模式的继承结合使用原型链或者寄生组合（？？） to do
     function Polygon2(sides){
         if (this instanceof Polygon2) {
             this.sides = sides;
@@ -111,6 +119,123 @@
     // 惰性载入函数，提高代码执行性能，to add 可以参照es6-basic/8/contains 加深理解
 </script>
 
+<script>
+    // 函数绑定
+    var handler = {
+        message: 'event handled',
+        handleClick: function(event){
+            alert(this.message); // this => DOM按钮
+        }
+    };
+
+    var btn = document.getElementsByTagName('button')[0];
+    btn.addEventListener('click', handler.handleClick, false);
+
+
+    // 解决方案1
+    var handler2 = {
+        message: 'event handled 2',
+        handleClick: function(event){
+            alert(this.message);
+        }
+    };
+
+    var btn2 = document.getElementById('btn2');
+    btn2.addEventListener('click', function(event){
+        handler2.handleClick(event);
+    }, false);
+
+
+    // 解决方案2 将函数绑定到指定环境的函数 bind
+    function bind(fn, context){ // 自定义
+        return function(){
+            return fn.apply(context, arguments);
+        }
+    }
+    var handler3 = {
+        message: 'event handled 3',
+        handleClick: function(event){
+            alert(this.message + ' , ' + event.target.innerText);
+        }
+    };
+
+    var btn3 = document.getElementById('btn3');
+    btn3.addEventListener('click', bind(handler3.handleClick, handler3), false);
+
+
+    // 解决方案3 原生函数具备的bind
+    var handler4 = {
+        message: 'event handled 4',
+        handleClick: function(event){
+            alert(this.message + ' , ' + event.target.innerText);
+        }
+    };
+
+    var btn4 = document.getElementById('btn4');
+    btn4.addEventListener('click', handler4.handleClick.bind(handler4), false);
+</script>
+
+<script>
+    // 函数柯里化
+    function add(num1, num2){
+        return num1 + num2;
+    }
+
+    function curriedAdd(num2){
+        return add(5, num2);
+    }
+    console.log(add(2, 3), curriedAdd(3));
+
+
+    // 创建柯里化函数的通用方式
+    function curry(fn){
+        var args = Array.prototype.slice.call(arguments, 1);
+        return function(){
+            var innerArgs = Array.prototype.slice.call(arguments);
+            var finalArgs = args.concat(innerArgs);
+            return fn.apply(null, finalArgs);
+        }
+    }
+
+    var curriedAdd2 = curry(add, 5);
+    console.log('curriedAdd2 => ', curriedAdd2(3));
+
+    var curriedAdd2_2 = curry(add, 5, 12);
+    console.log('curriedAdd2_2 => ', curriedAdd2_2());
+
+
+    // 自定义bind函数结合函数柯里化
+    function bind2(fn, context){
+        var args = Array.prototype.slice.call(arguments, 2);
+        return function(){
+            var innerArgs = Array.prototype.slice.call(arguments);
+            var finalArgs = args.concat(innerArgs);
+            return fn.apply(context, finalArgs);
+        }
+    }
+
+    var handler5 = {
+        message: 'event handled 5',
+        handleClick: function(name, event){
+            alert(this.message + ' , ' + name + ' , ' + event.target.innerText);
+        }
+    };
+
+    var btn5 = document.getElementById('btn5');
+    btn5.addEventListener('click', bind2(handler5.handleClick, handler5, 'btn5 按钮'), false);
+
+
+    // 原生bind函数结合函数柯里化
+    var handler6 = {
+        message: 'event handled 6',
+        handleClick: function(name, event){
+            alert(this.message + ' , ' + name + ' , ' + event.target.innerText);
+        }
+    };
+
+    var btn6 = document.getElementById('btn6');
+    btn6.addEventListener('click', handler6.handleClick.bind(handler6, 'btn6 按钮'), false);
+</script>
 
 </body>
 </html>
