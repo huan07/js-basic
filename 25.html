@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+<!--
+setInterval动画
+examples/3102.html
+-->
+
+<script>
+    // 大多数电脑显示器的刷新频率是60Hz, 相当于每秒钟重绘60次
+    // 最平滑动画的最佳循环间隔1/60 * 1000 = 16.67ms
+
+    // 经过16.67ms把动画代码添加到任务队列中，不一定立即执行，
+
+
+    (function(){
+        function draw(timestamp){
+
+            var drawStart = (timestamp || Date.now());
+
+            var diff = drawStart - startTime;
+
+            startTime = drawStart;
+
+            requestAnimationFrame(draw);
+        }
+
+        var requestAnimationFrame = window.requestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.msRequestAnimationFrame;
+
+        var startTime = window.mozAnimationStartTime || Date.now();
+
+        requestAnimationFrame(draw);
+
+    })();
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = { n: 1 };
+    var b = a;
+    a.x = a = { n: 2 };
+    console.log('a => ', a);
+    console.log('b => ', b);
+</script>
+
+<script>
+    var a = {
+        toString: function(){
+            return '1';
+        }
+    };
+    console.log(a == '1');
+</script>
+
+<script>
+    // (010)11111111   =>   010-11111111
+    var str = '(010)11111111, (010)11111111';
+
+    var result = str.replace(/[()]/g, function(match, pos){
+        switch(match) {
+            case '(':
+                return '';
+            case ')':
+                return '-';
+            default:
+                break;
+        }
+    });
+    console.log('result => ', result);
+</script>
+
+</body>
+</html>

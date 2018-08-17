@@ -2,12 +2,16 @@
  * Created by yanghuan on 18/6/20.
  */
 
+function objectToString(o){
+    return Object.prototype.toString.call(o);
+}
+
 function isArray(value){
-    return Object.prototype.toString.call(value) === '[object Array]';
+    return objectToString(value) === '[object Array]';
 }
 
 function isObject(value){
-    return Object.prototype.toString.call(value) === '[object Object]';
+    return objectToString(value) === '[object Object]';
 }
 
 function isRegExp(value){
