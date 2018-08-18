@@ -188,7 +188,7 @@
     // 自定义bind函数结合函数柯里化
     function bind2(fn, context){
         var args = Array.prototype.slice.call(arguments, 2);
-        return function(){
+        return function(){ // 单击的回调函数，默认参数是event
             var innerArgs = Array.prototype.slice.call(arguments);
             var finalArgs = args.concat(innerArgs);
             return fn.apply(context, finalArgs);
