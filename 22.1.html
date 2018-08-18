@@ -8,28 +8,26 @@
 
 <button>点我</button>
 
-<button id="btn2">点我2</button>
+<button id="btn1">点我1 解决方案1</button>
 
-<button id="btn3">点我3 自定义bind函数</button>
-<button id="btn4">点我4 原生bind函数</button>
+<button id="btn2">点我2 自定义bind函数</button>
+<button id="btn3">点我3 原生bind函数</button>
 
-<button id="btn5">点我5 自定义bind函数结合函数柯里化</button>
-<button id="btn6">点我6 原生bind函数结合函数柯里化</button>
+<button id="btn4">点我4 自定义bind函数结合函数柯里化</button>
+<button id="btn5">点我5 原生bind函数结合函数柯里化</button>
 
 <script src="util/Object.prototype.toString.js"></script>
 <script>
-    // Object.prototype.toString 检测某个值是哪种原生构造函数实例
+    // Object.prototype.toString 只能检测原生构造函数的构造函数名
+    var obj = null;
     var xx = [];
-    var xx2 = null;
-    console.log(isArray(xx), isArray(xx2));
+    console.log(isArray(xx), isArray(obj));
 
     var yy = {};
-    var yy2 = null;
-    console.log(isObject(yy), isObject(yy2));
+    console.log(isObject(yy), isObject(obj));
 
     var zz = /cat/gi;
-    var zz2 = null;
-    console.log(isRegExp(zz), isRegExp(zz2));
+    console.log(isRegExp(zz), isRegExp(obj));
 </script>
 
 <script>
@@ -47,8 +45,9 @@
     console.log(name, age, job);
 
 
+    // 创建作用域安全的构造函数, 避免this指向Window对象，推荐使用
     function People(name, age){
-        if (this instanceof People) { // 创建作用域安全的构造函数, 避免this指向Window对象，推荐使用
+        if (this instanceof People) {
             this.name = name;
             this.age = age;
         } else {
@@ -64,7 +63,7 @@
     console.log(people2);
 
 
-    // 使用构造函数窃取模式的继承并且不使用原型链，继承很可能被破坏 to do
+    // 使用构造函数窃取模式的继承并且不使用原型链，继承很可能被破坏
     function Polygon(sides){
         if (this instanceof Polygon) { // 起初this => Rectangle
             this.sides = sides;
@@ -82,13 +81,13 @@
         this.height = height;
         this.getArea = function(){
             return this.width * this.height;
-        }; // 没有继承到sides属性
+        };
     }
     var rect = new Rectangle(5, 10);
-    console.log(rect.sides);
+    console.log(rect, rect.getArea());// 没有继承到sides属性
 
 
-    // 解决上述问题：使用构造函数窃取模式的继承结合使用原型链或者寄生组合（？？） to do
+    // 解决上述问题：使用构造函数窃取模式的继承结合使用原型链，或者寄生组合
     function Polygon2(sides){
         if (this instanceof Polygon2) {
             this.sides = sides;
@@ -108,23 +107,25 @@
             return this.width * this.height;
         };
     }
-    Rectangle2.prototype = new Polygon2();
+    Rectangle2.prototype = new Polygon2(); // 原型链上找到
 
     var rect = new Rectangle2(5, 10);
-    console.log(rect.sides);
+    console.log(rect, rect.getArea());
 </script>
 
 
 <script>
     // 惰性载入函数，提高代码执行性能，to add 可以参照es6-basic/8/contains 加深理解
+    // 创建一个匿名、自执行的函数
 </script>
 
 <script>
     // 函数绑定
+    // 将函数作为变量传递的同时保留代码的执行环境
     var handler = {
         message: 'event handled',
         handleClick: function(event){
-            alert(this.message); // this => DOM按钮
+            console.log(this.message + ' , ' + event.target.innerText); // this => DOM按钮
         }
     };
 
@@ -133,47 +134,27 @@
 
 
     // 解决方案1
-    var handler2 = {
-        message: 'event handled 2',
-        handleClick: function(event){
-            alert(this.message);
-        }
-    };
-
-    var btn2 = document.getElementById('btn2');
-    btn2.addEventListener('click', function(event){
-        handler2.handleClick(event);
+    var btn1 = document.getElementById('btn1');
+    btn1.addEventListener('click', function(event){
+        handler.handleClick(event);
     }, false);
 
 
-    // 解决方案2 将函数绑定到指定环境的函数 bind
+    // 解决方案2 bind 保持了执行环境的函数
     function bind(fn, context){ // 自定义
         return function(){
             return fn.apply(context, arguments);
         }
     }
-    var handler3 = {
-        message: 'event handled 3',
-        handleClick: function(event){
-            alert(this.message + ' , ' + event.target.innerText);
-        }
-    };
-
-    var btn3 = document.getElementById('btn3');
-    btn3.addEventListener('click', bind(handler3.handleClick, handler3), false);
+    var btn2 = document.getElementById('btn2');
+    btn2.addEventListener('click', bind(handler.handleClick, handler), false);
 
 
     // 解决方案3 原生函数具备的bind
-    var handler4 = {
-        message: 'event handled 4',
-        handleClick: function(event){
-            alert(this.message + ' , ' + event.target.innerText);
-        }
-    };
-
-    var btn4 = document.getElementById('btn4');
-    btn4.addEventListener('click', handler4.handleClick.bind(handler4), false);
+    var btn3 = document.getElementById('btn3');
+    btn3.addEventListener('click', handler.handleClick.bind(handler), false);
 </script>
+
 
 <script>
     // 函数柯里化
@@ -214,27 +195,20 @@
         }
     }
 
-    var handler5 = {
-        message: 'event handled 5',
+    var handler4 = {
+        message: 'event handled 4',
         handleClick: function(name, event){
             alert(this.message + ' , ' + name + ' , ' + event.target.innerText);
         }
     };
 
-    var btn5 = document.getElementById('btn5');
-    btn5.addEventListener('click', bind2(handler5.handleClick, handler5, 'btn5 按钮'), false);
+    var btn4 = document.getElementById('btn4');
+    btn4.addEventListener('click', bind2(handler4.handleClick, handler4, 'btn4 按钮'), false);
 
 
     // 原生bind函数结合函数柯里化
-    var handler6 = {
-        message: 'event handled 6',
-        handleClick: function(name, event){
-            alert(this.message + ' , ' + name + ' , ' + event.target.innerText);
-        }
-    };
-
-    var btn6 = document.getElementById('btn6');
-    btn6.addEventListener('click', handler6.handleClick.bind(handler6, 'btn6 按钮'), false);
+    var btn5 = document.getElementById('btn5');
+    btn5.addEventListener('click', handler4.handleClick.bind(handler4, 'btn5 按钮'), false);
 </script>
 
 </body>
