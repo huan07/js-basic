@@ -20,7 +20,7 @@
             }
             this.handlers[type].push(handler);
         },
-        fire: function(event){ // 具备type属性的对象，
+        fire: function(event){ // 具备type属性的对象，触发事件
             if (!event.target) {
                 event.target = this;
             }
@@ -46,17 +46,23 @@
 
     // example
     function handleMessage(event){
-        console.log('Message received: ' + event.message);
+        console.log(arguments.callee.name, event.message);
+    }
+
+    function handleMessage2(event){
+        console.log(arguments.callee.name, event.message);
     }
 
     var target = new EventTarget();
 
     target.addHandler('message', handleMessage);
-    target.fire({ type: 'message', message: 'hello world' });
-    target.fire({ type: 'message', message: 'hello world2' });
-
-    target.removeHandler('message', handleMessage);
+    target.addHandler('message', handleMessage2);
     target.fire({ type: 'message', message: 'hello world3' });
+    target.fire({ type: 'message', message: 'hello world4' });
+
+    target.removeHandler('message', handleMessage2);
+    target.fire({ type: 'message', message: 'hello world3' });
+    target.fire({ type: 'message', message: 'hello world4' });
 </script>
 
 <script>
@@ -79,12 +85,8 @@
         this.fire({ type: 'message', message: message });
     };
 
-    var handleMessage2 = function(event){
-        console.log(event);
-    };
-
     var she = new Person('yh', 30);
-    she.addHandler('message', handleMessage2);
+    she.addHandler('message', handleMessage);
     she.say('hi there');
 </script>
 

@@ -185,16 +185,20 @@
 
     console.log('splice 执行数组的 增 删 改====================');
     var colors17 = ['red3', 'blue3', 'yellow3', 'green3'];
-    colors17.splice(1, 0, 'white3', 'black3');
+    colors17.splice(1, 0, 'white3', 'black3'); // 在第1个位置之前增
     console.log('增', colors17);
 
     var colors18 = ['red4', 'blue4', 'yellow4', 'green4'];
-    colors18.splice(1, 2); // 删除两个
+    colors18.splice(1, 2); // 从第1个位置开始删，包括第1个位置值
     console.log('删', colors18);
+
+    colors18.splice(0, 1);
+    console.log('删', colors18);
+
 
     var colors19 = ['red5', 'blue5', 'yellow5', 'green5'];
     colors19.splice(1, 2, 'white5', 'black5');
-    console.log('改', colors19);
+    console.log('改', colors19); // 从第1个位置开始改，包括第1个位置值
 </script>
 
 <script>
