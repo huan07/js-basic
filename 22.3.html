@@ -87,15 +87,15 @@
         }, 100);
     }
 
-    function resizeDiv(t){
+    function resizeDiv(tip){
         var div = document.getElementById('div2');
         div.style.height = div.offsetHeight + 'px';
-        console.log(t, div.offsetHeight);
+        console.log(tip, div.offsetHeight);
     }
 
     window.onresize = function(){
         throttle(resizeDiv);
-        resizeDiv('在给定时间内被多次调用');
+        resizeDiv('连续触发');
     }
 </script>
 
