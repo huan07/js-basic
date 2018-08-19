@@ -82,7 +82,7 @@
     inheritPrototype(Person, EventTarget);
 
     Person.prototype.say = function(message){
-        this.fire({ type: 'message', message: message });
+        this.fire({ type: 'message', message: message }); // 调用继承方法
     };
 
     var she = new Person('yh', 30);
