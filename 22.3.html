@@ -29,7 +29,7 @@
 
 <div id="div" style="left: 0;">重复移动的div缓缓移动重复移动的div缓缓移动</div>
 
-<div id="div2">窗口大小改变后，调整自身高度</div>
+<div id="div2">窗口大小改变后，调整自身高度，函数节流来阻止函数在给定时间内被多次调用</div>
 
 <script>
     var btn = document.getElementById('btn');
@@ -58,7 +58,8 @@
 </script>
 
 <script>
-    // 函数节流  某些代码不可以在没有间断的情况连续重复执行
+    // 函数节流
+    // 阻止函数在给定时间内被多次调用
     var processor = {
         timeoutId: null,
 
@@ -75,6 +76,7 @@
             }, 500);
         }
     };
+    processor.process();
 
     // 简化processor
     function throttle(method, context){
@@ -85,13 +87,15 @@
         }, 100);
     }
 
-    function resizeDiv(){
+    function resizeDiv(t){
         var div = document.getElementById('div2');
         div.style.height = div.offsetHeight + 'px';
+        console.log(t, div.offsetHeight);
     }
 
     window.onresize = function(){
         throttle(resizeDiv);
+        resizeDiv('在给定时间内被多次调用');
     }
 </script>
 
