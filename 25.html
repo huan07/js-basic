@@ -20,18 +20,24 @@ examples/3102.html
     // 大多数电脑显示器的刷新频率是60Hz, 相当于每秒钟重绘60次
     // 最平滑动画的最佳循环间隔1/60 * 1000 = 16.67ms
 
-    // 经过16.67ms把动画代码添加到任务队列中，不一定立即执行，
+    // 经过16.67ms把动画代码添加到任务队列中，不一定立即执行，（任务队列没有其他代码执行，才会立即执行）
 
+    // 循环间隔问题
+    // 知道什么时候绘制下一帧是保证动画平滑的关键
 
     (function(){
         function draw(timestamp){
 
+            // 绘制时间
             var drawStart = (timestamp || Date.now());
 
+            // 计算两次重绘的时间间隔
             var diff = drawStart - startTime;
 
+            // 把startTime重写为这一次的绘制时间
             startTime = drawStart;
 
+            // 重绘UI
             requestAnimationFrame(draw);
         }
 
@@ -43,7 +49,6 @@ examples/3102.html
         var startTime = window.mozAnimationStartTime || Date.now();
 
         requestAnimationFrame(draw);
-
     })();
 </script>
 
