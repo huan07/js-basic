@@ -42,15 +42,15 @@
         };
 
         fn.valueOf = function(){
-            return args.reduce(function(a, b){
-                return a + b;
+            return args.reduce(function(prev, cur){
+                return prev + cur;
             }); // 真正的输出是valueof
         };
 
         return fn;
     }
 
-    console.log(add(99)(100)(2000));
+    console.log(add(99)(100)(2000)); // 为什么多一个f to do
 </script>
 
 </body>
