@@ -7,6 +7,16 @@
 <body>
 
 <script>
+    console.log('声明提升 重名 函数的优先级更高 => ', fun, fun());
+
+    function fun(){
+        return 'fun function';
+    }
+    var fun = 2;
+</script>
+
+
+<script>
     // 函数声明提升
     function foo(){
         console.log('函数声明 前');

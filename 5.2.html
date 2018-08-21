@@ -178,9 +178,9 @@
     console.log('slice 截取数组的一部分， 返回新的数组==============================================');
     var colors14 = ['red2', 'blue2', 'yellow2', '12', '22'];
     var colors15 = colors14.slice(0); // 创建副本
+    var colors15_ = colors14.slice();
     var colors16 = colors14.slice(0, 2); // 不包括结束位置的项，
-    console.log(colors15);
-    console.log(colors16);
+    console.log(colors15, colors15_, colors16);
 
 
     console.log('splice 执行数组的 增 删 改====================');

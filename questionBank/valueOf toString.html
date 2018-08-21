@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var str = 'string';
+    var num = 99;
+    var flag = true;
+    var arr = [1, 2];
+    var obj = { 1: 2 };
+    var fun = function(){
+        return 'fun';
+    };
+
+    // 返回原始值
+    function valueOf(target){
+        return target.valueOf();
+    }
+
+    // 返回字符串
+    // 数组罗列每一些，对象[object Object]
+    function toString(target){
+        return target.toString();
+    }
+
+    console.log(valueOf(str), valueOf(num), valueOf(flag), valueOf(arr), valueOf(obj), valueOf(fun)());
+    console.log(toString(str), toString(num), toString(flag), toString(arr), toString(obj), toString(fun));
+</script>
+
+<script>
+    // 考题：实现一个函数能做到 function add(1)(2)(3) //6，达到function add(1)(2)(3)...(n)
+    function add(){
+        var args = Array.prototype.slice.call(arguments);
+
+        var fn = function(){
+            var innerArgs = Array.prototype.slice.call(arguments); // 合并参数
+            return add.apply(null, args.concat(innerArgs));
+        };
+
+        fn.valueOf = function(){
+            return args.reduce(function(a, b){
+                return a + b;
+            }); // 真正的输出是valueof
+        };
+
+        return fn;
+    }
+
+    console.log(add(99)(100)(2000));
+</script>
+
+</body>
+</html>
