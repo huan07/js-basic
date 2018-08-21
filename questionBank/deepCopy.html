@@ -78,10 +78,11 @@
     // 2.递归实现
     function deepCopy(source){
         var target;
+        var sourceType = objectToString(source);
 
-        if (isArray(source)) {
+        if (sourceType === '[object Array]') {
             target = [];
-        } else if (isObject(source)) {
+        } else if (sourceType === '[object Object]') {
             target = {};
         } else {
             return source;
@@ -89,7 +90,8 @@
 
         for (var i in source) {
             var value = source[i];
-            if (isArray(value) || isObject(value)) {
+            var valueType = objectToString(value);
+            if (valueType === '[object Array]' || valueType === '[object Object]') {
                 target[i] = deepCopy(value);
             } else {
                 target[i] = value;
