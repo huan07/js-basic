@@ -29,7 +29,7 @@ examples/3102.html
         function draw(timestamp){
 
             // 绘制时间
-            var drawStart = (timestamp || Date.now());
+            var drawStart = timestamp || Date.now();
 
             // 计算两次重绘的时间间隔
             var diff = drawStart - startTime;

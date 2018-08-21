@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="d">
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+</div>
+
+<script>
+    var a = [document.getElementById('a'), document.getElementById('b'), document.getElementById('c')];
+    var b = [document.getElementById('d').getElementsByTagName('div')];
+    console.log(a, b);
+</script>
+
+<script>
+    function mo(){
+        var x = 0;
+        return function(){
+            console.log(++x)
+        }
+    }
+    var a = mo();
+    var b = mo();
+    a();
+    a();
+    b();// a函数和b函数是分开的哦，此处是1，不是3，不是3，不是3，不是3，不是3，！！
+    b();
+</script>
+
+<script>
+    // to see
+    var p = [];
+    var A = new Function(); // A => f(){}
+    A.prototype = p;
+
+    var a = new A; // 编译器会自动替你加上 () ;
+    a.push(1);
+    console.log(A);
+    console.log(a, a.length);
+    console.log(p, p.length);
+</script>
+
+<script>
+    // to see
+    var o = {};
+    var A = new Function(); // A => f(){}
+    A.prototype = o;
+
+    var a = new A;
+    a.name = 'yh';
+    console.log(A);
+    console.log(a, a.name);
+    console.log(o, o.name);
+</script>
+
+<script>
+    // 数组降维
+    // 二维数组
+    var arr = [
+        [1, 2],
+        [3, 4, 5],
+        [6, 7, 8, 9]
+    ];
+
+    // 1.双层for循环
+
+
+    // 2.一层for循环，concat
+    function xx(arr){
+        var result = [];
+        for (var i = 0, len = arr.length; i < len; i++) {
+            result = result.concat(arr[i]);
+        }
+        return result;
+    }
+    console.log(xx(arr));
+
+
+    // 3.reduce递归数组
+    var result = arr.reduce(function(item, cur){
+        return item.concat(cur);
+    }, []);
+    console.log('result => ', result);
+
+    //4.apply+concat
+    var result4 = Array.prototype.concat.apply([], arr);
+    console.log('result4 => ', result4);
+
+
+    // 多维数组降维度 es6/16 罗列所有项
+    var arr2 = [1, [2, 3, [4, 5, 6, [7, 8, 9, 10]]]];
+
+    // 1.递归实现
+    Array.prototype.deepIter = function(){
+        var result = [];
+
+        this.forEach(function(item, index){
+            if (item instanceof Array) {
+                item.forEach(arguments.callee);
+            } else {
+                result.push(item);
+            }
+        });
+        return result;
+    };
+
+    var result5 = arr2.deepIter();
+    console.log('result5 => ', result5);
+
+</script>
+
+
+<script>
+    var a = 1;
+    a.b = function(){
+        alert(1);
+    };// 基本类型值怎么可以设置属性
+    a.b();
+</script>
+
+
+</body>
+</html>
