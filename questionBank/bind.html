@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var color = 'red';
+
+    var o = {
+        color: 'blue'
+    };
+
+    function sayColor(){
+        console.log(this, this.color);
+    }
+
+    // 自定义bind
+    function bind(fn, context){
+        return function(){
+            fn.apply(context, arguments);
+        }
+    }
+
+    var oSayColor = bind(sayColor, o);
+    console.log(oSayColor);
+    oSayColor();
+
+    var winSayColor = bind(sayColor, window);
+    console.log(winSayColor);
+    winSayColor();
+</script>
+
+<script>
+    function sayName(firstName, lastName, name){
+        console.log(this.color + ' , ' + firstName + ' , ' + lastName + ' ; ' + name);
+    }
+    Function.prototype.bind = function(ctx){
+        if (typeof this !== 'function') {
+            throw new Error(this + ' must be function type');
+        }
+
+        var _this = this;
+        var args = Array.prototype.slice.call(arguments, 1);
+
+        var foo = function(){
+            var innerArgs = Array.prototype.slice.call(arguments, 0);
+            return _this.apply(ctx, args.concat(innerArgs));
+        };
+
+        foo.prototype = Object.create(this.prototype);
+        //返回的函数不仅要和 被调函数的函数体相同，也要继承人家的原型链 ？？
+        return foo;
+    };
+
+    console.log('Function.prototype.bind => ');
+    var objectSayName = sayName.bind(o, 'yang', 'chen');
+    console.log(objectSayName);
+    objectSayName('object yangChen');
+
+    var windowSayName = sayName.bind(window, 'yang', 'chen');
+    console.log(windowSayName);
+    windowSayName('window yangChen');
+</script>
+
+</body>
+</html>
