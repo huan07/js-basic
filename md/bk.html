@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #must-buy {
+            color: blue;
+        }
+
+        .house-list .favorite {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    var num = 1 + 2 + '3' + 4;
+    console.log('num => ', num);
+</script>
+
+<ul class="house-list" id="awesome">
+    <li><span>Milk</span></li>
+    <li class="favorite" id="must-buy">
+        <span class="highlight">Sausage</span>
+    </li>
+</ul>
+
+<script>
+    var name = 'World';
+    (function(){
+        if (typeof name === 'undefined') {
+            var name = 'Jack';
+            console.log('Goodbye ' + name); // ? ? 内层变量声明提升
+        } else {
+            console.log('Hello ' + name);
+        }
+    })();
+</script>
+
+<script>
+    function bar(){
+        return foo;
+        foo = 10;
+        function foo(){
+
+        }
+
+        var foo = 11;
+    }
+    console.log(typeof bar());
+</script>
+
+<script>
+    var x = 3;
+    var foo = {
+        x: 2,
+        baz: {
+            x: 1,
+            bar: function(){
+                return this.x;
+            }
+        }
+    };
+    var go = foo.baz.bar;
+    console.log('go() => ', go()); // 3
+
+    console.log('foo.baz.bar() => ', foo.baz.bar());// 1
+</script>
+
+<ul>
+    <li>-
+        <button>删除一</button>
+    </li>
+    <li>二
+        <button>删除二</button>
+    </li>
+    <li>三
+        <button>删除三</button>
+    </li>
+    <li>四
+        <button>删除四</button>
+    </li>
+    <li>五
+        <button>删除五</button>
+    </li>
+    <li>六
+        <button>删除六</button>
+    </li>
+</ul>
+<script>
+    var ul = document.getElementsByTagName('ul')[1];
+    ul.addEventListener('click', function(event){
+        var target = event.target;
+        if (target.tagName === 'LI') {
+            ul.removeChild(target);
+        }
+    }, false);
+</script>
+
+</body>
+</html>

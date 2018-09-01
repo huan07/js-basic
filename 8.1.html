@@ -67,7 +67,9 @@
 </script>
 
 <script>
-    // setTimeout setInterval
+    // setTimeout setInterval 异步
+    // js是单线程序的解释器，第二个参数指的是一段时间后将指定的代码添加到任务队列，
+    // 任务队列是空的，添加的代码才会立即执行，否则需要等待任务队列的代码执行后才执行。
 
     // 字符串参数，可能导致性能损失，不建议用
     setTimeout("alert('Hello world!')", 2000);
