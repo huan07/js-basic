@@ -18,6 +18,31 @@
     }
 </script>
 
+<script>
+    var name = 'World';
+    (function(){
+        if (typeof name === 'undefined') {
+            var name = 'Jack';
+            console.log('Goodbye ' + name); // ? ? 内层变量声明提升
+        } else {
+            console.log('Hello ' + name);
+        }
+    })();
+</script>
+
+<script>
+    function bar(){
+        return foo;
+        foo = 10;
+        function foo(){
+
+        }
+
+        var foo = 11;
+    }
+    console.log(typeof bar()); // 提升同名，函数的优先级更高
+</script>
+
 
 <script>
     // 在一个代码块的中变量并不会覆盖掉 代码块外面的变量

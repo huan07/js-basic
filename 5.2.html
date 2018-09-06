@@ -12,18 +12,15 @@
     var colors = new Array();  // 1
 
     var colors2 = new Array(20); // 2
+    var colors2_ = Array(20);
 
     var colors3 = new Array('yh', 30, 'baidu'); // 3
+    var colors3_ = Array('yh', 30, 'baidu');
 
     var colors4 = []; // 4
 
     var colors5 = ['yh', 30, 'baidu']; // 5 used
-    console.log(colors, colors2, colors3, colors4, colors5);
-
-    // 数组实例的valueOf(),  toString(), JSON.stringify(),
-    console.log('arr.valueOf() => 数组本身', colors5.valueOf());
-    console.log('arr.toString() => 逗号分隔的字符串', colors5.toString());
-    console.log('JSON.stringify(arr)', JSON.stringify(colors5));
+    console.log(colors, colors2, colors2_, colors3, colors3_, colors4, colors5);
 
 
     // 数组项的读写
@@ -58,7 +55,7 @@
     // 1.一个网页／一个全局作用域
     console.log('colors5 instanceof Array', colors5 instanceof Array);
 
-    // 2.全局执行环境 但是有浏览器兼容性
+    // 2.不管是哪个全局执行环境中创建的 但是有浏览器兼容性
     console.log('Array.isArray(colors5)', Array.isArray(colors5));
 
     // 3.join
@@ -73,7 +70,7 @@
 </script>
 
 <script>
-    console.log('// 数组 栈 方法    ====项的插入push、移除pop发生在栈的顶部(数组末尾)  后进先出===================');
+    console.log('// 数组 栈方法    ====项的插入push、移除pop发生在栈的顶部(数组末尾)  后进先出===================');
     var colors = [];
     var count = colors.push('red', 'black');
     console.log('push', colors, count);
@@ -86,7 +83,7 @@
 </script>
 
 <script>
-    console.log('// 数组 队列 方法========从列表的前端移除shift, 末端添加push  先进先出========== ');
+    console.log('// 数组 队列方法========从列表的前端移除shift, 末端添加push  先进先出========== ');
     var colors = [];
     var count = colors.push('red2', 'black2');
     console.log('push', colors, count);
@@ -98,7 +95,7 @@
     console.log('shift', colors, firstItem);
 
 
-    console.log('模拟反 队列方法，数组前端添加unshift，末端移除pop，');
+    console.log('模拟 反队列方法，数组前端添加unshift，末端移除pop，');
     var colors = [];
     var count = colors.unshift('red3', 'black3');
     console.log('unshift', colors, count);
@@ -107,7 +104,7 @@
     console.log('unshift', colors, count);
 
     var lastItem = colors.pop();
-    console.log(colors, lastItem);
+    console.log('pop', colors, lastItem);
 </script>
 
 <script>
@@ -167,7 +164,7 @@
 </script>
 
 <script>
-    console.log('concat 创建当前数组副本，并且向尾部追加元素，数组的每一项， 返回新的数组================');
+    console.log('concat 创建当前数组副本，并且向尾部追加元素／数组的每一项， 返回新的数组================');
     var colors11 = ['red', 'blue'];
     var colors12 = colors11.concat(); // 创建副本
     var colors13 = colors11.concat('yellow', ['1', '2']);
@@ -180,7 +177,7 @@
     var colors15 = colors14.slice(0); // 创建副本
     var colors15_ = colors14.slice();
     var colors16 = colors14.slice(0, 2); // 不包括结束位置的项，
-    console.log(colors15, colors15_, colors16);
+    console.log(colors14, colors15, colors15_, colors16);
 
 
     console.log('splice 执行数组的 增 删 改====================');

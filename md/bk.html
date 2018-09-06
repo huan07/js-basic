@@ -27,48 +27,6 @@
     </li>
 </ul>
 
-<script>
-    var name = 'World';
-    (function(){
-        if (typeof name === 'undefined') {
-            var name = 'Jack';
-            console.log('Goodbye ' + name); // ? ? 内层变量声明提升
-        } else {
-            console.log('Hello ' + name);
-        }
-    })();
-</script>
-
-<script>
-    function bar(){
-        return foo;
-        foo = 10;
-        function foo(){
-
-        }
-
-        var foo = 11;
-    }
-    console.log(typeof bar());
-</script>
-
-<script>
-    var x = 3;
-    var foo = {
-        x: 2,
-        baz: {
-            x: 1,
-            bar: function(){
-                return this.x;
-            }
-        }
-    };
-    var go = foo.baz.bar;
-    console.log('go() => ', go()); // 3
-
-    console.log('foo.baz.bar() => ', foo.baz.bar());// 1
-</script>
-
 <ul>
     <li>-
         <button>删除一</button>

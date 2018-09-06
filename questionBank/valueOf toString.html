@@ -22,12 +22,13 @@
     }
 
     // 返回字符串
-    // 数组罗列每一些，对象[object Object]
+    // 数组：每一项的字符串形式，用逗号分隔的字符串
+    // 对象[object Object]
     function toString(target){
         return target.toString();
     }
 
-    console.log(valueOf(str), valueOf(num), valueOf(flag), valueOf(arr), valueOf(obj), valueOf(fun)());
+    console.log(valueOf(str), valueOf(num), valueOf(flag), valueOf(arr), valueOf(obj), valueOf(fun), valueOf(fun)());
     console.log(toString(str), toString(num), toString(flag), toString(arr), toString(obj), toString(fun));
 </script>
 
