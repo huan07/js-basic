@@ -6,7 +6,6 @@
 </head>
 
 <body>
-
 <button type="button" class="btn">button 1</button>
 <button type="button" class="btn">button 2</button>
 <button type="button" class="btn">button 3</button>
@@ -14,6 +13,27 @@
 <button type="button" class="button">button 1 另外方式</button>
 <button type="button" class="button">button 2 另外方式</button>
 <button type="button" class="button">button 3 另外方式</button>
+
+
+<ul class="ul">
+    <li>var 列表1</li>
+    <li>列表2</li>
+    <li>列表3</li>
+    <li>列表4</li>
+    <li>列表5</li>
+    <li>列表6</li>
+    <li>列表7</li>
+</ul>
+
+<ul class="ul3">
+    <li>匿名函数立即执行 列表1</li>
+    <li>列表2</li>
+    <li>列表3</li>
+    <li>列表4</li>
+    <li>列表5</li>
+    <li>列表6</li>
+    <li>列表7</li>
+</ul>
 
 <!--<script>
     var nodes = document.getElementsByTagName('button');
@@ -38,26 +58,47 @@
 <script>
     var nodes = document.getElementsByClassName('btn');
     for (var i = 0, len = nodes.length; i < len; i++) {
-        nodes[i].addEventListener('click', function(index){ // !!!!
-            return function(){
+        nodes[i].addEventListener('click', function(index){
+            return function(){ // !!!!
                 console.log('clicked button' + index);
             }
         }(i));
     }
-</script>
-<script>
+
+    //
     function handler(index){
         return function(){
             console.log('clicked button' + index);
         };
     }
 
-    var nodes = document.getElementsByClassName('button');
-    for (var i = 0, len = nodes.length; i < len; i++) {
-        nodes[i].addEventListener('click', handler(i));
+    var nodes2 = document.getElementsByClassName('button');
+    for (var i2 = 0, len2 = nodes2.length; i2 < len2; i2++) {
+        nodes2[i2].addEventListener('click', handler(i2));
     }
 </script>
 
+
+<script>
+    window.onload = function(){
+        var li = document.querySelectorAll('.ul li');
+        for (var i = 0, len = li.length; i < len; i++) {
+            li[i].onclick = function(){
+                alert(i);
+            }
+        }
+
+        //
+        var li3 = document.querySelectorAll('.ul3 li');
+        for (var i3 = 0, len3 = li3.length; i3 < len3; i3++) {
+            li3[i3].onclick = (function(index){
+                return function(){
+                    alert(index);
+                };
+            })(i3);
+        }
+    }
+</script>
 
 <script>
     // 没有块级作用域
@@ -113,6 +154,7 @@
     var c = a();
     c();  // 1
     c();  // 2
+    a()(); // 1  和c函数是分开的！！！！！！！！
 
     // 练习题2
     function f1(){
