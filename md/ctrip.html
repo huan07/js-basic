@@ -19,21 +19,6 @@
 </script>
 
 <script>
-    function mo(){
-        var x = 0;
-        return function(){
-            console.log(++x)
-        }
-    }
-    var a = mo();
-    var b = mo();
-    a();
-    a();
-    b();// a函数和b函数是分开的哦，此处是1，不是3，不是3，不是3，不是3，不是3，！！
-    b();
-</script>
-
-<script>
     // to see
     var p = [];
     var A = new Function(); // A => f(){}

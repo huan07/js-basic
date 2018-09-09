@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+
 <body>
 
 <button type="button" class="btn">button 1</button>
@@ -70,21 +71,6 @@
             console.log('没有块级作用域 k * 1000秒 => ', k);
         }, k * 1000);
     }
-</script>
-
-<script>
-    // 闭包 今日头条考题：每隔1s打印出数组的每项
-    function fun(arr){
-        var i, len;
-        for (i = 0, len = arr.length; i < len; i++) {
-            (function(index){
-                setTimeout(function(){
-                    console.log(index, arr[index]);
-                }, i * 1000);
-            })(i);
-        }
-    }
-    fun(['y', 'a', 'n', 'g', 'h', 'u', 'a', 'n', 'h', 'a']);
 </script>
 
 <script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    // 闭包
+    // alisports
+    function fun(){
+        var a = 0;
+        setTimeout(function(){
+            console.log('all => ', ++a);
+        }, 1000);
+    }
+    fun();
+    fun();
+</script>
+
+<script>
+    // ctrip
+    function mo(){
+        var x = 0;
+        return function(){
+            console.log(++x)
+        }
+    }
+    var a = mo();
+    var b = mo();
+    a();
+    a();
+    a();// a函数和b函数是分开的哦，此处是1，不是3，不是3，不是3，不是3，不是3，！！
+    b();
+</script>
+
+<script>
+    // 闭包 今日头条考题：每隔1s打印出数组的每项
+    function fun(arr){
+        var i, len;
+        for (i = 0, len = arr.length; i < len; i++) {
+            (function(index){
+                setTimeout(function(){
+                    console.log(index, arr[index]);
+                }, i * 1000);
+            })(i);
+        }
+    }
+    fun(['y', 'a', 'n', 'g', 'h', 'u', 'a', 'n', 'h', 'a']);
+</script>
+
+</body>
+</html>

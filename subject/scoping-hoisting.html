@@ -7,6 +7,33 @@
 <body>
 
 <script>
+    // 作用域，
+    (function(){
+        var a = b = 5;
+    })();
+    // console.log(a); error 未定义
+    console.log(b); // 5 没有用var  成为全局变量
+
+
+    // 变量声明提升
+    var foo = 5
+    function bar(){
+        console.log(foo);
+        var foo = 2;
+        console.log(foo);
+    }
+    bar(); // undefined 2
+    // 可以改写为
+    var foo2 = 5;
+    function bar2(){
+        var foo2;
+        console.log(foo2);
+        foo2 = 2;
+        console.log(foo2);
+    }
+</script>
+
+<script>
     // 函数声明提升
     function foo(){
         console.log('函数声明 前');
@@ -19,28 +46,29 @@
 </script>
 
 <script>
+    // bk
     var name = 'World';
     (function(){
         if (typeof name === 'undefined') {
             var name = 'Jack';
-            console.log('Goodbye ' + name); // ? ? 内层变量声明提升
+            console.log('Goodbye ' + name); // ? ? 内层变量声明提升！！！！
         } else {
             console.log('Hello ' + name);
         }
     })();
-</script>
 
-<script>
     function bar(){
         return foo;
+
         foo = 10;
+
         function foo(){
 
         }
 
         var foo = 11;
     }
-    console.log(typeof bar()); // 提升同名，函数的优先级更高
+    console.log(typeof bar()); // function 声明提升同名，函数的优先级更高
 </script>
 
 

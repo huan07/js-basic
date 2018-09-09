@@ -5,6 +5,22 @@
     <title>this</title>
 </head>
 <body>
+
+<a id="test" href="#">XXX</a>
+<script>
+    // alisports
+    var obj = {
+        innerHTML: 'YYY',
+        init: function(){
+            document.getElementById('test').addEventListener('click', this.click, false);
+        },
+        click: function(){
+            alert(this.innerHTML); // YYY 点击的时候，发生在元素作用域！！！！
+        }
+    };
+    obj.init();
+</script>
+
 <script>
     var User = {
         count: 1,
