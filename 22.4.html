@@ -82,11 +82,11 @@
     inheritPrototype(Person, EventTarget);
 
     Person.prototype.say = function(message){
-        this.fire({ type: 'message', message: message }); // 调用继承方法
+        this.fire({ type: 'message', message: message }); // 子类原型 调用 父类原型方法
     };
 
     var she = new Person('yh', 30);
-    she.addHandler('message', handleMessage);
+    she.addHandler('message', handleMessage); // 子类实例调用 父类原型方法
     she.say('hi there');
 </script>
 
