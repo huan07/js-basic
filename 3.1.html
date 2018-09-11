@@ -184,6 +184,8 @@
     console.log(parseInt('07'), parseInt('071'), parseInt('072')); // es3, es5有区别（es5忽略前导零，当作十进制）
     console.log(parseInt('0xF'), parseInt('0x11'));
 
+    console.log(parseInt('11'), parseInt('11', 0), parseInt('11', 10));
+
     console.log('parseInt()第二个参数   消除es3, es5的分歧！！！！！！！！！！');
     console.log(parseInt('7', 8), parseInt('71', 8), parseInt('72', 8));
     console.log(parseInt('F', 16), parseInt('F'), parseInt('11', 16));
@@ -216,19 +218,6 @@
     console.log(String(undefined), String(null));
 
     console.log('+ 转换为字符串', 7888 + '', '8999' + '', typeof(7888 + ''));
-</script>
-
-<script>
-    /*
-     Object类型的实例属性和方法：
-     constructor,
-     hasOwnProperty(propertyName)属性在当前对象实例中,
-     isPrototypeOf(object)传入的对象是否是传入对象的原型,
-     propertyIsEnumerable(propertyName)给定的属性是否能够使用for-in语句枚举,
-     toLocalString(),
-     toString(),
-     valueOf(),
-     */
 </script>
 
 </body>

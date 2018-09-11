@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 1.
+    var result = ["1", "2", "3"].map(parseInt);
+    console.log('1 => ', result, parseInt('1', 0), parseInt('2', 1), parseInt('3', 2));
+
+
+    // 2.to add
+
+
+    // 3.
+    var ary = [0, 1, 2];
+    ary[10] = 10;
+    var result = ary.filter(function(x){
+        return x === undefined;
+    });
+    console.log('3 => ', result); // ! !
+
+
+    // 4.
+    console.log('4 => ', [typeof null, null instanceof Object]);
+
+
+    // 5.6.7. x
+
+
+    // 8.
+    function foo(x){
+        var tmp = 3;
+        return function(y){
+            return (x + y + (++tmp));
+        }
+    }
+    var bar = foo(2);
+    console.log('8 => ', bar(10));
+
+
+    // 9.10.11.12.13.14.15.16 x
+
+
+    // 17.
+
+    // 18.19.20.21.22.
+</script>
+</body>
+</html>
