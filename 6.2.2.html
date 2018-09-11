@@ -10,7 +10,7 @@
         this.name = name;
         this.age = age;
         this.job = job;
-        this.sayName = function(){ // 每个方法都要在每个实例上重新创建一遍，（完成的是相同的任务，没有必要 待改进）
+        this.sayName = function(){ // 每个方法都要在每个实例上重新创建一遍，完成的是相同的任务（函数无法复用）
             console.log(this.name + '-' + this.age);
         };
     }
@@ -31,7 +31,7 @@
     // 1. new
 
     // 2. 普通函数
-    Person('person6', 60, '60 years old people'); // 添加到Window
+    Person('person6', 60, '60 years old people'); // this => window对象
     window.sayName();
 
     // 3. 在另一个对象的作用域中调用
@@ -47,6 +47,7 @@
         // 对象有很多方法，就需要定义很多的全局函数，这样的话，自定义的引用类型没有封装性；！！
         console.log(this.name + '-' + this.job)
     };
+
     function Person(name, age, job){
         this.name = name;
         this.age = age;
