@@ -9,16 +9,12 @@
 <script>
     var person = new Object();
     person.name = 'yh';
-    person.age = 30;
-    person.job = 'engineer';
     person.sayName = function(){
         console.log(this.name + '-'); // this => 当前作用域下的对象
     };
 
     var person2 = { // 创建很多对象，会产生大量的重复代码
         name: 'yh',
-        age: 30,
-        job: 'engineer',
         sayName: function(){
             console.log(this.name + '-');
         }
@@ -30,32 +26,7 @@
 </script>
 
 <script>
-    // 访问器属性
-    var book = {
-        _year: 2018,
-        edition: 1
-    };
-
-    Object.defineProperty(book, 'year', {
-        get: function(){
-            return this._year
-        },
-        set: function(newValue){
-            if (newValue > 2018) {
-                this._year = newValue;
-                this.edition += (newValue - 2018);
-            }
-        }
-    });
-
-    book.year = 2004;
-    console.log('book.edition => ', book.edition);
-
-    book.year = 2024;
-    console.log('book.edition => ', book.edition);
-</script>
-
-<script>
+    // 数据属性
     // 考题 两种定义对象的区别
     var people = {};
     Object.defineProperty(people, 'age', {
@@ -79,15 +50,44 @@
 </script>
 
 <script>
+    // 访问器属性
+    var book = {
+        _year: 2018,
+        edition: 1
+    };
+    Object.defineProperty(book, 'year', {
+        get: function(){
+            return this._year
+        },
+        set: function(newValue){
+            if (newValue > 2018) {
+                this._year = newValue;
+                this.edition += (newValue - 2018);
+            }
+        }
+    });
+
+    console.log(book, book.year);
+
+    book.year = 2004;
+    console.log('book.edition => ', book.edition);
+
+    book.year = 2024;
+    console.log('book.edition => ', book.edition);
+</script>
+
+<script>
     var he = {};
     Object.defineProperties(he, {
         name: {
+            enumerable: true,
             value: 'hisName'
         },
         age: {
             value: 30
         }
     });
+
     console.log(Object.getOwnPropertyDescriptors(he));
 </script>
 
