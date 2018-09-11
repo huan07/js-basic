@@ -20,15 +20,16 @@
     person11.name = 'person11';
 
     var person12 = new Person();
-    console.log(person11, person12);
+    console.log(person11, person12, {});
     console.log('实例共享的方法 => ', person11.sayName, person11.sayName === person12.sayName);
 
-    // constructor ！！默认不可枚举
-    console.log('实例constructor属性 => ', person11, person11.constructor === Person);
-    console.log(Person.prototype, Person.prototype.constructor === Person);
+
+    console.log('constructor => ', person11, person11.constructor === Person);
+    console.log('函数关系恒等规则 => ', Person.prototype, Person.prototype.constructor === Person);
     var descriptor = Object.getOwnPropertyDescriptor(person11, 'constructor'); // 实例上没有这个属性！！
     var descriptor2 = Object.getOwnPropertyDescriptor(Person.prototype, 'constructor');
-    console.log('测试默认是否可枚举 => ', descriptor, descriptor2);
+    var descriptor3 = Object.getOwnPropertyDescriptor(Person, 'prototype');
+    console.log('constructor,prototype不可枚举 => ', descriptor, descriptor2, descriptor3);
 
 
     // 实例的内部属性 [[Prototype]]
@@ -48,7 +49,7 @@
     // 不能通过实例重写原型的值；
 
     // hasOwnProperty 是否是 实例属性              从Object继承的方法！！
-    // delete 删除 实例属性
+    // delete           删除 实例属性
     person11.name = 'person11'; // 屏蔽原型的属性
     console.log('hasOwnProperty => ', person11.name, person11.hasOwnProperty('name'), person12.name, person12.hasOwnProperty('name'));
     delete person11.name;

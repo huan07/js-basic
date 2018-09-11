@@ -19,9 +19,9 @@
     var person2 = new Person('person2', 40, 'a beautifull woman');
     person.sayName();
     person2.sayName();
-    console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
+    console.log(person.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
 
-    console.log('person对象 => ', person, person.constructor, person.constructor === Person, person instanceof Person);
+    console.log('constructor => ', person, person.constructor, person.constructor === Person, person instanceof Person);
     console.log(person.constructor === Object, person instanceof Object); // false, true, 从自身属性找到就返回，不会再向父类查找
     console.log('函数关系恒等规则 => ', Person.prototype, Person.prototype.constructor === Person);
 
