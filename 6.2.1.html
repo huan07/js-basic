@@ -24,7 +24,7 @@
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的
 
     console.log('person对象 => ', person, person.constructor, person.constructor === createPerson, person instanceof createPerson);
-    console.log(person.constructor === Object, person instanceof Object); // 不能识别实例的类型，只是继承父类Object
+    console.log(person.constructor === Object, person instanceof Object); // 原型链上找到constructor
     console.log('函数关系恒等规则 => ', createPerson.prototype, createPerson.prototype.constructor === createPerson);
 </script>
 

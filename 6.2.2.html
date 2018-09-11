@@ -22,14 +22,13 @@
     console.log(person.sayName, person2.sayName, person.sayName === person2.sayName); // 问题：不同实例上的同名函数是不相等的！！
 
     console.log('person对象 => ', person, person.constructor, person.constructor === Person, person instanceof Person);
-    console.log(person.constructor === Object, person instanceof Object); // 不能识别实例的类型，只是继承父类Object
+    console.log(person.constructor === Object, person instanceof Object); // false, true, 从自身属性找到就返回，不会再向父类查找
     console.log('函数关系恒等规则 => ', Person.prototype, Person.prototype.constructor === Person);
 
 
     // 构造函数与普通函数的唯一区别：调用方式不一样
     // Person的调用方式  call对象冒充
     // 1. new
-
 
     // 2. 普通函数
     Person('person6', 60, '60 years old people'); // 添加到Window
