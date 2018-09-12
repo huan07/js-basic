@@ -8,8 +8,6 @@
 <script>
     function Person(name, age, job){
         this.name = name;
-        this.age = age;
-        this.job = job;
 
         if (typeof this.sayName !== 'function') { // 只会在初次调用构造函数时执行；第二次调用构造函数，从共享的原型方法上找到的
             Person.prototype.sayName = function(){

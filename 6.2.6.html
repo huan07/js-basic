@@ -6,17 +6,15 @@
 </head>
 <body>
 <script>
-    function Person(name, age, job){
+    function Person(name, age, job){ // 1.首字母大写
         var o = new Object();
-        o.name = name;
-        o.age = age;
         o.job = job;
         o.sayJob = function(){
             console.log(this.job);
         };
         return o;
     }
-    var friend = new Person('yh', 30, 'a engineer');
+    var friend = new Person('yh', 30, 'a engineer'); // 2.用new调用 以外的区别，和工厂模式一样的
     friend.sayJob();
 
 
