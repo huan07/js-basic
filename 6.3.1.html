@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    // 原型链  继承
+    // 实现继承 通过原型链
     // 基本思想：利用原型让一个引用类型继承另一个引用类型的属性和方法
     // 子类，超类
 </script>
@@ -27,31 +27,33 @@
     function SubType(){
         this.subproperty = 'subproperty';
     }
-    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象，constructor改变了！！（具备实例＋原型属性）
+    SubType.prototype = new SuperType(); // 继承方式 创建实例来重写原型对象，constructor改变了！！（ 共享超类 实例＋原型 属性 ）
     SubType.prototype.getSubValue = function(){ // 添加方法 / 覆盖方法 要写在后面     2.不能用对象字面量，会覆盖上面的
         return this.subproperty;
     };
 
     var parent = new SuperType();
     var child = new SubType();
-    console.log(parent, child);
+    console.log(child, parent);
     console.log(child.subproperty, child.getSubValue(), child.property, child.getSuperValue());
     // 超类属性都被继承了
 
     console.log('getPrototypeOf =>');
-    console.log(Object.getPrototypeOf(parent), Object.getPrototypeOf(child));
+    console.log(Object.getPrototypeOf(child), Object.getPrototypeOf(parent));
+
+    console.log('prototype =>');
+    console.log(SubType.prototype, SuperType.prototype);
 
     console.log('constructor =>');
-    console.log(SuperType.prototype, SubType.prototype);
-
     console.log(SubType.prototype.constructor === SubType); // false
     console.log(SubType.prototype.constructor === SuperType);// true 指向了超类的构造函数！！
     console.log(SubType.prototype.constructor === Object); // false
 
-    console.log('instanceof => ');
+    console.log('instanceof 继承超类 => ');
     console.log(child instanceof SubType, child instanceof SuperType, child instanceof Object);
+    console.log(child.__proto__.constructor,child.__proto__.__proto__.constructor,child.__proto__.__proto__.__proto__.constructor);
 
-    console.log('isPrototypeOf =>');
+    console.log('isPrototypeOf 继承超类 =>');
     console.log(SubType.prototype.isPrototypeOf(child), SuperType.prototype.isPrototypeOf(child), Object.prototype.isPrototypeOf(child));
 
 
