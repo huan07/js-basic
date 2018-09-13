@@ -11,7 +11,16 @@
 
         }
 
-        F.prototype = o; // 浅复制
+        F.prototype = o; // 浅复制，替换了默认恒等规则
+        return new F();
+    }
+
+    function object2(o){
+        function F(){
+
+        }
+
+        // 默认恒等规则 F.prototype.constructor === F
         return new F();
     }
 
@@ -20,17 +29,17 @@
         friends: ['friend', 'friend2', 'friend3']
     };
 
-    var person2 = object(person);
-    person2.name = 'name2'; // 修改的是实例属性，原型属性不变
-    person2.friends.push('friendX');
+    var person2 = object2(person);
+    person2.name = 'name2';
+    //person2.friends.push('friendX');
 
     var person3 = object(person);
-    person3.name = 'name3';
+    person3.name = 'name3'; // 修改的是实例属性，原型属性不变
     person3.friends.push('friendY');
 
     console.log('person => ', person);
-    console.log('person2 => ', person2);
-    console.log('person3 => ', person3);
+    console.log('person2 默认原型对象 => ', person2);
+    console.log('person3 改变原型对象=> ', person3);
 </script>
 
 <script>
@@ -55,25 +64,26 @@
 </script>
 
 <script>
-    var people = {
+    var peop = {
         name: 'yh',
         friends: ['friend', 'friend2', 'friend3']
     };
 
-    Object.defineProperty(people, 'age', {
-        writable: true,
-        value: 31
-    });
-
-    var people2 = Object.create(people, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例对象
-        name: {
-            value: 'name2'
+    Object.defineProperties(peop, {
+        age: {
+            enumerable: true,
+            value: 31
         }
     });
 
-    console.log('Object.defineProperty, Object.create => ');
-    console.log('people => ', people);
-    console.log('people2 => ', people2);
+    var peop2 = Object.create(peop, { // 返回对象，第一个参数作为这个对象的原型对象，第二个参数作为实例对象
+        job: {
+            value: 'soft engineer'
+        }
+    });
+
+    console.log('peop => ', peop);
+    console.log('peop2 => ', peop2);
 </script>
 
 </body>
