@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    //
+    var foo = [];
+    foo[2] = 1;
+    foo.push(2);
+    console.log(foo, foo.length);
+
+
+    // to do
+    var foo = { n: 1 };
+    var bar = foo;
+    foo.x = foo = { n: 2 };
+    console.log('foo , bar => ', foo, bar, foo.x);
+
+
+    //
+    console.log('one');
+    setTimeout(function(){
+        console.log('three');
+    }, 0);
+    console.log('two');
+</script>
+
+
+</body>
+</html>

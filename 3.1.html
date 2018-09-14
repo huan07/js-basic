@@ -8,9 +8,7 @@
 <body>
 
 <script>
-    /*
-     * 使用 var 操作符 定义的变量将成为 定义该变量的作用域中的 局部变量
-     */
+    // 使用 var 操作符 定义的变量将成为 定义该变量的作用域中的 局部变量
     function test(){
         var message = "hi";
     }
@@ -18,10 +16,8 @@
     // console.log(message); // 此处报错  js访问 没有定义的变量（没有声明的变量） 会报错
 
 
-    /*
-     * 省略 var 操作符 变量会自动被添加到全局环境  全局变量
-     * 在局部作用域定义的 全局变量 不方便维护 不要这样使用
-     */
+    // 省略 var 操作符 变量会自动被添加到全局环境  全局变量
+    // 在局部作用域定义的 全局变量 不方便维护 不要这样使用
     function test2(){
         message2 = "hi";
     }
@@ -29,9 +25,7 @@
     console.log(message2); // 此处不会报错
 
 
-    /*
-     * variable declaration
-     */
+    //
     var score;
     score = 4;
 
@@ -45,28 +39,18 @@
     }
     fn.person = 'xm';
     console.log(fn, fn.person);
-
-
-    // 考题1  赋值操作符从右往左读取
-    function fn2(){
-        var x = y = 1;
-    }
-    fn2();
-    // console.log(x,y); // 报错, 1;
 </script>
 
 <script>
-    // typeof 适用于检测基本类型的值
+    // typeof 适用于检测基本类型值
     console.log('typeof===============================>');
     console.log('String', typeof 'baidu');
     console.log('Number', typeof 9, typeof NaN);
     console.log('Boolean', typeof true);
     console.log('Undefined', typeof undefined);
 
-    console.log('Null  !!!!!!!! ', typeof null);
-    console.log('Object', typeof {});
-
-    console.log('typeof 引用类型', typeof [], typeof {}, typeof function(){
+    console.log('Null, Object, Array => ', typeof null, typeof {}, typeof []);
+    console.log('Function => ', typeof function(){
     });
 
     var xx = 'xx';

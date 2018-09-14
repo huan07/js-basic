@@ -21,7 +21,8 @@
 </script>
 
 <script>
-    // 不会执行return语句之后的代码
+    // 函数体内代码逐行执行，执行后自动退出函数体；
+    // return语句可以提前退出函数体，并且带有返回值；！！
     // return语句 推荐做法：函数始终有返回值，或者没有返回值；
     function sum(num1, num2){
         return num1 + num2;
@@ -46,7 +47,8 @@
 </script>
 
 <script>
-    // es参数在内部是用一个 数组 来表示的 在函数体内通过arguments对象（并不是Array的实例）来访问 参数数组
+    // es参数在内部是用一个 数组 来表示的
+    // 在函数体内通过arguments对象（并不是Array的实例）来访问 参数数组
     // 命名的参数只提供便利，不是必需的
     function sayHi(){
         console.log('arguments对象 => ', arguments, arguments.length);
@@ -64,6 +66,7 @@
     }
     doAdd(1);
     doAdd(1, 2, 3);
+
 
     // arguments对象可以与命名参数一起使用
     // arguments的值永远与对应的命名参数的值同步（但是它们的内存空间是独立的）
@@ -92,8 +95,8 @@
         }
         return minNumber;
     }
-    var min1 = min.apply(this, [1, 3, 5, 6, 9, 55, 66, 9, 0]);
-    var min2 = min.apply(this, [9, 3]);
+    var min1 = min.apply(null, [1, 3, 5, 6, 9, 55, 66, 9, 0]);
+    var min2 = min.apply(null, [9, 3]);
     var min3 = min.apply(this, [18]);
     console.log(min1, min2, min3);
 </script>

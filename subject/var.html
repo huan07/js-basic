@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    // 考题1  赋值操作符从右往左读取
+    function fn2(){
+        var x = y = 1;
+    }
+    fn2();
+    // console.log(x,y); // 报错, 1;
+
+    // 2.
+    (window.foo || (window.foo = 'bar'));
+    console.log(window.foo);
+</script>
+
+</body>
+</html>

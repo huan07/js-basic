@@ -71,6 +71,14 @@
     console.log(typeof bar()); // function 声明提升同名，函数的优先级更高
 </script>
 
+<script>
+    var fooX = 'hello';
+    (function(){
+        var barX = ' world';
+        console.log(fooX + barX); // ? ? 没有内层变量，找到了全局变量
+    })();
+    // console.log(fooX + barX); // barX未定义报错啦，
+</script>
 
 <script>
     // 在一个代码块的中变量并不会覆盖掉 代码块外面的变量
