@@ -7,56 +7,27 @@
 <body>
 
 <script>
-    // 作用域，
-    (function(){
-        var a = b = 5;
-    })();
-    // console.log(a); error 未定义
-    console.log(b); // 5 没有用var  成为全局变量
-
-
-    // 变量声明提升
-    var foo = 5
-    function bar(){
-        console.log(foo);
-        var foo = 2;
-        console.log(foo);
-    }
-    bar(); // undefined 2
-    // 可以改写为
-    var foo2 = 5;
-    function bar2(){
-        var foo2;
-        console.log(foo2);
-        foo2 = 2;
-        console.log(foo2);
-    }
-</script>
-
-<script>
-    // 函数声明提升
-    function foo(){
-        console.log('函数声明 前');
-    }
-
-    console.log(foo);
-    function foo(){ // 声明提升后，后面的函数覆盖前面的函数
-        console.log('函数声明 后');
-    }
-</script>
-
-<script>
-    // bk
+    // 1.
     var name = 'World';
     (function(){
         if (typeof name === 'undefined') {
             var name = 'Jack';
-            console.log('Goodbye ' + name); // ? ? 内层变量声明提升！！！！
+            console.log('Goodbye ' + name); // name出现在函数作用域内，不会沿着作用域链查找
         } else {
             console.log('Hello ' + name);
         }
     })();
 
+    // 2.
+    var fooX = 'hello';
+    (function(){
+        var barX = ' world';
+        console.log(fooX + barX); // fooX没有出现在函数作用域内，沿着作用域链查找
+    })();
+    // console.log(fooX + barX); // barX未定义报错啦，
+</script>
+
+<script>
     function bar(){
         return foo;
 
@@ -68,171 +39,48 @@
 
         var foo = 11;
     }
-    console.log(typeof bar()); // function 声明提升同名，函数的优先级更高
+    console.log(typeof bar()); // 重名，函数的优先级更高
 </script>
 
 <script>
-    var fooX = 'hello';
+    // 作用域，
     (function(){
-        var barX = ' world';
-        console.log(fooX + barX); // ? ? 没有内层变量，找到了全局变量
+        var a = b = 5;
     })();
-    // console.log(fooX + barX); // barX未定义报错啦，
-</script>
+    // console.log(a); error 未定义
+    console.log(b); // 5 没有用var  成为全局变量
 
-<script>
-    // 在一个代码块的中变量并不会覆盖掉 代码块外面的变量
-    var x = 1;
-    console.log(x); // 1
-    if (true) { // 花括号不是一个作用域，花括号里面的变量x影响到了全局变量
-        // js有函数式作用域 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-        var x = 2;
-        console.log(x); // 2
+
+    // 作用域内部声明提升
+    var name = 'xm';
+    var age = 18;
+    function fun(){
+        var name = 'xh';
+        var age = 10;
+        console.log('name => ', name);  // 'xh'
     }
-    console.log(x); // 2    x is changed
+    fun();
 
-    // 可以用闭包来实现类似块级作用域
+    var name = 'xml';
+    var age = 181;
+    function fun2(){
+        console.log('name => ', name);  // undefined
+        var name = 'xh';
+        var age = 10;
+    }
+    fun2();
+
+
+    // 函数声明提升
     function foo(){
-        var x = 10;
-        if (true) {
-            (function(){
-                var x = 20;
-            })();
-        }
-        console.log(x); // x is still 10
+        console.log('函数声明 前');
     }
-    foo();
+
+    console.log(foo);
+    function foo(){ // 声明提升后，后面的函数覆盖前面的函数
+        console.log('函数声明 后');
+    }
 </script>
-
-<script>
-    /*
-     * 变量进入一个作用域可以通过下面四种方式：
-
-     语言自定义变量：所有的作用域中都存在this和arguments这两个默认变量
-     函数形参：函数的形参存在函数作用域中
-     函数声明：function foo() {}
-     变量定义：var foo
-     * */
-
-    /*
-     * 在 代码运行 前， 函数声明 和 变量定义 通常会被解释器移动到其所在作用域的最顶部！！！！！！！！！！！！！！！！！！！
-     * */
-
-    function bar(){
-        console.log('bar bar');
-    }
-    function foo(){
-        bar();
-        var x = 1;
-    }
-    foo();
-
-    function foo2(){
-        var x;
-        bar();
-        x = 1;
-    }
-    foo2();
-
-
-    function foo3(){
-        if (false) {
-            var x = 1;
-            console.log(x);
-        }
-        return;
-        var y = 1;
-        console.log(y);
-    }
-    foo3();
-
-    function foo4(){
-        var x, y;
-        if (false) {
-            x = 1;
-            console.log(x);
-        }
-        return;
-        y = 1;
-        console.log(y);
-    }
-    foo4();
-
-    // 此处注意！！！！！！！！！！！！！！！！！！！！！！！！！
-    function test(){
-        //  foo(); error foo is not function
-        bar();
-        var foo = function(){
-            console.log('this will not run');
-        };
-
-        function bar(){
-            console.log('this will  run');
-        }
-    }
-    test();
-
-    function test2(){
-        var foo;
-        //  foo(); error foo is not function
-        bar();
-        foo = function(){
-            console.log('this will not run');
-        };
-        function bar(){
-            console.log('this will  run');
-        }
-    }
-    test2();
-
-
-</script>
-
-<script>
-    // 练习
-    // 1.
-    var foo = 1;
-    function barbar(){
-        if (!foo) {
-            var foo = 10;
-        }
-        console.log(foo);
-    }
-    barbar();
-
-    function barbar2(){
-        var foo;
-        if (!foo) {
-            foo = 10;
-        }
-        console.log(foo);
-    }
-    barbar2();
-
-    // 2.
-    var a = 1;
-    function bb(){
-        a = 10;
-        return;
-        function a(){
-
-        }
-    }
-    bb();
-    console.log(a);  // 1  to_learn ？？？？？？？？？？？？？？？？？？
-
-    function bb2(){
-        function a(){
-
-        }
-
-        a = 10;
-        return;
-    }
-    bb2();
-    console.log(a);
-</script>
-
 
 </body>
 </html>

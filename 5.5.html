@@ -26,57 +26,14 @@
 
 <script>
     // 函数声明 函数表达式区别
-    // 唯一区别
-    // 1.解析器将  函数声明  变量声明  提升到作用域的顶部；变量重名，函数的优先级更高
-    // 2.函数表达式 按一般var变量的方式执行
-
-
-    // 考题1
-    console.log(fn);   // f fn(){}     ！！！！！！！！！！！！！
-    function fn(){
-
-    }
-
-    console.log(fn2);  // undefined     ！！！！！！！！！！！！！
-    // console.log(fn2()); // error
-    var fn2 = function(){
-
-    };
-
-
-    // 考题2 作用域内部声明提升
-    var name = 'xm';
-    var age = 18;
-    function fun(){
-        var name = 'xh';
-        var age = 10;
-        console.log('name => ', name);  // 'xh'
-    }
-    fun();
-
-    var name = 'xml';
-    var age = 181;
-    function fun2(){
-        console.log('name => ', name);  // undefined
-        var name = 'xh';
-        var age = 10;
-    }
-    fun2();
-
-
-    // 考题3 声明提升的优先级
-    console.log('声明提升的优先级 => ', bar, bar());
-
-    function bar(){
-        return 'bar function';
-    }
-    var bar = 2;
+    // 唯一区别：声明提升
+    // 1.变量、函数在函数作用域内出现，才会被提升到函数体的顶部，否则沿着作用域链查找
+    // 2.变量、函数重名的情况下，函数的优先级更高
 </script>
 
 <script>
     // 1.函数作为参数
     // 2.函数作为返回值 匿名函数
-
     function callSomeFunction(someFunction, someArgument){
         return someFunction(someArgument);
     }
@@ -113,7 +70,7 @@
             age: 21
         }
     ];
-    personArray.sort(createComparisonFunction('name'));
+    personArray.sort(createComparisonFunction('age'));
     console.log('函数作为返回值 => ', personArray);
 </script>
 
@@ -123,9 +80,8 @@
     function factorial(num){
         if (num <= 1) {
             return 1;
-        } else {
-            return num * arguments.callee(num - 1); // 严格模式导致错误
         }
+        return num * arguments.callee(num - 1); // 严格模式导致错误
     }
     console.log(factorial(5));
 
@@ -159,7 +115,7 @@
 <script>
     // sum.prototype.constructor === sum
 
-    // 非继承方法call,apply 在特定的作用域中调用函数（改变this的指向，this => 第一个参数）；
+    // 非继承方法call, apply在特定的作用域中调用函数（改变this的指向，this => 第一个参数）；
     // 接受参数不一样，
 
     // 1.用来传递参数
