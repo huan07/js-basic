@@ -18,13 +18,31 @@
         }
     })();
 
+
     // 2.
     var fooX = 'hello';
     (function(){
         var barX = ' world';
-        console.log(fooX + barX); // fooX没有出现在函数作用域内，沿着作用域链查找
+        console.log(fooX + barX); // fooX 匿名函数立即执行作用域下未找到，沿着作用域链查找！！
     })();
     // console.log(fooX + barX); // barX未定义报错啦，
+
+
+    // 3.
+    var myObject = {
+        foo: "bar",
+        func: function(){
+            var self = this;
+            console.log("outer func:  this.foo = " + this.foo); // bar
+            console.log("outer func:  self.foo = " + self.foo); // bar
+            (function(){
+                console.log(this); // this => window
+                console.log("inner func:  this.foo = " + this.foo); // undefined, this => window
+                console.log("inner func:  self.foo = " + self.foo); // bar  匿名函数立即执行作用域下未找到，沿着作用域链查找！！
+            }());
+        }
+    };
+    myObject.func();
 </script>
 
 <script>
