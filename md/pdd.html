@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<!--
+https://juejin.im/post/5b549b965188251acd0f2ab1
+-->
+<script>
+    // 1) 讨论实现判断变量是否是整数的函数isInter(x)的实现
+    function isInt(value){
+        return (typeof value === 'number') && (/\d*/.test(value + ''));
+    }
+
+    console.log('isInt => ', isInt(99), isInt('99'));
+
+
+    // 2)写一个sum方法，可以实现以下两种调用方式
+    // console.log(sum(2,3)) //5
+    // console.log(sum(2)(3)) //5
+    function sum(){
+        var args = Array.prototype.slice.call(arguments);
+        var fn = function(){
+            var innerArgs = Array.prototype.slice.call(arguments);
+            return sum.apply(null, args.concat(innerArgs));
+        };
+
+        fn.valueOf = function(){
+            return args.reduce(function(prev, cur){
+                return prev + cur;
+            });
+        };
+        return fn;
+    }
+
+    //var sum1 = sum(2, 3);
+    var sum2 = sum(2)(3);
+    //console.log(sum1);
+    //console.log(sum2);
+
+
+    // 3)使用递归的方法，将obj变为obj2的格式
+    var obj = [
+        { id: 1, parent: null },
+        { id: 2, parent: 1 },
+        { id: 3, parent: 2 }
+    ];
+
+    var obj2 = {
+        obj: {
+            id: 1,
+            parent: null,
+            child: {
+                id: 2,
+                parent: 1,
+                child: {
+                    id: 3,
+                    parent: 2
+                }
+            }
+        }
+    };
+
+    var convertArrayToObject = function(arr, arrName){
+        var result = {};
+        var len = arr.length;
+        if (len === 1) {
+            result[arrName] = arr[0];
+            return result;
+        }
+
+        arr[len - 2].child = arr[len - 1];
+        arr.splice(len - 1, 1);
+        return convertArrayToObject(arr, arrName);
+    };
+
+    var obj2 = convertArrayToObject(obj, 'obj');
+    console.log('obj2 => ', obj2);
+</script>
+
+
+<!--
+https://www.nowcoder.com/discuss/90910?type=0&order=0&pos=26&page=0
+-->
+<script>
+    // 2.设计函数输出数组里面的重复元素
+    // var arr=[3,1,2,2,3,3,3], 输出[2,3,3,3]
+    function getRepeatItem(arr){
+        var result = [];
+        var hash = {};
+        for (var i = 0, len = arr.length; i < len; i++) {
+            var item = arr[i];
+            var key = (typeof item) + item;
+            if (hash[key]) {
+                result.push(item);
+            } else {
+                hash[key] = true;
+            }
+        }
+        return result;
+    }
+    var array = [0, 0, 0, 1, '1', 1, '1'];
+    var xx = getRepeatItem(array);
+    console.log('xx => ', xx);
+
+
+    // 3.合并数组
+
+
+    // 3.编写一个输出日志的函数log，在输出内容前面加上前缀(app),
+    // 如log(“Hello world”)返回“(app)Hello world”
+    //   log(“Hello”,”world”)返回”(app)Hello world”
+    function log(){
+        var args = Array.prototype.slice.call(arguments).join(' ');
+        return '(app)' + args;
+    }
+    console.log(log('Hello world'), log('Hello', 'world'), log('Hello', 'world', 'world'));
+
+
+    // 7.快速排序
+
+</script>
+
+</body>
+</html>

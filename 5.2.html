@@ -266,12 +266,12 @@
 <script>
     // reduce reduceRight   归并数组
     var values = [1, 2, 3, 4, 5];
-    var sum = values.reduce(function(prev, cur, index, array){
+    var sum = values.reduce(function(prev, cur, index, array){ // 1,2,1
         // debugger;
         return prev + cur;
     }); // cur 从第二行项开始的
 
-    var sum2 = values.reduce(function(prev, cur, index, array){
+    var sum2 = values.reduce(function(prev, cur, index, array){ //10000,1,0 ( index => cur的序号 )
         // debugger;
         return prev + cur;
     }, 10000); // cur 从第一行项开始的
