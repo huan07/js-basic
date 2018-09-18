@@ -10,11 +10,11 @@
     // CORS思想：使用自定义的HTTP头部让浏览器与服务器通信，从而决定请求／响应成功，还是失败
 
     var xhr = new XMLHttpRequest();
-    xhr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt', false);
+    xhr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt?name=1', false);
     xhr.setRequestHeader('Origin', 'http://localhost:63342');// 1.
     xhr.send(null);
 
-    // 2.如果服务器接受请求，就回发Access-Control-Allow-Origin(与Origin一致，浏览器才会接受请求，否则的话驳回请求)
+    // 2.如果服务器接受请求，就回发Access-Control-Allow-Origin(与Origin一致 / *，浏览器才会接受请求，否则的话驳回请求)
     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
         console.log('xhr 不支持跨源=> ', xhr.response);
     } else {
@@ -24,7 +24,7 @@
 </script>
 <script>
     var xhr2 = new XMLHttpRequest();
-    xhr2.open('get', 'https://www.reddit.com/r/reactjs.json', false);
+    xhr2.open('get', 'https://www.reddit.com/r/reactjs.json?name=2', false);
     xhr2.setRequestHeader('Origin', 'http://localhost:63342');
     xhr2.send(null);
 
@@ -37,7 +37,8 @@
 
 
 <script>
-    // IE对CORS的实现 引入了XDR对象，XDR请求都是异步执行的
+    // IE对CORS的实现 引入了XDR对象，
+    // XDR请求都是异步执行的
 
     // 限制条件
     var xdr = new XDomainRequest();
@@ -47,7 +48,7 @@
     xdr.onerror = function(){
         console.log('An error occurred.')
     };
-    xdr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt');
+    xdr.open('get', 'http://www.runoob.com/try/ajax/ajax_info.txt?name=3');
     xdr.send(null);
     console.log('xdr get=>', xdr);
 </script>
@@ -59,7 +60,7 @@
     xdr.onerror = function(){
         console.log('An error occurred.')
     };
-    xdr.open('post', 'http://www.runoob.com/try/ajax/ajax_info.txt');
+    xdr.open('post', 'http://www.runoob.com/try/ajax/ajax_info.txt?name=4');
     xdr.contentType = 'application/x-www-form-urlencoded';
     xdr.send('name=value&name2=value2');
     console.log('xdr post=>', xdr);
@@ -81,6 +82,10 @@
     // 带凭据的请求
     // 1. withCredentials => true, 指定请求应该发送凭据
     // 2.如果服务器接受带凭据的请求，会用Access-Control-Allow-Credentials:true, 响应
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+    // Access-Control-Allow-Credentials: true
 </script>
 
 

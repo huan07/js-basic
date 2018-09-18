@@ -5,6 +5,7 @@
     <title>21.5</title>
 </head>
 <body>
+<div id="divCustomers"></div>
 
 <script>
     // 图像Ping
@@ -18,16 +19,28 @@
     img.src = 'https://www.baidu.com/img/bd_logo1.png?qua=high&name=value';
 </script>
 
-<script>
+<script type="text/javascript">
     // jsonp
     // 为script.src指定一个跨域的URL
-    function handleResponse(response){
-        console.log(response, response.city);
+
+    // 不足：
+    // 其他域可能不安全
+    // 不好确定JSONP请求是否失败
+    // 只有get请求
+    function callbackFunction(result, methodName){
+        var ul = '<ul>';
+        for (var i = 0, len = result.length; i < len; i++) {
+            ul += '<li>' + result[i] + '</li>';
+        }
+        ul += '</ul>';
+        document.getElementById('divCustomers').innerHTML = ul;
     }
 
     var script = document.createElement('script');
-    script.src = 'http://freegeoip.net/json?callback=handleResponse';
+    script.type = 'text/javascript';
+    script.src = 'http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction';
     document.body.appendChild(script);
+    // 服务器返回的是callbackFunction(["customername1","customername2"])
 </script>
 
 </body>

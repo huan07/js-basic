@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>21.5_co</title>
+</head>
+<body>
+
+<script>
+    document.cookie = "test1=hello";
+</script>
+
+<iframe name="richedit" id="myIFrame" style="width: 80%;height: 200px;" src="blank.html"></iframe>
+<script>
+    var getChild = document.getElementById("myIFrame").contentWindow.document;
+    console.log('getChild => ', getChild);
+</script>
+
+
+<script>
+    var popup = window.open('http://localhost:8081', 'title');
+    popup.postMessage('Hello World!', 'http://localhost:8081');
+
+    window.addEventListener('message', function(e){
+        console.log(e, e.data);
+    }, false);
+</script>
+
+</body>
+</html>
