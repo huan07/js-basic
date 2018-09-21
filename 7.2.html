@@ -43,7 +43,7 @@
     var compareNames = createComparisonFunction('name');
     // compareNames得到的是匿名函数，它的作用域链被初始化为 外部函数活动对象 ＋全局变量对象
 
-    // 外部函数createComparisonFunction执行完毕后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，！！1
+    // 外部函数createComparisonFunction执行完毕后，它的执行环境的作用域链被销毁，但是它的活动对象不会被销毁，！！！！1
     // 因为匿名函数的作用域链仍然在引用外部函数的活动对象，这个活动对象仍然留在内存中！！
     console.log(compareNames);
 
@@ -51,18 +51,18 @@
     console.log(result);
 
 
-    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）！！2
+    compareNames = null; // 解除对匿名函数的引用（外部函数的活动对象才被销毁，以便释放内存）！！！！2
 </script>
 
 <script>
     // 作用域链的副作用：
-    // 闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中！！3
+    // 闭包只能取得包含函数中任何变量的最后一个值，包含函数的变量一直保留在内存中 ！！！！3
     // 可以把局部变量（外部函数的变量）驻留在内存中
     function createFunction(){
         var result = new Array();
 
         for (var i = 0; i < 10; i++) {
-            result[i] = function(){ // ....
+            result[i] = function(){ // 闭包....
                 return i;
             }; // .....
         }
@@ -81,7 +81,7 @@
         var result = new Array();
 
         for (var i = 0; i < 10; i++) {
-            result[i] = function(num){ // 创建另一个匿名函数  高级了!!!!!!!!!!!!!!!!!!!!!!!!!!
+            result[i] = function(num){ // 立即执行匿名函数的结果  高级了!!!!!!!!!!!!!!!!!!!!!!!!!!
                 return function(){ // 闭包
                     return num;
                 };
@@ -99,9 +99,9 @@
         var result = new Array();
 
         for (var i = 0; i < 5; i++) {
-            result[i] = (function(m){
+            result[i] = function(m){
                 return m;
-            })(i); // 按值传递 ！！
+            }(i); // 按值传递 ！！
         }
         return result;
     }
@@ -129,6 +129,7 @@
 
     var object2 = {
         name: "The Object2",
+
         getNameFunc: function(){
             var that = this;
             return function(){
@@ -142,16 +143,17 @@
 
     var object3 = {
         name: "The Object3",
+
         getName: function(){
             return this.name;
         }
     };
-    console.log(object3.getName());
-    console.log((object3.getName)()); // => object3  ??
+    console.log(object3.getName()); // The Object3
+    console.log((object3.getName)()); // The Object3  ??
 
-    console.log((object3.getName = object3.getName)());// => window  ?? 非严格模式
+    console.log((object3.getName = object3.getName)());// The Window  ?? 在非严格模式下
     var xx = object3.getName;
-    console.log('xx => ', xx());
+    console.log('xx => ', xx()); // The Window
 
 
     // 内存泄露 ?  ?  ?   ?  ?   ?  ?    ?   ?    ?   ?    ?

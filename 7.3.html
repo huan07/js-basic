@@ -26,26 +26,24 @@
         console.log(i);
     }
     outputNumber2(3);
-
 </script>
 
 <script>
     // 匿名函数用途：2.自我执行，模仿块级作用域
     // 私有作用域场景：临时需要的变量
     // 优势：减少闭包占用的内存问题；只要函数执行完毕 立即销毁其作用域链
-
     (function(){
         // 块级作用域
         // 函数声明包含在圆括号内，表示 函数表达式
-        // 这个函数表达式立即执行，执行结束后匿名函数内部变量被销毁！！
-    })();
+    })();// 这个函数表达式立即执行，执行结束后匿名函数内部变量被销毁！！
+
 
     function outputNumber3(count){
-        (function(){  // 闭包，可以通过作用域链访问包含函数的变量count
+        (function(){  // 闭包，可以通过作用域链访问包含函数的变量count ！！
             for (var i = 0; i < count; i++) {
                 console.log(i);
-            }
-        })(); // 执行结束时内部变量被销毁
+            } // 执行结束时 i 被销毁
+        })();
 
         //console.log(i); // 未声明报错
     }
@@ -56,9 +54,9 @@
         console.log('no value');
     })();
 
-    var a = (function(){
+    var a = function(){
         return 'return value';
-    })();
+    }();
     console.log(a);
 </script>
 

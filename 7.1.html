@@ -6,12 +6,14 @@
 </head>
 <body>
 <script>
+    // 函数表达式与其他表达式一样，在使用前必须先赋值
+
     var factorialBest = (function f(num){ // 命名函数表达式
         if (num <= 1) {
             return 1;
-        } else {
-            return num * f(num - 1);
         }
+        console.log(num);
+        return num * f(num - 1);
     });
     var anotherFactorialBest = factorialBest;
     console.log(factorialBest(5), anotherFactorialBest(6));
