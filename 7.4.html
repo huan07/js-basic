@@ -11,13 +11,12 @@
 
     // 在函数内创建一个闭包，通过自己的作用域链 访问私有变量
 
-    // 特权方法：可以访问私有变量，私有函数的公有方法
+    // 特权方法：有权访问私有变量，私有函数的公有方法
     // 1.在构造函数定义特权方法
     // 2.在私有作用域中（匿名函数立即执行）定义私有变量，函数，原型上定义特权方法
-
     function MyObject(){
 
-        // 私有变量，方法
+        // 私有变量，函数
         var privateVar = 10;
 
         function privateFun(){
@@ -35,6 +34,7 @@
 
     var myObject = new MyObject();
     myObject.publicMethod();
+
 
     // example
     function Person(name){
@@ -57,13 +57,10 @@
     console.log(person.getName());
     person.setName('yh changed');
     console.log(person.getName());
-
-
 </script>
 
 <script>
     // 静态私有变量
-
     (function(){
 
         // 私有变量，函数
@@ -73,50 +70,53 @@
             return false;
         }
 
-        // 构造函数 使用函数表达式方式，(全局变量MyObject，但是严格模式下会导致错误)
-        MyObject = function(){
+        // 构造函数 使用函数表达式方式，use strict 给未经过声明的变量赋值会报错!!
+        MyObject2 = function(){
 
         };
 
         // 特权方法
-        MyObject.prototype.publicMethod = function(){ // 实例用同一个函数
+        MyObject2.prototype.publicMethod = function(){ // 共用同一个函数
             privateVar++;
             /*return privateFun();*/
 
-            console.log(privateVar, privateFun())
+            console.log('static => ', privateVar, privateFun())
         };
     })();
+    var myObject2 = new MyObject2();
+    myObject2.publicMethod();
+
 
     // example
     (function(){
         var name = ''; // 静态的，所有实例共享的属性
 
-        Person = function(value){
+        People = function(value){
             name = value;
         };
 
-        Person.prototype.getName = function(){
+        People.prototype.getName = function(){
             return name;
         };
 
-        Person.prototype.setName = function(value){
+        People.prototype.setName = function(value){
             name = value;
         };
     })();
 
-    var person1 = new Person("Nicholas");
-    console.log(person1.getName());
-    person1.setName("Greg");
-    console.log(person1.getName());
+    var people = new People("Nicholas");
+    console.log(people.getName());
+    people.setName("Greg");
+    console.log(people.getName());
 
-    var person2 = new Person("Michael"); // 影响到所有的实例对象
-    console.log(person1.getName());
-    console.log(person2.getName());
+    var people2 = new People("Michael"); // 影响到所有的实例对象
+    console.log(people.getName());
+    console.log(people2.getName());
 </script>
 
 <script>
     // 模块模式：通过为单例添加私有变量和特权方法使其得到增强
-    // 用在：对单例进行初始化，又需要维护其私有变量
+    // 用在：必须创建一个对象并以某些数据对其初始化，同时公开一些能够访问这些私有数据的方法
     var singleton = function(){
 
         // 私有变量，函数
