@@ -209,7 +209,8 @@
 </script>
 
 <script>
-    // every,some 返回boolean              对空数组不会执行，不会改变原始数组
+    // 对空数组不会执行，不会改变原始数组
+    // every,some 返回boolean
     var numbers = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
     var everyResult = numbers.every(function(item, index, array){
         return item > 3;
@@ -239,8 +240,9 @@
 </script>
 
 <script>
-    // find 找到第一个返回true的项，item/undefined           对空数组不会执行，不会改变原始数组
-    // findIndex 找到第一个返回true的序号，index/-1               对空数组不会执行，不会改变原始数组
+    // 对空数组不会执行，不会改变原始数组
+    // find 找到第一个返回true的项，item/undefined
+    // findIndex 找到第一个返回true的序号，index/-1
     // 可以接收第二个参数
     var numbers = [0, 11, 2, 3, 4, 5, 4, 3, 2, 1];
     var findResult = numbers.find(function(item, index, array){
