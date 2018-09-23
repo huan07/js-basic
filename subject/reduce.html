@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reduce</title>
+</head>
+<body>
+
+<script>
+    // 题目1: 求最大值
+    var values = [1, 2, 3, 4, 5];
+    var max = values.reduce(function(prev, cur, index, array){
+        return prev > cur ? prev : cur;
+    });
+    console.log(max);
+
+
+    // 题目2: 将obj变为obj2的格式，拼多多
+    var obj = [
+        { id: 1, parent: null },
+        { id: 2, parent: 1 },
+        { id: 3, parent: 2 },
+        { id: 4, parent: 3 }
+    ];
+    var obj2 = {
+        obj: {
+            id: 1,
+            parent: null,
+            child: {
+                id: 2,
+                parent: 1,
+                child: {
+                    id: 3,
+                    parent: 2
+                }
+            }
+        }
+    };
+
+    var convertArrayToObject = function(arr, arrName){
+        var result = {};
+        var object = arr.reduceRight(function(prev, cur){
+            cur.child = prev;
+            return cur;
+        });
+        result[arrName] = object;
+        return result;
+    };
+
+    var result = convertArrayToObject(obj, 'obj');
+    console.log('result => ', result);
+
+
+    // 题目3: reduce同时实现map,filter方法  找出双倍值后 >50 的值
+    var numbers = [10, 20, 30, 40];
+    var doubleOver50 = numbers.reduce(function(resultList, cur){
+        cur = cur * 2;
+        if (cur > 50) {
+            resultList.push(cur);
+        }
+        return resultList;
+    }, []);
+    console.log(doubleOver50);
+</script>
+
+</body>
+</html>

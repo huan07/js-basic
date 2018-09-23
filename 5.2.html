@@ -264,34 +264,19 @@
 </script>
 
 <script>
-    // reduce reduceRight   归并数组
+    // reduce reduceRight 归并数组
     var values = [1, 2, 3, 4, 5];
-    var sum = values.reduce(function(prev, cur, index, array){ // 1,2,1
+    var sum = values.reduce(function(prev, cur, index, array){
+        // 1, 2, 1
+        // 计算的结果作为prev值，cur取数组中的下一个值
         return prev + cur;
     });
 
-    var sum2 = values.reduce(function(prev, cur, index, array){ //10000,1,0 ( index => cur的序号 )
+    var sum2 = values.reduce(function(prev, cur, index, array){
+        // 10000, 1, 0 ( index => cur的序号 )
         return prev + cur;
     }, 10000);
     console.log('reduce => ', sum, sum2);
-
-    // 题目1: 求最大值
-    var max = values.reduce(function(prev, cur, index, array){
-        return prev > cur ? prev : cur;
-    });
-    console.log(max);
-
-    // 题目2: reduce同时实现map,filter方法  找出双倍值后 >50 的值
-    var numbers = [10, 20, 30, 40];
-    var doubleOver50 = numbers.reduce(function(resultList, cur){
-        // debugger;
-        cur = cur * 2;
-        if (cur > 50) {
-            resultList.push(cur);
-        }
-        return resultList;
-    }, []);
-    console.log(doubleOver50);
 </script>
 
 </body>
