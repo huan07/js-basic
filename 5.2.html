@@ -8,7 +8,7 @@
 <body>
 
 <script>
-    // 在确保是数组的条件下，调用api；非数组调用会报错
+    // 确保arr=[]，调用API，否则的话会报错；
     var colors = new Array();  // 1
 
     var colors2 = new Array(20); // 2
@@ -55,7 +55,7 @@
     // 1.一个网页／一个全局作用域
     console.log('colors5 instanceof Array', colors5 instanceof Array);
 
-    // 2.不管是哪个全局执行环境中创建的 但是有浏览器兼容性
+    // 2.不管是哪个全局执行环境中创建的 但是有些浏览器不支持
     console.log('Array.isArray(colors5)', Array.isArray(colors5));
 
     // 3.join
@@ -182,11 +182,11 @@
 
     console.log('splice 执行数组的 增 删 改====================');
     var colors17 = ['red3', 'blue3', 'yellow3', 'green3'];
-    colors17.splice(1, 0, 'white3', 'black3'); // 在第1个位置之前增
+    colors17.splice(1, 0, 'white3', 'black3'); // 在 第1个位置之前 增
     console.log('增', colors17);
 
     var colors18 = ['red4', 'blue4', 'yellow4', 'green4'];
-    colors18.splice(1, 2); // 从第1个位置开始删，包括第1个位置值
+    colors18.splice(1, 2); // 从 第1个位置开始 删，包括第1个位置值
     console.log('删', colors18);
 
     colors18.splice(0, 1);
@@ -195,15 +195,15 @@
 
     var colors19 = ['red5', 'blue5', 'yellow5', 'green5'];
     colors19.splice(1, 2, 'white5', 'black5');
-    console.log('改', colors19); // 从第1个位置开始改，包括第1个位置值
+    console.log('改', colors19); // 从 第1个位置开始 改，包括第1个位置值
 </script>
 
 <script>
     console.log('indexOf, lastIndexOf  全等比较，返回首次找到项的序号／－1');
-    var numbers = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4];
-    console.log(numbers.indexOf(1), numbers.indexOf(1, 4));
+    var numbers = [0, '1', 2, '3', 4, 0, '1', 2, '3', 4];
+    console.log(numbers.indexOf('1'), numbers.indexOf('1', 4));
 
-    console.log(numbers.lastIndexOf(3), numbers.lastIndexOf(3, 4));
+    console.log(numbers.lastIndexOf('3'), numbers.lastIndexOf('3', 4));
 
     console.log(numbers.indexOf(11));
 </script>
@@ -267,14 +267,12 @@
     // reduce reduceRight   归并数组
     var values = [1, 2, 3, 4, 5];
     var sum = values.reduce(function(prev, cur, index, array){ // 1,2,1
-        // debugger;
         return prev + cur;
-    }); // cur 从第二行项开始的
+    });
 
     var sum2 = values.reduce(function(prev, cur, index, array){ //10000,1,0 ( index => cur的序号 )
-        // debugger;
         return prev + cur;
-    }, 10000); // cur 从第一行项开始的
+    }, 10000);
     console.log('reduce => ', sum, sum2);
 
     // 题目1: 求最大值

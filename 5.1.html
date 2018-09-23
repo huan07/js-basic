@@ -13,7 +13,7 @@
     var person = new Object();  // 1
     person.name = 'person1';
 
-    var person2 = {};  // 2
+    var person2 = {};  // 2 used
     person2.name = 'person2';
 
     var person3 = {  // 3 used  js会隐式的将key转换为字符串类型 String(xx) ！！
@@ -37,8 +37,8 @@
     console.log(person.age, person[agePropertyName], person['age']);
 
     var firstName = 'first name';
-    person[firstName] = 'XiZhu';
-    person['last Name'] = 'LUO';
+    person[firstName] = 'DeHua';
+    person['last Name'] = 'LIU';
     console.log(person, person[firstName], person['last Name']);
 </script>
 
