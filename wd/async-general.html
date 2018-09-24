@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 同步任务是那些没有被引擎挂起、在主线程上排队执行的任务。只有前一个任务执行完毕，才能执行后一个任务。
+
+    // 异步任务是那些被引擎放在一边，不进入主线程、而进入任务队列的任务。
+    // 只有引擎认为某个异步任务可以执行了（比如 Ajax 操作从服务器得到了结果），该任务（采用回调函数的形式）才会进入主线程执行。
+
+    // 事件循环（Event Loop）
+    // js引擎在不停地检查，一遍又一遍，只要同步任务执行完了，引擎就会去检查那些挂起来的异步任务，是不是可以进入主线程了。这种循环检查的机制，就叫做
+
+    // 1.回调函数
+    function f1(callback){
+        console.log('f1');
+        callback();
+    }
+
+    function f2(){
+        console.log('f2');
+    }
+    f1(f2);
+
+    // 2.事件监听
+
+    // 3.发布／订阅
+</script>
+
+<script>
+    function async(arg, callback){
+        console.log('参数为 ' + arg + ' ,1秒后返回结果');
+        setTimeout(function(){
+            callback(arg * 2);
+        }, 1000);
+    }
+
+    function final(value){
+        console.log('完成：', value);
+    }
+
+    async(1, function(value){
+        async(value, function(value2){
+            async(value2, function(value3){
+                async(value3, final);
+            });
+        });
+    });
+
+    // 串行执行 需要3秒完成
+    var items = [1, 2, 3, 4];
+    var results = [];
+    function series(item){
+        if (item) {
+            async(item, function(result){
+                results.push(result);
+                return series(items.shift());
+            });
+        } else {
+            return final(results[results.length - 1]);
+        }
+    }
+    series(items.shift());
+
+</script>
+
+
+</body>
+</html>
