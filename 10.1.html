@@ -59,7 +59,7 @@
 
     var html = document.documentElement;
     var body = document.body;
-    console.log(html, html === document.lastChild, body, body.ownerDocument === document);
+    console.log(html, html === document.lastChild, body, document, body.ownerDocument, body.getRootNode());
 
 
     var idEle = document.getElementById('textNodeNodeType');

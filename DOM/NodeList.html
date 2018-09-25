@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // NodeList实例是一个类似数组的对象，它的成员是节点对象
+    // 不是数组，不能使用pop或push之类数组特有的方法。
+    var children = document.body.childNodes;
+    console.log('children => ', children);
+
+    var nodeArr = Array.prototype.slice.call(children);
+    console.log('nodeArr => ', nodeArr);
+
+    var item0 = children.item(0);
+    var item1 = children[1]; // 优先用
+    console.log('item0 => ', item0, item1);
+
+    // HTMLCollection
+</script>
+
+</body>
+</html>
