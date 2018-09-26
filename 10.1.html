@@ -120,8 +120,8 @@
     console.log('特殊的特性，两种方式取值的结果不一样');
     console.log(myDivEle.style, myDivEle.getAttribute('style'));
     console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
-    // DOM元素属性: h5公认特性
-    // getAttribute: h5公认特性 + 自定义特性
+    // DOM元素属性: 适用于以编程方式操作DOM
+    // getAttribute: 自定义特性
 
     myDivEle.setAttribute('id', 'id1');
     myDivEle.setAttribute('myColor', 'myRed'); // 浏览器会解析为小写属性名，推荐用DOM属性设置特性
