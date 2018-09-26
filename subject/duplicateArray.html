@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function duplicateArray(arr){
+        var result = [];
+        var hash = {};
+        var item;
+        var key;
+
+        for (var i = 0, len = arr.length; i < len; i++) {
+            item = arr[i];
+            key = (typeof item) + item;
+            if (!hash[key]) {
+                result.push(item);
+                hash[key] = true;
+            }
+        }
+        return result;
+    }
+</script>
+
+<script>
+    function getRepeatItems(arr){
+        var result = [];
+        var hash = {};
+        var item;
+        var key;
+
+        for (var i = 0, len = arr.length; i < len; i++) {
+            item = arr[i];
+            key = (typeof item) + item;
+            if (hash[key]) {
+                result.push(item);
+            } else {
+                hash[key] = true;
+            }
+        }
+        return result;
+    }
+</script>
+
+<script>
+    // 数组去重
+    // 设计函数输出数组里面的重复元素 var arr=[3,1,2,'2',2,3,3,3], 输出[2,3,3,3]
+
+    var arr = [3, 1, 2, '2', 2, 3, 3, 3];
+    console.log(duplicateArray(arr), getRepeatItems(arr));
+</script>
+
+</body>
+</html>

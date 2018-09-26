@@ -86,27 +86,6 @@ https://juejin.im/post/5b549b965188251acd0f2ab1
 https://www.nowcoder.com/discuss/90910?type=0&order=0&pos=26&page=0
 -->
 <script>
-    // 2.设计函数输出数组里面的重复元素
-    // var arr=[3,1,2,2,3,3,3], 输出[2,3,3,3]
-    function getRepeatItem(arr){
-        var result = [];
-        var hash = {};
-        for (var i = 0, len = arr.length; i < len; i++) {
-            var item = arr[i];
-            var key = (typeof item) + item;
-            if (hash[key]) {
-                result.push(item);
-            } else {
-                hash[key] = true;
-            }
-        }
-        return result;
-    }
-    var array = [0, 0, 0, 1, '1', 1, '1'];
-    var xx = getRepeatItem(array);
-    console.log('xx => ', xx);
-
-
     // 3.合并数组
 
 
