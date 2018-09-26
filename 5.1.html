@@ -16,7 +16,7 @@
     var person2 = {};  // 2 used
     person2.name = 'person2';
 
-    var person3 = {  // 3 used  js会隐式的将key转换为字符串类型 String(xx) ！！
+    var person3 = {  // 3 used  js会隐式的将key转换为字符串类型 xx.toString() / String(xx) ！！
         name: 'person3',
         55: 99
     };
@@ -28,6 +28,19 @@
     console.log(person, person2, person3, person4);
 
 
+    // 考题
+    var foo = new Object();
+    var bar = new Object();
+    var map = new Object();
+
+    map[foo] = 'foo';
+    map[bar] = 'bar';
+
+    console.log(map[foo]);
+    console.log('map => ', map, foo);
+</script>
+
+<script>
     // 读对象属性：点表示法，[变量名]，[字符串]
     // 方括号还可以 写对象属性
     var person = {

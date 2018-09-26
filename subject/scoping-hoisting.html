@@ -7,6 +7,32 @@
 <body>
 
 <script>
+    // 前端之巅
+    console.log('函数声明提升，生效的是最后一个函数的声明 => ', fooF());
+    function fooF(){
+        return 1;
+    }
+    console.log(fooF());
+
+    function fooF(){
+        return 2;
+    }
+    console.log(fooF());
+
+
+    // console.log(barB()); // error  // 变量声明提升，此时bar是undefined, 函数表达式还没有赋值给bar, 不能当作函数来调用
+    var barB = function(){
+        return 11;
+    };
+    console.log(barB());
+
+    var barB = function(){
+        return 22;
+    };
+    console.log(barB());
+</script>
+
+<script>
     // 1.
     var name = 'World';
     (function(){
@@ -87,17 +113,6 @@
         var age = 10;
     }
     fun2();
-
-
-    // 函数声明提升
-    function foo(){
-        console.log('函数声明 前');
-    }
-
-    console.log(foo);
-    function foo(){ // 声明提升后，后面的函数覆盖前面的函数
-        console.log('函数声明 后');
-    }
 </script>
 
 </body>
