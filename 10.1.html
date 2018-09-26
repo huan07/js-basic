@@ -18,8 +18,8 @@
 <body>
 
 <!-- 有一段注释测试 -->
-<div id="textNodeNodeType">
-    test
+<div id="eleNode">
+    textNode
 </div>
 
 <div id="myId" class="myClass classDefine"><span>div span text</span></div>
@@ -57,18 +57,23 @@
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
     console.log('document节点', document.nodeType, document.nodeName, document.nodeValue);
 
+
+    var doctype = document.doctype;
+    console.log('文档类型节点', doctype.nodeType, doctype.nodeName, doctype.nodeValue);
+
+
     var html = document.documentElement;
     var body = document.body;
-    console.log(html, html === document.lastChild, body, document, body.ownerDocument, body.getRootNode());
+    console.log(html, body, document, body.ownerDocument, body.getRootNode());
+    console.log(html === document.lastChild);
 
 
-    var idEle = document.getElementById('textNodeNodeType');
-    var textNode = idEle.childNodes[0];
-    console.log('nextElementSibling => ', idEle.nextElementSibling); // 忽略空文本节点
-    console.log(idEle, idEle.previousSibling, idEle.nextSibling, idEle.childNodes.length); // 空文本节点
-    console.log(textNode, textNode.previousSibling, textNode.nextSibling); // 文本是父节点的唯一的子节点
+    var eleNode = document.getElementById('eleNode');
+    var textNode = eleNode.childNodes[0];
+    console.log('nextElementSibling => ', eleNode.nextElementSibling); // 忽略空文本节点
+    console.log(eleNode, eleNode.previousSibling, eleNode.nextSibling); // 不忽略空文本节点
 
-    console.log('元素节点', idEle.nodeType, idEle.nodeName, idEle.tagName, idEle.nodeValue);
+    console.log('元素节点', eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue, eleNode.tagName);
     console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
@@ -127,7 +132,7 @@
 
 <script>
     console.log('createElement,  createTextNode,  createComment,  createDocumentFragment  =  =  =  =  ');
-    console.log('appendChild,  insertBefore,  replaceChild,  removeChild  =  =  =  =  ');
+    console.log('appendChild,  insertBefore,  replaceChild,  removeChild  =  =  =  =  '); // all used in parentNode
     // 2
     var element = document.createElement('div');
     element.id = 'idCreated';
@@ -141,7 +146,8 @@
     var comment = document.createComment('创建注释节点');
     console.log('注释节点', comment.nodeType, comment.nodeName, comment.nodeValue);
     document.body.appendChild(comment);
-    // document.body.appendChild(comment); // appendChild之后，comment就消失了一样，任何DOM节点不能同时出现在文档中的多个位置
+    // document.body.appendChild(comment);
+    // appendChild之后，comment就消失了一样，任何DOM节点不能同时出现在文档中的多个位置
 
     var comment_2 = document.createComment('创建另一注释节点测试 1');
     comment.parentNode.insertBefore(comment_2, comment);
@@ -217,9 +223,6 @@
     var deepList = myList.cloneNode(true);
     var shallowList = myList.cloneNode();
     console.log(deepList, shallowList);
-
-    var doctype = document.doctype;
-    console.log('文档类型节点', doctype.nodeType, doctype.nodeName, doctype.nodeValue);
 </script>
 
 </body>
