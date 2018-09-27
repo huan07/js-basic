@@ -89,12 +89,12 @@
 <script>
     var idEle = document.getElementById('idDiv'); // 表单的name属性值为myId，也会被返回，ie低版浏览器怪异
 
-    var classEles = document.getElementsByClassName('myClass'); // HTMLCollection
+    var classEles = document.getElementsByClassName('myClass');
 
-    var divEles = document.getElementsByTagName('div'); // HTMLCollection
+    var divEles = document.getElementsByTagName('div');
     var allEles = document.getElementsByTagName('*');
 
-    var radioNameEles = document.getElementsByName('gender'); // 表单元素name属性值  // NodeList
+    var radioNameEles = document.getElementsByName('gender'); // 表单元素name属性值
     console.log('getElementById  =  =  =  =  =  =  =  =  =  =  ');
     console.log(idEle, classEles, divEles, radioNameEles, radioNameEles[0]);
 
@@ -120,11 +120,11 @@
     console.log('特殊的特性，两种方式取值的结果不一样');
     console.log(myDivEle.style, myDivEle.getAttribute('style'));
     console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
-    // DOM元素属性: 适用于以编程方式操作DOM
-    // getAttribute: 自定义特性
+    // DOM元素属性: 适用于以编程方式操作DOM，对于自定义特性操作会有浏览器的差异，慎用到自定义特性
+    // getAttribute: 还可以用于自定义特性
 
     myDivEle.setAttribute('id', 'id1');
-    myDivEle.setAttribute('myColor', 'myRed'); // 浏览器会解析为小写属性名，推荐用DOM属性设置特性
+    myDivEle.setAttribute('myColor', 'myRed');
     myDivEle.removeAttribute('my_special_attr');
     // 按h5规范，自定义特性格式为data-小写字母（浏览器会解析为小写属性名）
 
