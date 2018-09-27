@@ -55,11 +55,11 @@
 <script>
     console.log(document, window.document);
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
-    console.log('document节点', document.nodeType, document.nodeName, document.nodeValue);
+    console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
 
 
     var doctype = document.doctype;
-    console.log('文档类型节点', doctype.nodeType, doctype.nodeName, doctype.nodeValue);
+    console.log('文档类型节点', doctype, doctype.nodeType, doctype.nodeName, doctype.nodeValue);
 
 
     var html = document.documentElement;
@@ -73,8 +73,8 @@
     console.log('nextElementSibling => ', eleNode.nextElementSibling); // 忽略空文本节点
     console.log(eleNode, eleNode.previousSibling, eleNode.nextSibling); // 不忽略空文本节点
 
-    console.log('元素节点', eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue, eleNode.tagName);
-    console.log('文本节点', textNode.nodeType, textNode.nodeName, textNode.nodeValue);
+    console.log('元素节点', eleNode, eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue, eleNode.tagName);
+    console.log('文本节点', textNode, textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
     var title = document.title;
     console.log(title);
@@ -113,22 +113,25 @@
 
 <script>
     console.log('getAttribute,  setAttribute,  removeAttribute,  attributes  =  =  =  =  =  =  =  =  =  =  ');
-    var myDivEle = document.getElementById('myId');
-    console.log(myDivEle, myDivEle.getAttribute('id'), myDivEle.getAttribute('class'));
-    console.log(myDivEle.getAttribute('my_special_attr'), myDivEle.getAttribute('data-attr'));
+    var myEle = document.getElementById('myId');
+    console.log(myEle, myEle.getAttribute('id'), myEle.getAttribute('class'));
+    console.log(myEle.getAttribute('my_special_attr'), myEle.getAttribute('data-attr'));
 
     console.log('特殊的特性，两种方式取值的结果不一样');
-    console.log(myDivEle.style, myDivEle.getAttribute('style'));
-    console.log(myDivEle.onclick, myDivEle.getAttribute('onclick'));
+    console.log(myEle.style, myEle.getAttribute('style'));
+    console.log(myEle.onclick, myEle.getAttribute('onclick'));
     // DOM元素属性: 适用于以编程方式操作DOM，对于自定义特性操作会有浏览器的差异，慎用到自定义特性
-    // getAttribute: 还可以用于自定义特性
+    // getAttribute: 多用于自定义特性
 
-    myDivEle.setAttribute('id', 'id1');
-    myDivEle.setAttribute('myColor', 'myRed');
-    myDivEle.removeAttribute('my_special_attr');
+    myEle.setAttribute('id', 'id1');
+    myEle.setAttribute('myColor', 'myRed');
+    myEle.removeAttribute('my_special_attr');
     // 按h5规范，自定义特性格式为data-小写字母（浏览器会解析为小写属性名）
 
-    console.log(myDivEle.attributes, myDivEle.attributes.item(2), myDivEle.attributes.length);
+    var attributes = myEle.attributes;
+    var idAttributeNode = attributes.getNamedItem('id');
+    console.log('属性节点', idAttributeNode, idAttributeNode.nodeType, idAttributeNode.nodeName, idAttributeNode.nodeValue);
+    console.log(attributes.item(1), attributes.length);
 </script>
 
 <script>
@@ -145,7 +148,7 @@
 
     // 3. 没有insertAfter;
     var comment = document.createComment('创建注释节点');
-    console.log('注释节点', comment.nodeType, comment.nodeName, comment.nodeValue);
+    console.log('注释节点', comment, comment.nodeType, comment.nodeName, comment.nodeValue);
     document.body.appendChild(comment);
     // document.body.appendChild(comment);
     // appendChild之后，comment就消失了一样，任何DOM节点不能同时出现在文档中的多个位置
@@ -172,7 +175,7 @@
 
     // 4. 练习 添加列表项  考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     var fragment = document.createDocumentFragment(); // 文档片段 不属于文档树
-    console.log('文档片段', fragment.nodeType, fragment.nodeName, fragment.nodeValue);
+    console.log('文档片段节点', fragment, fragment.nodeType, fragment.nodeName, fragment.nodeValue);
 
     var myList = document.getElementById('myList');
     var liNode = null;
