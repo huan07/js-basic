@@ -53,19 +53,17 @@
 <ul id="myList"></ul>
 
 <script>
-    console.log(document, window.document);
-    console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
-    console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
-
-
     var doctype = document.doctype;
-    console.log('文档类型节点', doctype, doctype.nodeType, doctype.nodeName, doctype.nodeValue);
-
-
     var html = document.documentElement;
     var body = document.body;
-    console.log(html, body, document, body.ownerDocument, body.getRootNode());
-    console.log(html === document.lastChild);
+
+    console.log(document, window.document, body.ownerDocument, body.getRootNode());
+    console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
+    console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
+    console.log('doctype节点', doctype, doctype.nodeType, doctype.nodeName, doctype.nodeValue);
+
+    console.log(html, html === document.lastChild);
+    console.log(body);
 
 
     var eleNode = document.getElementById('eleNode');
@@ -75,6 +73,7 @@
 
     console.log('元素节点', eleNode, eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue, eleNode.tagName);
     console.log('文本节点', textNode, textNode.nodeType, textNode.nodeName, textNode.nodeValue);
+
 
     var title = document.title;
     console.log(title);
