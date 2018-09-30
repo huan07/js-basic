@@ -56,14 +56,13 @@
     var doctype = document.doctype;
     var html = document.documentElement;
     var body = document.body;
-
-    console.log(document, window.document, body.ownerDocument, body.getRootNode());
+    console.log(document, window.document, html.parentNode, body.ownerDocument, body.getRootNode());
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
-    console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
-    console.log('doctype节点', doctype, doctype.nodeType, doctype.nodeName, doctype.nodeValue);
-
     console.log(html, html === document.lastChild);
     console.log(body);
+
+    console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
+    console.log('doctype节点', doctype, doctype.nodeType, doctype.nodeName, doctype.nodeValue);
 
 
     var eleNode = document.getElementById('eleNode');

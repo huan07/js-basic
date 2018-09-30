@@ -85,16 +85,16 @@
 <script>
     // 11. 去除 首位的字符
     var str = '/as/df//';
-    str = str.replace(/(^\/*|\/*$)/g, '');
+    str = str.replace(/(^\/+|\/+$)/g, '');
     console.log('去除 首位的 =>', str);
 
 
     var str2 = ' as  /  df  ';
-    str2 = str2.replace(/(^\s*|\s*$)/g, '');
+    str2 = str2.replace(/(^\s+|\s+$)/g, '');
     console.log('去除 首位的 =>', str2);
 
     var str3 = 'Aas/dfAA';
-    str3 = str3.replace(/(^A*|A*$)/g, '');
+    str3 = str3.replace(/(^A+|A+$)/g, '');
     console.log('去除 首位的 =>', str3);
 </script>
 

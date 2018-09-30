@@ -168,25 +168,25 @@
 </script>
 
 <script>
-    // []
+    // [] 匹配其中一个
     var str = 'hello world hello wprld';
     var patt = /w[o-p]r/g;
     var match = str.match(patt);
-    console.log('在[]之间的任何一个字符 => ', match);
+    console.log('[] => ', match);
 
 
     var str2 = "Is this all there is?";
     var patt2 = /[^a-t]/g;
     var match = str2.match(patt2);
-    console.log('[^]: 不在[]之间的任何一个字符 => ', match);
+    console.log('[^] => ', match);
 </script>
 
 <script>
-    // (x|yz)
+    // (x|yz) 匹配其中以|分隔的任一项
     var color = 'red, blue, yellow, black';
     var patt3 = /(red|blue)/g;
     var match = color.match(patt3);
-    console.log('()查找任何指定的选项 => ', match);
+    console.log('() => ', match);
 </script>
 
 <script>
@@ -199,9 +199,15 @@
 
 <script>
     // 量词
+    // n? [0,1]
     // n* [0,n]
     // n+ [1,n]
-    // n? [0,1]
+
+
+    var patt6 = /lo?/g;
+    var match = str.match(patt6);
+    console.log('量词 ？ 0/1个 => ', match);
+
 
     var str = "Hello World! Helloo baidu!";
     var patt4 = /lo*/g;
@@ -212,12 +218,8 @@
     var patt5 = /\w+/g;
     var match = str.match(patt5);
     console.log('量词 + 至少1个 => ', match);
-
-
-    var patt6 = /lo?/g;
-    var match = str.match(patt6);
-    console.log('量词 ？ 0/1个 => ', match);
 </script>
+
 <script>
     // n{X}
     // n{X,}
