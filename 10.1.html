@@ -55,10 +55,12 @@
 <script>
     var doctype = document.doctype;
     var html = document.documentElement;
+    var head = document.head || document.getElementsByTagName('head')[0];
     var body = document.body;
     console.log(document, window.document, html.parentNode, body.ownerDocument, body.getRootNode());
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
     console.log(html, html === document.lastChild);
+    console.log(head);
     console.log(body);
 
     console.log('document节点', document, document.nodeType, document.nodeName, document.nodeValue);
@@ -70,7 +72,8 @@
     console.log('nextElementSibling => ', eleNode.nextElementSibling); // 忽略空文本节点
     console.log(eleNode, eleNode.previousSibling, eleNode.nextSibling); // 不忽略空文本节点
 
-    console.log('元素节点', eleNode, eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue, eleNode.tagName);
+    console.log('元素节点', eleNode, eleNode.nodeType, eleNode.nodeName, eleNode.nodeValue);
+    console.log(eleNode.tagName);
     console.log('文本节点', textNode, textNode.nodeType, textNode.nodeName, textNode.nodeValue);
 
 
@@ -141,14 +144,14 @@
     element.className = 'classCreated';
     var textNode = document.createTextNode('hello javascript');
     element.appendChild(textNode);
-    document.body.appendChild(element);
+    body.appendChild(element);
 
 
     // 3. 没有insertAfter;
     var comment = document.createComment('创建注释节点');
     console.log('注释节点', comment, comment.nodeType, comment.nodeName, comment.nodeValue);
-    document.body.appendChild(comment);
-    // document.body.appendChild(comment);
+    body.appendChild(comment);
+    // body.appendChild(comment);
     // appendChild之后，comment就消失了一样，任何DOM节点不能同时出现在文档中的多个位置
 
     var comment_2 = document.createComment('创建另一注释节点测试 之前');
@@ -160,7 +163,7 @@
     // 3.2 自定义insertAfter, 在指定的两个元素之间添加；考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     function myInsertAfter(newEle, targetEle){
         var parent = targetEle.parentNode;
-        if (parent.lastChild === targetEle) { // 要考虑下空白节点 
+        if (parent.lastChild === targetEle) { // 要考虑下空白节点
             parent.appendChild(newEle);
         } else {
             parent.insertBefore(newEle, targetEle.nextSibling);
@@ -205,7 +208,7 @@
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = '//' + window.location.host + '/js-basic/10.1.js';
-        document.body.appendChild(script);
+        body.appendChild(script);
     }
 
     function loadLink(){
@@ -213,7 +216,6 @@
         link.rel = 'stylesheet';
         link.type = 'text/css';
         link.href = '//' + window.location.host + '/js-basic/10.1.css';
-        var head = document.getElementsByTagName('head')[0];
         head.appendChild(link);
     }
     loadLink();

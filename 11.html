@@ -10,21 +10,35 @@
     </style>
     <script>
         console.log('document.readyState = ', document.readyState);
+
+        var compatMode = document.compatMode;
+        switch(compatMode) {
+            case 'CSS1Compat':
+                // document.documentElement;
+                break;
+            case 'BackCompat':
+            default:
+                // document.body;
+                break;
+        }
+        console.log('document.compatMode == ', compatMode);
+
     </script>
 </head>
 <body>
-<div id="myDiv"></div>
+
 <p class="selected">outer p</p>
 <img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="270" height="129">
 
-<div id="myDiv2" class="bd user disabled">
+<div id="myDiv" class="bd user disabled">
     <p class="selected">inner p</p>
+    <p class="selected">inner p 2</p>
     <img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="370" height="229">
 </div>
 
 <button id="myButton">test button focus</button>
 
-<div id="myDiv3" data-appId="12345" data-appX="67890" data-myname="yh">data-</div>
+<div id="my-data" data-appId="12345" data-appX="67890" data-myname="yh">data-</div>
 
 <div id="myDiv4"></div>
 <div id="myDiv5"></div>
@@ -64,38 +78,27 @@
 <div id="x" style="background-color:olive;padding-top: 450px;">测试 页面滚动效果x可见</div>
 
 <script>
-    // querySelector, querySelectorAll
-    var body = document.querySelector('body');
-    var myDiv = document.querySelector('#myDiv');
-    var outerP = document.querySelector('.selected');
-    var outerImg = document.body.querySelector('img.button');
-    console.log(body, myDiv, outerP, outerImg);
-
-    var myDiv2 = document.querySelector('#myDiv2');
-    var innerP = myDiv2.querySelector('.selected');
-    var innerImg = myDiv2.querySelector('img.button');
-    console.log(myDiv2, innerP, innerImg);
-
     var p = document.querySelector('.selected');
     var pAll = document.querySelectorAll('.selected');
-    console.log(p, pAll);
-    console.log(document.getElementById('myDiv2').querySelectorAll('p'), document.querySelectorAll('#myDiv2 p'));
+
+    var pInner = document.querySelector('#myDiv').querySelector('.selected');
+    var pInnerAll = document.querySelector('#myDiv').querySelectorAll('.selected');
+    console.log(p, pAll, pInner, pInnerAll);
 </script>
+
 <script>
     // classList 仅firefox chrome支持
-    var myDiv2 = document.querySelector('#myDiv2');
-    var classNames = myDiv2.className.split(/\s+/); // 删除类名的某一项
-    var pos = 0;
+    var myDiv = document.querySelector('#myDiv');
+    var classNames = myDiv.className.split(/\s+/); // 删除类名的某一项
     for (var i = 0, len = classNames.length; i < len; i++) {
         if ((classNames[i]) === 'disabled') {
-            pos = i;
             break;
         }
     }
-    classNames.splice(pos, 1);
-    myDiv2.className = classNames.join(' ');
+    classNames.splice(i, 1);
+    myDiv.className = classNames.join(' ');
 
-    var _classList = myDiv2.classList;
+    var _classList = myDiv.classList;
     if (_classList.contains('bd')) {
         _classList.add('bd2');
     }
@@ -111,22 +114,23 @@
 </script>
 
 <script>
-    console.log('document.compatMode == ', document.compatMode);
-
     console.log(document.charset);
     document.charset = 'UTF-16'; // 不管用
     console.log(document.charset, document.defaultCharset, document.defaultCharset === document.charset);
 </script>
+
 <script>
     // data-
-    var div = document.getElementById('myDiv3');
+    var div = document.getElementById('my-data');
     var _dataset = div.dataset;
     var appid = _dataset.appid;
     var appId = _dataset.appId; // 取不到值，转换后映射到标签都是小写的形式
     var appx = _dataset.appx;
     var myname = _dataset.myname;
-    console.log(appid, appId, appx, myname);
-    // _dataset.appid = 1234554321;
+    console.log(_dataset, appid, appId, appx, myname);
+    _dataset.appid = 'appid';
+    _dataset.appId = 'appId'; // 浏览器解析属性为小写字母-连接
+    _dataset.myname = 'myname'
 </script>
 
 <script>
