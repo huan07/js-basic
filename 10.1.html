@@ -55,7 +55,7 @@
 <script>
     var doctype = document.doctype;
     var html = document.documentElement;
-    var head = document.head || document.getElementsByTagName('head')[0];
+    var head = document.head || document.getElementsByTagName('head')[0]; // document.head ie会报错
     var body = document.body;
     console.log(document, window.document, html.parentNode, body.ownerDocument, body.getRootNode());
     console.log(document.childNodes, document.firstChild, document.lastChild, 'xx');
