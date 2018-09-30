@@ -160,7 +160,7 @@
     // 3.2 自定义insertAfter, 在指定的两个元素之间添加；考题 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
     function myInsertAfter(newEle, targetEle){
         var parent = targetEle.parentNode;
-        if (parent.lastChild === targetEle) {
+        if (parent.lastChild === targetEle) { // 要考虑下空白节点 
             parent.appendChild(newEle);
         } else {
             parent.insertBefore(newEle, targetEle.nextSibling);
