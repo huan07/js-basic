@@ -47,7 +47,7 @@
     var btn = document.getElementById('btnDOM0');
     btn.onclick = function(event){
         alert('click DOM0级事件处理程序');
-        alert(this.id); // 在元素的作用域中运行 this引用当前元素 在冒泡阶段被处理
+        alert(this.id); // a.在元素的作用域中运行 this引用当前元素 c.在冒泡阶段被处理
         alert('this === event.target => ' + (this === event.target)); // true
     };
 
@@ -59,11 +59,11 @@
     var alertFun = function(){
         alert('click DOM2级事件处理程序');
     };
-    btn.addEventListener('click', alertFun, false); // 在元素的作用域中运行
-    btn.addEventListener('click', function(event){  // 事件 从上到下 执行
+    btn.addEventListener('click', alertFun, false); // a.在元素的作用域中运行
+    btn.addEventListener('click', function(event){  // b.事件 从上到下 执行
         alert(this.id);
         alert('this === event.target => ' + (this === event.target)); // true
-    }, false); // false 在冒泡阶段被处理
+    }, false); // c.false 在冒泡阶段被处理
     // btn.removeEventListener('click', alertFun, false);
 </script>
 
@@ -72,12 +72,12 @@
     var attchFun = function(){
         alert('click IE事件处理程序');
     };
-    btn.attachEvent('onclick', attchFun); // 在全局作用域执行！！ 只支持事件冒泡  btn.attachEvent undefined TypeError when at chrome
-    btn.attachEvent('onclick', function(){ // 事件 从下到上 执行
+    btn.attachEvent('onclick', attchFun);  // a.在全局作用域执行！！btn.attachEvent undefined TypeError when at chrome
+    btn.attachEvent('onclick', function(){ // b.事件 从下到上 执行
         alert('clicked again');
         alert(this.id);
         //alert('this === window' + (this === window)); // true
-    });
+    }); // c.只支持事件冒泡
     // btn.detachEvent('onclick', attchFun);
 </script>
 
