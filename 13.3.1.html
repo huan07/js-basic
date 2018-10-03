@@ -30,12 +30,12 @@
     btn.onclick = function(event){ // event参数是arguments[0], 浏览器传递的
         console.log(arguments, arguments.length);
         console.log(event);
-        console.log(event.target, this === event.target, this === event.currentTarget);
+        console.log(this, this === event.target, this === event.currentTarget);
     };
 
     var btn = document.getElementById('btnDOM2');
     btn.addEventListener('click', function(event){
-        console.log(event.target, this === event.target, this === event.currentTarget);
+        console.log(this, this === event.target, this === event.currentTarget);
     }, false);
 
     document.body.onclick = function(event){ // 冒泡啦 input => body

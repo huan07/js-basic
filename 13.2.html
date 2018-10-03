@@ -72,7 +72,7 @@
     var attchFun = function(){
         alert('click IE事件处理程序');
     };
-    btn.attachEvent('onclick', attchFun);  // a.在全局作用域执行！！btn.attachEvent undefined TypeError when at chrome
+    btn.attachEvent('onclick', attchFun);  // a.在全局作用域执行 ！！！！btn.attachEvent undefined TypeError when at chrome
     btn.attachEvent('onclick', function(){ // b.事件 从下到上 执行
         alert('clicked again');
         alert(this.id);
