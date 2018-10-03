@@ -13,10 +13,10 @@
 <input type="button" value="click me4" onclick="try{xx();}catch(ex){}"><br><br>
 
 <!-- 局部变量event 事件对象 可以直接访问的-->
-<input type="button" value="click me 局部变量event" onclick="console.log(event.target,event.target.value)" />
-
 <!-- this === 事件的目标元素-->
-<input type="button" value="click me 目标元素this" onclick="console.log(this,this.value,this === event.target)" /><br><br>
+<input type="button" value="click me 局部变量event"
+       onclick="console.log(this===event.target, this, event.target.value)" /><br><br>
+
 
 <!-- 动态创建函数 with扩展作用域 to add-->
 
