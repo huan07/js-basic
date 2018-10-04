@@ -6,24 +6,24 @@
     <link rel="stylesheet" type="text/css" href="10.1.css">
 </head>
 <body>
+
+<input type="text" />
+
 <div id="id">事件发生时，鼠标指针在 视口的位置clientX</div>
 
-<div id="id2">鼠标指针在 页面的位置pageX 兼容处理pageX</div>
+<div id="id2"> 鼠标指针在 页面的位置pageX 兼容处理pageX(ie8及早版本不支持)</div>
 
-<div id="id3">鼠标指针在 屏幕的坐标screenX；修改键</div>
-
-<div id="mouseover">mouseover 获得光标的元素</div>
-<div id="mouseout">mouseout 失去光标的元素</div>
-<script>
-    // 表单事件
-    // focus blur 不会冒泡
-    // focusin focusout
-
-</script>
+<div id="id3"> 鼠标指针在 屏幕的坐标screenX；修改键</div>
 
 <script>
-    // mousedown mouseup click
+    // focus blur 不冒泡
+    // focusin focusout 可冒泡
 
+    // focusout blur
+    // focusin focus
+    var input = document.getElementsByTagName('input')[0];
+    input.focus();
+    console.log(document.hasFocus(), document.activeElement);
 </script>
 
 <script>
@@ -35,7 +35,7 @@
 
         var pageX = event.pageX; //  ie8不支持，（在页面没有滚动的情况，pageX === clientX）
         var pageY = event.pageY;
-        console.log(clientX, clientY, pageX, pageY);
+        console.log('clientX, clientY, pageX, pageY => ', clientX, clientY, pageX, pageY);
     }, false);
 
 
@@ -49,14 +49,17 @@
         if (pageY === undefined) {
             pageY = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
         }
-        console.log(pageX, pageY);
+        console.log('pageX, pageY => ', pageX, pageY);
     }, false);
 </script>
+
 <script>
     var div = document.getElementById('id3');
     div.addEventListener('click', function(event){
         var screenX = event.screenX;
         var screenY = event.screenY;
+
+        console.log('screenX, screenY => ', screenX, screenY);
 
         var keys = [];
         if (event.shiftKey) {

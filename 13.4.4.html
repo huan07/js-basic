@@ -7,25 +7,25 @@
 </head>
 <body>
 
-<input type="text" value="" id="input">
+<input type="text" />
 
 <script>
     // keydown
-    // keypress  键盘上的字符健
     // keyup
-    var input = document.getElementById('input');
+    // keypress  键盘上的字符健
+    var input = document.getElementsByTagName('input')[0];
     input.addEventListener('keydown', function(event){
         console.log('keydown => ' + event.target.value);
     }, false);
 
 
-    input.addEventListener('keypress', function(event){
-        console.log('keypress 键盘上的字符健 => ' + event.keyCode, event.charCode);
+    input.addEventListener('keyup', function(event){
+        console.log('keyup => ' + event.target.value);
     }, false);
 
 
-    input.addEventListener('keyup', function(event){
-        console.log('keyup => ' + event.target.value);
+    input.addEventListener('keypress', function(event){
+        console.log('keypress 键盘上的字符健 => ' + event.keyCode, event.charCode);
     }, false);
 </script>
 
