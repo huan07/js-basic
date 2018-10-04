@@ -8,26 +8,28 @@
             background-color: red
         }
     </style>
-    <script>
-        console.log('document.readyState = ', document.readyState);
 
-        var compatMode = document.compatMode;
-        switch(compatMode) {
-            case 'CSS1Compat':
-                var html = document.documentElement;
-                console.log('html => ', html);
-                break;
-            case 'BackCompat':
-            default:
-                var body = document.body;
-                console.log('body => ', body);
-                break;
-        }
-        console.log('document.compatMode == ', compatMode);
-
-    </script>
 </head>
 <body>
+
+<script>
+    console.log('document.readyState = ', document.readyState);
+
+    var compatMode = document.compatMode;
+    switch(compatMode) {
+        case 'CSS1Compat':
+            var html = document.documentElement;
+            console.log('html => ', html);
+            break;
+        case 'BackCompat':
+        default:
+            var body = document.body;
+            console.log('body => ', body);
+            break;
+    }
+    console.log('document.compatMode == ', compatMode);
+
+</script>
 
 <p class="selected">outer p</p>
 <img class="button" src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="" width="270" height="129">
