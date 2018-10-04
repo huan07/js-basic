@@ -19,13 +19,13 @@
     }, false);
 
 
-    input.addEventListener('keyup', function(event){
-        console.log('keyup => ' + event.target.value);
-    }, false);
-
-
     input.addEventListener('keypress', function(event){
         console.log('keypress 键盘上的字符健 => ' + event.keyCode, event.charCode);
+    }, false);
+    
+
+    input.addEventListener('keyup', function(event){
+        console.log('keyup => ' + event.target.value);
     }, false);
 </script>
 
