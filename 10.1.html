@@ -218,8 +218,11 @@
         link.href = '//' + window.location.host + '/js-basic/10.1.css';
         head.appendChild(link);
     }
-    loadLink();
-    loadScript();
+
+    window.onload = function(){
+        loadLink();
+        loadScript();
+    }
 </script>
 
 <script>
