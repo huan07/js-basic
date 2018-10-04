@@ -62,9 +62,9 @@
     // scroll 发生在window对象，实际表示的是页面中元素的变化
     window.addEventListener('scroll', function(){
         if (document.compatMode === 'CSS1Compat') {
-            console.log(document.documentElement.scrollTop); // 少加大计算量的代码
+            console.log('html => ', document.documentElement.scrollTop); // 少加大计算量的代码
         } else {
-            console.log(document.body.scrollTop);
+            console.log('body => ', document.body.scrollTop);
         }
     }, false);
 </script>

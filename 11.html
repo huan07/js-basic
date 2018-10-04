@@ -14,11 +14,13 @@
         var compatMode = document.compatMode;
         switch(compatMode) {
             case 'CSS1Compat':
-                // document.documentElement;
+                var html = document.documentElement;
+                console.log('html => ', html);
                 break;
             case 'BackCompat':
             default:
-                // document.body;
+                var body = document.body;
+                console.log('body => ', body);
                 break;
         }
         console.log('document.compatMode == ', compatMode);
