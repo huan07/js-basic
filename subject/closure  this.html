@@ -57,34 +57,5 @@
     console.log(a.fn().call(a)); // 30
 </script>
 
-
-<script>
-    // 闭包  和红皮书上的一摸一样
-    var name = "The Window";
-    var object = {
-        name: "My Object",
-        getNameFunc: function(){
-            return function(){
-                return this.name;
-            };
-        }
-    };
-    console.log(object.getNameFunc, object.getNameFunc(), object.getNameFunc()());
-
-
-    var name = "The Window";
-    var object = {
-        name: "My Object",
-        getNameFunc: function(){
-            var that = this;
-            return function(){
-                return that.name;
-            };
-        }
-    };
-    console.log(object.getNameFunc()());
-</script>
-
-
 </body>
 </html>
