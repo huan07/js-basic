@@ -94,6 +94,7 @@
 
     // break 退出循环后  执行循环体之外的语句；
     // continue 退出本轮循环 继续下一轮的循环；
+    // return 带有返回值的退出函数体（函数体内可以有for循环）；
     var num = 0;
     for (var i = 1; i < 10; i++) {
         if (i % 5 === 0) {
@@ -112,6 +113,8 @@
     }
     console.log('continue       ', num);
 
+
+    //
     var num = 0;
     for (var i = 1; i < 4; i++) {
         for (var j = 1; j < 4; j++) {

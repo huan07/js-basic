@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .test-frame {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="test-frame"></div>
+<p>测试动画</p>
+<script>
+    // 推迟某个函数的执行：
+    // setTimeout：指定推迟的时间，
+    // window.requestAnimationFrame() 推迟到浏览器下一次重流时执行
+    // window.requestIdleCallback() 推迟到系统资源空闲时执行
+    var element = document.getElementsByClassName('test-frame')[0];
+    var start = null;
+
+    function step(timestamp){
+        if (!start) {
+            start = timestamp;
+        }
+
+        var progress = timestamp - start;
+
+        var left = Math.min(progress / 10, 200) + 'px';
+        //var left = progress / 10 + 'px';
+
+        element.style.left = left;
+
+        if (progress < 2000) {
+            window.requestAnimationFrame(step);
+        }
+    }
+
+    window.requestAnimationFrame(step);
+
+</script>
+
+</body>
+</html>

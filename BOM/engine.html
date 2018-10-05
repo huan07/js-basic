@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .reflow {
+            width: 300px;
+            height: 100px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+
+        .reflow-optimized {
+            background-color: hotpink;
+        }
+
+    </style>
+</head>
+<body>
+
+<a href="javascript:console.log('hello')">点我 看控制台</a>
+
+<a href="javascript:new Date().toLocaleTimeString()">点我 打开一个新文档</a>
+
+<a href="javascript:console.log(new Date().toLocaleTimeString())">点我 看控制台</a>
+
+<a href="javascript:void new Date().toLocaleTimeString();">点我 不会网页跳转</a>
+<a href="javascript:new Date().toLocaleTimeString();void 0;">点我 不会网页跳转2</a>
+<a href="javascript:void 0;">点我 不会网页跳转3</a>
+
+<div class="reflow ori">
+</div>
+<div class="reflow ori">
+</div>
+
+<div class="reflow reflow-optimized">
+</div>
+<div class="reflow reflow-optimized">
+</div>
+
+<script>
+    function doubleHeight(element){
+        var currentHeight = element.clientHeight;
+        element.style.height = (currentHeight + 10) + 'px';
+    }
+
+    setTimeout(function(){
+        document.querySelectorAll('.reflow.ori').forEach(doubleHeight);
+
+    }, 1000);
+
+
+    //
+    function doubleHeightB(element){
+        var currentWidth = element.clientWidth;
+
+        window.requestAnimationFrame(function(){
+            element.style.width = (currentWidth + 10) + 'px';
+        });
+    }
+
+    setTimeout(function(){
+        document.querySelectorAll('.reflow.reflow-optimized').forEach(doubleHeightB);
+
+    }, 1000);
+</script>
+
+</body>
+</html>
