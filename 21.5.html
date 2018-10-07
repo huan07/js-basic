@@ -21,12 +21,16 @@
 
 <script type="text/javascript">
     // jsonp
-    // 为script.src指定一个跨域的URL
+
+    // 特点：
+    // 简单适用，
+    // 老式浏览器全部支持，服务端改造少
+
 
     // 不足：
+    // 只有get请求
     // 其他域可能不安全
     // 不好确定JSONP请求是否失败
-    // 只有get请求
     function callbackFunction(result, methodName){
         var ul = '<ul>';
         for (var i = 0, len = result.length; i < len; i++) {
@@ -36,11 +40,23 @@
         document.getElementById('divCustomers').innerHTML = ul;
     }
 
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction';
-    document.body.appendChild(script);
-    // 服务器返回的是callbackFunction(["customername1","customername2"])
+    function addScriptTag(src){
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        document.body.appendChild(script);
+    }
+
+    window.onload = function(){
+        addScriptTag('http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=callbackFunction');
+        // jsoncallback=callbackFunction需要和后端约定参数名
+        // 服务器返回的是callbackFunction(["customername1","customername2"])
+    };
+
+    // 网页通过添加一个<script>元素，向服务器请求 JSON 数据，
+    // 服务器收到请求后，将数据（ JSON 数据）放在一个指定名字的回调函数里传回来。
+    // 浏览器端立即指定名字的回调函数
+
 </script>
 
 </body>

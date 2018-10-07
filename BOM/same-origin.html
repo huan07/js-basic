@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<iframe id="iframe" style="width: 80%;height: 200px;" src="http://localhost:8080/index.html"></iframe>
+<script>
+    var iframe = document
+        .getElementById('iframe')
+        .contentWindow
+        .document;
+    console.log('iframe => ', iframe); // ?? 没有报错
+</script>
+
+
+<iframe id="iframeSameOrigin" style="width: 80%;height: 200px;" src="../blank.html"></iframe>
+<script>
+    var iframeSameOrigin = document
+        .getElementById('iframeSameOrigin')
+        .contentWindow
+        .document;
+    console.log('iframeSameOrigin => ', iframeSameOrigin); // ??
+</script>
+
+
+<script>
+    // window.postMessage()
+
+    // 父窗口打开一个子窗口
+    var popup = window.open('http://localhost:8080', 'title');
+    // 父窗口向子窗口发消息
+    popup.postMessage('Hello World!', 'http://localhost:8080');
+
+    // 父窗口和子窗口都可以用下面的代码，
+    // 监听 message 消息
+    window.addEventListener('message', function(e){
+        console.log(e.data);
+    }, false);
+</script>
+
+</body>
+</html>

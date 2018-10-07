@@ -25,7 +25,7 @@
     // 跨域安全策略：XHR对象只能访问与包含它的页面位于同一个域中的资源；可以预防某些恶意行为；！！
     // URL必须与启动请求的页面是相同的协议、域名、端口号；
     var xhr = new createXHR();
-    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送
+    xhr.open('get', 'ajax_info.json', false); // 启动请求以备发送  默认为异步请求，true
     xhr.send(null); // 真正发送请求
     console.log('同步请求 => ', xhr, xhr.readyState, xhr.status, xhr.statusText);
     console.log(xhr.response, xhr.responseText);
@@ -47,9 +47,10 @@
         if (xhr2.readyState === 4) { // 浏览器兼容性，函数内部用xhr2对象，不用this对象
 
             var myHeader = xhr2.getResponseHeader('MyHeader'); // 设置成功，然而并没有取到值
-            var allHeader = xhr2.getAllResponseHeaders();
+            var allHeaders = xhr2.getAllResponseHeaders();
+            var headersArr = getHeaders(allHeaders)
             console.log('this === xhr2', this === xhr2);
-            console.log('getResponseHeader => ', myHeader, allHeader);
+            console.log('getResponseHeader => ', myHeader, allHeaders, headersArr);
 
             if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
                 console.log(xhr2.response);
@@ -69,6 +70,21 @@
     xhr2.send(null);
 </script>
 
+<script>
+    function getHeaders(headersStr){
+        var arr = headersStr.trim().split(/[\r\n]+/);
+        var headerMap = {};
+
+        arr.forEach(function(item){
+            var parts = item.split(':');
+            var header = parts.shift(); // better
+            var value = parts.join(':'); // better
+            headerMap[header] = value;
+        });
+
+        return headerMap;
+    }
+</script>
 
 <script>
     // get请求 用于向服务器查询某些信息
@@ -113,7 +129,7 @@
 
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 1.
 
-    xhr.send('name=value&name2=value2'); // 2.
+    xhr.send('name=value&name2=value2'); // 2. 需要encodeURIComponent(value)
 </script>
 
 </body>

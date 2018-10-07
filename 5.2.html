@@ -72,35 +72,35 @@
 <script>
     console.log('// 数组 栈方法    ====项的插入push、移除pop发生在栈的顶部(数组末尾)  后进先出===================');
     var colors = [];
-    var count = colors.push('red', 'black');
+    var count = colors.push('red', 'black'); // 返回数组长度，数组项发生改变
     console.log('push', colors, count);
 
-    count = colors.push('yellow');
+    count = colors.push('yellow'); // 返回数组长度，数组项发生改变
     console.log('push', colors, count);
 
-    var lastItem = colors.pop();
+    var lastItem = colors.pop();  // 取数组最后一项，数组项发生改变
     console.log('pop', colors, lastItem);
 </script>
 
 <script>
     console.log('// 数组 队列方法========从列表的前端移除shift, 末端添加push  先进先出========== ');
     var colors = [];
-    var count = colors.push('red2', 'black2');
+    var count = colors.push('red2', 'black2'); // 返回数组长度，数组项发生改变
     console.log('push', colors, count);
 
-    count = colors.push('yellow2');
+    count = colors.push('yellow2'); // 返回数组长度，数组项发生改变
     console.log('push', colors, count);
 
-    var firstItem = colors.shift();
+    var firstItem = colors.shift(); // 取数组第一项，数组项发生改变
     console.log('shift', colors, firstItem);
 
 
     console.log('模拟 反队列方法，数组前端添加unshift，末端移除pop，');
     var colors = [];
-    var count = colors.unshift('red3', 'black3');
+    var count = colors.unshift('red3', 'black3');  // 返回数组长度，数组项发生改变
     console.log('unshift', colors, count);
 
-    count = colors.unshift('yellow3');
+    count = colors.unshift('yellow3');  // 返回数组长度，数组项发生改变
     console.log('unshift', colors, count);
 
     var lastItem = colors.pop();

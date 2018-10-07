@@ -80,12 +80,12 @@
 
 <script>
     // 带凭据的请求
-    // 1. withCredentials => true, 指定请求应该发送凭据
-    // 2.如果服务器接受带凭据的请求，会用Access-Control-Allow-Credentials:true, 响应
+    // withCredentials表示跨域请求时，用户信息（比如Cookie ）是否会包含在请求头，
+    //                    跨域请求时，用户信息不会包含在请求头，
 
     // var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;
-    // Access-Control-Allow-Credentials: true
+    // xhr.withCredentials = true;               1.
+    // Access-Control-Allow-Credentials: true    2.服务器端返回，
 </script>
 
 

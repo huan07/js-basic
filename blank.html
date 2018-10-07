@@ -6,5 +6,14 @@
 </head>
 <body>
 
+<div>iframe 测试 同源 父窗口和子窗口通信 <br>
+    此页面被嵌入到 同源页面
+</div>
+<script>
+    var parentBody = window.parent.document.body;
+    console.log(parentBody);
+
+</script>
+
 </body>
 </html>
