@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" class="keyup" value="频繁触发keyup"><br>
+<input type="text" class="keyup test-debounce" value="test-debounce"><br><br>
+
+<input type="button" id="my-button" value="click"><br><br>
+
+<input type="text" class="input-box" value=""><br>
+<input type="text" class="input-box bad" value="立即将字符转为大写 体验稍微差些"><br>
+<input type="text" class="input-box better" value="立即将字符转为大写"><br><br>
+
+
+<script>
+    // 防抖动函数 debounce
+    // 连续触发keyup事件，造成大量的 Ajax 通信。这是不必要的，而且很可能产生性能问题
+    // 设置一个门槛值，表示两次 Ajax 通信的最小间隔时间。
+    // 如果在间隔时间内，发生新的keydown事件，则不触发 Ajax 通信，并且重新开始计时。
+    // 如果过了指定时间，没有发生新的keydown事件，再将数据发送出去。
+    function ajaxAction(event){
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', '../ajax_info.json?requestData=' + event.target.value, false);
+        xhr.send(null);
+        console.log('ajaxAction finished ! !');
+    }
+
+    document.querySelector('.keyup').onkeyup = ajaxAction;
+
+    // better
+    function debouce(fn, delay){
+        var timer = null;
+        return function(){
+            var context = this;
+            var args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                fn.apply(context, args);
+            }, delay);
+        }
+    }
+
+    document.querySelector('.keyup.test-debounce').onkeyup = debouce(ajaxAction, 500);
+</script>
+
+<script>
+    // setTimeout和setInterval的运行机制，是将指定的代码移出本轮事件循环，等到下一轮事件循环，
+    // 再检查是否到了指定时间。如果到了，就执行对应的代码；如果不到，就继续等待。
+    // 回调函数，必须等到本轮事件循环的所有同步任务都执行完，才会开始执行，传入参数0在下一轮事件循环一开始就执行  ！！
+    setInterval(function(){
+        console.log(2);
+    }, 1000);
+
+    sleep(3000);
+
+    function sleep(ms){
+        var start = Date.now();
+        if (Date.now() - start === ms) {
+            return;
+        }
+    }
+</script>
+
+<script>
+    // setTimeout(f, 0)用途
+    // 1.可以调整事件的发生顺序。
+    // 事件冒泡传播，子元素事先接收到onclick事件，向上传播到祖先元素onclick事件
+    var btn = document.getElementById('my-button');
+    btn.onclick = function A(){
+        setTimeout(function B(){ //
+            btn.value += ' input';
+        }, 0);
+    };
+
+    document.body.onclick = function C(){
+        btn.value += ' body';
+    };
+
+    // 2.用户自定义的回调函数，通常在浏览器的默认动作之前触发
+    document.getElementsByClassName('input-box')[0].onkeypress = function(event){
+        this.value = this.value.toUpperCase();
+    };
+
+    document.getElementsByClassName('input-box bad')[1].onkeyup = function(event){ // 看到变化过程，体验稍微差些
+        this.value = this.value.toUpperCase();
+    };
+
+    document.getElementsByClassName('input-box better')[0].onkeypress = function(event){
+        var self = this;
+        setTimeout(function(){
+            self.value = self.value.toUpperCase();
+        }, 0);
+    };
+</script>
+
+</body>
+</html>

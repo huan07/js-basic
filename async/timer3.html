@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .change-color {
+            width: 400px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="change-color"></div>
+<div class="change-color fixed"></div>
+
+<script>
+    // 3.将任务放到浏览器最早可得的空闲时段执行，
+    // 所以那些计算量大、耗时长的任务，常常会被放到几个小部分，分别放到setTimeout(f, 0)里面执行。
+    // 写法1:
+    // 会造成浏览器“堵塞”，因为 JavaScript 执行速度远高于 DOM，会造成大量 DOM 操作“堆积”
+    var changeColor = document.getElementsByClassName('change-color')[0];
+    for (var i = 0x111111; i < 0xffffff; i++) {
+        changeColor.style.backgroundColor = '#' + i.toString(16);
+    }
+
+    // 写法2: to do
+    var changeColorFixed = document.querySelector('.change-color.fixed');
+    var timer;
+    var i = 0x111111;
+    function func(){
+        timer = setTimeout(func, 0);
+        changeColorFixed.style.backgroundColor = '#' + i.toString(16);
+        if (i++ === 0xffffff) {
+            clearTimeout(timer);
+        }
+    }
+    timer = setTimeout(func, 0);
+</script>
+
+</body>
+</html>
