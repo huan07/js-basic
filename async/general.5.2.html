@@ -6,24 +6,16 @@
 </head>
 <body>
 
+<script src="./async.js"></script>
 <script>
-    function async(arg, callback){
-        console.log('参数为 ' + arg + ' ,1秒后返回结果');
-        setTimeout(function(){
-            callback(arg * 2);
-        }, 1000);
-    }
-
-    function final(value){
-        console.log('完成：', value);
-    }
-
+    // 流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行final函数。
     // 并行执行 只需要1秒完成，
     // 并行执行的效率较高，比起串行执行一次只能执行一个任务，较为节约时间
-    // 但是问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度。
+    // 但是问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度
     var items = [1, 2, 3, 4];
     var results = [];
-    items.forEach(function(item){
+
+    items.forEach(function(item){ // 同时发起4个异步任务
         async(item, function(result){
             results.push(result);
             if (results.length === items.length) {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="./async.js"></script>
+<script>
+    // 编写一个流程控制函数，让它来控制异步任务，一个任务完成以后，再执行另一个。这就叫串行执行
+    // 串行执行 需要4秒完成
+    var items = [1, 2, 3, 4];
+    var results = [];
+
+    function series(item){
+        if (item) {
+            async(item, function(result){
+                results.push(result);
+                return series(items.shift());
+            });
+        } else {
+            return final(results[results.length - 1]);
+        }
+    }
+
+    series(items.shift());
+</script>
+
+</body>
+</html>
