@@ -41,6 +41,7 @@
 </div>
 
 <script>
+    // 读取一个 DOM 节点，然后立刻写入；再读取一个 DOM 节点，再立刻写入；立即要求页面重流；
     function doubleHeight(element){
         var currentHeight = element.clientHeight;
         element.style.height = (currentHeight + 10) + 'px';
@@ -52,7 +53,9 @@
     }, 1000);
 
 
-    //
+    // better
+    // 读取 DOM 或者写入 DOM，写在一起
+    // 把代码推迟到下一次重流时执行
     function doubleHeightB(element){
         var currentWidth = element.clientWidth;
 
