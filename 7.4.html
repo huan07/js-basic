@@ -71,7 +71,7 @@
         }
 
         // 构造函数 使用函数表达式方式，use strict 给未经过声明的变量赋值会报错!!
-        MyObject2 = function(){
+        MyObject2 = function(){ // 全局，才可以出来被访问到
 
         };
 
@@ -91,7 +91,7 @@
     (function(){
         var name = ''; // 静态的，所有实例共享的属性
 
-        People = function(value){
+        People = function(value){ // 全局，才可以出来被访问到
             name = value;
         };
 
@@ -136,7 +136,7 @@
         }
     }();
 
-    console.log('singleton => ', singleton);
+    console.log('singleton => ', singleton, singleton.publicMethod());
 </script>
 
 <script>
@@ -163,7 +163,7 @@
         return object;
     }();
 
-    console.log(singletonEnhanced);
+    console.log(singletonEnhanced, singletonEnhanced.publicMethod());
 </script>
 </body>
 </html>
