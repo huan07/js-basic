@@ -6,25 +6,34 @@
 </head>
 <body>
 <script>
-    // 基本类型值：简单的数据段；按值访问：操作保存在变量中的实际值，
-    // 引用类型值：多个值构成的对象；按引用访问：操作的是对象的引用，
+    // 基本类型值：简单的数据段；     按值访问，   操作保存在变量中的实际值，（值保存在栈内存）
+    // 引用类型值：多个值构成的对象； 按引用访问，  操作的是对象的引用，     （引用地址保存在栈内存，对象值保存在堆内存）
 
     // 复制变量值：基本类型值，值的副本，完全独立的两个变量，
     //            引用类型值，值的副本是 指针，两个变量引用同一个对象，
-    //（复制的都是栈内存值：栈内存保存的分别是基本类型值真实值，引用类型值引用地址）
+    //（复制的都是栈内存值）
 
     // 传递参数：按值传递，
+    function setAge(obj){
+        obj.age = 31; // 局部变量的变化会反应在函数的外部，（基本类型值不会，）! !
+    }
+    var people = {};
+    setAge(people);
+    console.log('people => ', people);
+
+
+    //
     function setName(obj){ // 可能是考题
         obj.name = 'yc';
-        obj = new Object();  // 函数命名参数obj是局部变量，函数执行后，obj立即被销毁
+        obj = new Object();  //  重新指向的对象是一个局部变量， 函数执行后，这个局部变量立即被销毁 ! !
         obj.name = 'ycXL';
     }
     var person = new Object();
     setName(person);
-    console.log(person);
+    console.log('person => ', person);
 
 
-    // mk
+    // 深比较
     var peopleInfo = {
         name: 'yh',
         job: 'engineer'
@@ -48,7 +57,7 @@
         }
         return true;
     }
-    console.log('判断两个{} 是否相等', equalObjs(peopleInfo, peopleInfo2));
+    console.log('判断两个{} 是否相等 深比较 ？？', equalObjs(peopleInfo, peopleInfo2));
     console.log(equalObjs(peopleInfo, peopleInfo3));
 
 
@@ -67,10 +76,10 @@
         }
         return true;
     }
-    console.log('判断两个[] 是否相等', equalArrs(colorArray, colorArray2));
+    console.log('判断两个[] 是否相等 深比较 ？？', equalArrs(colorArray, colorArray2));
 
 
-    // 浅拷贝
+    // 深拷贝
     var personInfo = {
         name: 'yc',
         job: 'woman'
@@ -86,7 +95,7 @@
 
     var person2Info = personInfo;
     var personXInfo = copyObj(peopleInfo);
-    console.log('=== 比较的是引用地址', person2Info === personInfo, personXInfo === peopleInfo);
+    console.log('=== 比较的是引用地址 浅比较 ', person2Info === personInfo, personXInfo === peopleInfo);
 </script>
 
 </body>

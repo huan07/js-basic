@@ -8,21 +8,21 @@
 <body>
 
 <script>
-    // 使用 var 操作符 定义的变量将成为 定义该变量的作用域中的 局部变量
+    // 调用 未声明(未定义)的变量会报错
+    // 使用 var声明的变量会自动被添加到最接近的环境中，作为局部变量
+    // 初始化的变量，事先未用var声明，自动被添加到全局环境，作为全局变量
     function test(){
         var message = "hi";
     }
-    test(); // 执行完函数，函数内的变量会被立即销毁
-    // console.log(message); // 此处报错  js访问 没有定义的变量（没有声明的变量） 会报错
+    test();
+    // console.log(message);
 
 
-    // 省略 var 操作符 变量会自动被添加到全局环境  全局变量
-    // 在局部作用域定义的 全局变量 不方便维护 不要这样使用
     function test2(){
         message2 = "hi";
     }
     test2();
-    console.log(message2); // 此处不会报错
+    console.log(message2);
 
 
     //
