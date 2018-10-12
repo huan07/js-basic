@@ -125,13 +125,14 @@
     };
     console.log('返回匿名函数 => ', object.getNameFunc());
     console.log(object.getNameFunc()());
+    console.log('改变this的指向 => ', object.getNameFunc().apply(object), object.getNameFunc().call(object));
 
 
     var object2 = {
         name: "The Object2",
 
         getNameFunc: function(){
-            var that = this;
+            var that = this; // 保存到闭包能够访问到的位置
             return function(){
                 return that.name;
             };
