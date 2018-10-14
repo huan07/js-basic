@@ -80,12 +80,10 @@
 
 <script>
     // 带凭据的请求
-    // withCredentials表示跨域请求时，用户信息（比如Cookie ）是否会包含在请求头，
-    //                    跨域请求时，用户信息不会包含在请求头，
-
-    // var xhr = new XMLHttpRequest();
-    // xhr.withCredentials = true;               1.
-    // Access-Control-Allow-Credentials: true    2.服务器端返回，
+    // 默认withCredentials属性为false, 表示发送跨域请求时，不会发送本机cookie
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;                // 1.如果需要跨域 AJAX 请求发送 Cookie，
+    // Access-Control-Allow-Credentials: true  // 2.服务器端需要返回
 </script>
 
 

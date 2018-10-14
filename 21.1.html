@@ -52,7 +52,8 @@
             console.log('this === xhr2', this === xhr2);
             console.log('getResponseHeader => ', myHeader, allHeaders, headersArr);
 
-            if ((xhr2.status >= 200 && xhr2.status < 300) || xhr2.status === 304) {
+            if ((xhr2.status >= 200 && xhr2.status < 300)
+                || (xhr2.status === 304)) {
                 console.log(xhr2.response);
             } else {
                 console.log('request was unsuccessful' + xhr2.status)
@@ -60,7 +61,7 @@
         }
     };
 
-    xhr2.open('get', 'ajax_info.json', true);
+    xhr2.open('get', 'ajax_info.json?name=value&name2=value2', true); // 需要encodeURIComponent请求参数
     // https://www.reddit.com/r/reactjs.json
 
     xhr2.setRequestHeader('Accept', 'application/json');
@@ -95,41 +96,28 @@
     // 查询信息name,value经过编码后 紧跟在请求的URL后面，有数量限制；
     // 暴露在外面不安全；
     // 发送相同的数据，get请求的速度快；
+</script>
 
+<script>
+    // post请求 用于向服务器发送应该被保存的数据
+    // 把数据作为请求的主体提交，
+    // 可以是很多数据，数据格式不限定
     // post请求消耗的资源会更多；
+
+    // 使用XHR来模仿表单提交
+    var xhr = createXHR();
+
+    xhr.open('post', 'ajaxPost_info.json', false);
+
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 1.
+
+    xhr.send('name=value&name2=value2'); // 2. 需要encodeURIComponent请求参数
 
 
     // post请求响应头部返回
     // access-control-allow-credentials: true
     // access-control-allow-origin: http://localhost:63342
     // content-type: application/json
-</script>
-
-
-<script>
-    // post请求 用于向服务器发送应该被保存的数据
-    // 把数据作为请求的主体提交，
-    // 可以是很多数据，数据格式不限定
-
-    // 使用XHR来模仿表单提交
-    var xhr = createXHR();
-
-    xhr.onreadystatechange = function(){
-        if (xhr.readyState === 4) {
-
-            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
-                console.log(xhr.response);
-            } else {
-                console.log('request was unsuccessful' + xhr.status)
-            }
-        }
-    };
-
-    xhr.open('post', 'ajaxPost_info.json', true);
-
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 1.
-
-    xhr.send('name=value&name2=value2'); // 2. 需要encodeURIComponent(value)
 </script>
 
 </body>
