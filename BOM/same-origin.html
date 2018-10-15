@@ -11,8 +11,9 @@
     var iframe = document
         .getElementById('iframe')
         .contentWindow
-        .document;
-    console.log('iframe => ', iframe); // ?? 没有报错
+        .document
+        .body;
+    console.log('iframe => ', iframe); // ?? 没有报错 但是是空值
 </script>
 
 
@@ -21,25 +22,19 @@
     var iframeSameOrigin = document
         .getElementById('iframeSameOrigin')
         .contentWindow
-        .document;
-    console.log('iframeSameOrigin => ', iframeSameOrigin); // ??
+        .document
+        .body;
+    console.log('iframeSameOrigin => ', iframeSameOrigin); // ?? 没有报错 但是是空值
 </script>
 
 
+<!--<iframe id="iframe_hash" style="width: 80%;height: 200px;" src=""></iframe>
 <script>
-    // window.postMessage()
-
-    // 父窗口打开一个子窗口
-    var popup = window.open('http://localhost:8080', 'title');
-    // 父窗口向子窗口发消息
-    popup.postMessage('Hello World!', 'http://localhost:8080');
-
-    // 父窗口和子窗口都可以用下面的代码，
-    // 监听 message 消息
-    window.addEventListener('message', function(e){
-        console.log(e.data);
-    }, false);
-</script>
+    // 片段标识符（fragment identifier）
+    var src = 'http://localhost:8080' + '#' + 'test=fragment_identifier';
+    document.getElementById('iframe_hash').src = src;
+    console.log('')
+</script>-->
 
 </body>
 </html>

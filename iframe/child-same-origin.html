@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+点我
+
+<script>
+    document.body.onclick = function(){
+        top.postMessage('发送给父窗口', 'http://localhost:63342')
+    };
+
+    // 接收消息
+    window.addEventListener('message', function(e){
+        console.log('child 正在监听 => ', e, e.source, e.origin, e.data);
+
+        if (e.data.type === 'article') {
+            console.log(e.data.msg.success)
+        }
+    });
+</script>
+
+</body>
+</html>

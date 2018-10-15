@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        iframe {
+            width: 40%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<article>
+    <form>
+        <label for="message">Message</label>
+        <input type="text" name="message" id="message" value="my message" />
+        <input type="submit" />
+    </form>
+
+    <iframe id="iframe"
+            src="http://localhost:63342/js-basic/iframe/child-same-origin.html"></iframe>
+
+    <!-- iframe from webpack-basic project -->
+    <iframe id="iframeCross"
+            src="http://localhost:8080/html/child-cross-origin.html"></iframe>
+</article>
+
+<script>
+    var childWin = document.getElementById('iframe').contentWindow;
+
+    var childWinCross = document.getElementById('iframeCross').contentWindow;
+
+    document.querySelector('form').addEventListener('submit', function(e){
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+
+        // 提交表单的同时 发送消息给 符合域名的页面
+        childWin.postMessage(
+            document.getElementById('message').value,
+            'http://localhost:63342'
+        );
+
+        childWinCross.postMessage(
+            document.getElementById('message').value + '-----cross',
+            'http://localhost:8080'
+        );
+
+        e.returnValue = false;
+        return false;
+
+    }, false);
+
+    // 接收从子窗口发送过来的消息
+    window.addEventListener('message', function(e){
+        console.log('parent 正在监听 => ', e, e.source, e.origin, e.data);
+    });
+</script>
+
+</body>
+</html>
