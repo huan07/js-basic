@@ -15,12 +15,6 @@
             color: white;
             width: 100%;
         }
-
-        #div2 {
-            color: black;
-            background-color: white;
-            padding: 5px;
-        }
     </style>
 </head>
 <body>
@@ -28,8 +22,6 @@
 <button id="btn">点我</button>
 
 <div id="div" style="left: 0;">重复移动的div缓缓移动重复移动的div缓缓移动</div>
-
-<div id="div2">窗口大小改变后，调整自身高度，函数节流来阻止函数在给定时间内被多次调用</div>
 
 <script>
     var btn = document.getElementById('btn');
@@ -55,49 +47,6 @@
 
 <script>
     // Yielding Processes  to add
-</script>
-
-<script>
-    // 函数节流
-    // 阻止函数在给定时间内被多次调用
-    var processor = {
-        timeoutId: null,
-
-        performProcessing: function(){
-            console.log('actual performProcessing ');
-        },
-
-        process: function(){
-            clearTimeout(this.timeoutId); // 清除存好的timeoutId, 来阻止之前的调用被执行；
-
-            var that = this;
-            this.timeoutId = setTimeout(function(){ // 创建一个新的定时器来调用performProcessing；
-                that.performProcessing();
-            }, 500);
-        }
-    };
-    processor.process();
-
-    // 简化processor
-    function throttle(method, context){
-        clearTimeout(method.tId);
-
-        method.tId = setTimeout(function(){
-            method.call(context);
-        }, 100);
-    }
-
-    function resizeDiv(tip){
-        var div = document.getElementById('div2');
-        div.style.height = div.offsetHeight + 'px';
-        console.log(tip, div.offsetHeight);
-    }
-
-    window.onresize = function(){
-        resizeDiv('连续触发');
-
-        throttle(resizeDiv);
-    }
 </script>
 
 </body>
